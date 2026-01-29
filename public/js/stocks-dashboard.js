@@ -362,15 +362,21 @@ function createFundamentalDataContent(fundamentalData, stock) {
           <div class="text-center">
             <p class="text-sm text-gray-500">Price</p>
             <p class="text-xl font-bold text-gray-900">${currencySymbol}${formattedPrice}</p>
+          </div>
           <div class="text-center">
             <p class="text-sm text-gray-500">Change</p>
             <p class="text-xl font-bold ${changeColorClass}">${changeSign}${formattedChange}</p>
+          </div>
           <div class="text-center">
             <p class="text-sm text-gray-500">Change %</p>
             <p class="text-xl font-bold ${changeColorClass}">${changeSign}${formattedChangePercent}%</p>
+          </div>
           <div class="text-center">
             <p class="text-sm text-gray-500">Volume</p>
             <p class="text-xl font-bold text-gray-900">${formattedVolume}</p>
+          </div>
+        </div>
+      </div>
       
       <!-- Original Detailed Information Grid (same as before) -->
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -385,18 +391,25 @@ function createFundamentalDataContent(fundamentalData, stock) {
             <div class="flex justify-between py-2 border-b border-blue-100 last:border-0">
               <span class="text-gray-600">Open:</span>
               <span class="font-medium text-gray-900">${currencySymbol}${formattedOpen}</span>
+            </div>
             <div class="flex justify-between py-2 border-b border-blue-100 last:border-0">
               <span class="text-gray-600">High:</span>
               <span class="font-medium text-gray-900">${currencySymbol}${formattedHigh}</span>
+            </div>
             <div class="flex justify-between py-2 border-b border-blue-100 last:border-0">
               <span class="text-gray-600">Low:</span>
               <span class="font-medium text-gray-900">${currencySymbol}${formattedLow}</span>
+            </div>
             <div class="flex justify-between py-2 border-b border-blue-100 last:border-0">
               <span class="text-gray-600">Close:</span>
               <span class="font-medium text-gray-900">${currencySymbol}${formattedClose}</span>
+            </div>
             <div class="flex justify-between py-2 border-b border-blue-100 last:border-0">
               <span class="text-gray-600">52-Week Range:</span>
               <span class="font-medium text-gray-900">${fundamentalData.financials.fiftyTwoWeekLow ? `${currencySymbol}${fundamentalData.financials.fiftyTwoWeekLow.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} - ${currencySymbol}${fundamentalData.financials.fiftyTwoWeekHigh.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}` : '--'}</span>
+            </div>
+          </div>
+        </div>
         
         <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-5 border border-purple-100">
           <h3 class="font-bold text-lg text-gray-800 mb-4 flex items-center">
@@ -409,15 +422,22 @@ function createFundamentalDataContent(fundamentalData, stock) {
             <div class="flex justify-between py-2 border-b border-purple-100 last:border-0">
               <span class="text-gray-600">Market Cap:</span>
               <span class="font-medium text-gray-900">${formattedMarketCap}</span>
+            </div>
             <div class="flex justify-between py-2 border-b border-purple-100 last:border-0">
               <span class="text-gray-600">Currency:</span>
               <span class="font-medium text-gray-900">${stock.currency || 'USD'}</span>
+            </div>
             <div class="flex justify-between py-2 border-b border-purple-100 last:border-0">
               <span class="text-gray-600">Exchange:</span>
               <span class="font-medium text-gray-900">${stock.exchange || '--'}</span>
+            </div>
             <div class="flex justify-between py-2 border-b border-purple-100 last:border-0">
               <span class="text-gray-600">Symbol:</span>
               <span class="font-medium text-gray-900">${stock.symbol}</span>
+            </div>
+          </div>
+        </div>
+      </div>
       
       <!-- NEW: Chart Section -->
       <div class="bg-gradient-to-r from-emerald-50 to-teal-50 rounded-xl p-6 border border-emerald-100">
@@ -450,10 +470,13 @@ function createFundamentalDataContent(fundamentalData, stock) {
             <input type="radio" name="chart-period" value="max" class="sr-only chart-period-radio" data-symbol="${fundamentalData.symbol}">
             <span>MAX</span>
           </label>
+        </div>
         
         <!-- Chart Container -->
         <div class="bg-white rounded-lg p-4 border border-emerald-200">
           <canvas id="stock-chart-${fundamentalData.symbol.replace('.', '_')}" height="300"></canvas>
+        </div>
+      </div>
       
       <!-- NEW: Company Overview (fundamental data) -->
       <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-100">
@@ -467,20 +490,27 @@ function createFundamentalDataContent(fundamentalData, stock) {
           <div>
             <p class="text-sm text-gray-600">Industry</p>
             <p class="font-medium text-gray-900">${fundamentalData.companyInfo.industry || '--'}</p>
+          </div>
           <div>
             <p class="text-sm text-gray-600">Sector</p>
             <p class="font-medium text-gray-900">${fundamentalData.companyInfo.sector || '--'}</p>
+          </div>
           <div>
             <p class="text-sm text-gray-600">Employees</p>
             <p class="font-medium text-gray-900">${formatNumber(fundamentalData.companyInfo.fullTimeEmployees)}</p>
+          </div>
           <div class="md:col-span-2">
             <p class="text-sm text-gray-600">Website</p>
             <p class="font-medium text-blue-600">${fundamentalData.companyInfo.website !== 'N/A' ? `<a href="${fundamentalData.companyInfo.website}" target="_blank" class="hover:underline">${fundamentalData.companyInfo.website}</a>` : '--'}</p>
+          </div>
+        </div>
         ${fundamentalData.companyInfo.businessSummary && fundamentalData.companyInfo.businessSummary !== 'No business summary available' ? `
           <div class="mt-4 pt-4 border-t border-blue-200">
             <p class="text-sm text-gray-600 mb-2">Business Summary</p>
             <p class="text-gray-700 text-sm">${fundamentalData.companyInfo.businessSummary.substring(0, 300)}${fundamentalData.companyInfo.businessSummary.length > 300 ? '...' : ''}</p>
+          </div>
         ` : ''}
+      </div>
       
       <!-- NEW: Financial Ratios (fundamental data) -->
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -495,15 +525,21 @@ function createFundamentalDataContent(fundamentalData, stock) {
             <div class="flex justify-between py-2 border-b border-purple-100 last:border-0">
               <span class="text-gray-600">P/E Ratio:</span>
               <span class="font-medium text-gray-900">${formatRatio(fundamentalData.financials.peRatio)}</span>
+            </div>
             <div class="flex justify-between py-2 border-b border-purple-100 last:border-0">
               <span class="text-gray-600">Forward P/E:</span>
               <span class="font-medium text-gray-900">${formatRatio(fundamentalData.financials.forwardPE)}</span>
+            </div>
             <div class="flex justify-between py-2 border-b border-purple-100 last:border-0">
               <span class="text-gray-600">EPS:</span>
               <span class="font-medium text-gray-900">${formatCurrency(fundamentalData.financials.eps)}</span>
+            </div>
             <div class="flex justify-between py-2 border-b border-purple-100 last:border-0">
               <span class="text-gray-600">Revenue:</span>
               <span class="font-medium text-gray-900">${formatCurrency(fundamentalData.financials.revenue)}</span>
+            </div>
+          </div>
+        </div>
         
         <div class="bg-gradient-to-br from-yellow-50 to-orange-50 rounded-xl p-6 border border-yellow-100">
           <h3 class="font-bold text-lg text-gray-800 mb-4 flex items-center">
@@ -516,15 +552,22 @@ function createFundamentalDataContent(fundamentalData, stock) {
             <div class="flex justify-between py-2 border-b border-yellow-100 last:border-0">
               <span class="text-gray-600">Gross Margin:</span>
               <span class="font-medium text-gray-900">${formatPercent(fundamentalData.financials.grossMargins)}</span>
+            </div>
             <div class="flex justify-between py-2 border-b border-yellow-100 last:border-0">
               <span class="text-gray-600">Operating Margin:</span>
               <span class="font-medium text-gray-900">${formatPercent(fundamentalData.financials.operatingMargins)}</span>
+            </div>
             <div class="flex justify-between py-2 border-b border-yellow-100 last:border-0">
               <span class="text-gray-600">Profit Margin:</span>
               <span class="font-medium text-gray-900">${formatPercent(fundamentalData.financials.profitMargins)}</span>
+            </div>
             <div class="flex justify-between py-2 border-b border-yellow-100 last:border-0">
               <span class="text-gray-600">Return on Equity:</span>
               <span class="font-medium text-gray-900">${formatPercent(fundamentalData.financials.returnOnEquity)}</span>
+            </div>
+          </div>
+        </div>
+      </div>
       
       <!-- NEW: Additional Fundamental Information -->
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -539,15 +582,21 @@ function createFundamentalDataContent(fundamentalData, stock) {
             <div class="flex justify-between py-2 border-b border-cyan-100 last:border-0">
               <span class="text-gray-600">Revenue Growth:</span>
               <span class="font-medium text-gray-900">${formatPercent(fundamentalData.financials.revenueGrowth)}</span>
+            </div>
             <div class="flex justify-between py-2 border-b border-cyan-100 last:border-0">
               <span class="text-gray-600">Earnings Growth:</span>
               <span class="font-medium text-gray-900">${formatPercent(fundamentalData.financials.earningsGrowth)}</span>
+            </div>
             <div class="flex justify-between py-2 border-b border-cyan-100 last:border-0">
               <span class="text-gray-600">Target Price:</span>
               <span class="font-medium text-gray-900">${formatCurrency(fundamentalData.financials.targetMeanPrice)}</span>
+            </div>
             <div class="flex justify-between py-2 border-b border-cyan-100 last:border-0">
               <span class="text-gray-600">Price Range:</span>
               <span class="font-medium text-gray-900">${formatCurrency(fundamentalData.financials.targetLowPrice)} - ${formatCurrency(fundamentalData.financials.targetHighPrice)}</span>
+            </div>
+          </div>
+        </div>
         
         <div class="bg-gradient-to-br from-gray-50 to-slate-50 rounded-xl p-6 border border-gray-200">
           <h3 class="font-bold text-lg text-gray-800 mb-4 flex items-center">
@@ -560,15 +609,22 @@ function createFundamentalDataContent(fundamentalData, stock) {
             <div class="flex justify-between py-2 border-b border-gray-200 last:border-0">
               <span class="text-gray-600">Volume:</span>
               <span class="font-medium text-gray-900">${formatLargeNumber(fundamentalData.financials.volume, null)}</span>
+            </div>
             <div class="flex justify-between py-2 border-b border-gray-200 last:border-0">
               <span class="text-gray-600">Avg Volume:</span>
               <span class="font-medium text-gray-900">${formatLargeNumber(fundamentalData.financials.averageVolume, null)}</span>
+            </div>
             <div class="flex justify-between py-2 border-b border-gray-200 last:border-0">
               <span class="text-gray-600">Debt to Equity:</span>
               <span class="font-medium text-gray-900">${formatRatio(fundamentalData.financials.debtToEquity)}</span>
+            </div>
             <div class="flex justify-between py-2 border-b border-gray-200 last:border-0">
               <span class="text-gray-600">Exchange:</span>
               <span class="font-medium text-gray-900">${fundamentalData.companyInfo.exchange}</span>
+            </div>
+          </div>
+        </div>
+      </div>
       
       <!-- NEW: Analyst Recommendations -->
       ${fundamentalData.analyst.recommendation ? `
@@ -583,9 +639,13 @@ function createFundamentalDataContent(fundamentalData, stock) {
             <div>
               <p class="text-2xl font-bold text-gray-900 capitalize">${fundamentalData.analyst.recommendation}</p>
               <p class="text-gray-600">${fundamentalData.analyst.numberOfAnalysts} analysts</p>
+            </div>
             <div class="text-right">
               <p class="text-sm text-gray-600">Last updated</p>
               <p class="text-sm font-medium text-gray-900">${new Date().toLocaleDateString()}</p>
+            </div>
+          </div>
+        </div>
       ` : ''}
       
       <!-- Original Market Status (same as before) -->
@@ -594,9 +654,14 @@ function createFundamentalDataContent(fundamentalData, stock) {
           <div>
             <h3 class="font-medium text-gray-800">Market Status</h3>
             <p class="text-sm text-gray-600">Updated in real-time</p>
+          </div>
           <div class="text-right">
             <p class="text-sm text-gray-600">Last updated</p>
             <p class="text-sm font-medium text-gray-900">${new Date().toLocaleTimeString()}</p>
+          </div>
+        </div>
+      </div>
+    </div>
   `;
 }
 
@@ -626,15 +691,21 @@ function showBasicStockModal(stock) {
           <div class="text-center">
             <p class="text-sm text-gray-500">Price</p>
             <p class="text-2xl font-bold text-gray-900">${currencySymbol}${formattedPrice}</p>
+          </div>
           <div class="text-center">
             <p class="text-sm text-gray-500">Change</p>
             <p class="text-2xl font-bold ${changeColorClass}">${changeSign}${formattedChange}</p>
+          </div>
           <div class="text-center">
             <p class="text-sm text-gray-500">Change %</p>
             <p class="text-2xl font-bold ${changeColorClass}">${changeSign}${formattedChangePercent}%</p>
+          </div>
           <div class="text-center">
             <p class="text-sm text-gray-500">Volume</p>
             <p class="text-2xl font-bold text-gray-900">${formattedVolume}</p>
+          </div>
+        </div>
+      </div>
       
       <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-100">
         <h3 class="font-bold text-lg text-gray-800 mb-4 flex items-center">
@@ -647,6 +718,9 @@ function showBasicStockModal(stock) {
           <div class="flex justify-between py-2 border-b border-blue-100 last:border-0">
             <span class="text-gray-600">52-Week Range:</span>
             <span class="font-medium text-gray-900">${currencySymbol}${formatted52WeekLow} - ${currencySymbol}${formatted52WeekHigh}</span>
+          </div>
+        </div>
+      </div>
       
       <div class="bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl p-6 border border-gray-200">
         <h3 class="font-bold text-lg text-gray-800 mb-4">Basic Information</h3>
@@ -654,15 +728,22 @@ function showBasicStockModal(stock) {
           <div>
             <p class="text-sm text-gray-600">Market Cap</p>
             <p class="font-medium text-gray-900">${formattedMarketCap}</p>
+          </div>
           <div>
             <p class="text-sm text-gray-600">Currency</p>
             <p class="font-medium text-gray-900">${stock.currency || 'USD'}</p>
+          </div>
           <div>
             <p class="text-sm text-gray-600">Exchange</p>
             <p class="font-medium text-gray-900">${stock.exchange || '--'}</p>
+          </div>
           <div>
             <p class="text-sm text-gray-600">Symbol</p>
             <p class="font-medium text-gray-900">${stock.symbol}</p>
+          </div>
+        </div>
+      </div>
+    </div>
   `;
 }
 
@@ -673,6 +754,96 @@ function closeStockModal() {
   if (stockModal) {
     stockModal.classList.add('hidden');
     document.body.style.overflow = ''; // Restore scrolling
+  }
+}
+
+// Chart management variables
+window.stockCharts = {};
+
+// Function to load stock chart
+async function loadStockChart(symbol, period = '1mo') {
+  try {
+    const canvasId = `stock-chart-${symbol.replace('.', '_')}`;
+    const canvas = document.getElementById(canvasId);
+    
+    if (!canvas) {
+      console.error('Chart canvas not found:', canvasId);
+      return;
+    }
+    
+    // Fetch chart data from the API
+    const response = await fetch(`/stocks/api/chart/${symbol}?period=${period}`);
+    const chartData = await response.json();
+    
+    if (!response.ok) {
+      throw new Error(chartData.error || 'Failed to fetch chart data');
+    }
+    
+    // Destroy existing chart if it exists
+    const chartId = symbol.replace('.', '_');
+    if (window.stockCharts[chartId]) {
+      window.stockCharts[chartId].destroy();
+    }
+    
+    // Create the chart data - use simple array for x-axis to avoid time adapter issues
+    const chartLabels = chartData.labels;
+    const chartValues = chartData.datasets[0].data;
+    
+    // Create the chart
+    const ctx = canvas.getContext('2d');
+    window.stockCharts[chartId] = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: chartLabels, // Use the dates as labels
+        datasets: [{
+          label: `${symbol} Price`,
+          data: chartValues,
+          borderColor: '#3b82f6',
+          backgroundColor: 'rgba(59, 130, 246, 0.1)',
+          borderWidth: 2,
+          pointRadius: 0,
+          fill: true,
+          tension: 0.4
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            display: false
+          },
+          tooltip: {
+            callbacks: {
+              title: function(context) {
+                // Show the label (date) in the tooltip
+                return chartLabels[context[0].dataIndex];
+              }
+            }
+          }
+        },
+        scales: {
+          x: {
+            grid: {
+              display: false
+            }
+          },
+          y: {
+            grid: {
+              color: 'rgba(0, 0, 0, 0.05)'
+            }
+          }
+        },
+        interaction: {
+          mode: 'nearest',
+          axis: 'x',
+          intersect: false
+        }
+      }
+    });
+    
+  } catch (error) {
+    console.error('Error loading stock chart:', error);
   }
 }
 
@@ -740,29 +911,6 @@ showStockModal = async function (stock) {
     initializeChartForStock(stock.symbol);
   }, 500);
 };
-
-// Function to filter stocks based on search term
-function filterStocks(stocks, searchTerm) {
-  console.log('filterStocks called with:', stocks.length, 'stocks and search term:', searchTerm);
-  const term = searchTerm.toLowerCase();
-  const results = stocks.filter(stock => {
-    const matches = (
-      stock.symbol.toLowerCase().includes(term) ||
-      (stock.price && stock.price.toString().includes(term)) ||
-      (stock.change && stock.change.toString().includes(term)) ||
-      (stock.changePercent && stock.changePercent.toString().includes(term)) ||
-      (stock.open && stock.open.toString().includes(term)) ||
-      (stock.high && stock.high.toString().includes(term)) ||
-      (stock.low && stock.low.toString().includes(term)) ||
-      (stock.close && stock.close.toString().includes(term)) ||
-      (stock.volume && stock.volume.toString().includes(term)) ||
-      (stock.marketCap && stock.marketCap.toString().includes(term))
-    );
-    return matches;
-  });
-  console.log('filterStocks returning:', results.length, 'results');
-  return results;
-}
 
 // Function to sort stocks
 function sortStocks(stocks, column, direction) {

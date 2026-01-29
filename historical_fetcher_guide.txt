@@ -1,0 +1,66 @@
+
+# Historical OHLCV Data Fetcher
+
+The historical data fetcher has been successfully implemented with automatic maximum historical data fetching:
+
+## File Location
+- Script: `utils/historical-data-fetcher.js`
+- Database Table: `historical_ohlcv` (in `database/stock_data.db`)
+
+## Table Structure
+The script creates a table with the following columns:
+- `id`: Primary key (auto-increment)
+- `symbol`: Stock symbol (TEXT)
+- `date`: Trading date (TEXT in YYYY-MM-DD format)
+- `open`: Opening price (REAL)
+- `high`: Highest price (REAL)
+- `low`: Lowest price (REAL)
+- `close`: Closing price (REAL)
+- `adj_close`: Adjusted closing price (REAL)
+- `volume`: Trading volume (INTEGER)
+- `created_at`: Record creation timestamp (TEXT)
+
+## Usage
+
+### Command Line (AUTO FETCHES MAXIMUM DATES BY DEFAULT)
+```bash
+# Fetch maximum historical data for all stocks in nifty100.json (NEW DEFAULT BEHAVIOR)
+node utils/historical-data-fetcher.js
+
+# With custom date range (optional)
+node utils/historical-data-fetcher.js --start=2010-01-01 --end=2020-12-31
+
+# Fetch data only for stocks that don't have historical data yet
+node utils/historical-data-fetcher.js --mode=missing
+```
+
+### Programmatic Usage
+```javascript
+const HistoricalDataFetcher = require('./utils/historical-data-fetcher');
+const fetcher = new HistoricalDataFetcher();
+
+// Initialize the fetcher
+await fetcher.initialize();
+
+// Process all stocks from nifty100.json with maximum available history (NEW DEFAULT)
+await fetcher.processAllStocks(); // This will automatically fetch max available data
+
+// Or with custom dates
+await fetcher.processAllStocks('2000-01-01', '2025-12-31');
+
+// Or process only missing stocks with maximum history
+await fetcher.processMissingStocks(); // This will automatically fetch max available data
+```
+
+## Features
+- Fetches maximum available OHLCV data for all stocks in public/nifty100.json
+- Automatically fetches from year 2000 to present (maximum available from Yahoo Finance)
+- Uses chart() method to avoid deprecated historical() issues
+- Creates a dedicated historical_ohlcv table in the existing database
+- Respects API rate limits with batching and delays
+- Handles errors gracefully and continues processing
+- Uses UNIQUE constraint to prevent duplicate entries
+- Includes indexes for efficient querying
+- Processes stocks in batches to manage memory usage
+- Tracks progress and provides detailed logging
+

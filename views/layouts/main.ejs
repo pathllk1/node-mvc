@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/tailwind-output.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="bg-gray-100">
+    <nav id="navbar-placeholder">
+        <!-- Dynamic navbar will be inserted here by navbar.js -->
+    </nav>
+
+    <main class="container mx-auto p-2 max-w-full pt-4">
+        <%- body %>
+    </main>
+
+        <footer id="footer-placeholder">
+            <!-- Dynamic footer will be inserted here by footer.js -->
+        </footer>
+
+    <script src="/js/spa-router.js"></script>
+    <script src="/js/components/navbar.js"></script>
+    <script src="/js/components/footer.js"></script>
+    <script src="/js/components/toast.js"></script>
+    <script src="/js/main.js"></script>
+</body>
+</html>

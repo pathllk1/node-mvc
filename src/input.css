@@ -1,0 +1,5 @@
+@import "tailwindcss";
+@source "./views/**/*.{html,ejs,js}";
+@source "./public/**/*.js";
+
+/* Your custom CSS goes here */

@@ -1,0 +1,39 @@
+{
+  "name": "node_mvc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "build:tailwind": "npx @tailwindcss/cli -i ./public/css/tailwind-input.css -o ./public/css/tailwind-output.css",
+    "watch:tailwind": "npx @tailwindcss/cli -i ./public/css/tailwind-input.css -o ./public/css/tailwind-output.css --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "public/stock-data.json"
+    ]
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "better-sqlite3": "^9.4.3",
+    "body-parser": "^2.2.2",
+    "ejs": "^4.0.1",
+    "ejs-mate": "^4.0.0",
+    "express": "^5.2.1",
+    "helmet": "^8.1.0",
+    "node-cron": "^4.2.1",
+    "serverless-http": "^4.0.0",
+    "socket.io": "^4.8.3",
+    "talib.js": "^0.1.0",
+    "yahoo-finance2": "^3.13.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.1.18",
+    "nodemon": "^3.1.11",
+    "tailwindcss": "^4.1.18"
+  }
+}

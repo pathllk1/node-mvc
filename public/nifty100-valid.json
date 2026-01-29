@@ -1,0 +1,5810 @@
+[
+  {
+    "symbol": "3MINDIA",
+    "company": "3M India Ltd",
+    "sector": "Consumer Durables",
+    "industry": "Consumer Goods",
+    "nse": "3MINDIA.NS",
+    "yahooSymbol": "3MINDIA.NS",
+    "currentPrice": 33250,
+    "lastUpdated": "2026-01-26T18:34:25.801Z"
+  },
+  {
+    "symbol": "AARTIIND",
+    "company": "Aarti Industries Ltd",
+    "sector": "Chemicals",
+    "industry": "Chemicals",
+    "nse": "AARTIIND.NS",
+    "yahooSymbol": "AARTIIND.NS",
+    "currentPrice": 351,
+    "lastUpdated": "2026-01-26T18:34:25.805Z"
+  },
+  {
+    "symbol": "ABAN",
+    "company": "Aban Offshore Ltd",
+    "sector": "Oil & Gas",
+    "industry": "Oil & Gas",
+    "nse": "ABAN.NS",
+    "yahooSymbol": "ABAN.NS",
+    "currentPrice": 22.11,
+    "lastUpdated": "2026-01-26T18:34:26.002Z"
+  },
+  {
+    "symbol": "ABBOTINDIA",
+    "company": "Abbott India Ltd",
+    "sector": "Healthcare",
+    "industry": "Pharmaceuticals",
+    "nse": "ABBOTINDIA.NS",
+    "yahooSymbol": "ABBOTINDIA.NS",
+    "currentPrice": 27915,
+    "lastUpdated": "2026-01-26T18:34:28.149Z"
+  },
+  {
+    "symbol": "ABB",
+    "company": "ABB India Ltd",
+    "sector": "Electrical Equipment",
+    "industry": "Electrical Equipment",
+    "nse": "ABB.NS",
+    "yahooSymbol": "ABB.NS",
+    "currentPrice": 4696,
+    "lastUpdated": "2026-01-26T18:34:28.161Z"
+  },
+  {
+    "symbol": "ABCAPITAL",
+    "company": "ABCAPITAL",
+    "sector": "Finance",
+    "industry": "Banking",
+    "nse": "ABCAPITAL.NS",
+    "yahooSymbol": "ABCAPITAL.NS",
+    "currentPrice": 346,
+    "lastUpdated": "2026-01-26T18:34:28.171Z"
+  },
+  {
+    "symbol": "ABFRL",
+    "company": "Aditya Birla Fashion and Retail Ltd",
+    "sector": "Consumer Discretionary",
+    "industry": "Retailing",
+    "nse": "ABFRL.NS",
+    "yahooSymbol": "ABFRL.NS",
+    "currentPrice": 61.6,
+    "lastUpdated": "2026-01-26T18:34:28.195Z"
+  },
+  {
+    "symbol": "ACC",
+    "company": "ACC Ltd",
+    "sector": "Construction",
+    "industry": "Construction",
+    "nse": "ACC.NS",
+    "yahooSymbol": "ACC.NS",
+    "currentPrice": 1678.9,
+    "lastUpdated": "2026-01-26T18:34:28.237Z"
+  },
+  {
+    "symbol": "ADANIENT",
+    "company": "Adani Enterprises Ltd",
+    "sector": "Conglomerates",
+    "industry": "Conglomerates",
+    "nse": "ADANIENT.NS",
+    "yahooSymbol": "ADANIENT.NS",
+    "currentPrice": 1861.8,
+    "lastUpdated": "2026-01-26T18:34:30.347Z"
+  },
+  {
+    "symbol": "ACE",
+    "company": "Action Construction Equipment Ltd",
+    "sector": "Capital Goods",
+    "industry": "Capital Goods",
+    "nse": "ACE.NS",
+    "yahooSymbol": "ACE.NS",
+    "currentPrice": 791.35,
+    "lastUpdated": "2026-01-26T18:34:30.359Z"
+  },
+  {
+    "symbol": "ADANIPORTS",
+    "company": "Adani Ports and Special Economic Zone Ltd",
+    "sector": "Infrastructure",
+    "industry": "Ports",
+    "nse": "ADANIPORTS.NS",
+    "yahooSymbol": "ADANIPORTS.NS",
+    "currentPrice": 1314.9,
+    "lastUpdated": "2026-01-26T18:34:30.543Z"
+  },
+  {
+    "symbol": "ACCELYA",
+    "company": "Accelya Solutions India Ltd",
+    "sector": "IT",
+    "industry": "IT Services",
+    "nse": "ACCELYA.NS",
+    "yahooSymbol": "ACCELYA.NS",
+    "currentPrice": 1315,
+    "lastUpdated": "2026-01-26T18:34:30.548Z"
+  },
+  {
+    "symbol": "ADANIPOWER",
+    "company": "Adani Power Ltd",
+    "sector": "Power",
+    "industry": "Power Generation",
+    "nse": "ADANIPOWER.NS",
+    "yahooSymbol": "ADANIPOWER.NS",
+    "currentPrice": 133.8,
+    "lastUpdated": "2026-01-26T18:34:30.560Z"
+  },
+  {
+    "symbol": "ADFFOODS",
+    "company": "ADF Foods Ltd",
+    "sector": "FMCG",
+    "industry": "Food Processing",
+    "nse": "ADFFOODS.NS",
+    "yahooSymbol": "ADFFOODS.NS",
+    "currentPrice": 176.6,
+    "lastUpdated": "2026-01-26T18:34:32.689Z"
+  },
+  {
+    "symbol": "ADROITINFO",
+    "company": "Adroit Infotech Ltd",
+    "sector": "IT",
+    "industry": "IT Services",
+    "nse": "ADROITINFO.NS",
+    "yahooSymbol": "ADROITINFO.NS",
+    "currentPrice": 9.6,
+    "lastUpdated": "2026-01-26T18:34:34.889Z"
+  },
+  {
+    "symbol": "ADSL",
+    "company": "Allied Digital Services Ltd",
+    "sector": "IT",
+    "industry": "IT Services",
+    "nse": "ADSL.NS",
+    "yahooSymbol": "ADSL.NS",
+    "currentPrice": 119,
+    "lastUpdated": "2026-01-26T18:34:34.897Z"
+  },
+  {
+    "symbol": "ADVANIHOTR",
+    "company": "Advani Hotels & Resorts (India) Ltd",
+    "sector": "Hospitality",
+    "industry": "Hotels",
+    "nse": "ADVANIHOTR.NS",
+    "yahooSymbol": "ADVANIHOTR.NS",
+    "currentPrice": 62.45,
+    "lastUpdated": "2026-01-26T18:34:34.907Z"
+  },
+  {
+    "symbol": "ADVENZYMES",
+    "company": "Advanced Enzyme Technologies Ltd",
+    "sector": "Healthcare",
+    "industry": "Biotechnology",
+    "nse": "ADVENZYMES.NS",
+    "yahooSymbol": "ADVENZYMES.NS",
+    "currentPrice": 267.55,
+    "lastUpdated": "2026-01-26T18:34:34.998Z"
+  },
+  {
+    "symbol": "AFL",
+    "company": "Accel Frontline Ltd",
+    "sector": "IT",
+    "industry": "IT Services",
+    "nse": "AFL.NS",
+    "yahooSymbol": "AFL.NS",
+    "lastUpdated": "2026-01-26T18:34:37.105Z"
+  },
+  {
+    "symbol": "AGARIND",
+    "company": "Agarwal Industrial Corporation Ltd",
+    "sector": "Chemicals",
+    "industry": "Chemicals",
+    "nse": "AGARIND.NS",
+    "yahooSymbol": "AGARIND.NS",
+    "currentPrice": 668,
+    "lastUpdated": "2026-01-26T18:34:37.116Z"
+  },
+  {
+    "symbol": "AHLWEST",
+    "company": "Asian Hotels (West) Ltd",
+    "sector": "Hospitality",
+    "industry": "Hotels",
+    "nse": "AHLWEST.NS",
+    "yahooSymbol": "AHLWEST.NS",
+    "currentPrice": 144.15,
+    "lastUpdated": "2026-01-26T18:34:39.563Z"
+  },
+  {
+    "symbol": "AHLUCONT",
+    "company": "Ahluwalia Contracts (India) Ltd",
+    "sector": "Construction",
+    "industry": "Construction",
+    "nse": "AHLUCONT.NS",
+    "yahooSymbol": "AHLUCONT.NS",
+    "currentPrice": 828.5,
+    "lastUpdated": "2026-01-26T18:34:39.572Z"
+  },
+  {
+    "symbol": "AGROPHOS",
+    "company": "Agro Phos India Ltd",
+    "sector": "Chemicals",
+    "industry": "Fertilizers",
+    "nse": "AGROPHOS.NS",
+    "yahooSymbol": "AGROPHOS.NS",
+    "currentPrice": 36.74,
+    "lastUpdated": "2026-01-26T18:34:39.580Z"
+  },
+  {
+    "symbol": "AHLEAST",
+    "company": "Asian Hotels (East) Ltd",
+    "sector": "Hospitality",
+    "industry": "Hotels",
+    "nse": "AHLEAST.NS",
+    "yahooSymbol": "AHLEAST.NS",
+    "currentPrice": 132.29,
+    "lastUpdated": "2026-01-26T18:34:39.585Z"
+  },
+  {
+    "symbol": "AIAENG",
+    "company": "AIA Engineering Ltd",
+    "sector": "Capital Goods",
+    "industry": "Capital Goods",
+    "nse": "AIAENG.NS",
+    "yahooSymbol": "AIAENG.NS",
+    "currentPrice": 3730,
+    "lastUpdated": "2026-01-26T18:34:39.745Z"
+  },
+  {
+    "symbol": "AICHAMP",
+    "company": "AI Champdany Industries Ltd",
+    "sector": "Textiles",
+    "industry": "Textiles",
+    "nse": "AICHAMP.NS",
+    "yahooSymbol": "AICHAMP.NS",
+    "currentPrice": 1318365950,
+    "lastUpdated": "2026-01-26T18:34:41.896Z"
+  },
+  {
+    "symbol": "AIFL",
+    "company": "Ashapura Intimates Fashion Ltd",
+    "sector": "Consumer Discretionary",
+    "industry": "Retailing",
+    "nse": "AIFL.NS",
+    "yahooSymbol": "AIFL.NS",
+    "currentPrice": 1.55,
+    "lastUpdated": "2026-01-26T18:34:41.915Z"
+  },
+  {
+    "symbol": "AJMERA",
+    "company": "Ajmera Realty & Infra India Ltd",
+    "sector": "Real Estate",
+    "industry": "Real Estate",
+    "nse": "AJMERA.NS",
+    "yahooSymbol": "AJMERA.NS",
+    "currentPrice": 149.15,
+    "lastUpdated": "2026-01-26T18:34:41.941Z"
+  },
+  {
+    "symbol": "AJANTPHARM",
+    "company": "Ajanta Pharma Ltd",
+    "sector": "Healthcare",
+    "industry": "Pharmaceuticals",
+    "nse": "AJANTPHARM.NS",
+    "yahooSymbol": "AJANTPHARM.NS",
+    "currentPrice": 2700,
+    "lastUpdated": "2026-01-26T18:34:41.944Z"
+  },
+  {
+    "symbol": "AJOONI",
+    "company": "Ajooni Biotech Ltd",
+    "sector": "Healthcare",
+    "industry": "Biotechnology",
+    "nse": "AJOONI.NS",
+    "yahooSymbol": "AJOONI.NS",
+    "currentPrice": 3.87,
+    "lastUpdated": "2026-01-26T18:34:42.012Z"
+  },
+  {
+    "symbol": "AKSHAR",
+    "company": "Akshar Spintex Ltd",
+    "sector": "Textiles",
+    "industry": "Textiles",
+    "nse": "AKSHAR.NS",
+    "yahooSymbol": "AKSHAR.NS",
+    "currentPrice": 0.5,
+    "lastUpdated": "2026-01-26T18:34:44.141Z"
+  },
+  {
+    "symbol": "ALANKIT",
+    "company": "Alankit Ltd",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "ALANKIT.NS",
+    "yahooSymbol": "ALANKIT.NS",
+    "currentPrice": 10,
+    "lastUpdated": "2026-01-26T18:34:44.149Z"
+  },
+  {
+    "symbol": "AKSHARCHEM",
+    "company": "AksharChem India Ltd",
+    "sector": "Chemicals",
+    "industry": "Chemicals",
+    "nse": "AKSHARCHEM.NS",
+    "yahooSymbol": "AKSHARCHEM.NS",
+    "currentPrice": 230,
+    "lastUpdated": "2026-01-26T18:34:44.156Z"
+  },
+  {
+    "symbol": "AKZOINDIA",
+    "company": "Akzo Nobel India Ltd",
+    "sector": "Chemicals",
+    "industry": "Chemicals",
+    "nse": "AKZOINDIA.NS",
+    "yahooSymbol": "AKZOINDIA.NS",
+    "currentPrice": 2925,
+    "lastUpdated": "2026-01-26T18:34:44.159Z"
+  },
+  {
+    "symbol": "ALBERTDAVD",
+    "company": "Albert David Ltd",
+    "sector": "Healthcare",
+    "industry": "Pharmaceuticals",
+    "nse": "ALBERTDAVD.NS",
+    "yahooSymbol": "ALBERTDAVD.NS",
+    "currentPrice": 698.8,
+    "lastUpdated": "2026-01-26T18:34:44.257Z"
+  },
+  {
+    "symbol": "ALCHEM",
+    "company": "Alchemist Ltd",
+    "sector": "Chemicals",
+    "industry": "Chemicals",
+    "nse": "ALCHEM.NS",
+    "yahooSymbol": "ALCHEM.NS",
+    "currentPrice": 3.15,
+    "lastUpdated": "2026-01-26T18:34:46.503Z"
+  },
+  {
+    "symbol": "ALEMBICLTD",
+    "company": "Alembic Ltd",
+    "sector": "Healthcare",
+    "industry": "Pharmaceuticals",
+    "nse": "ALEMBICLTD.NS",
+    "yahooSymbol": "ALEMBICLTD.NS",
+    "currentPrice": 93,
+    "lastUpdated": "2026-01-26T18:34:46.510Z"
+  },
+  {
+    "symbol": "ALICON",
+    "company": "Alicon Castalloy Ltd",
+    "sector": "Capital Goods",
+    "industry": "Capital Goods",
+    "nse": "ALICON.NS",
+    "yahooSymbol": "ALICON.NS",
+    "currentPrice": 679.9,
+    "lastUpdated": "2026-01-26T18:34:46.519Z"
+  },
+  {
+    "symbol": "ALKALI",
+    "company": "Alkali Metals Ltd",
+    "sector": "Chemicals",
+    "industry": "Chemicals",
+    "nse": "ALKALI.NS",
+    "yahooSymbol": "ALKALI.NS",
+    "currentPrice": 69.49,
+    "lastUpdated": "2026-01-26T18:34:46.701Z"
+  },
+  {
+    "symbol": "ALKEM",
+    "company": "Alkem Laboratories Ltd",
+    "sector": "Healthcare",
+    "industry": "Pharmaceuticals",
+    "nse": "ALKEM.NS",
+    "yahooSymbol": "ALKEM.NS",
+    "currentPrice": 5749,
+    "lastUpdated": "2026-01-26T18:34:49.084Z"
+  },
+  {
+    "symbol": "ALKYLAMINE",
+    "company": "Alkyl Amines Chemicals Ltd",
+    "sector": "Chemicals",
+    "industry": "Chemicals",
+    "nse": "ALKYLAMINE.NS",
+    "yahooSymbol": "ALKYLAMINE.NS",
+    "currentPrice": 1556,
+    "lastUpdated": "2026-01-26T18:34:49.088Z"
+  },
+  {
+    "symbol": "ALLCARGO",
+    "company": "Allcargo Logistics Ltd",
+    "sector": "Logistics",
+    "industry": "Logistics",
+    "nse": "ALLCARGO.NS",
+    "yahooSymbol": "ALLCARGO.NS",
+    "currentPrice": 9.16,
+    "lastUpdated": "2026-01-26T18:34:49.092Z"
+  },
+  {
+    "symbol": "ALMONDZ",
+    "company": "Almondz Global Securities Ltd",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "ALMONDZ.NS",
+    "yahooSymbol": "ALMONDZ.NS",
+    "currentPrice": 15.03,
+    "lastUpdated": "2026-01-26T18:34:49.179Z"
+  },
+  {
+    "symbol": "ALPHAGEO",
+    "company": "Alphageo (India) Ltd",
+    "sector": "Oil & Gas",
+    "industry": "Oil & Gas",
+    "nse": "ALPHAGEO.NS",
+    "yahooSymbol": "ALPHAGEO.NS",
+    "currentPrice": 199,
+    "lastUpdated": "2026-01-26T18:34:51.423Z"
+  },
+  {
+    "symbol": "ALPSINDUS",
+    "company": "Alps Industries Ltd",
+    "sector": "Textiles",
+    "industry": "Textiles",
+    "nse": "ALPSINDUS.NS",
+    "yahooSymbol": "ALPSINDUS.NS",
+    "currentPrice": 3.43,
+    "lastUpdated": "2026-01-26T18:34:51.428Z"
+  },
+  {
+    "symbol": "ALPA",
+    "company": "Alpa Laboratories Ltd",
+    "sector": "Healthcare",
+    "industry": "Pharmaceuticals",
+    "nse": "ALPA.NS",
+    "yahooSymbol": "ALPA.NS",
+    "currentPrice": 63,
+    "lastUpdated": "2026-01-26T18:34:51.431Z"
+  },
+  {
+    "symbol": "AMBIKCO",
+    "company": "Ambika Cotton Mills Ltd",
+    "sector": "Textiles",
+    "industry": "Textiles",
+    "nse": "AMBIKCO.NS",
+    "yahooSymbol": "AMBIKCO.NS",
+    "currentPrice": 1224,
+    "lastUpdated": "2026-01-26T18:34:53.783Z"
+  },
+  {
+    "symbol": "AMBUJACEM",
+    "company": "Ambuja Cements Ltd",
+    "sector": "Construction",
+    "industry": "Construction",
+    "nse": "AMBUJACEM.NS",
+    "yahooSymbol": "AMBUJACEM.NS",
+    "currentPrice": 519.4,
+    "lastUpdated": "2026-01-26T18:34:53.788Z"
+  },
+  {
+    "symbol": "AMDIND",
+    "company": "AMD Industries Ltd",
+    "sector": "Capital Goods",
+    "industry": "Capital Goods",
+    "nse": "AMDIND.NS",
+    "yahooSymbol": "AMDIND.NS",
+    "currentPrice": 44,
+    "lastUpdated": "2026-01-26T18:34:54.022Z"
+  },
+  {
+    "symbol": "ANANTRAJ",
+    "company": "Anant Raj Ltd",
+    "sector": "Real Estate",
+    "industry": "Real Estate",
+    "nse": "ANANTRAJ.NS",
+    "yahooSymbol": "ANANTRAJ.NS",
+    "currentPrice": 503.25,
+    "lastUpdated": "2026-01-26T18:34:56.140Z"
+  },
+  {
+    "symbol": "AMJLAND",
+    "company": "Amj Land Holdings Ltd",
+    "sector": "Real Estate",
+    "industry": "Real Estate",
+    "nse": "AMJLAND.NS",
+    "yahooSymbol": "AMJLAND.NS",
+    "currentPrice": 43.35,
+    "lastUpdated": "2026-01-26T18:34:56.238Z"
+  },
+  {
+    "symbol": "AMRUTANJAN",
+    "company": "Amrutanjan Health Care Ltd",
+    "sector": "Healthcare",
+    "industry": "Pharmaceuticals",
+    "nse": "AMRUTANJAN.NS",
+    "yahooSymbol": "AMRUTANJAN.NS",
+    "currentPrice": 604,
+    "lastUpdated": "2026-01-26T18:34:56.240Z"
+  },
+  {
+    "symbol": "ANDHRAPAP",
+    "company": "Andhra Paper Ltd",
+    "sector": "Pulp & Paper",
+    "industry": "Pulp & Paper",
+    "nse": "ANDHRAPAP.NS",
+    "yahooSymbol": "ANDHRAPAP.NS",
+    "currentPrice": 63,
+    "lastUpdated": "2026-01-26T18:34:56.249Z"
+  },
+  {
+    "symbol": "ANIKINDS",
+    "company": "Anik Industries Ltd",
+    "sector": "Chemicals",
+    "industry": "Chemicals",
+    "nse": "ANIKINDS.NS",
+    "yahooSymbol": "ANIKINDS.NS",
+    "currentPrice": 49.9,
+    "lastUpdated": "2026-01-26T18:34:58.369Z"
+  },
+  {
+    "symbol": "ANKITMETAL",
+    "company": "Ankit Metal & Power Ltd",
+    "sector": "Metals",
+    "industry": "Iron & Steel",
+    "nse": "ANKITMETAL.NS",
+    "yahooSymbol": "ANKITMETAL.NS",
+    "currentPrice": 1.75,
+    "lastUpdated": "2026-01-26T18:34:58.375Z"
+  },
+  {
+    "symbol": "ANDHRSUGAR",
+    "company": "The Andhra Sugars Ltd",
+    "sector": "FMCG",
+    "industry": "Sugar",
+    "nse": "ANDHRSUGAR.NS",
+    "yahooSymbol": "ANDHRSUGAR.NS",
+    "currentPrice": 67.8,
+    "lastUpdated": "2026-01-26T18:34:58.432Z"
+  },
+  {
+    "symbol": "ANSALAPI",
+    "company": "Ansal Properties & Infrastructure Ltd",
+    "sector": "Real Estate",
+    "industry": "Real Estate",
+    "nse": "ANSALAPI.NS",
+    "yahooSymbol": "ANSALAPI.NS",
+    "currentPrice": 3.12,
+    "lastUpdated": "2026-01-26T18:34:58.499Z"
+  },
+  {
+    "symbol": "ANTGRAPHIC",
+    "company": "Antarctica Industries Ltd",
+    "sector": "Media",
+    "industry": "Printing & Publishing",
+    "nse": "ANTGRAPHIC.NS",
+    "yahooSymbol": "ANTGRAPHIC.NS",
+    "currentPrice": 0.94,
+    "lastUpdated": "2026-01-26T18:35:00.646Z"
+  },
+  {
+    "symbol": "APCL",
+    "company": "Anjani Portland Cement Ltd",
+    "sector": "Construction",
+    "industry": "Construction",
+    "nse": "APCL.NS",
+    "yahooSymbol": "APCL.NS",
+    "currentPrice": 141.5,
+    "lastUpdated": "2026-01-26T18:35:00.652Z"
+  },
+  {
+    "symbol": "APARINDS",
+    "company": "Apar Industries Ltd",
+    "sector": "Electrical Equipment",
+    "industry": "Electrical Equipment",
+    "nse": "APARINDS.NS",
+    "yahooSymbol": "APARINDS.NS",
+    "currentPrice": 7020,
+    "lastUpdated": "2026-01-26T18:35:00.660Z"
+  },
+  {
+    "symbol": "APLAPOLLO",
+    "company": "APL Apollo Tubes Ltd",
+    "sector": "Metals",
+    "industry": "Iron & Steel",
+    "nse": "APLAPOLLO.NS",
+    "yahooSymbol": "APLAPOLLO.NS",
+    "currentPrice": 1997.8,
+    "lastUpdated": "2026-01-26T18:35:03.008Z"
+  },
+  {
+    "symbol": "APLLTD",
+    "company": "Alembic Pharmaceuticals Ltd",
+    "sector": "Healthcare",
+    "industry": "Pharmaceuticals",
+    "nse": "APLLTD.NS",
+    "yahooSymbol": "APLLTD.NS",
+    "currentPrice": 765,
+    "lastUpdated": "2026-01-26T18:35:03.012Z"
+  },
+  {
+    "symbol": "APOLLOHOSP",
+    "company": "Apollo Hospitals Enterprise Ltd",
+    "sector": "Healthcare",
+    "industry": "Hospitals",
+    "nse": "APOLLOHOSP.NS",
+    "yahooSymbol": "APOLLOHOSP.NS",
+    "currentPrice": 6813,
+    "lastUpdated": "2026-01-26T18:35:03.019Z"
+  },
+  {
+    "symbol": "APOLLO",
+    "company": "Apollo Micro Systems Ltd",
+    "sector": "Capital Goods",
+    "industry": "Capital Goods",
+    "nse": "APOLLO.NS",
+    "yahooSymbol": "APOLLO.NS",
+    "currentPrice": 223.25,
+    "lastUpdated": "2026-01-26T18:35:03.025Z"
+  },
+  {
+    "symbol": "APOLLOTYRE",
+    "company": "Apollo Tyres Ltd",
+    "sector": "Automobile",
+    "industry": "Automobile",
+    "nse": "APOLLOTYRE.NS",
+    "yahooSymbol": "APOLLOTYRE.NS",
+    "currentPrice": 497.5,
+    "lastUpdated": "2026-01-26T18:35:03.195Z"
+  },
+  {
+    "symbol": "ARCHIDPLY",
+    "company": "Archidply Industries Ltd",
+    "sector": "Forest Materials",
+    "industry": "Forest Materials",
+    "nse": "ARCHIDPLY.NS",
+    "yahooSymbol": "ARCHIDPLY.NS",
+    "currentPrice": 85.5,
+    "lastUpdated": "2026-01-26T18:35:05.373Z"
+  },
+  {
+    "symbol": "ARCHIES",
+    "company": "Archies Ltd",
+    "sector": "Consumer Discretionary",
+    "industry": "Retailing",
+    "nse": "ARCHIES.NS",
+    "yahooSymbol": "ARCHIES.NS",
+    "currentPrice": 16.65,
+    "lastUpdated": "2026-01-26T18:35:05.375Z"
+  },
+  {
+    "symbol": "APOLSINHOT",
+    "company": "Apollo Sindoori Hotels Ltd",
+    "sector": "Hospitality",
+    "industry": "Hotels",
+    "nse": "APOLSINHOT.NS",
+    "yahooSymbol": "APOLSINHOT.NS",
+    "currentPrice": 1270,
+    "lastUpdated": "2026-01-26T18:35:05.377Z"
+  },
+  {
+    "symbol": "APTECHT",
+    "company": "Aptech Ltd",
+    "sector": "IT",
+    "industry": "IT Services",
+    "nse": "APTECHT.NS",
+    "yahooSymbol": "APTECHT.NS",
+    "currentPrice": 81.85,
+    "lastUpdated": "2026-01-26T18:35:05.380Z"
+  },
+  {
+    "symbol": "ARCOTECH",
+    "company": "Arcotech Ltd",
+    "sector": "Electrical Equipment",
+    "industry": "Electrical Equipment",
+    "nse": "ARCOTECH.NS",
+    "yahooSymbol": "ARCOTECH.NS",
+    "currentPrice": 2.2,
+    "lastUpdated": "2026-01-26T18:35:05.484Z"
+  },
+  {
+    "symbol": "ARENTERP",
+    "company": "Rajdarshan Industries Ltd",
+    "sector": "Construction",
+    "industry": "Construction",
+    "nse": "ARENTERP.NS",
+    "yahooSymbol": "ARENTERP.NS",
+    "currentPrice": 43.1,
+    "lastUpdated": "2026-01-26T18:35:07.589Z"
+  },
+  {
+    "symbol": "ARIES",
+    "company": "Aries Agro Ltd",
+    "sector": "Chemicals",
+    "industry": "Fertilizers",
+    "nse": "ARIES.NS",
+    "yahooSymbol": "ARIES.NS",
+    "currentPrice": 301,
+    "lastUpdated": "2026-01-26T18:35:07.597Z"
+  },
+  {
+    "symbol": "ARIHANTSUP",
+    "company": "Arihant Superstructures Ltd",
+    "sector": "Construction",
+    "industry": "Construction",
+    "nse": "ARIHANTSUP.NS",
+    "yahooSymbol": "ARIHANTSUP.NS",
+    "currentPrice": 271.8,
+    "lastUpdated": "2026-01-26T18:35:07.603Z"
+  },
+  {
+    "symbol": "ARMANFIN",
+    "company": "Arman Financial Services Ltd",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "ARMANFIN.NS",
+    "yahooSymbol": "ARMANFIN.NS",
+    "currentPrice": 1612.7,
+    "lastUpdated": "2026-01-26T18:35:07.703Z"
+  },
+  {
+    "symbol": "AROGRANITE",
+    "company": "Aro Granite Industries Ltd",
+    "sector": "Construction",
+    "industry": "Construction",
+    "nse": "AROGRANITE.NS",
+    "yahooSymbol": "AROGRANITE.NS",
+    "currentPrice": 27.85,
+    "lastUpdated": "2026-01-26T18:35:09.810Z"
+  },
+  {
+    "symbol": "ARROWGREEN",
+    "company": "Arrow Greentech Ltd",
+    "sector": "Automobile",
+    "industry": "Automobile",
+    "nse": "ARROWGREEN.NS",
+    "yahooSymbol": "ARROWGREEN.NS",
+    "currentPrice": 424.95,
+    "lastUpdated": "2026-01-26T18:35:09.819Z"
+  },
+  {
+    "symbol": "ARSHIYA",
+    "company": "Arshiya Ltd",
+    "sector": "Logistics",
+    "industry": "Logistics",
+    "nse": "ARSHIYA.NS",
+    "yahooSymbol": "ARSHIYA.NS",
+    "currentPrice": 1.25,
+    "lastUpdated": "2026-01-26T18:35:10.422Z"
+  },
+  {
+    "symbol": "ARSSINFRA",
+    "company": "ARSS Infrastructure Projects Ltd",
+    "sector": "Infrastructure",
+    "industry": "Infrastructure",
+    "nse": "ARSSINFRA.NS",
+    "yahooSymbol": "ARSSINFRA.NS",
+    "currentPrice": 54.27,
+    "lastUpdated": "2026-01-26T18:35:10.681Z"
+  },
+  {
+    "symbol": "ARVEE",
+    "company": "Arvee Laboratories (India) Ltd",
+    "sector": "Healthcare",
+    "industry": "Pharmaceuticals",
+    "nse": "ARVEE.NS",
+    "yahooSymbol": "ARVEE.NS",
+    "currentPrice": 151.03,
+    "lastUpdated": "2026-01-26T18:35:13.029Z"
+  },
+  {
+    "symbol": "ARVIND",
+    "company": "Arvind Ltd",
+    "sector": "Textiles",
+    "industry": "Textiles",
+    "nse": "ARVIND.NS",
+    "yahooSymbol": "ARVIND.NS",
+    "currentPrice": 299.9,
+    "lastUpdated": "2026-01-26T18:35:13.037Z"
+  },
+  {
+    "symbol": "ARVSMART",
+    "company": "Arvind SmartSpaces Ltd",
+    "sector": "Real Estate",
+    "industry": "Real Estate",
+    "nse": "ARVSMART.NS",
+    "yahooSymbol": "ARVSMART.NS",
+    "currentPrice": 516.4,
+    "lastUpdated": "2026-01-26T18:35:13.039Z"
+  },
+  {
+    "symbol": "ASAHIINDIA",
+    "company": "Asahi India Glass Ltd",
+    "sector": "Automobile",
+    "industry": "Automobile",
+    "nse": "ASAHIINDIA.NS",
+    "yahooSymbol": "ASAHIINDIA.NS",
+    "currentPrice": 942.9,
+    "lastUpdated": "2026-01-26T18:35:13.295Z"
+  },
+  {
+    "symbol": "ASHIMASYN",
+    "company": "Ashima Ltd",
+    "sector": "Textiles",
+    "industry": "Textiles",
+    "nse": "ASHIMASYN.NS",
+    "yahooSymbol": "ASHIMASYN.NS",
+    "currentPrice": 15.98,
+    "lastUpdated": "2026-01-26T18:35:15.507Z"
+  },
+  {
+    "symbol": "ASHOKA",
+    "company": "Ashoka Buildcon Ltd",
+    "sector": "Infrastructure",
+    "industry": "Infrastructure",
+    "nse": "ASHOKA.NS",
+    "yahooSymbol": "ASHOKA.NS",
+    "currentPrice": 145,
+    "lastUpdated": "2026-01-26T18:35:15.518Z"
+  },
+  {
+    "symbol": "ASHAPURMIN",
+    "company": "Ashapura Minechem Ltd",
+    "sector": "Metals",
+    "industry": "Mining",
+    "nse": "ASHAPURMIN.NS",
+    "yahooSymbol": "ASHAPURMIN.NS",
+    "currentPrice": 678.95,
+    "lastUpdated": "2026-01-26T18:35:15.527Z"
+  },
+  {
+    "symbol": "ASHIANA",
+    "company": "Ashiana Housing Ltd",
+    "sector": "Real Estate",
+    "industry": "Real Estate",
+    "nse": "ASHIANA.NS",
+    "yahooSymbol": "ASHIANA.NS",
+    "currentPrice": 282.6,
+    "lastUpdated": "2026-01-26T18:35:15.531Z"
+  },
+  {
+    "symbol": "ASHOKLEY",
+    "company": "Ashok Leyland Ltd",
+    "sector": "Automobile",
+    "industry": "Automobile",
+    "nse": "ASHOKLEY.NS",
+    "yahooSymbol": "ASHOKLEY.NS",
+    "currentPrice": 193.07,
+    "lastUpdated": "2026-01-26T18:35:15.797Z"
+  },
+  {
+    "symbol": "ASIANHOTNR",
+    "company": "Asian Hotels (North) Ltd",
+    "sector": "Hospitality",
+    "industry": "Hotels",
+    "nse": "ASIANHOTNR.NS",
+    "yahooSymbol": "ASIANHOTNR.NS",
+    "currentPrice": 305.1,
+    "lastUpdated": "2026-01-26T18:35:18.072Z"
+  },
+  {
+    "symbol": "ASIANTILES",
+    "company": "Asian Granito India Ltd",
+    "sector": "Construction",
+    "industry": "Construction",
+    "nse": "ASIANTILES.NS",
+    "yahooSymbol": "ASIANTILES.NS",
+    "currentPrice": 68.8,
+    "lastUpdated": "2026-01-26T18:35:18.073Z"
+  },
+  {
+    "symbol": "ASIANPAINT",
+    "company": "Asian Paints Ltd",
+    "sector": "Consumer Discretionary",
+    "industry": "Consumer Goods",
+    "nse": "ASIANPAINT.NS",
+    "yahooSymbol": "ASIANPAINT.NS",
+    "currentPrice": 2704.4,
+    "lastUpdated": "2026-01-26T18:35:18.078Z"
+  },
+  {
+    "symbol": "ASPINWALL",
+    "company": "Aspinwall and Company Ltd",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "ASPINWALL.NS",
+    "yahooSymbol": "ASPINWALL.NS",
+    "currentPrice": 220,
+    "lastUpdated": "2026-01-26T18:35:18.086Z"
+  },
+  {
+    "symbol": "ASTEC",
+    "company": "Astec Lifesciences Ltd",
+    "sector": "Healthcare",
+    "industry": "Agrochemicals",
+    "nse": "ASTEC.NS",
+    "yahooSymbol": "ASTEC.NS",
+    "currentPrice": 570.35,
+    "lastUpdated": "2026-01-26T18:35:20.301Z"
+  },
+  {
+    "symbol": "ASTRAMICRO",
+    "company": "Astra Microwave Products Ltd",
+    "sector": "Capital Goods",
+    "industry": "Capital Goods",
+    "nse": "ASTRAMICRO.NS",
+    "yahooSymbol": "ASTRAMICRO.NS",
+    "currentPrice": 905,
+    "lastUpdated": "2026-01-26T18:35:20.303Z"
+  },
+  {
+    "symbol": "ASTERDM",
+    "company": "Aster DM Healthcare Ltd",
+    "sector": "Healthcare",
+    "industry": "Hospitals",
+    "nse": "ASTERDM.NS",
+    "yahooSymbol": "ASTERDM.NS",
+    "currentPrice": 555,
+    "lastUpdated": "2026-01-26T18:35:20.308Z"
+  },
+  {
+    "symbol": "ASTRAL",
+    "company": "Astral Poly Technik Ltd",
+    "sector": "Chemicals",
+    "industry": "Plastics",
+    "nse": "ASTRAL.NS",
+    "yahooSymbol": "ASTRAL.NS",
+    "currentPrice": 1399.5,
+    "lastUpdated": "2026-01-26T18:35:20.311Z"
+  },
+  {
+    "symbol": "ASTRAZEN",
+    "company": "AstraZeneca Pharma India Ltd",
+    "sector": "Healthcare",
+    "industry": "Pharmaceuticals",
+    "nse": "ASTRAZEN.NS",
+    "yahooSymbol": "ASTRAZEN.NS",
+    "currentPrice": 8320,
+    "lastUpdated": "2026-01-26T18:35:20.402Z"
+  },
+  {
+    "symbol": "ASTRON",
+    "company": "Astron Paper & Board Mill Ltd",
+    "sector": "Pulp & Paper",
+    "industry": "Pulp & Paper",
+    "nse": "ASTRON.NS",
+    "yahooSymbol": "ASTRON.NS",
+    "currentPrice": 4.91,
+    "lastUpdated": "2026-01-26T18:35:22.546Z"
+  },
+  {
+    "symbol": "ATUL",
+    "company": "Atul Ltd",
+    "sector": "Chemicals",
+    "industry": "Chemicals",
+    "nse": "ATUL.NS",
+    "yahooSymbol": "ATUL.NS",
+    "currentPrice": 5860,
+    "lastUpdated": "2026-01-26T18:35:22.551Z"
+  },
+  {
+    "symbol": "ATULAUTO",
+    "company": "Atul Auto Ltd",
+    "sector": "Automobile",
+    "industry": "Automobile",
+    "nse": "ATULAUTO.NS",
+    "yahooSymbol": "ATULAUTO.NS",
+    "currentPrice": 385.1,
+    "lastUpdated": "2026-01-26T18:35:22.657Z"
+  },
+  {
+    "symbol": "AURIONPRO",
+    "company": "AurionPro Solutions Ltd",
+    "sector": "IT",
+    "industry": "IT Services",
+    "nse": "AURIONPRO.NS",
+    "yahooSymbol": "AURIONPRO.NS",
+    "currentPrice": 916,
+    "lastUpdated": "2026-01-26T18:35:24.808Z"
+  },
+  {
+    "symbol": "AUBANK",
+    "company": "AU Small Finance Bank Ltd",
+    "sector": "Finance",
+    "industry": "Banking",
+    "nse": "AUBANK.NS",
+    "yahooSymbol": "AUBANK.NS",
+    "currentPrice": 967,
+    "lastUpdated": "2026-01-26T18:35:24.811Z"
+  },
+  {
+    "symbol": "AUSOMENT",
+    "company": "Ausom Enterprise Ltd",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "AUSOMENT.NS",
+    "yahooSymbol": "AUSOMENT.NS",
+    "currentPrice": 132.84,
+    "lastUpdated": "2026-01-26T18:35:24.818Z"
+  },
+  {
+    "symbol": "AUROPHARMA",
+    "company": "Aurobindo Pharma Ltd",
+    "sector": "Healthcare",
+    "industry": "Pharmaceuticals",
+    "nse": "AUROPHARMA.NS",
+    "yahooSymbol": "AUROPHARMA.NS",
+    "currentPrice": 1128.5,
+    "lastUpdated": "2026-01-26T18:35:24.902Z"
+  },
+  {
+    "symbol": "AUTOAXLES",
+    "company": "Automotive Axles Ltd",
+    "sector": "Automobile",
+    "industry": "Automobile",
+    "nse": "AUTOAXLES.NS",
+    "yahooSymbol": "AUTOAXLES.NS",
+    "currentPrice": 1933,
+    "lastUpdated": "2026-01-26T18:35:24.912Z"
+  },
+  {
+    "symbol": "AUTOIND",
+    "company": "Autoline Industries Ltd",
+    "sector": "Automobile",
+    "industry": "Automobile",
+    "nse": "AUTOIND.NS",
+    "yahooSymbol": "AUTOIND.NS",
+    "currentPrice": 72.8,
+    "lastUpdated": "2026-01-26T18:35:27.068Z"
+  },
+  {
+    "symbol": "AVADHSUGAR",
+    "company": "Avadh Sugar Energy Ltd",
+    "sector": "FMCG",
+    "industry": "Sugar",
+    "nse": "AVADHSUGAR.NS",
+    "yahooSymbol": "AVADHSUGAR.NS",
+    "currentPrice": 326,
+    "lastUpdated": "2026-01-26T18:35:27.072Z"
+  },
+  {
+    "symbol": "AVANTIFEED",
+    "company": "Avanti Feeds Ltd",
+    "sector": "FMCG",
+    "industry": "Food Processing",
+    "nse": "AVANTIFEED.NS",
+    "yahooSymbol": "AVANTIFEED.NS",
+    "currentPrice": 756.35,
+    "lastUpdated": "2026-01-26T18:35:27.077Z"
+  },
+  {
+    "symbol": "AVONMORE",
+    "company": "Avonmore Capital & Management Services Ltd",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "AVONMORE.NS",
+    "yahooSymbol": "AVONMORE.NS",
+    "currentPrice": 15.61,
+    "lastUpdated": "2026-01-26T18:35:29.301Z"
+  },
+  {
+    "symbol": "AXISBANK",
+    "company": "Axis Bank Ltd",
+    "sector": "Finance",
+    "industry": "Banking",
+    "nse": "AXISBANK.NS",
+    "yahooSymbol": "AXISBANK.NS",
+    "currentPrice": 1253.9,
+    "lastUpdated": "2026-01-26T18:35:29.307Z"
+  },
+  {
+    "symbol": "AXISCADES",
+    "company": "AXISCADES Techologies Ltd",
+    "sector": "IT",
+    "industry": "IT Services",
+    "nse": "AXISCADES.NS",
+    "yahooSymbol": "AXISCADES.NS",
+    "currentPrice": 1144.9,
+    "lastUpdated": "2026-01-26T18:35:29.315Z"
+  },
+  {
+    "symbol": "AVG",
+    "company": "AVG Logistics Ltd",
+    "sector": "Logistics",
+    "industry": "Logistics",
+    "nse": "AVG.NS",
+    "yahooSymbol": "AVG.NS",
+    "currentPrice": 140,
+    "lastUpdated": "2026-01-26T18:35:29.321Z"
+  },
+  {
+    "symbol": "AYMSYNTEX",
+    "company": "AYM Syntex Ltd",
+    "sector": "Textiles",
+    "industry": "Textiles",
+    "nse": "AYMSYNTEX.NS",
+    "yahooSymbol": "AYMSYNTEX.NS",
+    "currentPrice": 146.3,
+    "lastUpdated": "2026-01-26T18:35:29.412Z"
+  },
+  {
+    "symbol": "HDFCBANK",
+    "company": "HDFC Bank Ltd",
+    "sector": "Finance",
+    "industry": "Banking",
+    "nse": "HDFCBANK.NS",
+    "yahooSymbol": "HDFCBANK.NS",
+    "currentPrice": 915.8,
+    "lastUpdated": "2026-01-26T18:35:31.568Z"
+  },
+  {
+    "symbol": "RELIANCE",
+    "company": "Reliance Industries Ltd",
+    "sector": "Oil & Gas",
+    "industry": "Oil & Gas",
+    "nse": "RELIANCE.NS",
+    "yahooSymbol": "RELIANCE.NS",
+    "currentPrice": 1387,
+    "lastUpdated": "2026-01-26T18:35:31.569Z"
+  },
+  {
+    "symbol": "INFY",
+    "company": "Infosys Ltd",
+    "sector": "IT",
+    "industry": "IT Services",
+    "nse": "INFY.NS",
+    "yahooSymbol": "INFY.NS",
+    "currentPrice": 1672,
+    "lastUpdated": "2026-01-26T18:35:31.571Z"
+  },
+  {
+    "symbol": "ICICIBANK",
+    "company": "ICICI Bank Ltd",
+    "sector": "Finance",
+    "industry": "Banking",
+    "nse": "ICICIBANK.NS",
+    "yahooSymbol": "ICICIBANK.NS",
+    "currentPrice": 1346,
+    "lastUpdated": "2026-01-26T18:35:31.578Z"
+  },
+  {
+    "symbol": "HINDUNILVR",
+    "company": "Hindustan Unilever Ltd",
+    "sector": "FMCG",
+    "industry": "Consumer Goods",
+    "nse": "HINDUNILVR.NS",
+    "yahooSymbol": "HINDUNILVR.NS",
+    "currentPrice": 2406,
+    "lastUpdated": "2026-01-26T18:35:31.766Z"
+  },
+  {
+    "symbol": "SBIN",
+    "company": "State Bank of India",
+    "sector": "Finance",
+    "industry": "Banking",
+    "nse": "SBIN.NS",
+    "yahooSymbol": "SBIN.NS",
+    "currentPrice": 1028.4,
+    "lastUpdated": "2026-01-26T18:35:33.920Z"
+  },
+  {
+    "symbol": "TCS",
+    "company": "Tata Consultancy Services Ltd",
+    "sector": "IT",
+    "industry": "IT Services",
+    "nse": "TCS.NS",
+    "yahooSymbol": "TCS.NS",
+    "currentPrice": 3157,
+    "lastUpdated": "2026-01-26T18:35:33.923Z"
+  },
+  {
+    "symbol": "LT",
+    "company": "Larsen & Toubro Ltd",
+    "sector": "Construction",
+    "industry": "Construction",
+    "nse": "LT.NS",
+    "yahooSymbol": "LT.NS",
+    "currentPrice": 3750,
+    "lastUpdated": "2026-01-26T18:35:33.928Z"
+  },
+  {
+    "symbol": "KOTAKBANK",
+    "company": "Kotak Mahindra Bank Ltd",
+    "sector": "Finance",
+    "industry": "Banking",
+    "nse": "KOTAKBANK.NS",
+    "yahooSymbol": "KOTAKBANK.NS",
+    "currentPrice": 424.2,
+    "lastUpdated": "2026-01-26T18:35:33.931Z"
+  },
+  {
+    "symbol": "ITC",
+    "company": "ITC Ltd",
+    "sector": "FMCG",
+    "industry": "Consumer Goods",
+    "nse": "ITC.NS",
+    "yahooSymbol": "ITC.NS",
+    "currentPrice": 323,
+    "lastUpdated": "2026-01-26T18:35:34.028Z"
+  },
+  {
+    "symbol": "BHARTIARTL",
+    "company": "Bharti Airtel Ltd",
+    "sector": "Telecom",
+    "industry": "Telecom Services",
+    "nse": "BHARTIARTL.NS",
+    "yahooSymbol": "BHARTIARTL.NS",
+    "currentPrice": 1988,
+    "lastUpdated": "2026-01-26T18:35:36.300Z"
+  },
+  {
+    "symbol": "WIPRO",
+    "company": "Wipro Ltd",
+    "sector": "IT",
+    "industry": "IT Services",
+    "nse": "WIPRO.NS",
+    "yahooSymbol": "WIPRO.NS",
+    "currentPrice": 238.05,
+    "lastUpdated": "2026-01-26T18:35:36.312Z"
+  },
+  {
+    "symbol": "BAJFINANCE",
+    "company": "Bajaj Finance Ltd",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "BAJFINANCE.NS",
+    "yahooSymbol": "BAJFINANCE.NS",
+    "currentPrice": 929.5,
+    "lastUpdated": "2026-01-26T18:35:36.316Z"
+  },
+  {
+    "symbol": "HCLTECH",
+    "company": "HCL Technologies Ltd",
+    "sector": "IT",
+    "industry": "IT Services",
+    "nse": "HCLTECH.NS",
+    "yahooSymbol": "HCLTECH.NS",
+    "currentPrice": 1706.6,
+    "lastUpdated": "2026-01-26T18:35:36.318Z"
+  },
+  {
+    "symbol": "MARUTI",
+    "company": "Maruti Suzuki India Ltd",
+    "sector": "Automobile",
+    "industry": "Automobile",
+    "nse": "MARUTI.NS",
+    "yahooSymbol": "MARUTI.NS",
+    "currentPrice": 15519,
+    "lastUpdated": "2026-01-26T18:35:36.386Z"
+  },
+  {
+    "symbol": "NESTLEIND",
+    "company": "Nestle India Ltd",
+    "sector": "FMCG",
+    "industry": "Food Processing",
+    "nse": "NESTLEIND.NS",
+    "yahooSymbol": "NESTLEIND.NS",
+    "currentPrice": 1295.4,
+    "lastUpdated": "2026-01-26T18:35:38.522Z"
+  },
+  {
+    "symbol": "HINDALCO",
+    "company": "Hindalco Industries Ltd",
+    "sector": "Metals",
+    "industry": "Aluminium",
+    "nse": "HINDALCO.NS",
+    "yahooSymbol": "HINDALCO.NS",
+    "currentPrice": 951,
+    "lastUpdated": "2026-01-26T18:35:38.523Z"
+  },
+  {
+    "symbol": "TATASTEEL",
+    "company": "Tata Steel Ltd",
+    "sector": "Metals",
+    "industry": "Iron & Steel",
+    "nse": "TATASTEEL.NS",
+    "yahooSymbol": "TATASTEEL.NS",
+    "currentPrice": 187.6,
+    "lastUpdated": "2026-01-26T18:35:38.525Z"
+  },
+  {
+    "symbol": "TATAPOWER",
+    "company": "Tata Power Co Ltd",
+    "sector": "Power",
+    "industry": "Power Generation",
+    "nse": "TATAPOWER.NS",
+    "yahooSymbol": "TATAPOWER.NS",
+    "currentPrice": 345.7,
+    "lastUpdated": "2026-01-26T18:35:38.632Z"
+  },
+  {
+    "symbol": "TATACONSUM",
+    "company": "Tata Consumer Products Ltd",
+    "sector": "FMCG",
+    "industry": "Consumer Goods",
+    "nse": "TATACONSUM.NS",
+    "yahooSymbol": "TATACONSUM.NS",
+    "currentPrice": 1155,
+    "lastUpdated": "2026-01-26T18:35:40.736Z"
+  },
+  {
+    "symbol": "TATACHEM",
+    "company": "Tata Chemicals Ltd",
+    "sector": "Chemicals",
+    "industry": "Chemicals",
+    "nse": "TATACHEM.NS",
+    "yahooSymbol": "TATACHEM.NS",
+    "currentPrice": 714,
+    "lastUpdated": "2026-01-26T18:35:40.739Z"
+  },
+  {
+    "symbol": "TATACOMM",
+    "company": "Tata Communications Ltd",
+    "sector": "Telecom",
+    "industry": "Telecom Services",
+    "nse": "TATACOMM.NS",
+    "yahooSymbol": "TATACOMM.NS",
+    "currentPrice": 1550,
+    "lastUpdated": "2026-01-26T18:35:40.752Z"
+  },
+  {
+    "symbol": "TATAINVEST",
+    "company": "Tata Investment Corporation Ltd",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "TATAINVEST.NS",
+    "yahooSymbol": "TATAINVEST.NS",
+    "currentPrice": 604.45,
+    "lastUpdated": "2026-01-26T18:35:40.753Z"
+  },
+  {
+    "symbol": "TATAMETALI",
+    "company": "Tata Metaliks Ltd",
+    "sector": "Metals",
+    "industry": "Iron & Steel",
+    "nse": "TATAMETALI.NS",
+    "yahooSymbol": "TATAMETALI.NS",
+    "currentPrice": 1110.55,
+    "lastUpdated": "2026-01-26T18:35:40.844Z"
+  },
+  {
+    "symbol": "TATAELXSI",
+    "company": "Tata Elxsi Ltd",
+    "sector": "IT",
+    "industry": "IT Services",
+    "nse": "TATAELXSI.NS",
+    "yahooSymbol": "TATAELXSI.NS",
+    "currentPrice": 5400,
+    "lastUpdated": "2026-01-26T18:35:42.958Z"
+  },
+  {
+    "symbol": "VOLTAS",
+    "company": "Voltas Ltd",
+    "sector": "Consumer Durables",
+    "industry": "Consumer Goods",
+    "nse": "VOLTAS.NS",
+    "yahooSymbol": "VOLTAS.NS",
+    "currentPrice": 1315.4,
+    "lastUpdated": "2026-01-26T18:35:42.968Z"
+  },
+  {
+    "symbol": "GODREJPROP",
+    "company": "Godrej Properties Ltd",
+    "sector": "Real Estate",
+    "industry": "Real Estate",
+    "nse": "GODREJPROP.NS",
+    "yahooSymbol": "GODREJPROP.NS",
+    "currentPrice": 1540,
+    "lastUpdated": "2026-01-26T18:35:43.051Z"
+  },
+  {
+    "symbol": "GODREJCP",
+    "company": "Godrej Consumer Products Ltd",
+    "sector": "FMCG",
+    "industry": "Consumer Goods",
+    "nse": "GODREJCP.NS",
+    "yahooSymbol": "GODREJCP.NS",
+    "currentPrice": 1242.7,
+    "lastUpdated": "2026-01-26T18:35:45.187Z"
+  },
+  {
+    "symbol": "GODREJAGRO",
+    "company": "Godrej Agrovet Ltd",
+    "sector": "FMCG",
+    "industry": "Agrochemicals",
+    "nse": "GODREJAGRO.NS",
+    "yahooSymbol": "GODREJAGRO.NS",
+    "currentPrice": 512.5,
+    "lastUpdated": "2026-01-26T18:35:45.191Z"
+  },
+  {
+    "symbol": "DABUR",
+    "company": "Dabur India Ltd",
+    "sector": "FMCG",
+    "industry": "Consumer Goods",
+    "nse": "DABUR.NS",
+    "yahooSymbol": "DABUR.NS",
+    "currentPrice": 519.5,
+    "lastUpdated": "2026-01-26T18:35:45.194Z"
+  },
+  {
+    "symbol": "GODREJIND",
+    "company": "Godrej Industries Ltd",
+    "sector": "Conglomerates",
+    "industry": "Conglomerates",
+    "nse": "GODREJIND.NS",
+    "yahooSymbol": "GODREJIND.NS",
+    "currentPrice": 967.2,
+    "lastUpdated": "2026-01-26T18:35:45.282Z"
+  },
+  {
+    "symbol": "COLPAL",
+    "company": "Colgate Palmolive (India) Ltd",
+    "sector": "FMCG",
+    "industry": "Consumer Goods",
+    "nse": "COLPAL.NS",
+    "yahooSymbol": "COLPAL.NS",
+    "currentPrice": 2158,
+    "lastUpdated": "2026-01-26T18:35:45.502Z"
+  },
+  {
+    "symbol": "UBL",
+    "company": "United Breweries Ltd",
+    "sector": "FMCG",
+    "industry": "Beverages",
+    "nse": "UBL.NS",
+    "yahooSymbol": "UBL.NS",
+    "currentPrice": 1445,
+    "lastUpdated": "2026-01-26T18:35:47.611Z"
+  },
+  {
+    "symbol": "PGHH",
+    "company": "Procter & Gamble Hygiene & Health Care Ltd",
+    "sector": "FMCG",
+    "industry": "Consumer Goods",
+    "nse": "PGHH.NS",
+    "yahooSymbol": "PGHH.NS",
+    "currentPrice": 12156,
+    "lastUpdated": "2026-01-26T18:35:47.633Z"
+  },
+  {
+    "symbol": "HINDZINC",
+    "company": "Hindustan Zinc Ltd",
+    "sector": "Metals",
+    "industry": "Zinc",
+    "nse": "HINDZINC.NS",
+    "yahooSymbol": "HINDZINC.NS",
+    "currentPrice": 697,
+    "lastUpdated": "2026-01-26T18:35:47.642Z"
+  },
+  {
+    "symbol": "COALINDIA",
+    "company": "Coal India Ltd",
+    "sector": "Metals",
+    "industry": "Mining",
+    "nse": "COALINDIA.NS",
+    "yahooSymbol": "COALINDIA.NS",
+    "currentPrice": 418.05,
+    "lastUpdated": "2026-01-26T18:35:47.707Z"
+  },
+  {
+    "symbol": "IOC",
+    "company": "Indian Oil Corporation Ltd",
+    "sector": "Oil & Gas",
+    "industry": "Oil & Gas",
+    "nse": "IOC.NS",
+    "yahooSymbol": "IOC.NS",
+    "currentPrice": 156.3,
+    "lastUpdated": "2026-01-26T18:35:49.813Z"
+  },
+  {
+    "symbol": "ONGC",
+    "company": "Oil & Natural Gas Corporation Ltd",
+    "sector": "Oil & Gas",
+    "industry": "Oil & Gas",
+    "nse": "ONGC.NS",
+    "yahooSymbol": "ONGC.NS",
+    "currentPrice": 246.1,
+    "lastUpdated": "2026-01-26T18:35:49.828Z"
+  },
+  {
+    "symbol": "NTPC",
+    "company": "NTPC Ltd",
+    "sector": "Power",
+    "industry": "Power Generation",
+    "nse": "NTPC.NS",
+    "yahooSymbol": "NTPC.NS",
+    "currentPrice": 337,
+    "lastUpdated": "2026-01-26T18:35:49.830Z"
+  },
+  {
+    "symbol": "POWERGRID",
+    "company": "Power Grid Corporation of India Ltd",
+    "sector": "Power",
+    "industry": "Power Transmission",
+    "nse": "POWERGRID.NS",
+    "yahooSymbol": "POWERGRID.NS",
+    "currentPrice": 253.95,
+    "lastUpdated": "2026-01-26T18:35:49.840Z"
+  },
+  {
+    "symbol": "GAIL",
+    "company": "GAIL (India) Ltd",
+    "sector": "Oil & Gas",
+    "industry": "Oil & Gas",
+    "nse": "GAIL.NS",
+    "yahooSymbol": "GAIL.NS",
+    "currentPrice": 160.85,
+    "lastUpdated": "2026-01-26T18:35:49.920Z"
+  },
+  {
+    "symbol": "SIEMENS",
+    "company": "Siemens Ltd",
+    "sector": "Electrical Equipment",
+    "industry": "Electrical Equipment",
+    "nse": "SIEMENS.NS",
+    "yahooSymbol": "SIEMENS.NS",
+    "currentPrice": 2900,
+    "lastUpdated": "2026-01-26T18:35:52.057Z"
+  },
+  {
+    "symbol": "BOSCHLTD",
+    "company": "Bosch Ltd",
+    "sector": "Automobile",
+    "industry": "Automobile",
+    "nse": "BOSCHLTD.NS",
+    "yahooSymbol": "BOSCHLTD.NS",
+    "currentPrice": 35350,
+    "lastUpdated": "2026-01-26T18:35:52.065Z"
+  },
+  {
+    "symbol": "BALKRISIND",
+    "company": "Balkrishna Industries Ltd",
+    "sector": "Automobile",
+    "industry": "Automobile",
+    "nse": "BALKRISIND.NS",
+    "yahooSymbol": "BALKRISIND.NS",
+    "currentPrice": 2408.2,
+    "lastUpdated": "2026-01-26T18:35:52.086Z"
+  },
+  {
+    "symbol": "MRF",
+    "company": "MRF Ltd",
+    "sector": "Automobile",
+    "industry": "Automobile",
+    "nse": "MRF.NS",
+    "yahooSymbol": "MRF.NS",
+    "currentPrice": 137305,
+    "lastUpdated": "2026-01-26T18:35:52.247Z"
+  },
+  {
+    "symbol": "CEATLTD",
+    "company": "CEAT Ltd",
+    "sector": "Automobile",
+    "industry": "Automobile",
+    "nse": "CEATLTD.NS",
+    "yahooSymbol": "CEATLTD.NS",
+    "currentPrice": 3710,
+    "lastUpdated": "2026-01-26T18:35:54.349Z"
+  },
+  {
+    "symbol": "JKTYRE",
+    "company": "JK Tyre & Industries Ltd",
+    "sector": "Automobile",
+    "industry": "Automobile",
+    "nse": "JKTYRE.NS",
+    "yahooSymbol": "JKTYRE.NS",
+    "currentPrice": 503.05,
+    "lastUpdated": "2026-01-26T18:35:54.359Z"
+  },
+  {
+    "symbol": "M&M",
+    "company": "Mahindra & Mahindra Ltd",
+    "sector": "Automobile",
+    "industry": "Automobile",
+    "nse": "M&M.NS",
+    "yahooSymbol": "M&M.NS",
+    "currentPrice": 3555,
+    "lastUpdated": "2026-01-26T18:35:54.367Z"
+  },
+  {
+    "symbol": "M&MFIN",
+    "company": "Mahindra & Mahindra Financial Services Ltd",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "M&MFIN.NS",
+    "yahooSymbol": "M&MFIN.NS",
+    "currentPrice": 360.8,
+    "lastUpdated": "2026-01-26T18:35:54.373Z"
+  },
+  {
+    "symbol": "BAJAJ-AUTO",
+    "company": "Bajaj Auto Ltd",
+    "sector": "Automobile",
+    "industry": "Automobile",
+    "nse": "BAJAJ-AUTO.NS",
+    "yahooSymbol": "BAJAJ-AUTO.NS",
+    "currentPrice": 9422,
+    "lastUpdated": "2026-01-26T18:35:54.460Z"
+  },
+  {
+    "symbol": "EICHERMOT",
+    "company": "Eicher Motors Ltd",
+    "sector": "Automobile",
+    "industry": "Automobile",
+    "nse": "EICHERMOT.NS",
+    "yahooSymbol": "EICHERMOT.NS",
+    "currentPrice": 6970,
+    "lastUpdated": "2026-01-26T18:35:56.563Z"
+  },
+  {
+    "symbol": "HEROMOTOCO",
+    "company": "Hero MotoCorp Ltd",
+    "sector": "Automobile",
+    "industry": "Automobile",
+    "nse": "HEROMOTOCO.NS",
+    "yahooSymbol": "HEROMOTOCO.NS",
+    "currentPrice": 5388,
+    "lastUpdated": "2026-01-26T18:35:56.573Z"
+  },
+  {
+    "symbol": "TVSMOTOR",
+    "company": "TVS Motor Company Ltd",
+    "sector": "Automobile",
+    "industry": "Automobile",
+    "nse": "TVSMOTOR.NS",
+    "yahooSymbol": "TVSMOTOR.NS",
+    "currentPrice": 3547.3,
+    "lastUpdated": "2026-01-26T18:35:56.585Z"
+  },
+  {
+    "symbol": "BHARATFORG",
+    "company": "Bharat Forge Ltd",
+    "sector": "Automobile",
+    "industry": "Automobile",
+    "nse": "BHARATFORG.NS",
+    "yahooSymbol": "BHARATFORG.NS",
+    "currentPrice": 1410,
+    "lastUpdated": "2026-01-26T18:35:56.589Z"
+  },
+  {
+    "symbol": "EXIDEIND",
+    "company": "Exide Industries Ltd",
+    "sector": "Automobile",
+    "industry": "Automobile",
+    "nse": "EXIDEIND.NS",
+    "yahooSymbol": "EXIDEIND.NS",
+    "currentPrice": 326,
+    "lastUpdated": "2026-01-26T18:35:56.670Z"
+  },
+  {
+    "symbol": "CASTROLIND",
+    "company": "Castrol India Ltd",
+    "sector": "Oil & Gas",
+    "industry": "Oil & Gas",
+    "nse": "CASTROLIND.NS",
+    "yahooSymbol": "CASTROLIND.NS",
+    "currentPrice": 183.7,
+    "lastUpdated": "2026-01-26T18:35:58.808Z"
+  },
+  {
+    "symbol": "BPCL",
+    "company": "Bharat Petroleum Corporation Ltd",
+    "sector": "Oil & Gas",
+    "industry": "Oil & Gas",
+    "nse": "BPCL.NS",
+    "yahooSymbol": "BPCL.NS",
+    "currentPrice": 349.7,
+    "lastUpdated": "2026-01-26T18:35:58.810Z"
+  },
+  {
+    "symbol": "HPCL",
+    "company": "Hindustan Petroleum Corporation Ltd",
+    "sector": "Oil & Gas",
+    "industry": "Oil & Gas",
+    "nse": "HPCL.NS",
+    "yahooSymbol": "HPCL.NS",
+    "lastUpdated": "2026-01-26T18:35:59.002Z"
+  },
+  {
+    "symbol": "HINDPETRO",
+    "company": "Hindustan Petroleum Corporation Ltd",
+    "sector": "Oil & Gas",
+    "industry": "Oil & Gas",
+    "nse": "HINDPETRO.NS",
+    "yahooSymbol": "HINDPETRO.NS",
+    "currentPrice": 414.5,
+    "lastUpdated": "2026-01-26T18:35:59.008Z"
+  },
+  {
+    "symbol": "MRPL",
+    "company": "Mangalore Refinery and Petrochemicals Ltd",
+    "sector": "Oil & Gas",
+    "industry": "Oil & Gas",
+    "nse": "MRPL.NS",
+    "yahooSymbol": "MRPL.NS",
+    "currentPrice": 155.46,
+    "lastUpdated": "2026-01-26T18:36:01.356Z"
+  },
+  {
+    "symbol": "CHENNPETRO",
+    "company": "Chennai Petroleum Corporation Ltd",
+    "sector": "Oil & Gas",
+    "industry": "Oil & Gas",
+    "nse": "CHENNPETRO.NS",
+    "yahooSymbol": "CHENNPETRO.NS",
+    "currentPrice": 845.6,
+    "lastUpdated": "2026-01-26T18:36:01.358Z"
+  },
+  {
+    "symbol": "360ONE",
+    "company": "360 ONE WAM Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "360ONE.NS",
+    "yahooSymbol": "360ONE.NS",
+    "currentPrice": 1112.6,
+    "lastUpdated": "2026-01-26T18:36:01.361Z"
+  },
+  {
+    "symbol": "ADANIENSOL",
+    "company": "Adani Energy Solutions Ltd.",
+    "sector": "Power",
+    "industry": "Power",
+    "nse": "ADANIENSOL.NS",
+    "yahooSymbol": "ADANIENSOL.NS",
+    "currentPrice": 825.8,
+    "lastUpdated": "2026-01-26T18:36:01.363Z"
+  },
+  {
+    "symbol": "ADANIGREEN",
+    "company": "Adani Green Energy Ltd.",
+    "sector": "Power",
+    "industry": "Power",
+    "nse": "ADANIGREEN.NS",
+    "yahooSymbol": "ADANIGREEN.NS",
+    "currentPrice": 779.4,
+    "lastUpdated": "2026-01-26T18:36:01.470Z"
+  },
+  {
+    "symbol": "BAJAJFINSV",
+    "company": "Bajaj Finserv Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "BAJAJFINSV.NS",
+    "yahooSymbol": "BAJAJFINSV.NS",
+    "currentPrice": 1954.9,
+    "lastUpdated": "2026-01-26T18:36:03.850Z"
+  },
+  {
+    "symbol": "DMART",
+    "company": "Avenue Supermarts Ltd.",
+    "sector": "Consumer Services",
+    "industry": "Consumer Services",
+    "nse": "DMART.NS",
+    "yahooSymbol": "DMART.NS",
+    "currentPrice": 3665.6,
+    "lastUpdated": "2026-01-26T18:36:03.854Z"
+  },
+  {
+    "symbol": "ATGL",
+    "company": "Adani Total Gas Ltd.",
+    "sector": "Oil & Gas",
+    "industry": "Oil Gas & Consumable Fuels",
+    "nse": "ATGL.NS",
+    "yahooSymbol": "ATGL.NS",
+    "currentPrice": 518.65,
+    "lastUpdated": "2026-01-26T18:36:03.937Z"
+  },
+  {
+    "symbol": "BAJAJHLDNG",
+    "company": "Bajaj Holdings & Investment Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "BAJAJHLDNG.NS",
+    "yahooSymbol": "BAJAJHLDNG.NS",
+    "currentPrice": 10711,
+    "lastUpdated": "2026-01-26T18:36:03.976Z"
+  },
+  {
+    "symbol": "BSE",
+    "company": "BSE Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "BSE.NS",
+    "yahooSymbol": "BSE.NS",
+    "currentPrice": 2680,
+    "lastUpdated": "2026-01-26T18:36:04.532Z"
+  },
+  {
+    "symbol": "BAJAJHFL",
+    "company": "Bajaj Housing Finance Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "BAJAJHFL.NS",
+    "yahooSymbol": "BAJAJHFL.NS",
+    "currentPrice": 88.55,
+    "lastUpdated": "2026-01-26T18:36:06.915Z"
+  },
+  {
+    "symbol": "BANKINDIA",
+    "company": "Bank of India",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "BANKINDIA.NS",
+    "yahooSymbol": "BANKINDIA.NS",
+    "currentPrice": 159.64,
+    "lastUpdated": "2026-01-26T18:36:06.924Z"
+  },
+  {
+    "symbol": "BANKBARODA",
+    "company": "Bank of Baroda",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "BANKBARODA.NS",
+    "yahooSymbol": "BANKBARODA.NS",
+    "currentPrice": 296.1,
+    "lastUpdated": "2026-01-26T18:36:06.928Z"
+  },
+  {
+    "symbol": "BDL",
+    "company": "Bharat Dynamics Ltd.",
+    "sector": "Capital Goods",
+    "industry": "Capital Goods",
+    "nse": "BDL.NS",
+    "yahooSymbol": "BDL.NS",
+    "currentPrice": 1412,
+    "lastUpdated": "2026-01-26T18:36:06.931Z"
+  },
+  {
+    "symbol": "BEL",
+    "company": "Bharat Electronics Ltd.",
+    "sector": "Capital Goods",
+    "industry": "Capital Goods",
+    "nse": "BEL.NS",
+    "yahooSymbol": "BEL.NS",
+    "currentPrice": 412.4,
+    "lastUpdated": "2026-01-26T18:36:07.305Z"
+  },
+  {
+    "symbol": "BHEL",
+    "company": "Bharat Heavy Electricals Ltd.",
+    "sector": "Capital Goods",
+    "industry": "Capital Goods",
+    "nse": "BHEL.NS",
+    "yahooSymbol": "BHEL.NS",
+    "currentPrice": 242.5,
+    "lastUpdated": "2026-01-26T18:36:09.457Z"
+  },
+  {
+    "symbol": "BHARTIHEXA",
+    "company": "Bharti Hexacom Ltd.",
+    "sector": "Telecom",
+    "industry": "Telecommunication",
+    "nse": "BHARTIHEXA.NS",
+    "yahooSymbol": "BHARTIHEXA.NS",
+    "currentPrice": 1615,
+    "lastUpdated": "2026-01-26T18:36:09.460Z"
+  },
+  {
+    "symbol": "BIOCON",
+    "company": "Biocon Ltd.",
+    "sector": "Healthcare",
+    "industry": "Healthcare",
+    "nse": "BIOCON.NS",
+    "yahooSymbol": "BIOCON.NS",
+    "currentPrice": 367.25,
+    "lastUpdated": "2026-01-26T18:36:09.465Z"
+  },
+  {
+    "symbol": "BLUESTARCO",
+    "company": "Blue Star Ltd.",
+    "sector": "Consumer Durables",
+    "industry": "Consumer Durables",
+    "nse": "BLUESTARCO.NS",
+    "yahooSymbol": "BLUESTARCO.NS",
+    "currentPrice": 1721.1,
+    "lastUpdated": "2026-01-26T18:36:09.469Z"
+  },
+  {
+    "symbol": "BRITANNIA",
+    "company": "Britannia Industries Ltd.",
+    "sector": "FMCG",
+    "industry": "Fast Moving Consumer Goods",
+    "nse": "BRITANNIA.NS",
+    "yahooSymbol": "BRITANNIA.NS",
+    "currentPrice": 5822,
+    "lastUpdated": "2026-01-26T18:36:09.656Z"
+  },
+  {
+    "symbol": "CGPOWER",
+    "company": "CG Power and Industrial Solutions Ltd.",
+    "sector": "Capital Goods",
+    "industry": "Capital Goods",
+    "nse": "CGPOWER.NS",
+    "yahooSymbol": "CGPOWER.NS",
+    "currentPrice": 551,
+    "lastUpdated": "2026-01-26T18:36:11.906Z"
+  },
+  {
+    "symbol": "CHOLAFIN",
+    "company": "Cholamandalam Investment and Finance Company Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "CHOLAFIN.NS",
+    "yahooSymbol": "CHOLAFIN.NS",
+    "currentPrice": 1648.7,
+    "lastUpdated": "2026-01-26T18:36:11.907Z"
+  },
+  {
+    "symbol": "CIPLA",
+    "company": "Cipla Ltd.",
+    "sector": "Healthcare",
+    "industry": "Healthcare",
+    "nse": "CIPLA.NS",
+    "yahooSymbol": "CIPLA.NS",
+    "currentPrice": 1322.3,
+    "lastUpdated": "2026-01-26T18:36:11.908Z"
+  },
+  {
+    "symbol": "CANBK",
+    "company": "Canara Bank",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "CANBK.NS",
+    "yahooSymbol": "CANBK.NS",
+    "currentPrice": 151.8,
+    "lastUpdated": "2026-01-26T18:36:11.912Z"
+  },
+  {
+    "symbol": "COCHINSHIP",
+    "company": "Cochin Shipyard Ltd.",
+    "sector": "Capital Goods",
+    "industry": "Capital Goods",
+    "nse": "COCHINSHIP.NS",
+    "yahooSymbol": "COCHINSHIP.NS",
+    "currentPrice": 1488.9,
+    "lastUpdated": "2026-01-26T18:36:12.116Z"
+  },
+  {
+    "symbol": "COFORGE",
+    "company": "Coforge Ltd.",
+    "sector": "IT",
+    "industry": "Information Technology",
+    "nse": "COFORGE.NS",
+    "yahooSymbol": "COFORGE.NS",
+    "currentPrice": 1642,
+    "lastUpdated": "2026-01-26T18:36:14.278Z"
+  },
+  {
+    "symbol": "CONCOR",
+    "company": "Container Corporation of India Ltd.",
+    "sector": "Services",
+    "industry": "Services",
+    "nse": "CONCOR.NS",
+    "yahooSymbol": "CONCOR.NS",
+    "currentPrice": 479,
+    "lastUpdated": "2026-01-26T18:36:14.281Z"
+  },
+  {
+    "symbol": "CUMMINSIND",
+    "company": "Cummins India Ltd.",
+    "sector": "Capital Goods",
+    "industry": "Capital Goods",
+    "nse": "CUMMINSIND.NS",
+    "yahooSymbol": "CUMMINSIND.NS",
+    "currentPrice": 3933.3,
+    "lastUpdated": "2026-01-26T18:36:14.285Z"
+  },
+  {
+    "symbol": "COROMANDEL",
+    "company": "Coromandel International Ltd.",
+    "sector": "Chemicals",
+    "industry": "Chemicals",
+    "nse": "COROMANDEL.NS",
+    "yahooSymbol": "COROMANDEL.NS",
+    "currentPrice": 2243.8,
+    "lastUpdated": "2026-01-26T18:36:14.296Z"
+  },
+  {
+    "symbol": "DLF",
+    "company": "DLF Ltd.",
+    "sector": "Real Estate",
+    "industry": "Realty",
+    "nse": "DLF.NS",
+    "yahooSymbol": "DLF.NS",
+    "currentPrice": 588,
+    "lastUpdated": "2026-01-26T18:36:14.478Z"
+  },
+  {
+    "symbol": "DIXON",
+    "company": "Dixon Technologies (India) Ltd.",
+    "sector": "Consumer Durables",
+    "industry": "Consumer Durables",
+    "nse": "DIXON.NS",
+    "yahooSymbol": "DIXON.NS",
+    "currentPrice": 10330,
+    "lastUpdated": "2026-01-26T18:36:16.632Z"
+  },
+  {
+    "symbol": "DRREDDY",
+    "company": "Dr. Reddy's Laboratories Ltd.",
+    "sector": "Healthcare",
+    "industry": "Healthcare",
+    "nse": "DRREDDY.NS",
+    "yahooSymbol": "DRREDDY.NS",
+    "currentPrice": 1238.4,
+    "lastUpdated": "2026-01-26T18:36:16.643Z"
+  },
+  {
+    "symbol": "DIVISLAB",
+    "company": "Divi's Laboratories Ltd.",
+    "sector": "Healthcare",
+    "industry": "Healthcare",
+    "nse": "DIVISLAB.NS",
+    "yahooSymbol": "DIVISLAB.NS",
+    "currentPrice": 6009.5,
+    "lastUpdated": "2026-01-26T18:36:16.646Z"
+  },
+  {
+    "symbol": "ETERNAL",
+    "company": "Eternal Ltd.",
+    "sector": "Consumer Services",
+    "industry": "Consumer Services",
+    "nse": "ETERNAL.NS",
+    "yahooSymbol": "ETERNAL.NS",
+    "currentPrice": 260.05,
+    "lastUpdated": "2026-01-26T18:36:16.728Z"
+  },
+  {
+    "symbol": "NYKAA",
+    "company": "FSN E-Commerce Ventures Ltd.",
+    "sector": "Consumer Services",
+    "industry": "Consumer Services",
+    "nse": "NYKAA.NS",
+    "yahooSymbol": "NYKAA.NS",
+    "currentPrice": 234,
+    "lastUpdated": "2026-01-26T18:36:18.882Z"
+  },
+  {
+    "symbol": "GMRAIRPORT",
+    "company": "GMR Airports Ltd.",
+    "sector": "Services",
+    "industry": "Services",
+    "nse": "GMRAIRPORT.NS",
+    "yahooSymbol": "GMRAIRPORT.NS",
+    "currentPrice": 91.58,
+    "lastUpdated": "2026-01-26T18:36:18.885Z"
+  },
+  {
+    "symbol": "FORTIS",
+    "company": "Fortis Healthcare Ltd.",
+    "sector": "Healthcare",
+    "industry": "Healthcare",
+    "nse": "FORTIS.NS",
+    "yahooSymbol": "FORTIS.NS",
+    "currentPrice": 845.95,
+    "lastUpdated": "2026-01-26T18:36:18.887Z"
+  },
+  {
+    "symbol": "FEDERALBNK",
+    "company": "Federal Bank Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "FEDERALBNK.NS",
+    "yahooSymbol": "FEDERALBNK.NS",
+    "currentPrice": 279.5,
+    "lastUpdated": "2026-01-26T18:36:18.981Z"
+  },
+  {
+    "symbol": "GLENMARK",
+    "company": "Glenmark Pharmaceuticals Ltd.",
+    "sector": "Healthcare",
+    "industry": "Healthcare",
+    "nse": "GLENMARK.NS",
+    "yahooSymbol": "GLENMARK.NS",
+    "currentPrice": 1968.7,
+    "lastUpdated": "2026-01-26T18:36:19.361Z"
+  },
+  {
+    "symbol": "GODFRYPHLP",
+    "company": "Godfrey Phillips India Ltd.",
+    "sector": "FMCG",
+    "industry": "Fast Moving Consumer Goods",
+    "nse": "GODFRYPHLP.NS",
+    "yahooSymbol": "GODFRYPHLP.NS",
+    "currentPrice": 2000,
+    "lastUpdated": "2026-01-26T18:36:21.469Z"
+  },
+  {
+    "symbol": "HDFCAMC",
+    "company": "HDFC Asset Management Company Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "HDFCAMC.NS",
+    "yahooSymbol": "HDFCAMC.NS",
+    "currentPrice": 2429.7,
+    "lastUpdated": "2026-01-26T18:36:21.472Z"
+  },
+  {
+    "symbol": "GRASIM",
+    "company": "Grasim Industries Ltd.",
+    "sector": "Construction",
+    "industry": "Construction Materials",
+    "nse": "GRASIM.NS",
+    "yahooSymbol": "GRASIM.NS",
+    "currentPrice": 2766,
+    "lastUpdated": "2026-01-26T18:36:21.473Z"
+  },
+  {
+    "symbol": "HDFCLIFE",
+    "company": "HDFC Life Insurance Company Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "HDFCLIFE.NS",
+    "yahooSymbol": "HDFCLIFE.NS",
+    "currentPrice": 712.3,
+    "lastUpdated": "2026-01-26T18:36:21.490Z"
+  },
+  {
+    "symbol": "HAVELLS",
+    "company": "Havells India Ltd.",
+    "sector": "Consumer Durables",
+    "industry": "Consumer Durables",
+    "nse": "HAVELLS.NS",
+    "yahooSymbol": "HAVELLS.NS",
+    "currentPrice": 1285,
+    "lastUpdated": "2026-01-26T18:36:21.571Z"
+  },
+  {
+    "symbol": "POWERINDIA",
+    "company": "Hitachi Energy India Ltd.",
+    "sector": "Capital Goods",
+    "industry": "Capital Goods",
+    "nse": "POWERINDIA.NS",
+    "yahooSymbol": "POWERINDIA.NS",
+    "currentPrice": 16470,
+    "lastUpdated": "2026-01-26T18:36:23.721Z"
+  },
+  {
+    "symbol": "HYUNDAI",
+    "company": "Hyundai Motor India Ltd.",
+    "sector": "Automobile",
+    "industry": "Automobile and Auto Components",
+    "nse": "HYUNDAI.NS",
+    "yahooSymbol": "HYUNDAI.NS",
+    "currentPrice": 2264.1,
+    "lastUpdated": "2026-01-26T18:36:23.722Z"
+  },
+  {
+    "symbol": "HUDCO",
+    "company": "Housing & Urban Development Corporation Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "HUDCO.NS",
+    "yahooSymbol": "HUDCO.NS",
+    "currentPrice": 195.5,
+    "lastUpdated": "2026-01-26T18:36:23.723Z"
+  },
+  {
+    "symbol": "HAL",
+    "company": "Hindustan Aeronautics Ltd.",
+    "sector": "Capital Goods",
+    "industry": "Capital Goods",
+    "nse": "HAL.NS",
+    "yahooSymbol": "HAL.NS",
+    "currentPrice": 4310,
+    "lastUpdated": "2026-01-26T18:36:23.727Z"
+  },
+  {
+    "symbol": "ICICIGI",
+    "company": "ICICI Lombard General Insurance Company Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "ICICIGI.NS",
+    "yahooSymbol": "ICICIGI.NS",
+    "currentPrice": 1794.9,
+    "lastUpdated": "2026-01-26T18:36:23.828Z"
+  },
+  {
+    "symbol": "IDFCFIRSTB",
+    "company": "IDFC First Bank Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "IDFCFIRSTB.NS",
+    "yahooSymbol": "IDFCFIRSTB.NS",
+    "currentPrice": 82.5,
+    "lastUpdated": "2026-01-26T18:36:25.936Z"
+  },
+  {
+    "symbol": "ITCHOTELS",
+    "company": "ITC Hotels Ltd.",
+    "sector": "Consumer Services",
+    "industry": "Consumer Services",
+    "nse": "ITCHOTELS.NS",
+    "yahooSymbol": "ITCHOTELS.NS",
+    "currentPrice": 183,
+    "lastUpdated": "2026-01-26T18:36:25.941Z"
+  },
+  {
+    "symbol": "IRB",
+    "company": "IRB Infrastructure Developers Ltd.",
+    "sector": "Construction",
+    "industry": "Construction",
+    "nse": "IRB.NS",
+    "yahooSymbol": "IRB.NS",
+    "currentPrice": 39.63,
+    "lastUpdated": "2026-01-26T18:36:25.951Z"
+  },
+  {
+    "symbol": "INDIANB",
+    "company": "Indian Bank",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "INDIANB.NS",
+    "yahooSymbol": "INDIANB.NS",
+    "currentPrice": 873.5,
+    "lastUpdated": "2026-01-26T18:36:25.956Z"
+  },
+  {
+    "symbol": "INDHOTEL",
+    "company": "Indian Hotels Co. Ltd.",
+    "sector": "Consumer Services",
+    "industry": "Consumer Services",
+    "nse": "INDHOTEL.NS",
+    "yahooSymbol": "INDHOTEL.NS",
+    "currentPrice": 644.4,
+    "lastUpdated": "2026-01-26T18:36:26.152Z"
+  },
+  {
+    "symbol": "IRFC",
+    "company": "Indian Railway Finance Corporation Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "IRFC.NS",
+    "yahooSymbol": "IRFC.NS",
+    "currentPrice": 114.15,
+    "lastUpdated": "2026-01-26T18:36:28.307Z"
+  },
+  {
+    "symbol": "IGL",
+    "company": "Indraprastha Gas Ltd.",
+    "sector": "Oil & Gas",
+    "industry": "Oil Gas & Consumable Fuels",
+    "nse": "IGL.NS",
+    "yahooSymbol": "IGL.NS",
+    "currentPrice": 174.9,
+    "lastUpdated": "2026-01-26T18:36:28.312Z"
+  },
+  {
+    "symbol": "IRCTC",
+    "company": "Indian Railway Catering And Tourism Corporation Ltd.",
+    "sector": "Consumer Services",
+    "industry": "Consumer Services",
+    "nse": "IRCTC.NS",
+    "yahooSymbol": "IRCTC.NS",
+    "currentPrice": 616.6,
+    "lastUpdated": "2026-01-26T18:36:28.317Z"
+  },
+  {
+    "symbol": "IREDA",
+    "company": "Indian Renewable Energy Development Agency Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "IREDA.NS",
+    "yahooSymbol": "IREDA.NS",
+    "currentPrice": 127.8,
+    "lastUpdated": "2026-01-26T18:36:28.321Z"
+  },
+  {
+    "symbol": "INDUSTOWER",
+    "company": "Indus Towers Ltd.",
+    "sector": "Telecom",
+    "industry": "Telecommunication",
+    "nse": "INDUSTOWER.NS",
+    "yahooSymbol": "INDUSTOWER.NS",
+    "currentPrice": 414.05,
+    "lastUpdated": "2026-01-26T18:36:28.413Z"
+  },
+  {
+    "symbol": "INDUSINDBK",
+    "company": "IndusInd Bank Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "INDUSINDBK.NS",
+    "yahooSymbol": "INDUSINDBK.NS",
+    "currentPrice": 898,
+    "lastUpdated": "2026-01-26T18:36:30.652Z"
+  },
+  {
+    "symbol": "NAUKRI",
+    "company": "Info Edge (India) Ltd.",
+    "sector": "Consumer Services",
+    "industry": "Consumer Services",
+    "nse": "NAUKRI.NS",
+    "yahooSymbol": "NAUKRI.NS",
+    "currentPrice": 1301.9,
+    "lastUpdated": "2026-01-26T18:36:30.658Z"
+  },
+  {
+    "symbol": "INDIGO",
+    "company": "InterGlobe Aviation Ltd.",
+    "sector": "Services",
+    "industry": "Services",
+    "nse": "INDIGO.NS",
+    "yahooSymbol": "INDIGO.NS",
+    "currentPrice": 4715,
+    "lastUpdated": "2026-01-26T18:36:30.662Z"
+  },
+  {
+    "symbol": "JSWENERGY",
+    "company": "JSW Energy Ltd.",
+    "sector": "Power",
+    "industry": "Power",
+    "nse": "JSWENERGY.NS",
+    "yahooSymbol": "JSWENERGY.NS",
+    "currentPrice": 482.2,
+    "lastUpdated": "2026-01-26T18:36:30.665Z"
+  },
+  {
+    "symbol": "JSWSTEEL",
+    "company": "JSW Steel Ltd.",
+    "sector": "Metals",
+    "industry": "Metals & Mining",
+    "nse": "JSWSTEEL.NS",
+    "yahooSymbol": "JSWSTEEL.NS",
+    "currentPrice": 1165.4,
+    "lastUpdated": "2026-01-26T18:36:30.758Z"
+  },
+  {
+    "symbol": "KEI",
+    "company": "KEI Industries Ltd.",
+    "sector": "Capital Goods",
+    "industry": "Capital Goods",
+    "nse": "KEI.NS",
+    "yahooSymbol": "KEI.NS",
+    "currentPrice": 3820,
+    "lastUpdated": "2026-01-26T18:36:32.915Z"
+  },
+  {
+    "symbol": "JINDALSTEL",
+    "company": "Jindal Steel Ltd.",
+    "sector": "Metals",
+    "industry": "Metals & Mining",
+    "nse": "JINDALSTEL.NS",
+    "yahooSymbol": "JINDALSTEL.NS",
+    "currentPrice": 1061,
+    "lastUpdated": "2026-01-26T18:36:32.919Z"
+  },
+  {
+    "symbol": "JIOFIN",
+    "company": "Jio Financial Services Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "JIOFIN.NS",
+    "yahooSymbol": "JIOFIN.NS",
+    "currentPrice": 253.2,
+    "lastUpdated": "2026-01-26T18:36:32.922Z"
+  },
+  {
+    "symbol": "JUBLFOOD",
+    "company": "Jubilant Foodworks Ltd.",
+    "sector": "Consumer Services",
+    "industry": "Consumer Services",
+    "nse": "JUBLFOOD.NS",
+    "yahooSymbol": "JUBLFOOD.NS",
+    "currentPrice": 492.6,
+    "lastUpdated": "2026-01-26T18:36:32.927Z"
+  },
+  {
+    "symbol": "KPITTECH",
+    "company": "KPIT Technologies Ltd.",
+    "sector": "IT",
+    "industry": "Information Technology",
+    "nse": "KPITTECH.NS",
+    "yahooSymbol": "KPITTECH.NS",
+    "currentPrice": 1111.9,
+    "lastUpdated": "2026-01-26T18:36:33.205Z"
+  },
+  {
+    "symbol": "LTF",
+    "company": "L&T Finance Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "LTF.NS",
+    "yahooSymbol": "LTF.NS",
+    "currentPrice": 287,
+    "lastUpdated": "2026-01-26T18:36:35.369Z"
+  },
+  {
+    "symbol": "LICHSGFIN",
+    "company": "LIC Housing Finance Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "LICHSGFIN.NS",
+    "yahooSymbol": "LICHSGFIN.NS",
+    "currentPrice": 506.45,
+    "lastUpdated": "2026-01-26T18:36:35.370Z"
+  },
+  {
+    "symbol": "KALYANKJIL",
+    "company": "Kalyan Jewellers India Ltd.",
+    "sector": "Consumer Durables",
+    "industry": "Consumer Durables",
+    "nse": "KALYANKJIL.NS",
+    "yahooSymbol": "KALYANKJIL.NS",
+    "currentPrice": 368.5,
+    "lastUpdated": "2026-01-26T18:36:35.371Z"
+  },
+  {
+    "symbol": "LTIM",
+    "company": "LTIMindtree Ltd.",
+    "sector": "IT",
+    "industry": "Information Technology",
+    "nse": "LTIM.NS",
+    "yahooSymbol": "LTIM.NS",
+    "currentPrice": 5868,
+    "lastUpdated": "2026-01-26T18:36:35.372Z"
+  },
+  {
+    "symbol": "LICI",
+    "company": "Life Insurance Corporation of India",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "LICI.NS",
+    "yahooSymbol": "LICI.NS",
+    "currentPrice": 803,
+    "lastUpdated": "2026-01-26T18:36:35.771Z"
+  },
+  {
+    "symbol": "LODHA",
+    "company": "Lodha Developers Ltd.",
+    "sector": "Real Estate",
+    "industry": "Realty",
+    "nse": "LODHA.NS",
+    "yahooSymbol": "LODHA.NS",
+    "currentPrice": 900.4,
+    "lastUpdated": "2026-01-26T18:36:38.039Z"
+  },
+  {
+    "symbol": "MARICO",
+    "company": "Marico Ltd.",
+    "sector": "FMCG",
+    "industry": "Fast Moving Consumer Goods",
+    "nse": "MARICO.NS",
+    "yahooSymbol": "MARICO.NS",
+    "currentPrice": 742,
+    "lastUpdated": "2026-01-26T18:36:38.049Z"
+  },
+  {
+    "symbol": "MANKIND",
+    "company": "Mankind Pharma Ltd.",
+    "sector": "Healthcare",
+    "industry": "Healthcare",
+    "nse": "MANKIND.NS",
+    "yahooSymbol": "MANKIND.NS",
+    "currentPrice": 2105,
+    "lastUpdated": "2026-01-26T18:36:38.055Z"
+  },
+  {
+    "symbol": "LUPIN",
+    "company": "Lupin Ltd.",
+    "sector": "Healthcare",
+    "industry": "Healthcare",
+    "nse": "LUPIN.NS",
+    "yahooSymbol": "LUPIN.NS",
+    "currentPrice": 2138,
+    "lastUpdated": "2026-01-26T18:36:38.059Z"
+  },
+  {
+    "symbol": "MFSL",
+    "company": "Max Financial Services Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "MFSL.NS",
+    "yahooSymbol": "MFSL.NS",
+    "currentPrice": 1595.1,
+    "lastUpdated": "2026-01-26T18:36:38.228Z"
+  },
+  {
+    "symbol": "MOTILALOFS",
+    "company": "Motilal Oswal Financial Services Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "MOTILALOFS.NS",
+    "yahooSymbol": "MOTILALOFS.NS",
+    "currentPrice": 749.4,
+    "lastUpdated": "2026-01-26T18:36:40.377Z"
+  },
+  {
+    "symbol": "MPHASIS",
+    "company": "MphasiS Ltd.",
+    "sector": "IT",
+    "industry": "Information Technology",
+    "nse": "MPHASIS.NS",
+    "yahooSymbol": "MPHASIS.NS",
+    "currentPrice": 2745,
+    "lastUpdated": "2026-01-26T18:36:40.378Z"
+  },
+  {
+    "symbol": "MAXHEALTH",
+    "company": "Max Healthcare Institute Ltd.",
+    "sector": "Healthcare",
+    "industry": "Healthcare",
+    "nse": "MAXHEALTH.NS",
+    "yahooSymbol": "MAXHEALTH.NS",
+    "currentPrice": 991.4,
+    "lastUpdated": "2026-01-26T18:36:40.380Z"
+  },
+  {
+    "symbol": "MAZDOCK",
+    "company": "Mazagoan Dock Shipbuilders Ltd.",
+    "sector": "Capital Goods",
+    "industry": "Capital Goods",
+    "nse": "MAZDOCK.NS",
+    "yahooSymbol": "MAZDOCK.NS",
+    "currentPrice": 2305,
+    "lastUpdated": "2026-01-26T18:36:40.381Z"
+  },
+  {
+    "symbol": "MUTHOOTFIN",
+    "company": "Muthoot Finance Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "MUTHOOTFIN.NS",
+    "yahooSymbol": "MUTHOOTFIN.NS",
+    "currentPrice": 3815,
+    "lastUpdated": "2026-01-26T18:36:40.579Z"
+  },
+  {
+    "symbol": "NHPC",
+    "company": "NHPC Ltd.",
+    "sector": "Power",
+    "industry": "Power",
+    "nse": "NHPC.NS",
+    "yahooSymbol": "NHPC.NS",
+    "currentPrice": 75.45,
+    "lastUpdated": "2026-01-26T18:36:42.729Z"
+  },
+  {
+    "symbol": "NMDC",
+    "company": "NMDC Ltd.",
+    "sector": "Metals",
+    "industry": "Metals & Mining",
+    "nse": "NMDC.NS",
+    "yahooSymbol": "NMDC.NS",
+    "currentPrice": 76.19,
+    "lastUpdated": "2026-01-26T18:36:42.731Z"
+  },
+  {
+    "symbol": "NTPCGREEN",
+    "company": "NTPC Green Energy Ltd.",
+    "sector": "Power",
+    "industry": "Power",
+    "nse": "NTPCGREEN.NS",
+    "yahooSymbol": "NTPCGREEN.NS",
+    "currentPrice": 90.3,
+    "lastUpdated": "2026-01-26T18:36:42.733Z"
+  },
+  {
+    "symbol": "NATIONALUM",
+    "company": "National Aluminium Co. Ltd.",
+    "sector": "Metals",
+    "industry": "Metals & Mining",
+    "nse": "NATIONALUM.NS",
+    "yahooSymbol": "NATIONALUM.NS",
+    "currentPrice": 371.5,
+    "lastUpdated": "2026-01-26T18:36:42.738Z"
+  },
+  {
+    "symbol": "OBEROIRLTY",
+    "company": "Oberoi Realty Ltd.",
+    "sector": "Real Estate",
+    "industry": "Realty",
+    "nse": "OBEROIRLTY.NS",
+    "yahooSymbol": "OBEROIRLTY.NS",
+    "currentPrice": 1451.7,
+    "lastUpdated": "2026-01-26T18:36:42.934Z"
+  },
+  {
+    "symbol": "PAYTM",
+    "company": "One 97 Communications Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "PAYTM.NS",
+    "yahooSymbol": "PAYTM.NS",
+    "currentPrice": 1155,
+    "lastUpdated": "2026-01-26T18:36:45.102Z"
+  },
+  {
+    "symbol": "OIL",
+    "company": "Oil India Ltd.",
+    "sector": "Oil & Gas",
+    "industry": "Oil Gas & Consumable Fuels",
+    "nse": "OIL.NS",
+    "yahooSymbol": "OIL.NS",
+    "currentPrice": 436,
+    "lastUpdated": "2026-01-26T18:36:45.105Z"
+  },
+  {
+    "symbol": "OFSS",
+    "company": "Oracle Financial Services Software Ltd.",
+    "sector": "IT",
+    "industry": "Information Technology",
+    "nse": "OFSS.NS",
+    "yahooSymbol": "OFSS.NS",
+    "currentPrice": 7940,
+    "lastUpdated": "2026-01-26T18:36:45.110Z"
+  },
+  {
+    "symbol": "POLICYBZR",
+    "company": "PB Fintech Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "POLICYBZR.NS",
+    "yahooSymbol": "POLICYBZR.NS",
+    "currentPrice": 1712,
+    "lastUpdated": "2026-01-26T18:36:45.114Z"
+  },
+  {
+    "symbol": "PIIND",
+    "company": "PI Industries Ltd.",
+    "sector": "Chemicals",
+    "industry": "Chemicals",
+    "nse": "PIIND.NS",
+    "yahooSymbol": "PIIND.NS",
+    "currentPrice": 3178.6,
+    "lastUpdated": "2026-01-26T18:36:45.391Z"
+  },
+  {
+    "symbol": "PAGEIND",
+    "company": "Page Industries Ltd.",
+    "sector": "Textiles",
+    "industry": "Textiles",
+    "nse": "PAGEIND.NS",
+    "yahooSymbol": "PAGEIND.NS",
+    "currentPrice": 32945,
+    "lastUpdated": "2026-01-26T18:36:47.559Z"
+  },
+  {
+    "symbol": "PERSISTENT",
+    "company": "Persistent Systems Ltd.",
+    "sector": "IT",
+    "industry": "Information Technology",
+    "nse": "PERSISTENT.NS",
+    "yahooSymbol": "PERSISTENT.NS",
+    "currentPrice": 6108,
+    "lastUpdated": "2026-01-26T18:36:47.569Z"
+  },
+  {
+    "symbol": "PATANJALI",
+    "company": "Patanjali Foods Ltd.",
+    "sector": "FMCG",
+    "industry": "Fast Moving Consumer Goods",
+    "nse": "PATANJALI.NS",
+    "yahooSymbol": "PATANJALI.NS",
+    "currentPrice": 505.1,
+    "lastUpdated": "2026-01-26T18:36:47.573Z"
+  },
+  {
+    "symbol": "PHOENIXLTD",
+    "company": "Phoenix Mills Ltd.",
+    "sector": "Real Estate",
+    "industry": "Realty",
+    "nse": "PHOENIXLTD.NS",
+    "yahooSymbol": "PHOENIXLTD.NS",
+    "currentPrice": 1726.2,
+    "lastUpdated": "2026-01-26T18:36:47.577Z"
+  },
+  {
+    "symbol": "PIDILITIND",
+    "company": "Pidilite Industries Ltd.",
+    "sector": "Chemicals",
+    "industry": "Chemicals",
+    "nse": "PIDILITIND.NS",
+    "yahooSymbol": "PIDILITIND.NS",
+    "currentPrice": 1449.7,
+    "lastUpdated": "2026-01-26T18:36:47.660Z"
+  },
+  {
+    "symbol": "POLYCAB",
+    "company": "Polycab India Ltd.",
+    "sector": "Capital Goods",
+    "industry": "Capital Goods",
+    "nse": "POLYCAB.NS",
+    "yahooSymbol": "POLYCAB.NS",
+    "currentPrice": 6731,
+    "lastUpdated": "2026-01-26T18:36:49.814Z"
+  },
+  {
+    "symbol": "PREMIERENE",
+    "company": "Premier Energies Ltd.",
+    "sector": "Capital Goods",
+    "industry": "Capital Goods",
+    "nse": "PREMIERENE.NS",
+    "yahooSymbol": "PREMIERENE.NS",
+    "currentPrice": 680,
+    "lastUpdated": "2026-01-26T18:36:49.818Z"
+  },
+  {
+    "symbol": "PFC",
+    "company": "Power Finance Corporation Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "PFC.NS",
+    "yahooSymbol": "PFC.NS",
+    "currentPrice": 358,
+    "lastUpdated": "2026-01-26T18:36:49.825Z"
+  },
+  {
+    "symbol": "PRESTIGE",
+    "company": "Prestige Estates Projects Ltd.",
+    "sector": "Real Estate",
+    "industry": "Realty",
+    "nse": "PRESTIGE.NS",
+    "yahooSymbol": "PRESTIGE.NS",
+    "currentPrice": 1399,
+    "lastUpdated": "2026-01-26T18:36:49.828Z"
+  },
+  {
+    "symbol": "PNB",
+    "company": "Punjab National Bank",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "PNB.NS",
+    "yahooSymbol": "PNB.NS",
+    "currentPrice": 120.14,
+    "lastUpdated": "2026-01-26T18:36:50.005Z"
+  },
+  {
+    "symbol": "RECLTD",
+    "company": "REC Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "RECLTD.NS",
+    "yahooSymbol": "RECLTD.NS",
+    "currentPrice": 362.7,
+    "lastUpdated": "2026-01-26T18:36:52.161Z"
+  },
+  {
+    "symbol": "RVNL",
+    "company": "Rail Vikas Nigam Ltd.",
+    "sector": "Construction",
+    "industry": "Construction",
+    "nse": "RVNL.NS",
+    "yahooSymbol": "RVNL.NS",
+    "currentPrice": 325,
+    "lastUpdated": "2026-01-26T18:36:52.163Z"
+  },
+  {
+    "symbol": "SBICARD",
+    "company": "SBI Cards and Payment Services Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "SBICARD.NS",
+    "yahooSymbol": "SBICARD.NS",
+    "currentPrice": 771,
+    "lastUpdated": "2026-01-26T18:36:52.168Z"
+  },
+  {
+    "symbol": "SBILIFE",
+    "company": "SBI Life Insurance Company Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "SBILIFE.NS",
+    "yahooSymbol": "SBILIFE.NS",
+    "currentPrice": 2005.2,
+    "lastUpdated": "2026-01-26T18:36:52.173Z"
+  },
+  {
+    "symbol": "SRF",
+    "company": "SRF Ltd.",
+    "sector": "Chemicals",
+    "industry": "Chemicals",
+    "nse": "SRF.NS",
+    "yahooSymbol": "SRF.NS",
+    "currentPrice": 2722,
+    "lastUpdated": "2026-01-26T18:36:52.457Z"
+  },
+  {
+    "symbol": "MOTHERSON",
+    "company": "Samvardhana Motherson International Ltd.",
+    "sector": "Automobile",
+    "industry": "Automobile and Auto Components",
+    "nse": "MOTHERSON.NS",
+    "yahooSymbol": "MOTHERSON.NS",
+    "currentPrice": 108.4,
+    "lastUpdated": "2026-01-26T18:36:54.558Z"
+  },
+  {
+    "symbol": "SHREECEM",
+    "company": "Shree Cement Ltd.",
+    "sector": "Construction",
+    "industry": "Construction Materials",
+    "nse": "SHREECEM.NS",
+    "yahooSymbol": "SHREECEM.NS",
+    "currentPrice": 27105,
+    "lastUpdated": "2026-01-26T18:36:54.570Z"
+  },
+  {
+    "symbol": "SHRIRAMFIN",
+    "company": "Shriram Finance Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "SHRIRAMFIN.NS",
+    "yahooSymbol": "SHRIRAMFIN.NS",
+    "currentPrice": 1005,
+    "lastUpdated": "2026-01-26T18:36:54.571Z"
+  },
+  {
+    "symbol": "ENRIN",
+    "company": "Siemens Energy India Ltd.",
+    "sector": "Capital Goods",
+    "industry": "Capital Goods",
+    "nse": "ENRIN.NS",
+    "yahooSymbol": "ENRIN.NS",
+    "currentPrice": 2124,
+    "lastUpdated": "2026-01-26T18:36:54.590Z"
+  },
+  {
+    "symbol": "SOLARINDS",
+    "company": "Solar Industries India Ltd.",
+    "sector": "Chemicals",
+    "industry": "Chemicals",
+    "nse": "SOLARINDS.NS",
+    "yahooSymbol": "SOLARINDS.NS",
+    "currentPrice": 12660,
+    "lastUpdated": "2026-01-26T18:36:54.818Z"
+  },
+  {
+    "symbol": "SONACOMS",
+    "company": "Sona BLW Precision Forgings Ltd.",
+    "sector": "Automobile",
+    "industry": "Automobile and Auto Components",
+    "nse": "SONACOMS.NS",
+    "yahooSymbol": "SONACOMS.NS",
+    "currentPrice": 456.9,
+    "lastUpdated": "2026-01-26T18:36:56.922Z"
+  },
+  {
+    "symbol": "SAIL",
+    "company": "Steel Authority of India Ltd.",
+    "sector": "Metals",
+    "industry": "Metals & Mining",
+    "nse": "SAIL.NS",
+    "yahooSymbol": "SAIL.NS",
+    "currentPrice": 148.7,
+    "lastUpdated": "2026-01-26T18:36:56.934Z"
+  },
+  {
+    "symbol": "SUNPHARMA",
+    "company": "Sun Pharmaceutical Industries Ltd.",
+    "sector": "Healthcare",
+    "industry": "Healthcare",
+    "nse": "SUNPHARMA.NS",
+    "yahooSymbol": "SUNPHARMA.NS",
+    "currentPrice": 1633,
+    "lastUpdated": "2026-01-26T18:36:56.935Z"
+  },
+  {
+    "symbol": "SUPREMEIND",
+    "company": "Supreme Industries Ltd.",
+    "sector": "Capital Goods",
+    "industry": "Capital Goods",
+    "nse": "SUPREMEIND.NS",
+    "yahooSymbol": "SUPREMEIND.NS",
+    "currentPrice": 3497,
+    "lastUpdated": "2026-01-26T18:36:56.938Z"
+  },
+  {
+    "symbol": "SUZLON",
+    "company": "Suzlon Energy Ltd.",
+    "sector": "Capital Goods",
+    "industry": "Capital Goods",
+    "nse": "SUZLON.NS",
+    "yahooSymbol": "SUZLON.NS",
+    "currentPrice": 45.8,
+    "lastUpdated": "2026-01-26T18:36:57.034Z"
+  },
+  {
+    "symbol": "SWIGGY",
+    "company": "Swiggy Ltd.",
+    "sector": "Consumer Services",
+    "industry": "Consumer Services",
+    "nse": "SWIGGY.NS",
+    "yahooSymbol": "SWIGGY.NS",
+    "currentPrice": 313,
+    "lastUpdated": "2026-01-26T18:36:59.143Z"
+  },
+  {
+    "symbol": "TATATECH",
+    "company": "Tata Technologies Ltd.",
+    "sector": "IT",
+    "industry": "Information Technology",
+    "nse": "TATATECH.NS",
+    "yahooSymbol": "TATATECH.NS",
+    "currentPrice": 656,
+    "lastUpdated": "2026-01-26T18:36:59.153Z"
+  },
+  {
+    "symbol": "TMPV",
+    "company": "Tata Motors Passenger Vehicles Ltd.",
+    "sector": "Automobile",
+    "industry": "Automobile and Auto Components",
+    "nse": "TMPV.NS",
+    "yahooSymbol": "TMPV.NS",
+    "currentPrice": 345,
+    "lastUpdated": "2026-01-26T18:36:59.157Z"
+  },
+  {
+    "symbol": "TECHM",
+    "company": "Tech Mahindra Ltd.",
+    "sector": "IT",
+    "industry": "Information Technology",
+    "nse": "TECHM.NS",
+    "yahooSymbol": "TECHM.NS",
+    "currentPrice": 1700.7,
+    "lastUpdated": "2026-01-26T18:36:59.173Z"
+  },
+  {
+    "symbol": "TITAN",
+    "company": "Titan Company Ltd.",
+    "sector": "Consumer Durables",
+    "industry": "Consumer Durables",
+    "nse": "TITAN.NS",
+    "yahooSymbol": "TITAN.NS",
+    "currentPrice": 4020.2,
+    "lastUpdated": "2026-01-26T18:36:59.247Z"
+  },
+  {
+    "symbol": "TORNTPOWER",
+    "company": "Torrent Power Ltd.",
+    "sector": "Power",
+    "industry": "Power",
+    "nse": "TORNTPOWER.NS",
+    "yahooSymbol": "TORNTPOWER.NS",
+    "currentPrice": 1277,
+    "lastUpdated": "2026-01-26T18:37:01.377Z"
+  },
+  {
+    "symbol": "TRENT",
+    "company": "Trent Ltd.",
+    "sector": "Consumer Services",
+    "industry": "Consumer Services",
+    "nse": "TRENT.NS",
+    "yahooSymbol": "TRENT.NS",
+    "currentPrice": 3748,
+    "lastUpdated": "2026-01-26T18:37:01.379Z"
+  },
+  {
+    "symbol": "TORNTPHARM",
+    "company": "Torrent Pharmaceuticals Ltd.",
+    "sector": "Healthcare",
+    "industry": "Healthcare",
+    "nse": "TORNTPHARM.NS",
+    "yahooSymbol": "TORNTPHARM.NS",
+    "currentPrice": 3932.8,
+    "lastUpdated": "2026-01-26T18:37:01.380Z"
+  },
+  {
+    "symbol": "UPL",
+    "company": "UPL Ltd.",
+    "sector": "Chemicals",
+    "industry": "Chemicals",
+    "nse": "UPL.NS",
+    "yahooSymbol": "UPL.NS",
+    "currentPrice": 700.2,
+    "lastUpdated": "2026-01-26T18:37:01.577Z"
+  },
+  {
+    "symbol": "TIINDIA",
+    "company": "Tube Investments of India Ltd.",
+    "sector": "Automobile",
+    "industry": "Automobile and Auto Components",
+    "nse": "TIINDIA.NS",
+    "yahooSymbol": "TIINDIA.NS",
+    "currentPrice": 2215,
+    "lastUpdated": "2026-01-26T18:37:01.779Z"
+  },
+  {
+    "symbol": "ULTRACEMCO",
+    "company": "UltraTech Cement Ltd.",
+    "sector": "Construction",
+    "industry": "Construction Materials",
+    "nse": "ULTRACEMCO.NS",
+    "yahooSymbol": "ULTRACEMCO.NS",
+    "currentPrice": 12346,
+    "lastUpdated": "2026-01-26T18:37:04.043Z"
+  },
+  {
+    "symbol": "UNITDSPR",
+    "company": "United Spirits Ltd.",
+    "sector": "FMCG",
+    "industry": "Fast Moving Consumer Goods",
+    "nse": "UNITDSPR.NS",
+    "yahooSymbol": "UNITDSPR.NS",
+    "currentPrice": 1342,
+    "lastUpdated": "2026-01-26T18:37:04.049Z"
+  },
+  {
+    "symbol": "UNIONBANK",
+    "company": "Union Bank of India",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "UNIONBANK.NS",
+    "yahooSymbol": "UNIONBANK.NS",
+    "currentPrice": 172.54,
+    "lastUpdated": "2026-01-26T18:37:04.056Z"
+  },
+  {
+    "symbol": "VBL",
+    "company": "Varun Beverages Ltd.",
+    "sector": "FMCG",
+    "industry": "Fast Moving Consumer Goods",
+    "nse": "VBL.NS",
+    "yahooSymbol": "VBL.NS",
+    "currentPrice": 473.7,
+    "lastUpdated": "2026-01-26T18:37:04.062Z"
+  },
+  {
+    "symbol": "VEDL",
+    "company": "Vedanta Ltd.",
+    "sector": "Metals",
+    "industry": "Metals & Mining",
+    "nse": "VEDL.NS",
+    "yahooSymbol": "VEDL.NS",
+    "currentPrice": 685.15,
+    "lastUpdated": "2026-01-26T18:37:04.251Z"
+  },
+  {
+    "symbol": "VMM",
+    "company": "Vishal Mega Mart Ltd.",
+    "sector": "Consumer Services",
+    "industry": "Consumer Services",
+    "nse": "VMM.NS",
+    "yahooSymbol": "VMM.NS",
+    "currentPrice": 125.01,
+    "lastUpdated": "2026-01-26T18:37:06.384Z"
+  },
+  {
+    "symbol": "IDEA",
+    "company": "Vodafone Idea Ltd.",
+    "sector": "Telecom",
+    "industry": "Telecommunication",
+    "nse": "IDEA.NS",
+    "yahooSymbol": "IDEA.NS",
+    "currentPrice": 9.9,
+    "lastUpdated": "2026-01-26T18:37:06.390Z"
+  },
+  {
+    "symbol": "YESBANK",
+    "company": "Yes Bank Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "YESBANK.NS",
+    "yahooSymbol": "YESBANK.NS",
+    "currentPrice": 20.91,
+    "lastUpdated": "2026-01-26T18:37:06.394Z"
+  },
+  {
+    "symbol": "WAAREEENER",
+    "company": "Waaree Energies Ltd.",
+    "sector": "Capital Goods",
+    "industry": "Capital Goods",
+    "nse": "WAAREEENER.NS",
+    "yahooSymbol": "WAAREEENER.NS",
+    "currentPrice": 2600,
+    "lastUpdated": "2026-01-26T18:37:06.395Z"
+  },
+  {
+    "symbol": "ZYDUSLIFE",
+    "company": "Zydus Lifesciences Ltd.",
+    "sector": "Healthcare",
+    "industry": "Healthcare",
+    "nse": "ZYDUSLIFE.NS",
+    "yahooSymbol": "ZYDUSLIFE.NS",
+    "currentPrice": 883,
+    "lastUpdated": "2026-01-26T18:37:06.599Z"
+  },
+  {
+    "symbol": "AADHARHFC",
+    "company": "Aadhar Housing Finance Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "AADHARHFC.NS",
+    "yahooSymbol": "AADHARHFC.NS",
+    "currentPrice": 467.75,
+    "lastUpdated": "2026-01-26T18:37:08.761Z"
+  },
+  {
+    "symbol": "AWL",
+    "company": "AWL Agri Business Ltd.",
+    "sector": "FMCG",
+    "industry": "Fast Moving Consumer Goods",
+    "nse": "AWL.NS",
+    "yahooSymbol": "AWL.NS",
+    "currentPrice": 208.85,
+    "lastUpdated": "2026-01-26T18:37:08.772Z"
+  },
+  {
+    "symbol": "AAVAS",
+    "company": "Aavas Financiers Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "AAVAS.NS",
+    "yahooSymbol": "AAVAS.NS",
+    "currentPrice": 1463.2,
+    "lastUpdated": "2026-01-26T18:37:08.778Z"
+  },
+  {
+    "symbol": "ACMESOLAR",
+    "company": "ACME Solar Holdings Ltd.",
+    "sector": "Power",
+    "industry": "Power",
+    "nse": "ACMESOLAR.NS",
+    "yahooSymbol": "ACMESOLAR.NS",
+    "currentPrice": 199.3,
+    "lastUpdated": "2026-01-26T18:37:08.790Z"
+  },
+  {
+    "symbol": "ABLBL",
+    "company": "Aditya Birla Lifestyle Brands Ltd.",
+    "sector": "Consumer Services",
+    "industry": "Consumer Services",
+    "nse": "ABLBL.NS",
+    "yahooSymbol": "ABLBL.NS",
+    "currentPrice": 103.13,
+    "lastUpdated": "2026-01-26T18:37:09.051Z"
+  },
+  {
+    "symbol": "AEGISVOPAK",
+    "company": "Aegis Vopak Terminals Ltd.",
+    "sector": "Oil & Gas",
+    "industry": "Oil Gas & Consumable Fuels",
+    "nse": "AEGISVOPAK.NS",
+    "yahooSymbol": "AEGISVOPAK.NS",
+    "currentPrice": 201.58,
+    "lastUpdated": "2026-01-26T18:37:11.310Z"
+  },
+  {
+    "symbol": "AEGISLOG",
+    "company": "Aegis Logistics Ltd.",
+    "sector": "Oil & Gas",
+    "industry": "Oil Gas & Consumable Fuels",
+    "nse": "AEGISLOG.NS",
+    "yahooSymbol": "AEGISLOG.NS",
+    "currentPrice": 645.5,
+    "lastUpdated": "2026-01-26T18:37:11.315Z"
+  },
+  {
+    "symbol": "ABREL",
+    "company": "Aditya Birla Real Estate Ltd.",
+    "sector": "Forest Materials",
+    "industry": "Forest Materials",
+    "nse": "ABREL.NS",
+    "yahooSymbol": "ABREL.NS",
+    "currentPrice": 1291,
+    "lastUpdated": "2026-01-26T18:37:11.321Z"
+  },
+  {
+    "symbol": "ABSLAMC",
+    "company": "Aditya Birla Sun Life AMC Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "ABSLAMC.NS",
+    "yahooSymbol": "ABSLAMC.NS",
+    "currentPrice": 780,
+    "lastUpdated": "2026-01-26T18:37:11.327Z"
+  },
+  {
+    "symbol": "AFCONS",
+    "company": "Afcons Infrastructure Ltd.",
+    "sector": "Construction",
+    "industry": "Construction",
+    "nse": "AFCONS.NS",
+    "yahooSymbol": "AFCONS.NS",
+    "currentPrice": 333.8,
+    "lastUpdated": "2026-01-26T18:37:11.525Z"
+  },
+  {
+    "symbol": "ALOKINDS",
+    "company": "Alok Industries Ltd.",
+    "sector": "Textiles",
+    "industry": "Textiles",
+    "nse": "ALOKINDS.NS",
+    "yahooSymbol": "ALOKINDS.NS",
+    "currentPrice": 14.45,
+    "lastUpdated": "2026-01-26T18:37:13.772Z"
+  },
+  {
+    "symbol": "AKUMS",
+    "company": "Akums Drugs and Pharmaceuticals Ltd.",
+    "sector": "Healthcare",
+    "industry": "Healthcare",
+    "nse": "AKUMS.NS",
+    "yahooSymbol": "AKUMS.NS",
+    "currentPrice": 424,
+    "lastUpdated": "2026-01-26T18:37:13.778Z"
+  },
+  {
+    "symbol": "AFFLE",
+    "company": "Affle 3i Ltd.",
+    "sector": "IT",
+    "industry": "Information Technology",
+    "nse": "AFFLE.NS",
+    "yahooSymbol": "AFFLE.NS",
+    "currentPrice": 1579.8,
+    "lastUpdated": "2026-01-26T18:37:13.783Z"
+  },
+  {
+    "symbol": "ARE&M",
+    "company": "Amara Raja Energy & Mobility Ltd.",
+    "sector": "Automobile",
+    "industry": "Automobile and Auto Components",
+    "nse": "ARE&M.NS",
+    "yahooSymbol": "ARE&M.NS",
+    "currentPrice": 826.85,
+    "lastUpdated": "2026-01-26T18:37:13.790Z"
+  },
+  {
+    "symbol": "AMBER",
+    "company": "Amber Enterprises India Ltd.",
+    "sector": "Consumer Durables",
+    "industry": "Consumer Durables",
+    "nse": "AMBER.NS",
+    "yahooSymbol": "AMBER.NS",
+    "currentPrice": 5551,
+    "lastUpdated": "2026-01-26T18:37:14.073Z"
+  },
+  {
+    "symbol": "ATHERENERG",
+    "company": "Ather Energy Ltd.",
+    "sector": "Automobile",
+    "industry": "Automobile and Auto Components",
+    "nse": "ATHERENERG.NS",
+    "yahooSymbol": "ATHERENERG.NS",
+    "currentPrice": 619,
+    "lastUpdated": "2026-01-26T18:37:16.238Z"
+  },
+  {
+    "symbol": "ANGELONE",
+    "company": "Angel One Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "ANGELONE.NS",
+    "yahooSymbol": "ANGELONE.NS",
+    "currentPrice": 2509.9,
+    "lastUpdated": "2026-01-26T18:37:16.244Z"
+  },
+  {
+    "symbol": "ANANDRATHI",
+    "company": "Anand Rathi Wealth Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "ANANDRATHI.NS",
+    "yahooSymbol": "ANANDRATHI.NS",
+    "currentPrice": 2963.9,
+    "lastUpdated": "2026-01-26T18:37:16.250Z"
+  },
+  {
+    "symbol": "APTUS",
+    "company": "Aptus Value Housing Finance India Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "APTUS.NS",
+    "yahooSymbol": "APTUS.NS",
+    "currentPrice": 260,
+    "lastUpdated": "2026-01-26T18:37:16.255Z"
+  },
+  {
+    "symbol": "AIIL",
+    "company": "Authum Investment & Infrastructure Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "AIIL.NS",
+    "yahooSymbol": "AIIL.NS",
+    "currentPrice": 517.5,
+    "lastUpdated": "2026-01-26T18:37:16.340Z"
+  },
+  {
+    "symbol": "BEML",
+    "company": "BEML Ltd.",
+    "sector": "Capital Goods",
+    "industry": "Capital Goods",
+    "nse": "BEML.NS",
+    "yahooSymbol": "BEML.NS",
+    "currentPrice": 1650,
+    "lastUpdated": "2026-01-26T18:37:18.689Z"
+  },
+  {
+    "symbol": "BLS",
+    "company": "BLS International Services Ltd.",
+    "sector": "Consumer Services",
+    "industry": "Consumer Services",
+    "nse": "BLS.NS",
+    "yahooSymbol": "BLS.NS",
+    "currentPrice": 275,
+    "lastUpdated": "2026-01-26T18:37:18.697Z"
+  },
+  {
+    "symbol": "BASF",
+    "company": "BASF India Ltd.",
+    "sector": "Chemicals",
+    "industry": "Chemicals",
+    "nse": "BASF.NS",
+    "yahooSymbol": "BASF.NS",
+    "currentPrice": 3640.9,
+    "lastUpdated": "2026-01-26T18:37:18.705Z"
+  },
+  {
+    "symbol": "BALRAMCHIN",
+    "company": "Balrampur Chini Mills Ltd.",
+    "sector": "FMCG",
+    "industry": "Fast Moving Consumer Goods",
+    "nse": "BALRAMCHIN.NS",
+    "yahooSymbol": "BALRAMCHIN.NS",
+    "currentPrice": 414,
+    "lastUpdated": "2026-01-26T18:37:18.709Z"
+  },
+  {
+    "symbol": "BANDHANBNK",
+    "company": "Bandhan Bank Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "BANDHANBNK.NS",
+    "yahooSymbol": "BANDHANBNK.NS",
+    "currentPrice": 148.6,
+    "lastUpdated": "2026-01-26T18:37:18.893Z"
+  },
+  {
+    "symbol": "MAHABANK",
+    "company": "Bank of Maharashtra",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "MAHABANK.NS",
+    "yahooSymbol": "MAHABANK.NS",
+    "currentPrice": 65.41,
+    "lastUpdated": "2026-01-26T18:37:21.248Z"
+  },
+  {
+    "symbol": "BERGEPAINT",
+    "company": "Berger Paints India Ltd.",
+    "sector": "Consumer Durables",
+    "industry": "Consumer Durables",
+    "nse": "BERGEPAINT.NS",
+    "yahooSymbol": "BERGEPAINT.NS",
+    "currentPrice": 505,
+    "lastUpdated": "2026-01-26T18:37:21.255Z"
+  },
+  {
+    "symbol": "BATAINDIA",
+    "company": "Bata India Ltd.",
+    "sector": "Consumer Durables",
+    "industry": "Consumer Durables",
+    "nse": "BATAINDIA.NS",
+    "yahooSymbol": "BATAINDIA.NS",
+    "currentPrice": 853.45,
+    "lastUpdated": "2026-01-26T18:37:21.264Z"
+  },
+  {
+    "symbol": "BAYERCROP",
+    "company": "Bayer Cropscience Ltd.",
+    "sector": "Chemicals",
+    "industry": "Chemicals",
+    "nse": "BAYERCROP.NS",
+    "yahooSymbol": "BAYERCROP.NS",
+    "currentPrice": 4366.2,
+    "lastUpdated": "2026-01-26T18:37:21.267Z"
+  },
+  {
+    "symbol": "BIKAJI",
+    "company": "Bikaji Foods International Ltd.",
+    "sector": "FMCG",
+    "industry": "Fast Moving Consumer Goods",
+    "nse": "BIKAJI.NS",
+    "yahooSymbol": "BIKAJI.NS",
+    "currentPrice": 651.55,
+    "lastUpdated": "2026-01-26T18:37:21.444Z"
+  },
+  {
+    "symbol": "BSOFT",
+    "company": "Birlasoft Ltd.",
+    "sector": "IT",
+    "industry": "Information Technology",
+    "nse": "BSOFT.NS",
+    "yahooSymbol": "BSOFT.NS",
+    "currentPrice": 408.95,
+    "lastUpdated": "2026-01-26T18:37:23.705Z"
+  },
+  {
+    "symbol": "BLUEJET",
+    "company": "Blue Jet Healthcare Ltd.",
+    "sector": "Healthcare",
+    "industry": "Healthcare",
+    "nse": "BLUEJET.NS",
+    "yahooSymbol": "BLUEJET.NS",
+    "currentPrice": 436.65,
+    "lastUpdated": "2026-01-26T18:37:23.711Z"
+  },
+  {
+    "symbol": "BLUEDART",
+    "company": "Blue Dart Express Ltd.",
+    "sector": "Services",
+    "industry": "Services",
+    "nse": "BLUEDART.NS",
+    "yahooSymbol": "BLUEDART.NS",
+    "currentPrice": 5288,
+    "lastUpdated": "2026-01-26T18:37:23.715Z"
+  },
+  {
+    "symbol": "BBTC",
+    "company": "Bombay Burmah Trading Corporation Ltd.",
+    "sector": "FMCG",
+    "industry": "Fast Moving Consumer Goods",
+    "nse": "BBTC.NS",
+    "yahooSymbol": "BBTC.NS",
+    "currentPrice": 1752,
+    "lastUpdated": "2026-01-26T18:37:23.721Z"
+  },
+  {
+    "symbol": "FIRSTCRY",
+    "company": "Brainbees Solutions Ltd.",
+    "sector": "Consumer Services",
+    "industry": "Consumer Services",
+    "nse": "FIRSTCRY.NS",
+    "yahooSymbol": "FIRSTCRY.NS",
+    "currentPrice": 274.05,
+    "lastUpdated": "2026-01-26T18:37:23.900Z"
+  },
+  {
+    "symbol": "MAPMYINDIA",
+    "company": "C.E. Info Systems Ltd.",
+    "sector": "IT",
+    "industry": "Information Technology",
+    "nse": "MAPMYINDIA.NS",
+    "yahooSymbol": "MAPMYINDIA.NS",
+    "currentPrice": 1298.6,
+    "lastUpdated": "2026-01-26T18:37:26.060Z"
+  },
+  {
+    "symbol": "CESC",
+    "company": "CESC Ltd.",
+    "sector": "Power",
+    "industry": "Power",
+    "nse": "CESC.NS",
+    "yahooSymbol": "CESC.NS",
+    "currentPrice": 140.1,
+    "lastUpdated": "2026-01-26T18:37:26.068Z"
+  },
+  {
+    "symbol": "CCL",
+    "company": "CCL Products (I) Ltd.",
+    "sector": "FMCG",
+    "industry": "Fast Moving Consumer Goods",
+    "nse": "CCL.NS",
+    "yahooSymbol": "CCL.NS",
+    "currentPrice": 924.6,
+    "lastUpdated": "2026-01-26T18:37:26.073Z"
+  },
+  {
+    "symbol": "BRIGADE",
+    "company": "Brigade Enterprises Ltd.",
+    "sector": "Real Estate",
+    "industry": "Realty",
+    "nse": "BRIGADE.NS",
+    "yahooSymbol": "BRIGADE.NS",
+    "currentPrice": 764.8,
+    "lastUpdated": "2026-01-26T18:37:26.084Z"
+  },
+  {
+    "symbol": "CRISIL",
+    "company": "CRISIL Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "CRISIL.NS",
+    "yahooSymbol": "CRISIL.NS",
+    "currentPrice": 4498.5,
+    "lastUpdated": "2026-01-26T18:37:26.253Z"
+  },
+  {
+    "symbol": "CAMPUS",
+    "company": "Campus Activewear Ltd.",
+    "sector": "Consumer Durables",
+    "industry": "Consumer Durables",
+    "nse": "CAMPUS.NS",
+    "yahooSymbol": "CAMPUS.NS",
+    "currentPrice": 248.4,
+    "lastUpdated": "2026-01-26T18:37:28.399Z"
+  },
+  {
+    "symbol": "CANFINHOME",
+    "company": "Can Fin Homes Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "CANFINHOME.NS",
+    "yahooSymbol": "CANFINHOME.NS",
+    "currentPrice": 895.5,
+    "lastUpdated": "2026-01-26T18:37:28.399Z"
+  },
+  {
+    "symbol": "CAPLIPOINT",
+    "company": "Caplin Point Laboratories Ltd.",
+    "sector": "Healthcare",
+    "industry": "Healthcare",
+    "nse": "CAPLIPOINT.NS",
+    "yahooSymbol": "CAPLIPOINT.NS",
+    "currentPrice": 1748.6,
+    "lastUpdated": "2026-01-26T18:37:28.400Z"
+  },
+  {
+    "symbol": "CGCL",
+    "company": "Capri Global Capital Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "CGCL.NS",
+    "yahooSymbol": "CGCL.NS",
+    "currentPrice": 167,
+    "lastUpdated": "2026-01-26T18:37:28.402Z"
+  },
+  {
+    "symbol": "CARBORUNIV",
+    "company": "Carborundum Universal Ltd.",
+    "sector": "Capital Goods",
+    "industry": "Capital Goods",
+    "nse": "CARBORUNIV.NS",
+    "yahooSymbol": "CARBORUNIV.NS",
+    "currentPrice": 811.1,
+    "lastUpdated": "2026-01-26T18:37:28.820Z"
+  },
+  {
+    "symbol": "CENTRALBK",
+    "company": "Central Bank of India",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "CENTRALBK.NS",
+    "yahooSymbol": "CENTRALBK.NS",
+    "currentPrice": 36.32,
+    "lastUpdated": "2026-01-26T18:37:30.950Z"
+  },
+  {
+    "symbol": "CDSL",
+    "company": "Central Depository Services (India) Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "CDSL.NS",
+    "yahooSymbol": "CDSL.NS",
+    "currentPrice": 1326.6,
+    "lastUpdated": "2026-01-26T18:37:30.960Z"
+  },
+  {
+    "symbol": "CENTURYPLY",
+    "company": "Century Plyboards (India) Ltd.",
+    "sector": "Consumer Durables",
+    "industry": "Consumer Durables",
+    "nse": "CENTURYPLY.NS",
+    "yahooSymbol": "CENTURYPLY.NS",
+    "currentPrice": 735.65,
+    "lastUpdated": "2026-01-26T18:37:30.966Z"
+  },
+  {
+    "symbol": "CERA",
+    "company": "Cera Sanitaryware Ltd",
+    "sector": "Consumer Durables",
+    "industry": "Consumer Durables",
+    "nse": "CERA.NS",
+    "yahooSymbol": "CERA.NS",
+    "currentPrice": 4925,
+    "lastUpdated": "2026-01-26T18:37:30.968Z"
+  },
+  {
+    "symbol": "CHALET",
+    "company": "Chalet Hotels Ltd.",
+    "sector": "Consumer Services",
+    "industry": "Consumer Services",
+    "nse": "CHALET.NS",
+    "yahooSymbol": "CHALET.NS",
+    "currentPrice": 819,
+    "lastUpdated": "2026-01-26T18:37:31.044Z"
+  },
+  {
+    "symbol": "CHAMBLFERT",
+    "company": "Chambal Fertilizers & Chemicals Ltd.",
+    "sector": "Chemicals",
+    "industry": "Chemicals",
+    "nse": "CHAMBLFERT.NS",
+    "yahooSymbol": "CHAMBLFERT.NS",
+    "currentPrice": 436.5,
+    "lastUpdated": "2026-01-26T18:37:33.143Z"
+  },
+  {
+    "symbol": "CHOICEIN",
+    "company": "Choice International Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "CHOICEIN.NS",
+    "yahooSymbol": "CHOICEIN.NS",
+    "currentPrice": 755,
+    "lastUpdated": "2026-01-26T18:37:33.144Z"
+  },
+  {
+    "symbol": "CHOLAHLDNG",
+    "company": "Cholamandalam Financial Holdings Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "CHOLAHLDNG.NS",
+    "yahooSymbol": "CHOLAHLDNG.NS",
+    "currentPrice": 1625.2,
+    "lastUpdated": "2026-01-26T18:37:33.160Z"
+  },
+  {
+    "symbol": "CUB",
+    "company": "City Union Bank Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "CUB.NS",
+    "yahooSymbol": "CUB.NS",
+    "currentPrice": 275.5,
+    "lastUpdated": "2026-01-26T18:37:33.162Z"
+  },
+  {
+    "symbol": "CLEAN",
+    "company": "Clean Science and Technology Ltd.",
+    "sector": "Chemicals",
+    "industry": "Chemicals",
+    "nse": "CLEAN.NS",
+    "yahooSymbol": "CLEAN.NS",
+    "currentPrice": 855,
+    "lastUpdated": "2026-01-26T18:37:33.257Z"
+  },
+  {
+    "symbol": "COHANCE",
+    "company": "Cohance Lifesciences Ltd.",
+    "sector": "Healthcare",
+    "industry": "Healthcare",
+    "nse": "COHANCE.NS",
+    "yahooSymbol": "COHANCE.NS",
+    "currentPrice": 382.05,
+    "lastUpdated": "2026-01-26T18:37:35.359Z"
+  },
+  {
+    "symbol": "CAMS",
+    "company": "Computer Age Management Services Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "CAMS.NS",
+    "yahooSymbol": "CAMS.NS",
+    "currentPrice": 679.4,
+    "lastUpdated": "2026-01-26T18:37:35.361Z"
+  },
+  {
+    "symbol": "CONCORDBIO",
+    "company": "Concord Biotech Ltd.",
+    "sector": "Healthcare",
+    "industry": "Healthcare",
+    "nse": "CONCORDBIO.NS",
+    "yahooSymbol": "CONCORDBIO.NS",
+    "currentPrice": 1245.4,
+    "lastUpdated": "2026-01-26T18:37:35.365Z"
+  },
+  {
+    "symbol": "CRAFTSMAN",
+    "company": "Craftsman Automation Ltd.",
+    "sector": "Automobile",
+    "industry": "Automobile and Auto Components",
+    "nse": "CRAFTSMAN.NS",
+    "yahooSymbol": "CRAFTSMAN.NS",
+    "currentPrice": 7242.5,
+    "lastUpdated": "2026-01-26T18:37:35.377Z"
+  },
+  {
+    "symbol": "CREDITACC",
+    "company": "CreditAccess Grameen Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "CREDITACC.NS",
+    "yahooSymbol": "CREDITACC.NS",
+    "currentPrice": 1384,
+    "lastUpdated": "2026-01-26T18:37:35.470Z"
+  },
+  {
+    "symbol": "CROMPTON",
+    "company": "Crompton Greaves Consumer Electricals Ltd.",
+    "sector": "Consumer Durables",
+    "industry": "Consumer Durables",
+    "nse": "CROMPTON.NS",
+    "yahooSymbol": "CROMPTON.NS",
+    "currentPrice": 226.1,
+    "lastUpdated": "2026-01-26T18:37:37.574Z"
+  },
+  {
+    "symbol": "DCMSHRIRAM",
+    "company": "DCM Shriram Ltd.",
+    "sector": "Conglomerates",
+    "industry": "Diversified",
+    "nse": "DCMSHRIRAM.NS",
+    "yahooSymbol": "DCMSHRIRAM.NS",
+    "currentPrice": 1112,
+    "lastUpdated": "2026-01-26T18:37:37.575Z"
+  },
+  {
+    "symbol": "CYIENT",
+    "company": "Cyient Ltd.",
+    "sector": "IT",
+    "industry": "Information Technology",
+    "nse": "CYIENT.NS",
+    "yahooSymbol": "CYIENT.NS",
+    "currentPrice": 1087.9,
+    "lastUpdated": "2026-01-26T18:37:37.579Z"
+  },
+  {
+    "symbol": "DOMS",
+    "company": "DOMS Industries Ltd.",
+    "sector": "FMCG",
+    "industry": "Fast Moving Consumer Goods",
+    "nse": "DOMS.NS",
+    "yahooSymbol": "DOMS.NS",
+    "currentPrice": 2351.7,
+    "lastUpdated": "2026-01-26T18:37:37.589Z"
+  },
+  {
+    "symbol": "DALBHARAT",
+    "company": "Dalmia Bharat Ltd.",
+    "sector": "Construction",
+    "industry": "Construction Materials",
+    "nse": "DALBHARAT.NS",
+    "yahooSymbol": "DALBHARAT.NS",
+    "currentPrice": 2086,
+    "lastUpdated": "2026-01-26T18:37:37.685Z"
+  },
+  {
+    "symbol": "DATAPATTNS",
+    "company": "Data Patterns (India) Ltd.",
+    "sector": "Capital Goods",
+    "industry": "Capital Goods",
+    "nse": "DATAPATTNS.NS",
+    "yahooSymbol": "DATAPATTNS.NS",
+    "currentPrice": 2175,
+    "lastUpdated": "2026-01-26T18:37:39.805Z"
+  },
+  {
+    "symbol": "DEEPAKFERT",
+    "company": "Deepak Fertilisers & Petrochemicals Corp. Ltd.",
+    "sector": "Chemicals",
+    "industry": "Chemicals",
+    "nse": "DEEPAKFERT.NS",
+    "yahooSymbol": "DEEPAKFERT.NS",
+    "currentPrice": 1179.9,
+    "lastUpdated": "2026-01-26T18:37:39.810Z"
+  },
+  {
+    "symbol": "DEEPAKNTR",
+    "company": "Deepak Nitrite Ltd.",
+    "sector": "Chemicals",
+    "industry": "Chemicals",
+    "nse": "DEEPAKNTR.NS",
+    "yahooSymbol": "DEEPAKNTR.NS",
+    "currentPrice": 1561.8,
+    "lastUpdated": "2026-01-26T18:37:39.814Z"
+  },
+  {
+    "symbol": "DELHIVERY",
+    "company": "Delhivery Ltd.",
+    "sector": "Services",
+    "industry": "Services",
+    "nse": "DELHIVERY.NS",
+    "yahooSymbol": "DELHIVERY.NS",
+    "currentPrice": 388,
+    "lastUpdated": "2026-01-26T18:37:39.826Z"
+  },
+  {
+    "symbol": "DEVYANI",
+    "company": "Devyani International Ltd.",
+    "sector": "Consumer Services",
+    "industry": "Consumer Services",
+    "nse": "DEVYANI.NS",
+    "yahooSymbol": "DEVYANI.NS",
+    "currentPrice": 114.28,
+    "lastUpdated": "2026-01-26T18:37:39.979Z"
+  },
+  {
+    "symbol": "AGARWALEYE",
+    "company": "Dr. Agarwal's Health Care Ltd.",
+    "sector": "Healthcare",
+    "industry": "Healthcare",
+    "nse": "AGARWALEYE.NS",
+    "yahooSymbol": "AGARWALEYE.NS",
+    "currentPrice": 460,
+    "lastUpdated": "2026-01-26T18:37:42.254Z"
+  },
+  {
+    "symbol": "EIDPARRY",
+    "company": "E.I.D. Parry (India) Ltd.",
+    "sector": "FMCG",
+    "industry": "Fast Moving Consumer Goods",
+    "nse": "EIDPARRY.NS",
+    "yahooSymbol": "EIDPARRY.NS",
+    "currentPrice": 883.7,
+    "lastUpdated": "2026-01-26T18:37:42.258Z"
+  },
+  {
+    "symbol": "LALPATHLAB",
+    "company": "Dr. Lal Path Labs Ltd.",
+    "sector": "Healthcare",
+    "industry": "Healthcare",
+    "nse": "LALPATHLAB.NS",
+    "yahooSymbol": "LALPATHLAB.NS",
+    "currentPrice": 1377.8,
+    "lastUpdated": "2026-01-26T18:37:42.260Z"
+  },
+  {
+    "symbol": "EIHOTEL",
+    "company": "EIH Ltd.",
+    "sector": "Consumer Services",
+    "industry": "Consumer Services",
+    "nse": "EIHOTEL.NS",
+    "yahooSymbol": "EIHOTEL.NS",
+    "currentPrice": 321.4,
+    "lastUpdated": "2026-01-26T18:37:42.266Z"
+  },
+  {
+    "symbol": "ELECON",
+    "company": "Elecon Engineering Co. Ltd.",
+    "sector": "Capital Goods",
+    "industry": "Capital Goods",
+    "nse": "ELECON.NS",
+    "yahooSymbol": "ELECON.NS",
+    "currentPrice": 375.05,
+    "lastUpdated": "2026-01-26T18:37:42.351Z"
+  },
+  {
+    "symbol": "EMAMILTD",
+    "company": "Emami Ltd.",
+    "sector": "FMCG",
+    "industry": "Fast Moving Consumer Goods",
+    "nse": "EMAMILTD.NS",
+    "yahooSymbol": "EMAMILTD.NS",
+    "currentPrice": 502.5,
+    "lastUpdated": "2026-01-26T18:37:44.607Z"
+  },
+  {
+    "symbol": "ELGIEQUIP",
+    "company": "Elgi Equipments Ltd.",
+    "sector": "Capital Goods",
+    "industry": "Capital Goods",
+    "nse": "ELGIEQUIP.NS",
+    "yahooSymbol": "ELGIEQUIP.NS",
+    "currentPrice": 424,
+    "lastUpdated": "2026-01-26T18:37:44.613Z"
+  },
+  {
+    "symbol": "EMCURE",
+    "company": "Emcure Pharmaceuticals Ltd.",
+    "sector": "Healthcare",
+    "industry": "Healthcare",
+    "nse": "EMCURE.NS",
+    "yahooSymbol": "EMCURE.NS",
+    "currentPrice": 1487.4,
+    "lastUpdated": "2026-01-26T18:37:44.621Z"
+  },
+  {
+    "symbol": "ENDURANCE",
+    "company": "Endurance Technologies Ltd.",
+    "sector": "Automobile",
+    "industry": "Automobile and Auto Components",
+    "nse": "ENDURANCE.NS",
+    "yahooSymbol": "ENDURANCE.NS",
+    "currentPrice": 2357,
+    "lastUpdated": "2026-01-26T18:37:44.627Z"
+  },
+  {
+    "symbol": "ENGINERSIN",
+    "company": "Engineers India Ltd.",
+    "sector": "Construction",
+    "industry": "Construction",
+    "nse": "ENGINERSIN.NS",
+    "yahooSymbol": "ENGINERSIN.NS",
+    "currentPrice": 167.06,
+    "lastUpdated": "2026-01-26T18:37:44.802Z"
+  },
+  {
+    "symbol": "ERIS",
+    "company": "Eris Lifesciences Ltd.",
+    "sector": "Healthcare",
+    "industry": "Healthcare",
+    "nse": "ERIS.NS",
+    "yahooSymbol": "ERIS.NS",
+    "currentPrice": 1380,
+    "lastUpdated": "2026-01-26T18:37:46.950Z"
+  },
+  {
+    "symbol": "ESCORTS",
+    "company": "Escorts Kubota Ltd.",
+    "sector": "Capital Goods",
+    "industry": "Capital Goods",
+    "nse": "ESCORTS.NS",
+    "yahooSymbol": "ESCORTS.NS",
+    "currentPrice": 3490,
+    "lastUpdated": "2026-01-26T18:37:46.954Z"
+  },
+  {
+    "symbol": "FACT",
+    "company": "Fertilisers and Chemicals Travancore Ltd.",
+    "sector": "Chemicals",
+    "industry": "Chemicals",
+    "nse": "FACT.NS",
+    "yahooSymbol": "FACT.NS",
+    "currentPrice": 781,
+    "lastUpdated": "2026-01-26T18:37:46.956Z"
+  },
+  {
+    "symbol": "FINCABLES",
+    "company": "Finolex Cables Ltd.",
+    "sector": "Capital Goods",
+    "industry": "Capital Goods",
+    "nse": "FINCABLES.NS",
+    "yahooSymbol": "FINCABLES.NS",
+    "currentPrice": 723,
+    "lastUpdated": "2026-01-26T18:37:46.960Z"
+  },
+  {
+    "symbol": "FINPIPE",
+    "company": "Finolex Industries Ltd.",
+    "sector": "Capital Goods",
+    "industry": "Capital Goods",
+    "nse": "FINPIPE.NS",
+    "yahooSymbol": "FINPIPE.NS",
+    "currentPrice": 172.29,
+    "lastUpdated": "2026-01-26T18:37:47.056Z"
+  },
+  {
+    "symbol": "FIVESTAR",
+    "company": "Five-Star Business Finance Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "FIVESTAR.NS",
+    "yahooSymbol": "FIVESTAR.NS",
+    "currentPrice": 511.95,
+    "lastUpdated": "2026-01-26T18:37:49.283Z"
+  },
+  {
+    "symbol": "GVT&D",
+    "company": "GE Vernova T&D India Ltd.",
+    "sector": "Capital Goods",
+    "industry": "Capital Goods",
+    "nse": "GVT&D.NS",
+    "yahooSymbol": "GVT&D.NS",
+    "currentPrice": 2710,
+    "lastUpdated": "2026-01-26T18:37:49.287Z"
+  },
+  {
+    "symbol": "FSL",
+    "company": "Firstsource Solutions Ltd.",
+    "sector": "Services",
+    "industry": "Services",
+    "nse": "FSL.NS",
+    "yahooSymbol": "FSL.NS",
+    "currentPrice": 315.5,
+    "lastUpdated": "2026-01-26T18:37:49.289Z"
+  },
+  {
+    "symbol": "FORCEMOT",
+    "company": "Force Motors Ltd.",
+    "sector": "Automobile",
+    "industry": "Automobile and Auto Components",
+    "nse": "FORCEMOT.NS",
+    "yahooSymbol": "FORCEMOT.NS",
+    "currentPrice": 19340,
+    "lastUpdated": "2026-01-26T18:37:49.293Z"
+  },
+  {
+    "symbol": "GRSE",
+    "company": "Garden Reach Shipbuilders & Engineers Ltd.",
+    "sector": "Capital Goods",
+    "industry": "Capital Goods",
+    "nse": "GRSE.NS",
+    "yahooSymbol": "GRSE.NS",
+    "currentPrice": 2229,
+    "lastUpdated": "2026-01-26T18:37:49.404Z"
+  },
+  {
+    "symbol": "GICRE",
+    "company": "General Insurance Corporation of India",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "GICRE.NS",
+    "yahooSymbol": "GICRE.NS",
+    "currentPrice": 369.5,
+    "lastUpdated": "2026-01-26T18:37:51.664Z"
+  },
+  {
+    "symbol": "GILLETTE",
+    "company": "Gillette India Ltd.",
+    "sector": "FMCG",
+    "industry": "Fast Moving Consumer Goods",
+    "nse": "GILLETTE.NS",
+    "yahooSymbol": "GILLETTE.NS",
+    "currentPrice": 7916,
+    "lastUpdated": "2026-01-26T18:37:51.667Z"
+  },
+  {
+    "symbol": "GLAND",
+    "company": "Gland Pharma Ltd.",
+    "sector": "Healthcare",
+    "industry": "Healthcare",
+    "nse": "GLAND.NS",
+    "yahooSymbol": "GLAND.NS",
+    "currentPrice": 1688,
+    "lastUpdated": "2026-01-26T18:37:51.670Z"
+  },
+  {
+    "symbol": "GLAXO",
+    "company": "Glaxosmithkline Pharmaceuticals Ltd.",
+    "sector": "Healthcare",
+    "industry": "Healthcare",
+    "nse": "GLAXO.NS",
+    "yahooSymbol": "GLAXO.NS",
+    "currentPrice": 2308,
+    "lastUpdated": "2026-01-26T18:37:51.677Z"
+  },
+  {
+    "symbol": "MEDANTA",
+    "company": "Global Health Ltd.",
+    "sector": "Healthcare",
+    "industry": "Healthcare",
+    "nse": "MEDANTA.NS",
+    "yahooSymbol": "MEDANTA.NS",
+    "currentPrice": 1030,
+    "lastUpdated": "2026-01-26T18:37:51.858Z"
+  },
+  {
+    "symbol": "GODIGIT",
+    "company": "Go Digit General Insurance Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "GODIGIT.NS",
+    "yahooSymbol": "GODIGIT.NS",
+    "currentPrice": 330.5,
+    "lastUpdated": "2026-01-26T18:37:54.020Z"
+  },
+  {
+    "symbol": "GRANULES",
+    "company": "Granules India Ltd.",
+    "sector": "Healthcare",
+    "industry": "Healthcare",
+    "nse": "GRANULES.NS",
+    "yahooSymbol": "GRANULES.NS",
+    "currentPrice": 564.4,
+    "lastUpdated": "2026-01-26T18:37:54.024Z"
+  },
+  {
+    "symbol": "GPIL",
+    "company": "Godawari Power & Ispat Ltd.",
+    "sector": "Capital Goods",
+    "industry": "Capital Goods",
+    "nse": "GPIL.NS",
+    "yahooSymbol": "GPIL.NS",
+    "currentPrice": 241,
+    "lastUpdated": "2026-01-26T18:37:54.030Z"
+  },
+  {
+    "symbol": "GRAPHITE",
+    "company": "Graphite India Ltd.",
+    "sector": "Capital Goods",
+    "industry": "Capital Goods",
+    "nse": "GRAPHITE.NS",
+    "yahooSymbol": "GRAPHITE.NS",
+    "currentPrice": 612,
+    "lastUpdated": "2026-01-26T18:37:54.037Z"
+  },
+  {
+    "symbol": "GRAVITA",
+    "company": "Gravita India Ltd.",
+    "sector": "Metals",
+    "industry": "Metals & Mining",
+    "nse": "GRAVITA.NS",
+    "yahooSymbol": "GRAVITA.NS",
+    "currentPrice": 1553.5,
+    "lastUpdated": "2026-01-26T18:37:54.210Z"
+  },
+  {
+    "symbol": "FLUOROCHEM",
+    "company": "Gujarat Fluorochemicals Ltd.",
+    "sector": "Chemicals",
+    "industry": "Chemicals",
+    "nse": "FLUOROCHEM.NS",
+    "yahooSymbol": "FLUOROCHEM.NS",
+    "currentPrice": 3092.1,
+    "lastUpdated": "2026-01-26T18:37:56.492Z"
+  },
+  {
+    "symbol": "GUJGASLTD",
+    "company": "Gujarat Gas Ltd.",
+    "sector": "Oil & Gas",
+    "industry": "Oil Gas & Consumable Fuels",
+    "nse": "GUJGASLTD.NS",
+    "yahooSymbol": "GUJGASLTD.NS",
+    "currentPrice": 405,
+    "lastUpdated": "2026-01-26T18:37:56.497Z"
+  },
+  {
+    "symbol": "GESHIP",
+    "company": "Great Eastern Shipping Co. Ltd.",
+    "sector": "Services",
+    "industry": "Services",
+    "nse": "GESHIP.NS",
+    "yahooSymbol": "GESHIP.NS",
+    "currentPrice": 1107.6,
+    "lastUpdated": "2026-01-26T18:37:56.505Z"
+  },
+  {
+    "symbol": "GMDCLTD",
+    "company": "Gujarat Mineral Development Corporation Ltd.",
+    "sector": "Metals",
+    "industry": "Metals & Mining",
+    "nse": "GMDCLTD.NS",
+    "yahooSymbol": "GMDCLTD.NS",
+    "currentPrice": 516.9,
+    "lastUpdated": "2026-01-26T18:37:56.509Z"
+  },
+  {
+    "symbol": "GSPL",
+    "company": "Gujarat State Petronet Ltd.",
+    "sector": "Oil & Gas",
+    "industry": "Oil Gas & Consumable Fuels",
+    "nse": "GSPL.NS",
+    "yahooSymbol": "GSPL.NS",
+    "currentPrice": 298.25,
+    "lastUpdated": "2026-01-26T18:37:56.576Z"
+  },
+  {
+    "symbol": "HEG",
+    "company": "H.E.G. Ltd.",
+    "sector": "Capital Goods",
+    "industry": "Capital Goods",
+    "nse": "HEG.NS",
+    "yahooSymbol": "HEG.NS",
+    "currentPrice": 527.85,
+    "lastUpdated": "2026-01-26T18:37:58.678Z"
+  },
+  {
+    "symbol": "HBLENGINE",
+    "company": "HBL Engineering Ltd.",
+    "sector": "Capital Goods",
+    "industry": "Capital Goods",
+    "nse": "HBLENGINE.NS",
+    "yahooSymbol": "HBLENGINE.NS",
+    "currentPrice": 705.7,
+    "lastUpdated": "2026-01-26T18:37:58.686Z"
+  },
+  {
+    "symbol": "HFCL",
+    "company": "HFCL Ltd.",
+    "sector": "Telecom",
+    "industry": "Telecommunication",
+    "nse": "HFCL.NS",
+    "yahooSymbol": "HFCL.NS",
+    "currentPrice": 60.68,
+    "lastUpdated": "2026-01-26T18:37:58.690Z"
+  },
+  {
+    "symbol": "HAPPSTMNDS",
+    "company": "Happiest Minds Technologies Ltd.",
+    "sector": "IT",
+    "industry": "Information Technology",
+    "nse": "HAPPSTMNDS.NS",
+    "yahooSymbol": "HAPPSTMNDS.NS",
+    "currentPrice": 407,
+    "lastUpdated": "2026-01-26T18:37:58.694Z"
+  },
+  {
+    "symbol": "HEXT",
+    "company": "Hexaware Technologies Ltd.",
+    "sector": "IT",
+    "industry": "Information Technology",
+    "nse": "HEXT.NS",
+    "yahooSymbol": "HEXT.NS",
+    "currentPrice": 715.45,
+    "lastUpdated": "2026-01-26T18:37:58.788Z"
+  },
+  {
+    "symbol": "HSCL",
+    "company": "Himadri Speciality Chemical Ltd.",
+    "sector": "Chemicals",
+    "industry": "Chemicals",
+    "nse": "HSCL.NS",
+    "yahooSymbol": "HSCL.NS",
+    "currentPrice": 446.4,
+    "lastUpdated": "2026-01-26T18:38:00.990Z"
+  },
+  {
+    "symbol": "HOMEFIRST",
+    "company": "Home First Finance Company India Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "HOMEFIRST.NS",
+    "yahooSymbol": "HOMEFIRST.NS",
+    "currentPrice": 1112,
+    "lastUpdated": "2026-01-26T18:38:01.004Z"
+  },
+  {
+    "symbol": "HONASA",
+    "company": "Honasa Consumer Ltd.",
+    "sector": "FMCG",
+    "industry": "Fast Moving Consumer Goods",
+    "nse": "HONASA.NS",
+    "yahooSymbol": "HONASA.NS",
+    "currentPrice": 271.5,
+    "lastUpdated": "2026-01-26T18:38:01.012Z"
+  },
+  {
+    "symbol": "HINDCOPPER",
+    "company": "Hindustan Copper Ltd.",
+    "sector": "Metals",
+    "industry": "Metals & Mining",
+    "nse": "HINDCOPPER.NS",
+    "yahooSymbol": "HINDCOPPER.NS",
+    "currentPrice": 539,
+    "lastUpdated": "2026-01-26T18:38:01.015Z"
+  },
+  {
+    "symbol": "HONAUT",
+    "company": "Honeywell Automation India Ltd.",
+    "sector": "Capital Goods",
+    "industry": "Capital Goods",
+    "nse": "HONAUT.NS",
+    "yahooSymbol": "HONAUT.NS",
+    "currentPrice": 31400,
+    "lastUpdated": "2026-01-26T18:38:01.083Z"
+  },
+  {
+    "symbol": "IFCI",
+    "company": "IFCI Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "IFCI.NS",
+    "yahooSymbol": "IFCI.NS",
+    "currentPrice": 56.15,
+    "lastUpdated": "2026-01-26T18:38:03.229Z"
+  },
+  {
+    "symbol": "ICICIPRULI",
+    "company": "ICICI Prudential Life Insurance Company Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "ICICIPRULI.NS",
+    "yahooSymbol": "ICICIPRULI.NS",
+    "currentPrice": 639.85,
+    "lastUpdated": "2026-01-26T18:38:03.244Z"
+  },
+  {
+    "symbol": "IDBI",
+    "company": "IDBI Bank Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "IDBI.NS",
+    "yahooSymbol": "IDBI.NS",
+    "currentPrice": 97.84,
+    "lastUpdated": "2026-01-26T18:38:03.248Z"
+  },
+  {
+    "symbol": "IIFL",
+    "company": "IIFL Finance Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "IIFL.NS",
+    "yahooSymbol": "IIFL.NS",
+    "currentPrice": 522.2,
+    "lastUpdated": "2026-01-26T18:38:03.256Z"
+  },
+  {
+    "symbol": "INOXINDIA",
+    "company": "INOX India Ltd.",
+    "sector": "Capital Goods",
+    "industry": "Capital Goods",
+    "nse": "INOXINDIA.NS",
+    "yahooSymbol": "INOXINDIA.NS",
+    "currentPrice": 1086.1,
+    "lastUpdated": "2026-01-26T18:38:03.341Z"
+  },
+  {
+    "symbol": "ITI",
+    "company": "ITI Ltd.",
+    "sector": "Telecom",
+    "industry": "Telecommunication",
+    "nse": "ITI.NS",
+    "yahooSymbol": "ITI.NS",
+    "currentPrice": 278.5,
+    "lastUpdated": "2026-01-26T18:38:05.692Z"
+  },
+  {
+    "symbol": "IRCON",
+    "company": "IRCON International Ltd.",
+    "sector": "Construction",
+    "industry": "Construction",
+    "nse": "IRCON.NS",
+    "yahooSymbol": "IRCON.NS",
+    "currentPrice": 153.3,
+    "lastUpdated": "2026-01-26T18:38:05.703Z"
+  },
+  {
+    "symbol": "INDGN",
+    "company": "Indegene Ltd.",
+    "sector": "Healthcare",
+    "industry": "Healthcare",
+    "nse": "INDGN.NS",
+    "yahooSymbol": "INDGN.NS",
+    "currentPrice": 474.25,
+    "lastUpdated": "2026-01-26T18:38:05.707Z"
+  },
+  {
+    "symbol": "INDIACEM",
+    "company": "India Cements Ltd.",
+    "sector": "Construction",
+    "industry": "Construction Materials",
+    "nse": "INDIACEM.NS",
+    "yahooSymbol": "INDIACEM.NS",
+    "currentPrice": 429.5,
+    "lastUpdated": "2026-01-26T18:38:05.711Z"
+  },
+  {
+    "symbol": "INDIAMART",
+    "company": "Indiamart Intermesh Ltd.",
+    "sector": "Consumer Services",
+    "industry": "Consumer Services",
+    "nse": "INDIAMART.NS",
+    "yahooSymbol": "INDIAMART.NS",
+    "currentPrice": 2196.3,
+    "lastUpdated": "2026-01-26T18:38:05.790Z"
+  },
+  {
+    "symbol": "IOB",
+    "company": "Indian Overseas Bank",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "IOB.NS",
+    "yahooSymbol": "IOB.NS",
+    "currentPrice": 34.1,
+    "lastUpdated": "2026-01-26T18:38:08.056Z"
+  },
+  {
+    "symbol": "INTELLECT",
+    "company": "Intellect Design Arena Ltd.",
+    "sector": "IT",
+    "industry": "Information Technology",
+    "nse": "INTELLECT.NS",
+    "yahooSymbol": "INTELLECT.NS",
+    "currentPrice": 891,
+    "lastUpdated": "2026-01-26T18:38:08.064Z"
+  },
+  {
+    "symbol": "IEX",
+    "company": "Indian Energy Exchange Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "IEX.NS",
+    "yahooSymbol": "IEX.NS",
+    "currentPrice": 127.5,
+    "lastUpdated": "2026-01-26T18:38:08.069Z"
+  },
+  {
+    "symbol": "INOXWIND",
+    "company": "Inox Wind Ltd.",
+    "sector": "Capital Goods",
+    "industry": "Capital Goods",
+    "nse": "INOXWIND.NS",
+    "yahooSymbol": "INOXWIND.NS",
+    "currentPrice": 103.5,
+    "lastUpdated": "2026-01-26T18:38:08.074Z"
+  },
+  {
+    "symbol": "IGIL",
+    "company": "International Gemmological Institute (India) Ltd.",
+    "sector": "Services",
+    "industry": "Services",
+    "nse": "IGIL.NS",
+    "yahooSymbol": "IGIL.NS",
+    "currentPrice": 297.45,
+    "lastUpdated": "2026-01-26T18:38:08.240Z"
+  },
+  {
+    "symbol": "IKS",
+    "company": "Inventurus Knowledge Solutions Ltd.",
+    "sector": "IT",
+    "industry": "Information Technology",
+    "nse": "IKS.NS",
+    "yahooSymbol": "IKS.NS",
+    "currentPrice": 1645,
+    "lastUpdated": "2026-01-26T18:38:10.362Z"
+  },
+  {
+    "symbol": "IPCALAB",
+    "company": "Ipca Laboratories Ltd.",
+    "sector": "Healthcare",
+    "industry": "Healthcare",
+    "nse": "IPCALAB.NS",
+    "yahooSymbol": "IPCALAB.NS",
+    "currentPrice": 1462.8,
+    "lastUpdated": "2026-01-26T18:38:10.368Z"
+  },
+  {
+    "symbol": "JBCHEPHARM",
+    "company": "J.B. Chemicals & Pharmaceuticals Ltd.",
+    "sector": "Healthcare",
+    "industry": "Healthcare",
+    "nse": "JBCHEPHARM.NS",
+    "yahooSymbol": "JBCHEPHARM.NS",
+    "currentPrice": 1835,
+    "lastUpdated": "2026-01-26T18:38:10.379Z"
+  },
+  {
+    "symbol": "JKCEMENT",
+    "company": "J.K. Cement Ltd.",
+    "sector": "Construction",
+    "industry": "Construction Materials",
+    "nse": "JKCEMENT.NS",
+    "yahooSymbol": "JKCEMENT.NS",
+    "currentPrice": 5551,
+    "lastUpdated": "2026-01-26T18:38:10.388Z"
+  },
+  {
+    "symbol": "JBMA",
+    "company": "JBM Auto Ltd.",
+    "sector": "Automobile",
+    "industry": "Automobile and Auto Components",
+    "nse": "JBMA.NS",
+    "yahooSymbol": "JBMA.NS",
+    "currentPrice": 529,
+    "lastUpdated": "2026-01-26T18:38:10.455Z"
+  },
+  {
+    "symbol": "JSWCEMENT",
+    "company": "JSW Cement Ltd.",
+    "sector": "Construction",
+    "industry": "Construction Materials",
+    "nse": "JSWCEMENT.NS",
+    "yahooSymbol": "JSWCEMENT.NS",
+    "currentPrice": 116.37,
+    "lastUpdated": "2026-01-26T18:38:12.559Z"
+  },
+  {
+    "symbol": "JSWINFRA",
+    "company": "JSW Infrastructure Ltd.",
+    "sector": "Services",
+    "industry": "Services",
+    "nse": "JSWINFRA.NS",
+    "yahooSymbol": "JSWINFRA.NS",
+    "currentPrice": 259.8,
+    "lastUpdated": "2026-01-26T18:38:12.562Z"
+  },
+  {
+    "symbol": "JPPOWER",
+    "company": "Jaiprakash Power Ventures Ltd.",
+    "sector": "Power",
+    "industry": "Power",
+    "nse": "JPPOWER.NS",
+    "yahooSymbol": "JPPOWER.NS",
+    "currentPrice": 14.75,
+    "lastUpdated": "2026-01-26T18:38:12.574Z"
+  },
+  {
+    "symbol": "JMFINANCIL",
+    "company": "JM Financial Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "JMFINANCIL.NS",
+    "yahooSymbol": "JMFINANCIL.NS",
+    "currentPrice": 127.75,
+    "lastUpdated": "2026-01-26T18:38:12.626Z"
+  },
+  {
+    "symbol": "J&KBANK",
+    "company": "Jammu & Kashmir Bank Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "J&KBANK.NS",
+    "yahooSymbol": "J&KBANK.NS",
+    "currentPrice": 104,
+    "lastUpdated": "2026-01-26T18:38:12.667Z"
+  },
+  {
+    "symbol": "JINDALSAW",
+    "company": "Jindal Saw Ltd.",
+    "sector": "Capital Goods",
+    "industry": "Capital Goods",
+    "nse": "JINDALSAW.NS",
+    "yahooSymbol": "JINDALSAW.NS",
+    "currentPrice": 177.5,
+    "lastUpdated": "2026-01-26T18:38:14.780Z"
+  },
+  {
+    "symbol": "JUBLINGREA",
+    "company": "Jubilant Ingrevia Ltd.",
+    "sector": "Chemicals",
+    "industry": "Chemicals",
+    "nse": "JUBLINGREA.NS",
+    "yahooSymbol": "JUBLINGREA.NS",
+    "currentPrice": 644,
+    "lastUpdated": "2026-01-26T18:38:14.786Z"
+  },
+  {
+    "symbol": "JSL",
+    "company": "Jindal Stainless Ltd.",
+    "sector": "Metals",
+    "industry": "Metals & Mining",
+    "nse": "JSL.NS",
+    "yahooSymbol": "JSL.NS",
+    "currentPrice": 745.7,
+    "lastUpdated": "2026-01-26T18:38:14.789Z"
+  },
+  {
+    "symbol": "JUBLPHARMA",
+    "company": "Jubilant Pharmova Ltd.",
+    "sector": "Healthcare",
+    "industry": "Healthcare",
+    "nse": "JUBLPHARMA.NS",
+    "yahooSymbol": "JUBLPHARMA.NS",
+    "currentPrice": 948.5,
+    "lastUpdated": "2026-01-26T18:38:14.797Z"
+  },
+  {
+    "symbol": "JWL",
+    "company": "Jupiter Wagons Ltd.",
+    "sector": "Capital Goods",
+    "industry": "Capital Goods",
+    "nse": "JWL.NS",
+    "yahooSymbol": "JWL.NS",
+    "currentPrice": 302.85,
+    "lastUpdated": "2026-01-26T18:38:14.880Z"
+  },
+  {
+    "symbol": "JYOTHYLAB",
+    "company": "Jyothy Labs Ltd.",
+    "sector": "FMCG",
+    "industry": "Fast Moving Consumer Goods",
+    "nse": "JYOTHYLAB.NS",
+    "yahooSymbol": "JYOTHYLAB.NS",
+    "currentPrice": 249.45,
+    "lastUpdated": "2026-01-26T18:38:16.980Z"
+  },
+  {
+    "symbol": "KPRMILL",
+    "company": "K.P.R. Mill Ltd.",
+    "sector": "Textiles",
+    "industry": "Textiles",
+    "nse": "KPRMILL.NS",
+    "yahooSymbol": "KPRMILL.NS",
+    "currentPrice": 853,
+    "lastUpdated": "2026-01-26T18:38:16.987Z"
+  },
+  {
+    "symbol": "JYOTICNC",
+    "company": "Jyoti CNC Automation Ltd.",
+    "sector": "Capital Goods",
+    "industry": "Capital Goods",
+    "nse": "JYOTICNC.NS",
+    "yahooSymbol": "JYOTICNC.NS",
+    "currentPrice": 800,
+    "lastUpdated": "2026-01-26T18:38:16.989Z"
+  },
+  {
+    "symbol": "KSB",
+    "company": "KSB Ltd.",
+    "sector": "Capital Goods",
+    "industry": "Capital Goods",
+    "nse": "KSB.NS",
+    "yahooSymbol": "KSB.NS",
+    "currentPrice": 693.2,
+    "lastUpdated": "2026-01-26T18:38:16.994Z"
+  },
+  {
+    "symbol": "KAJARIACER",
+    "company": "Kajaria Ceramics Ltd.",
+    "sector": "Consumer Durables",
+    "industry": "Consumer Durables",
+    "nse": "KAJARIACER.NS",
+    "yahooSymbol": "KAJARIACER.NS",
+    "currentPrice": 936.35,
+    "lastUpdated": "2026-01-26T18:38:17.095Z"
+  },
+  {
+    "symbol": "KPIL",
+    "company": "Kalpataru Projects International Ltd.",
+    "sector": "Construction",
+    "industry": "Construction",
+    "nse": "KPIL.NS",
+    "yahooSymbol": "KPIL.NS",
+    "currentPrice": 1112.8,
+    "lastUpdated": "2026-01-26T18:38:19.218Z"
+  },
+  {
+    "symbol": "KARURVYSYA",
+    "company": "Karur Vysya Bank Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "KARURVYSYA.NS",
+    "yahooSymbol": "KARURVYSYA.NS",
+    "currentPrice": 264.15,
+    "lastUpdated": "2026-01-26T18:38:19.224Z"
+  },
+  {
+    "symbol": "KAYNES",
+    "company": "Kaynes Technology India Ltd.",
+    "sector": "Capital Goods",
+    "industry": "Capital Goods",
+    "nse": "KAYNES.NS",
+    "yahooSymbol": "KAYNES.NS",
+    "currentPrice": 3377,
+    "lastUpdated": "2026-01-26T18:38:19.233Z"
+  },
+  {
+    "symbol": "KEC",
+    "company": "Kec International Ltd.",
+    "sector": "Construction",
+    "industry": "Construction",
+    "nse": "KEC.NS",
+    "yahooSymbol": "KEC.NS",
+    "currentPrice": 634,
+    "lastUpdated": "2026-01-26T18:38:19.246Z"
+  },
+  {
+    "symbol": "KFINTECH",
+    "company": "Kfin Technologies Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "KFINTECH.NS",
+    "yahooSymbol": "KFINTECH.NS",
+    "currentPrice": 1020,
+    "lastUpdated": "2026-01-26T18:38:19.399Z"
+  },
+  {
+    "symbol": "KIRLOSBROS",
+    "company": "Kirloskar Brothers Ltd.",
+    "sector": "Capital Goods",
+    "industry": "Capital Goods",
+    "nse": "KIRLOSBROS.NS",
+    "yahooSymbol": "KIRLOSBROS.NS",
+    "currentPrice": 1490,
+    "lastUpdated": "2026-01-26T18:38:21.673Z"
+  },
+  {
+    "symbol": "KIMS",
+    "company": "Krishna Institute of Medical Sciences Ltd.",
+    "sector": "Healthcare",
+    "industry": "Healthcare",
+    "nse": "KIMS.NS",
+    "yahooSymbol": "KIMS.NS",
+    "currentPrice": 581.3,
+    "lastUpdated": "2026-01-26T18:38:21.679Z"
+  },
+  {
+    "symbol": "LTTS",
+    "company": "L&T Technology Services Ltd.",
+    "sector": "IT",
+    "industry": "Information Technology",
+    "nse": "LTTS.NS",
+    "yahooSymbol": "LTTS.NS",
+    "currentPrice": 3827,
+    "lastUpdated": "2026-01-26T18:38:21.685Z"
+  },
+  {
+    "symbol": "KIRLOSENG",
+    "company": "Kirloskar Oil Eng Ltd.",
+    "sector": "Capital Goods",
+    "industry": "Capital Goods",
+    "nse": "KIRLOSENG.NS",
+    "yahooSymbol": "KIRLOSENG.NS",
+    "currentPrice": 1100,
+    "lastUpdated": "2026-01-26T18:38:21.689Z"
+  },
+  {
+    "symbol": "LTFOODS",
+    "company": "LT Foods Ltd.",
+    "sector": "FMCG",
+    "industry": "Fast Moving Consumer Goods",
+    "nse": "LTFOODS.NS",
+    "yahooSymbol": "LTFOODS.NS",
+    "currentPrice": 346,
+    "lastUpdated": "2026-01-26T18:38:21.852Z"
+  },
+  {
+    "symbol": "THELEELA",
+    "company": "Leela Palaces Hotels & Resorts Ltd.",
+    "sector": "Consumer Services",
+    "industry": "Consumer Services",
+    "nse": "THELEELA.NS",
+    "yahooSymbol": "THELEELA.NS",
+    "currentPrice": 406.75,
+    "lastUpdated": "2026-01-26T18:38:24.026Z"
+  },
+  {
+    "symbol": "LATENTVIEW",
+    "company": "Latent View Analytics Ltd.",
+    "sector": "IT",
+    "industry": "Information Technology",
+    "nse": "LATENTVIEW.NS",
+    "yahooSymbol": "LATENTVIEW.NS",
+    "currentPrice": 390.05,
+    "lastUpdated": "2026-01-26T18:38:24.030Z"
+  },
+  {
+    "symbol": "LAURUSLABS",
+    "company": "Laurus Labs Ltd.",
+    "sector": "Healthcare",
+    "industry": "Healthcare",
+    "nse": "LAURUSLABS.NS",
+    "yahooSymbol": "LAURUSLABS.NS",
+    "currentPrice": 1030,
+    "lastUpdated": "2026-01-26T18:38:24.035Z"
+  },
+  {
+    "symbol": "LEMONTREE",
+    "company": "Lemon Tree Hotels Ltd.",
+    "sector": "Consumer Services",
+    "industry": "Consumer Services",
+    "nse": "LEMONTREE.NS",
+    "yahooSymbol": "LEMONTREE.NS",
+    "currentPrice": 124.17,
+    "lastUpdated": "2026-01-26T18:38:24.123Z"
+  },
+  {
+    "symbol": "LINDEINDIA",
+    "company": "Linde India Ltd.",
+    "sector": "Chemicals",
+    "industry": "Chemicals",
+    "nse": "LINDEINDIA.NS",
+    "yahooSymbol": "LINDEINDIA.NS",
+    "currentPrice": 5883.5,
+    "lastUpdated": "2026-01-26T18:38:24.130Z"
+  },
+  {
+    "symbol": "MMTC",
+    "company": "MMTC Ltd.",
+    "sector": "Services",
+    "industry": "Services",
+    "nse": "MMTC.NS",
+    "yahooSymbol": "MMTC.NS",
+    "currentPrice": 63.68,
+    "lastUpdated": "2026-01-26T18:38:26.270Z"
+  },
+  {
+    "symbol": "LLOYDSME",
+    "company": "Lloyds Metals And Energy Ltd.",
+    "sector": "Metals",
+    "industry": "Metals & Mining",
+    "nse": "LLOYDSME.NS",
+    "yahooSymbol": "LLOYDSME.NS",
+    "currentPrice": 1118.5,
+    "lastUpdated": "2026-01-26T18:38:26.286Z"
+  },
+  {
+    "symbol": "MGL",
+    "company": "Mahanagar Gas Ltd.",
+    "sector": "Oil & Gas",
+    "industry": "Oil Gas & Consumable Fuels",
+    "nse": "MGL.NS",
+    "yahooSymbol": "MGL.NS",
+    "currentPrice": 1078,
+    "lastUpdated": "2026-01-26T18:38:26.289Z"
+  },
+  {
+    "symbol": "MAHSCOOTER",
+    "company": "Maharashtra Scooters Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "MAHSCOOTER.NS",
+    "yahooSymbol": "MAHSCOOTER.NS",
+    "currentPrice": 13100,
+    "lastUpdated": "2026-01-26T18:38:26.303Z"
+  },
+  {
+    "symbol": "MAHSEAMLES",
+    "company": "Maharashtra Seamless Ltd.",
+    "sector": "Capital Goods",
+    "industry": "Capital Goods",
+    "nse": "MAHSEAMLES.NS",
+    "yahooSymbol": "MAHSEAMLES.NS",
+    "currentPrice": 509.95,
+    "lastUpdated": "2026-01-26T18:38:26.465Z"
+  },
+  {
+    "symbol": "METROPOLIS",
+    "company": "Metropolis Healthcare Ltd.",
+    "sector": "Healthcare",
+    "industry": "Healthcare",
+    "nse": "METROPOLIS.NS",
+    "yahooSymbol": "METROPOLIS.NS",
+    "currentPrice": 1791.2,
+    "lastUpdated": "2026-01-26T18:38:28.636Z"
+  },
+  {
+    "symbol": "MINDACORP",
+    "company": "Minda Corporation Ltd.",
+    "sector": "Automobile",
+    "industry": "Automobile and Auto Components",
+    "nse": "MINDACORP.NS",
+    "yahooSymbol": "MINDACORP.NS",
+    "currentPrice": 547,
+    "lastUpdated": "2026-01-26T18:38:28.640Z"
+  },
+  {
+    "symbol": "MSUMI",
+    "company": "Motherson Sumi Wiring India Ltd.",
+    "sector": "Automobile",
+    "industry": "Automobile and Auto Components",
+    "nse": "MSUMI.NS",
+    "yahooSymbol": "MSUMI.NS",
+    "currentPrice": 43.03,
+    "lastUpdated": "2026-01-26T18:38:28.644Z"
+  },
+  {
+    "symbol": "MANAPPURAM",
+    "company": "Manappuram Finance Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "MANAPPURAM.NS",
+    "yahooSymbol": "MANAPPURAM.NS",
+    "currentPrice": 294.9,
+    "lastUpdated": "2026-01-26T18:38:28.733Z"
+  },
+  {
+    "symbol": "MCX",
+    "company": "Multi Commodity Exchange of India Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "MCX.NS",
+    "yahooSymbol": "MCX.NS",
+    "currentPrice": 2298,
+    "lastUpdated": "2026-01-26T18:38:28.738Z"
+  },
+  {
+    "symbol": "NATCOPHARM",
+    "company": "NATCO Pharma Ltd.",
+    "sector": "Healthcare",
+    "industry": "Healthcare",
+    "nse": "NATCOPHARM.NS",
+    "yahooSymbol": "NATCOPHARM.NS",
+    "currentPrice": 831.85,
+    "lastUpdated": "2026-01-26T18:38:30.887Z"
+  },
+  {
+    "symbol": "NCC",
+    "company": "NCC Ltd.",
+    "sector": "Construction",
+    "industry": "Construction",
+    "nse": "NCC.NS",
+    "yahooSymbol": "NCC.NS",
+    "currentPrice": 142.34,
+    "lastUpdated": "2026-01-26T18:38:30.895Z"
+  },
+  {
+    "symbol": "NBCC",
+    "company": "NBCC (India) Ltd.",
+    "sector": "Construction",
+    "industry": "Construction",
+    "nse": "NBCC.NS",
+    "yahooSymbol": "NBCC.NS",
+    "currentPrice": 95.15,
+    "lastUpdated": "2026-01-26T18:38:30.898Z"
+  },
+  {
+    "symbol": "NLCINDIA",
+    "company": "NLC India Ltd.",
+    "sector": "Power",
+    "industry": "Power",
+    "nse": "NLCINDIA.NS",
+    "yahooSymbol": "NLCINDIA.NS",
+    "currentPrice": 247,
+    "lastUpdated": "2026-01-26T18:38:30.905Z"
+  },
+  {
+    "symbol": "NSLNISP",
+    "company": "NMDC Steel Ltd.",
+    "sector": "Metals",
+    "industry": "Metals & Mining",
+    "nse": "NSLNISP.NS",
+    "yahooSymbol": "NSLNISP.NS",
+    "currentPrice": 39.79,
+    "lastUpdated": "2026-01-26T18:38:31.078Z"
+  },
+  {
+    "symbol": "NAVA",
+    "company": "Nava Ltd.",
+    "sector": "Power",
+    "industry": "Power",
+    "nse": "NAVA.NS",
+    "yahooSymbol": "NAVA.NS",
+    "currentPrice": 538,
+    "lastUpdated": "2026-01-26T18:38:33.309Z"
+  },
+  {
+    "symbol": "NH",
+    "company": "Narayana Hrudayalaya Ltd.",
+    "sector": "Healthcare",
+    "industry": "Healthcare",
+    "nse": "NH.NS",
+    "yahooSymbol": "NH.NS",
+    "currentPrice": 1743,
+    "lastUpdated": "2026-01-26T18:38:33.318Z"
+  },
+  {
+    "symbol": "NAVINFLUOR",
+    "company": "Navin Fluorine International Ltd.",
+    "sector": "Chemicals",
+    "industry": "Chemicals",
+    "nse": "NAVINFLUOR.NS",
+    "yahooSymbol": "NAVINFLUOR.NS",
+    "currentPrice": 5890.5,
+    "lastUpdated": "2026-01-26T18:38:33.322Z"
+  },
+  {
+    "symbol": "NETWEB",
+    "company": "Netweb Technologies India Ltd.",
+    "sector": "IT",
+    "industry": "Information Technology",
+    "nse": "NETWEB.NS",
+    "yahooSymbol": "NETWEB.NS",
+    "currentPrice": 3075,
+    "lastUpdated": "2026-01-26T18:38:33.326Z"
+  },
+  {
+    "symbol": "NEULANDLAB",
+    "company": "Neuland Laboratories Ltd.",
+    "sector": "Healthcare",
+    "industry": "Healthcare",
+    "nse": "NEULANDLAB.NS",
+    "yahooSymbol": "NEULANDLAB.NS",
+    "currentPrice": 13425,
+    "lastUpdated": "2026-01-26T18:38:33.537Z"
+  },
+  {
+    "symbol": "NEWGEN",
+    "company": "Newgen Software Technologies Ltd.",
+    "sector": "IT",
+    "industry": "Information Technology",
+    "nse": "NEWGEN.NS",
+    "yahooSymbol": "NEWGEN.NS",
+    "currentPrice": 625.75,
+    "lastUpdated": "2026-01-26T18:38:35.698Z"
+  },
+  {
+    "symbol": "NAM-INDIA",
+    "company": "Nippon Life India Asset Management Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "NAM-INDIA.NS",
+    "yahooSymbol": "NAM-INDIA.NS",
+    "currentPrice": 820.1,
+    "lastUpdated": "2026-01-26T18:38:35.700Z"
+  },
+  {
+    "symbol": "NIVABUPA",
+    "company": "Niva Bupa Health Insurance Company Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "NIVABUPA.NS",
+    "yahooSymbol": "NIVABUPA.NS",
+    "currentPrice": 77,
+    "lastUpdated": "2026-01-26T18:38:35.708Z"
+  },
+  {
+    "symbol": "NUVAMA",
+    "company": "Nuvama Wealth Management Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "NUVAMA.NS",
+    "yahooSymbol": "NUVAMA.NS",
+    "currentPrice": 1351.7,
+    "lastUpdated": "2026-01-26T18:38:35.710Z"
+  },
+  {
+    "symbol": "NUVOCO",
+    "company": "Nuvoco Vistas Corporation Ltd.",
+    "sector": "Construction",
+    "industry": "Construction Materials",
+    "nse": "NUVOCO.NS",
+    "yahooSymbol": "NUVOCO.NS",
+    "currentPrice": 344.3,
+    "lastUpdated": "2026-01-26T18:38:35.801Z"
+  },
+  {
+    "symbol": "ONESOURCE",
+    "company": "Onesource Specialty Pharma Ltd.",
+    "sector": "Healthcare",
+    "industry": "Healthcare",
+    "nse": "ONESOURCE.NS",
+    "yahooSymbol": "ONESOURCE.NS",
+    "currentPrice": 1430,
+    "lastUpdated": "2026-01-26T18:38:37.955Z"
+  },
+  {
+    "symbol": "PCBL",
+    "company": "PCBL Chemical Ltd.",
+    "sector": "Chemicals",
+    "industry": "Chemicals",
+    "nse": "PCBL.NS",
+    "yahooSymbol": "PCBL.NS",
+    "currentPrice": 264.3,
+    "lastUpdated": "2026-01-26T18:38:37.961Z"
+  },
+  {
+    "symbol": "OLAELEC",
+    "company": "Ola Electric Mobility Ltd.",
+    "sector": "Automobile",
+    "industry": "Automobile and Auto Components",
+    "nse": "OLAELEC.NS",
+    "yahooSymbol": "OLAELEC.NS",
+    "currentPrice": 32,
+    "lastUpdated": "2026-01-26T18:38:37.969Z"
+  },
+  {
+    "symbol": "OLECTRA",
+    "company": "Olectra Greentech Ltd.",
+    "sector": "Automobile",
+    "industry": "Automobile and Auto Components",
+    "nse": "OLECTRA.NS",
+    "yahooSymbol": "OLECTRA.NS",
+    "currentPrice": 988.4,
+    "lastUpdated": "2026-01-26T18:38:37.971Z"
+  },
+  {
+    "symbol": "PGEL",
+    "company": "PG Electroplast Ltd.",
+    "sector": "Consumer Durables",
+    "industry": "Consumer Durables",
+    "nse": "PGEL.NS",
+    "yahooSymbol": "PGEL.NS",
+    "currentPrice": 512.7,
+    "lastUpdated": "2026-01-26T18:38:38.257Z"
+  },
+  {
+    "symbol": "PNBHOUSING",
+    "company": "PNB Housing Finance Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "PNBHOUSING.NS",
+    "yahooSymbol": "PNBHOUSING.NS",
+    "currentPrice": 812,
+    "lastUpdated": "2026-01-26T18:38:40.396Z"
+  },
+  {
+    "symbol": "PTCIL",
+    "company": "PTC Industries Ltd.",
+    "sector": "Capital Goods",
+    "industry": "Capital Goods",
+    "nse": "PTCIL.NS",
+    "yahooSymbol": "PTCIL.NS",
+    "currentPrice": 17444,
+    "lastUpdated": "2026-01-26T18:38:40.398Z"
+  },
+  {
+    "symbol": "PVRINOX",
+    "company": "PVR INOX Ltd.",
+    "sector": "Media",
+    "industry": "Media Entertainment & Publication",
+    "nse": "PVRINOX.NS",
+    "yahooSymbol": "PVRINOX.NS",
+    "currentPrice": 927.1,
+    "lastUpdated": "2026-01-26T18:38:40.404Z"
+  },
+  {
+    "symbol": "PETRONET",
+    "company": "Petronet LNG Ltd.",
+    "sector": "Oil & Gas",
+    "industry": "Oil Gas & Consumable Fuels",
+    "nse": "PETRONET.NS",
+    "yahooSymbol": "PETRONET.NS",
+    "currentPrice": 279.15,
+    "lastUpdated": "2026-01-26T18:38:40.406Z"
+  },
+  {
+    "symbol": "PFIZER",
+    "company": "Pfizer Ltd.",
+    "sector": "Healthcare",
+    "industry": "Healthcare",
+    "nse": "PFIZER.NS",
+    "yahooSymbol": "PFIZER.NS",
+    "currentPrice": 4580,
+    "lastUpdated": "2026-01-26T18:38:40.507Z"
+  },
+  {
+    "symbol": "PPLPHARMA",
+    "company": "Piramal Pharma Ltd.",
+    "sector": "Healthcare",
+    "industry": "Healthcare",
+    "nse": "PPLPHARMA.NS",
+    "yahooSymbol": "PPLPHARMA.NS",
+    "currentPrice": 151.98,
+    "lastUpdated": "2026-01-26T18:38:42.769Z"
+  },
+  {
+    "symbol": "POONAWALLA",
+    "company": "Poonawalla Fincorp Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "POONAWALLA.NS",
+    "yahooSymbol": "POONAWALLA.NS",
+    "currentPrice": 414,
+    "lastUpdated": "2026-01-26T18:38:42.773Z"
+  },
+  {
+    "symbol": "POLYMED",
+    "company": "Poly Medicure Ltd.",
+    "sector": "Healthcare",
+    "industry": "Healthcare",
+    "nse": "POLYMED.NS",
+    "yahooSymbol": "POLYMED.NS",
+    "currentPrice": 1586.4,
+    "lastUpdated": "2026-01-26T18:38:42.778Z"
+  },
+  {
+    "symbol": "PRAJIND",
+    "company": "Praj Industries Ltd.",
+    "sector": "Capital Goods",
+    "industry": "Capital Goods",
+    "nse": "PRAJIND.NS",
+    "yahooSymbol": "PRAJIND.NS",
+    "currentPrice": 283,
+    "lastUpdated": "2026-01-26T18:38:42.785Z"
+  },
+  {
+    "symbol": "RRKABEL",
+    "company": "R R Kabel Ltd.",
+    "sector": "Capital Goods",
+    "industry": "Capital Goods",
+    "nse": "RRKABEL.NS",
+    "yahooSymbol": "RRKABEL.NS",
+    "currentPrice": 1350.2,
+    "lastUpdated": "2026-01-26T18:38:42.868Z"
+  },
+  {
+    "symbol": "RHIM",
+    "company": "RHI MAGNESITA INDIA LTD.",
+    "sector": "Capital Goods",
+    "industry": "Capital Goods",
+    "nse": "RHIM.NS",
+    "yahooSymbol": "RHIM.NS",
+    "currentPrice": 417.8,
+    "lastUpdated": "2026-01-26T18:38:45.031Z"
+  },
+  {
+    "symbol": "RITES",
+    "company": "RITES Ltd.",
+    "sector": "Construction",
+    "industry": "Construction",
+    "nse": "RITES.NS",
+    "yahooSymbol": "RITES.NS",
+    "currentPrice": 217.71,
+    "lastUpdated": "2026-01-26T18:38:45.037Z"
+  },
+  {
+    "symbol": "RADICO",
+    "company": "Radico Khaitan Ltd",
+    "sector": "FMCG",
+    "industry": "Fast Moving Consumer Goods",
+    "nse": "RADICO.NS",
+    "yahooSymbol": "RADICO.NS",
+    "currentPrice": 2962,
+    "lastUpdated": "2026-01-26T18:38:45.042Z"
+  },
+  {
+    "symbol": "RBLBANK",
+    "company": "RBL Bank Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "RBLBANK.NS",
+    "yahooSymbol": "RBLBANK.NS",
+    "currentPrice": 289,
+    "lastUpdated": "2026-01-26T18:38:45.045Z"
+  },
+  {
+    "symbol": "RAILTEL",
+    "company": "Railtel Corporation Of India Ltd.",
+    "sector": "Telecom",
+    "industry": "Telecommunication",
+    "nse": "RAILTEL.NS",
+    "yahooSymbol": "RAILTEL.NS",
+    "currentPrice": 328.1,
+    "lastUpdated": "2026-01-26T18:38:45.243Z"
+  },
+  {
+    "symbol": "RAINBOW",
+    "company": "Rainbow Childrens Medicare Ltd.",
+    "sector": "Healthcare",
+    "industry": "Healthcare",
+    "nse": "RAINBOW.NS",
+    "yahooSymbol": "RAINBOW.NS",
+    "currentPrice": 1185,
+    "lastUpdated": "2026-01-26T18:38:47.371Z"
+  },
+  {
+    "symbol": "RCF",
+    "company": "Rashtriya Chemicals & Fertilizers Ltd.",
+    "sector": "Chemicals",
+    "industry": "Chemicals",
+    "nse": "RCF.NS",
+    "yahooSymbol": "RCF.NS",
+    "currentPrice": 128.7,
+    "lastUpdated": "2026-01-26T18:38:47.379Z"
+  },
+  {
+    "symbol": "RKFORGE",
+    "company": "Ramkrishna Forgings Ltd.",
+    "sector": "Automobile",
+    "industry": "Automobile and Auto Components",
+    "nse": "RKFORGE.NS",
+    "yahooSymbol": "RKFORGE.NS",
+    "currentPrice": 506.35,
+    "lastUpdated": "2026-01-26T18:38:47.383Z"
+  },
+  {
+    "symbol": "REDINGTON",
+    "company": "Redington Ltd.",
+    "sector": "Services",
+    "industry": "Services",
+    "nse": "REDINGTON.NS",
+    "yahooSymbol": "REDINGTON.NS",
+    "currentPrice": 251.9,
+    "lastUpdated": "2026-01-26T18:38:47.391Z"
+  },
+  {
+    "symbol": "RELINFRA",
+    "company": "Reliance Infrastructure Ltd.",
+    "sector": "Power",
+    "industry": "Power",
+    "nse": "RELINFRA.NS",
+    "yahooSymbol": "RELINFRA.NS",
+    "currentPrice": 141.09,
+    "lastUpdated": "2026-01-26T18:38:47.458Z"
+  },
+  {
+    "symbol": "RPOWER",
+    "company": "Reliance Power Ltd.",
+    "sector": "Power",
+    "industry": "Power",
+    "nse": "RPOWER.NS",
+    "yahooSymbol": "RPOWER.NS",
+    "currentPrice": 28.32,
+    "lastUpdated": "2026-01-26T18:38:49.573Z"
+  },
+  {
+    "symbol": "SJVN",
+    "company": "SJVN Ltd.",
+    "sector": "Power",
+    "industry": "Power",
+    "nse": "SJVN.NS",
+    "yahooSymbol": "SJVN.NS",
+    "currentPrice": 70.72,
+    "lastUpdated": "2026-01-26T18:38:49.575Z"
+  },
+  {
+    "symbol": "SBFC",
+    "company": "SBFC Finance Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "SBFC.NS",
+    "yahooSymbol": "SBFC.NS",
+    "currentPrice": 102.3,
+    "lastUpdated": "2026-01-26T18:38:49.577Z"
+  },
+  {
+    "symbol": "SAGILITY",
+    "company": "Sagility Ltd.",
+    "sector": "IT",
+    "industry": "Information Technology",
+    "nse": "SAGILITY.NS",
+    "yahooSymbol": "SAGILITY.NS",
+    "currentPrice": 51.69,
+    "lastUpdated": "2026-01-26T18:38:49.588Z"
+  },
+  {
+    "symbol": "SAILIFE",
+    "company": "Sai Life Sciences Ltd.",
+    "sector": "Healthcare",
+    "industry": "Healthcare",
+    "nse": "SAILIFE.NS",
+    "yahooSymbol": "SAILIFE.NS",
+    "currentPrice": 798.95,
+    "lastUpdated": "2026-01-26T18:38:49.676Z"
+  },
+  {
+    "symbol": "SAMMAANCAP",
+    "company": "Sammaan Capital Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "SAMMAANCAP.NS",
+    "yahooSymbol": "SAMMAANCAP.NS",
+    "currentPrice": 139.35,
+    "lastUpdated": "2026-01-26T18:38:51.793Z"
+  },
+  {
+    "symbol": "SARDAEN",
+    "company": "Sarda Energy and Minerals Ltd.",
+    "sector": "Metals",
+    "industry": "Metals & Mining",
+    "nse": "SARDAEN.NS",
+    "yahooSymbol": "SARDAEN.NS",
+    "currentPrice": 463,
+    "lastUpdated": "2026-01-26T18:38:51.808Z"
+  },
+  {
+    "symbol": "SAREGAMA",
+    "company": "Saregama India Ltd",
+    "sector": "Media",
+    "industry": "Media Entertainment & Publication",
+    "nse": "SAREGAMA.NS",
+    "yahooSymbol": "SAREGAMA.NS",
+    "currentPrice": 335,
+    "lastUpdated": "2026-01-26T18:38:51.816Z"
+  },
+  {
+    "symbol": "SAPPHIRE",
+    "company": "Sapphire Foods India Ltd.",
+    "sector": "Consumer Services",
+    "industry": "Consumer Services",
+    "nse": "SAPPHIRE.NS",
+    "yahooSymbol": "SAPPHIRE.NS",
+    "currentPrice": 184.4,
+    "lastUpdated": "2026-01-26T18:38:51.970Z"
+  },
+  {
+    "symbol": "SCHAEFFLER",
+    "company": "Schaeffler India Ltd.",
+    "sector": "Automobile",
+    "industry": "Automobile and Auto Components",
+    "nse": "SCHAEFFLER.NS",
+    "yahooSymbol": "SCHAEFFLER.NS",
+    "currentPrice": 3611.9,
+    "lastUpdated": "2026-01-26T18:38:51.972Z"
+  },
+  {
+    "symbol": "SCI",
+    "company": "Shipping Corporation of India Ltd.",
+    "sector": "Services",
+    "industry": "Services",
+    "nse": "SCI.NS",
+    "yahooSymbol": "SCI.NS",
+    "currentPrice": 201.2,
+    "lastUpdated": "2026-01-26T18:38:54.233Z"
+  },
+  {
+    "symbol": "SIGNATURE",
+    "company": "Signatureglobal (India) Ltd.",
+    "sector": "Real Estate",
+    "industry": "Realty",
+    "nse": "SIGNATURE.NS",
+    "yahooSymbol": "SIGNATURE.NS",
+    "currentPrice": 867.3,
+    "lastUpdated": "2026-01-26T18:38:54.237Z"
+  },
+  {
+    "symbol": "SCHNEIDER",
+    "company": "Schneider Electric Infrastructure Ltd.",
+    "sector": "Capital Goods",
+    "industry": "Capital Goods",
+    "nse": "SCHNEIDER.NS",
+    "yahooSymbol": "SCHNEIDER.NS",
+    "currentPrice": 605.8,
+    "lastUpdated": "2026-01-26T18:38:54.243Z"
+  },
+  {
+    "symbol": "SHYAMMETL",
+    "company": "Shyam Metalics and Energy Ltd.",
+    "sector": "Capital Goods",
+    "industry": "Capital Goods",
+    "nse": "SHYAMMETL.NS",
+    "yahooSymbol": "SHYAMMETL.NS",
+    "currentPrice": 780.95,
+    "lastUpdated": "2026-01-26T18:38:54.249Z"
+  },
+  {
+    "symbol": "SOBHA",
+    "company": "Sobha Ltd.",
+    "sector": "Real Estate",
+    "industry": "Realty",
+    "nse": "SOBHA.NS",
+    "yahooSymbol": "SOBHA.NS",
+    "currentPrice": 1390,
+    "lastUpdated": "2026-01-26T18:38:54.332Z"
+  },
+  {
+    "symbol": "SONATSOFTW",
+    "company": "Sonata Software Ltd.",
+    "sector": "IT",
+    "industry": "Information Technology",
+    "nse": "SONATSOFTW.NS",
+    "yahooSymbol": "SONATSOFTW.NS",
+    "currentPrice": 309,
+    "lastUpdated": "2026-01-26T18:38:56.438Z"
+  },
+  {
+    "symbol": "SUMICHEM",
+    "company": "Sumitomo Chemical India Ltd.",
+    "sector": "Chemicals",
+    "industry": "Chemicals",
+    "nse": "SUMICHEM.NS",
+    "yahooSymbol": "SUMICHEM.NS",
+    "currentPrice": 416.8,
+    "lastUpdated": "2026-01-26T18:38:56.440Z"
+  },
+  {
+    "symbol": "STARHEALTH",
+    "company": "Star Health and Allied Insurance Company Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "STARHEALTH.NS",
+    "yahooSymbol": "STARHEALTH.NS",
+    "currentPrice": 429,
+    "lastUpdated": "2026-01-26T18:38:56.442Z"
+  },
+  {
+    "symbol": "SUNTV",
+    "company": "Sun TV Network Ltd.",
+    "sector": "Media",
+    "industry": "Media Entertainment & Publication",
+    "nse": "SUNTV.NS",
+    "yahooSymbol": "SUNTV.NS",
+    "currentPrice": 560,
+    "lastUpdated": "2026-01-26T18:38:56.454Z"
+  },
+  {
+    "symbol": "SUNDARMFIN",
+    "company": "Sundaram Finance Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "SUNDARMFIN.NS",
+    "yahooSymbol": "SUNDARMFIN.NS",
+    "currentPrice": 5050,
+    "lastUpdated": "2026-01-26T18:38:56.548Z"
+  },
+  {
+    "symbol": "SUNDRMFAST",
+    "company": "Sundram Fasteners Ltd.",
+    "sector": "Automobile",
+    "industry": "Automobile and Auto Components",
+    "nse": "SUNDRMFAST.NS",
+    "yahooSymbol": "SUNDRMFAST.NS",
+    "currentPrice": 910,
+    "lastUpdated": "2026-01-26T18:38:58.646Z"
+  },
+  {
+    "symbol": "SWANCORP",
+    "company": "Swan Corp Ltd.",
+    "sector": "Chemicals",
+    "industry": "Chemicals",
+    "nse": "SWANCORP.NS",
+    "yahooSymbol": "SWANCORP.NS",
+    "currentPrice": 406.3,
+    "lastUpdated": "2026-01-26T18:38:58.651Z"
+  },
+  {
+    "symbol": "SYNGENE",
+    "company": "Syngene International Ltd.",
+    "sector": "Healthcare",
+    "industry": "Healthcare",
+    "nse": "SYNGENE.NS",
+    "yahooSymbol": "SYNGENE.NS",
+    "currentPrice": 540,
+    "lastUpdated": "2026-01-26T18:38:58.654Z"
+  },
+  {
+    "symbol": "SYRMA",
+    "company": "Syrma SGS Technology Ltd.",
+    "sector": "Capital Goods",
+    "industry": "Capital Goods",
+    "nse": "SYRMA.NS",
+    "yahooSymbol": "SYRMA.NS",
+    "currentPrice": 661.9,
+    "lastUpdated": "2026-01-26T18:38:58.663Z"
+  },
+  {
+    "symbol": "TBOTEK",
+    "company": "TBO Tek Ltd.",
+    "sector": "Consumer Services",
+    "industry": "Consumer Services",
+    "nse": "TBOTEK.NS",
+    "yahooSymbol": "TBOTEK.NS",
+    "currentPrice": 1423.1,
+    "lastUpdated": "2026-01-26T18:38:58.761Z"
+  },
+  {
+    "symbol": "TTML",
+    "company": "Tata Teleservices (Maharashtra) Ltd.",
+    "sector": "Telecom",
+    "industry": "Telecommunication",
+    "nse": "TTML.NS",
+    "yahooSymbol": "TTML.NS",
+    "currentPrice": 42.18,
+    "lastUpdated": "2026-01-26T18:39:00.868Z"
+  },
+  {
+    "symbol": "TECHNOE",
+    "company": "Techno Electric & Engineering Company Ltd.",
+    "sector": "Construction",
+    "industry": "Construction",
+    "nse": "TECHNOE.NS",
+    "yahooSymbol": "TECHNOE.NS",
+    "currentPrice": 889.5,
+    "lastUpdated": "2026-01-26T18:39:00.873Z"
+  },
+  {
+    "symbol": "NIACL",
+    "company": "The New India Assurance Company Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "NIACL.NS",
+    "yahooSymbol": "NIACL.NS",
+    "currentPrice": 143.55,
+    "lastUpdated": "2026-01-26T18:39:00.883Z"
+  },
+  {
+    "symbol": "TEJASNET",
+    "company": "Tejas Networks Ltd.",
+    "sector": "Telecom",
+    "industry": "Telecommunication",
+    "nse": "TEJASNET.NS",
+    "yahooSymbol": "TEJASNET.NS",
+    "currentPrice": 303.9,
+    "lastUpdated": "2026-01-26T18:39:00.934Z"
+  },
+  {
+    "symbol": "RAMCOCEM",
+    "company": "The Ramco Cements Ltd.",
+    "sector": "Construction",
+    "industry": "Construction Materials",
+    "nse": "RAMCOCEM.NS",
+    "yahooSymbol": "RAMCOCEM.NS",
+    "currentPrice": 1046,
+    "lastUpdated": "2026-01-26T18:39:01.091Z"
+  },
+  {
+    "symbol": "TITAGARH",
+    "company": "Titagarh Rail Systems Ltd.",
+    "sector": "Capital Goods",
+    "industry": "Capital Goods",
+    "nse": "TITAGARH.NS",
+    "yahooSymbol": "TITAGARH.NS",
+    "currentPrice": 784,
+    "lastUpdated": "2026-01-26T18:39:03.236Z"
+  },
+  {
+    "symbol": "THERMAX",
+    "company": "Thermax Ltd.",
+    "sector": "Capital Goods",
+    "industry": "Capital Goods",
+    "nse": "THERMAX.NS",
+    "yahooSymbol": "THERMAX.NS",
+    "currentPrice": 2920.1,
+    "lastUpdated": "2026-01-26T18:39:03.240Z"
+  },
+  {
+    "symbol": "TARIL",
+    "company": "Transformers And Rectifiers (India) Ltd.",
+    "sector": "Capital Goods",
+    "industry": "Capital Goods",
+    "nse": "TARIL.NS",
+    "yahooSymbol": "TARIL.NS",
+    "currentPrice": 232,
+    "lastUpdated": "2026-01-26T18:39:03.242Z"
+  },
+  {
+    "symbol": "TIMKEN",
+    "company": "Timken India Ltd.",
+    "sector": "Capital Goods",
+    "industry": "Capital Goods",
+    "nse": "TIMKEN.NS",
+    "yahooSymbol": "TIMKEN.NS",
+    "currentPrice": 3066.6,
+    "lastUpdated": "2026-01-26T18:39:03.433Z"
+  },
+  {
+    "symbol": "TRIDENT",
+    "company": "Trident Ltd.",
+    "sector": "Textiles",
+    "industry": "Textiles",
+    "nse": "TRIDENT.NS",
+    "yahooSymbol": "TRIDENT.NS",
+    "currentPrice": 25.34,
+    "lastUpdated": "2026-01-26T18:39:03.435Z"
+  },
+  {
+    "symbol": "TRIVENI",
+    "company": "Triveni Engineering & Industries Ltd.",
+    "sector": "FMCG",
+    "industry": "Fast Moving Consumer Goods",
+    "nse": "TRIVENI.NS",
+    "yahooSymbol": "TRIVENI.NS",
+    "currentPrice": 330,
+    "lastUpdated": "2026-01-26T18:39:05.574Z"
+  },
+  {
+    "symbol": "UCOBANK",
+    "company": "UCO Bank",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "UCOBANK.NS",
+    "yahooSymbol": "UCOBANK.NS",
+    "currentPrice": 28.7,
+    "lastUpdated": "2026-01-26T18:39:05.577Z"
+  },
+  {
+    "symbol": "TRITURBINE",
+    "company": "Triveni Turbine Ltd.",
+    "sector": "Capital Goods",
+    "industry": "Capital Goods",
+    "nse": "TRITURBINE.NS",
+    "yahooSymbol": "TRITURBINE.NS",
+    "currentPrice": 461.75,
+    "lastUpdated": "2026-01-26T18:39:05.583Z"
+  },
+  {
+    "symbol": "UNOMINDA",
+    "company": "UNO Minda Ltd.",
+    "sector": "Automobile",
+    "industry": "Automobile and Auto Components",
+    "nse": "UNOMINDA.NS",
+    "yahooSymbol": "UNOMINDA.NS",
+    "currentPrice": 1147.9,
+    "lastUpdated": "2026-01-26T18:39:05.588Z"
+  },
+  {
+    "symbol": "UTIAMC",
+    "company": "UTI Asset Management Company Ltd.",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "UTIAMC.NS",
+    "yahooSymbol": "UTIAMC.NS",
+    "currentPrice": 972.1,
+    "lastUpdated": "2026-01-26T18:39:05.816Z"
+  },
+  {
+    "symbol": "DBREALTY",
+    "company": "Valor Estate Ltd.",
+    "sector": "Consumer Services",
+    "industry": "Consumer Services",
+    "nse": "DBREALTY.NS",
+    "yahooSymbol": "DBREALTY.NS",
+    "currentPrice": 102.75,
+    "lastUpdated": "2026-01-26T18:39:07.970Z"
+  },
+  {
+    "symbol": "USHAMART",
+    "company": "Usha Martin Ltd.",
+    "sector": "Capital Goods",
+    "industry": "Capital Goods",
+    "nse": "USHAMART.NS",
+    "yahooSymbol": "USHAMART.NS",
+    "currentPrice": 408,
+    "lastUpdated": "2026-01-26T18:39:07.979Z"
+  },
+  {
+    "symbol": "VGUARD",
+    "company": "V-Guard Industries Ltd.",
+    "sector": "Consumer Durables",
+    "industry": "Consumer Durables",
+    "nse": "VGUARD.NS",
+    "yahooSymbol": "VGUARD.NS",
+    "currentPrice": 311.3,
+    "lastUpdated": "2026-01-26T18:39:07.994Z"
+  },
+  {
+    "symbol": "VTL",
+    "company": "Vardhman Textiles Ltd.",
+    "sector": "Textiles",
+    "industry": "Textiles",
+    "nse": "VTL.NS",
+    "yahooSymbol": "VTL.NS",
+    "currentPrice": 402.3,
+    "lastUpdated": "2026-01-26T18:39:08.000Z"
+  },
+  {
+    "symbol": "MANYAVAR",
+    "company": "Vedant Fashions Ltd.",
+    "sector": "Consumer Services",
+    "industry": "Consumer Services",
+    "nse": "MANYAVAR.NS",
+    "yahooSymbol": "MANYAVAR.NS",
+    "currentPrice": 481.25,
+    "lastUpdated": "2026-01-26T18:39:08.077Z"
+  },
+  {
+    "symbol": "VENTIVE",
+    "company": "Ventive Hospitality Ltd.",
+    "sector": "Consumer Services",
+    "industry": "Consumer Services",
+    "nse": "VENTIVE.NS",
+    "yahooSymbol": "VENTIVE.NS",
+    "currentPrice": 724,
+    "lastUpdated": "2026-01-26T18:39:10.300Z"
+  },
+  {
+    "symbol": "VIJAYA",
+    "company": "Vijaya Diagnostic Centre Ltd.",
+    "sector": "Healthcare",
+    "industry": "Healthcare",
+    "nse": "VIJAYA.NS",
+    "yahooSymbol": "VIJAYA.NS",
+    "currentPrice": 999.9,
+    "lastUpdated": "2026-01-26T18:39:10.301Z"
+  },
+  {
+    "symbol": "WELCORP",
+    "company": "Welspun Corp Ltd.",
+    "sector": "Capital Goods",
+    "industry": "Capital Goods",
+    "nse": "WELCORP.NS",
+    "yahooSymbol": "WELCORP.NS",
+    "currentPrice": 728.6,
+    "lastUpdated": "2026-01-26T18:39:10.303Z"
+  },
+  {
+    "symbol": "WELSPUNLIV",
+    "company": "Welspun Living Ltd.",
+    "sector": "Textiles",
+    "industry": "Textiles",
+    "nse": "WELSPUNLIV.NS",
+    "yahooSymbol": "WELSPUNLIV.NS",
+    "currentPrice": 120.3,
+    "lastUpdated": "2026-01-26T18:39:10.309Z"
+  },
+  {
+    "symbol": "WHIRLPOOL",
+    "company": "Whirlpool of India Ltd.",
+    "sector": "Consumer Durables",
+    "industry": "Consumer Durables",
+    "nse": "WHIRLPOOL.NS",
+    "yahooSymbol": "WHIRLPOOL.NS",
+    "currentPrice": 796.15,
+    "lastUpdated": "2026-01-26T18:39:10.516Z"
+  },
+  {
+    "symbol": "WOCKPHARMA",
+    "company": "Wockhardt Ltd.",
+    "sector": "Healthcare",
+    "industry": "Healthcare",
+    "nse": "WOCKPHARMA.NS",
+    "yahooSymbol": "WOCKPHARMA.NS",
+    "currentPrice": 1349,
+    "lastUpdated": "2026-01-26T18:39:12.665Z"
+  },
+  {
+    "symbol": "ZEEL",
+    "company": "Zee Entertainment Enterprises Ltd.",
+    "sector": "Media",
+    "industry": "Media Entertainment & Publication",
+    "nse": "ZEEL.NS",
+    "yahooSymbol": "ZEEL.NS",
+    "currentPrice": 81.8,
+    "lastUpdated": "2026-01-26T18:39:12.689Z"
+  },
+  {
+    "symbol": "ZENTEC",
+    "company": "Zen Technologies Ltd.",
+    "sector": "Capital Goods",
+    "industry": "Capital Goods",
+    "nse": "ZENTEC.NS",
+    "yahooSymbol": "ZENTEC.NS",
+    "currentPrice": 1280.9,
+    "lastUpdated": "2026-01-26T18:39:12.693Z"
+  },
+  {
+    "symbol": "ZFCVINDIA",
+    "company": "ZF Commercial Vehicle Control Systems India Ltd.",
+    "sector": "Automobile",
+    "industry": "Automobile and Auto Components",
+    "nse": "ZFCVINDIA.NS",
+    "yahooSymbol": "ZFCVINDIA.NS",
+    "currentPrice": 13570,
+    "lastUpdated": "2026-01-26T18:39:12.697Z"
+  },
+  {
+    "symbol": "ZENSARTECH",
+    "company": "Zensar Technolgies Ltd.",
+    "sector": "IT",
+    "industry": "Information Technology",
+    "nse": "ZENSARTECH.NS",
+    "yahooSymbol": "ZENSARTECH.NS",
+    "currentPrice": 697.55,
+    "lastUpdated": "2026-01-26T18:39:12.857Z"
+  },
+  {
+    "symbol": "ECLERX",
+    "company": "eClerx Services Ltd.",
+    "sector": "Services",
+    "industry": "Services",
+    "nse": "ECLERX.NS",
+    "yahooSymbol": "ECLERX.NS",
+    "currentPrice": 4306.1,
+    "lastUpdated": "2026-01-26T18:39:15.120Z"
+  }
+]

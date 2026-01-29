@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/tailwind-output.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="bg-gray-100">
+    <nav id="navbar-placeholder"></nav> <!-- Dynamic navbar will be inserted here by navbar.js -->
+
+    <main class="container mx-auto p-4 max-w-6xl pt-16">
+        <%- content %>
+    </main>
+
+    <footer id="footer-placeholder" class="pb-16"></footer> <!-- Dynamic footer will be inserted here by footer.js -->
+
+    <script src="/js/components/navbar.js"></script>
+    <script src="/js/components/footer.js"></script>
+    <script src="/js/components/toast.js"></script>
+    <script src="/js/main.js"></script>
+</body>
+</html>

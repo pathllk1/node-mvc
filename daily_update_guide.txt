@@ -1,0 +1,52 @@
+
+# Daily Update Fetcher
+
+The daily update fetcher automatically fetches only new OHLCV data for stocks in the nifty100.json file.
+
+## Features
+- Fetches only incremental data (new records since last update)
+- Runs automatically at 4 AM IST daily
+- Handles weekends and holidays gracefully
+- Respects API rate limits with batching
+- Comprehensive error handling and logging
+
+## Usage
+
+### Command Line
+```bash
+# Start the scheduler (runs at 4 AM IST daily)
+node utils/daily-update-fetcher.js
+
+# Run manual update once
+node utils/daily-update-fetcher.js --mode=manual
+```
+
+### Programmatic Usage
+```javascript
+const DailyUpdateFetcher = require('./utils/daily-update-fetcher');
+const fetcher = new DailyUpdateFetcher();
+
+// Initialize
+await fetcher.initialize();
+
+// Run manual update
+await fetcher.runManualUpdate();
+
+// Or start the scheduler
+fetcher.startDailyScheduler();
+```
+
+## How It Works
+1. Checks the latest date for each stock in the historical_ohlcv database
+2. Calculates the start date as the day after the latest date
+3. Fetches data from that start date to today
+4. Only saves new records that don't already exist in the database
+5. Runs automatically at 4 AM IST every day
+
+## Example
+If the database has data up to 2026-01-27, the script will:
+- Check that the latest date is 2026-01-27
+- Calculate start date as 2026-01-28
+- Fetch data from 2026-01-28 to today
+- Save any new records found
+

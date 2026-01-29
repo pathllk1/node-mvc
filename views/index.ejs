@@ -1,0 +1,24 @@
+<% layout('layouts/main') -%>
+
+<div class="bg-white rounded-lg shadow-md p-8 mb-8">
+    <h1 class="text-4xl font-bold text-gray-800 mb-4"><%= message %></h1>
+    <p class="text-lg text-gray-600 mb-6">This is a sample Node.js MVC application using Express, EJS, and serverless-http.</p>
+    <hr class="my-4 border-gray-200">
+    <p class="text-gray-600 mb-6">You can navigate to the Users section to manage user data.</p>
+    <a class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg transition duration-300" href="/users" role="button">Manage Users</a>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+    <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100">
+        <h3 class="text-xl font-semibold text-gray-800 mb-3">Express</h3>
+        <p class="text-gray-600">A fast, unopinionated, minimalist web framework for Node.js</p>
+    </div>
+    <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100">
+        <h3 class="text-xl font-semibold text-gray-800 mb-3">EJS & EJS-Mate</h3>
+        <p class="text-gray-600">Embedded JavaScript templates with layout support</p>
+    </div>
+    <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100">
+        <h3 class="text-xl font-semibold text-gray-800 mb-3">Serverless</h3>
+        <p class="text-gray-600">Deploy your Express app to serverless platforms like AWS Lambda</p>
+    </div>
+</div>

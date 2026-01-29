@@ -1,0 +1,317 @@
+[
+  {
+    "symbol": "AARVEEDEN",
+    "company": "Aarvee Denims & Exports Ltd",
+    "sector": "Textiles",
+    "industry": "Textiles",
+    "nse": "AARVEEDEN.NS",
+    "error": "No data returned from Yahoo Finance",
+    "validationTime": "2026-01-26T18:34:25.777Z"
+  },
+  {
+    "symbol": "AADHAR",
+    "company": "Aadhar Housing Finance Ltd",
+    "sector": "Finance",
+    "industry": "Housing Finance",
+    "nse": "AADHAR.NS",
+    "error": "No data returned from Yahoo Finance",
+    "validationTime": "2026-01-26T18:34:25.784Z"
+  },
+  {
+    "symbol": "ADANITRANS",
+    "company": "Adani Transmission Ltd",
+    "sector": "Power",
+    "industry": "Power Transmission",
+    "nse": "ADANITRANS.NS",
+    "error": "No data returned from Yahoo Finance",
+    "validationTime": "2026-01-26T18:34:32.672Z"
+  },
+  {
+    "symbol": "ADHUNIK",
+    "company": "Adhunik Metaliks Ltd",
+    "sector": "Metals",
+    "industry": "Iron & Steel",
+    "nse": "ADHUNIK.NS",
+    "error": "No data returned from Yahoo Finance",
+    "validationTime": "2026-01-26T18:34:32.681Z"
+  },
+  {
+    "symbol": "ADHUNIKIND",
+    "company": "Adhunik Industries Ltd",
+    "sector": "Metals",
+    "industry": "Iron & Steel",
+    "nse": "ADHUNIKIND.NS",
+    "error": "No data returned from Yahoo Finance",
+    "validationTime": "2026-01-26T18:34:32.691Z"
+  },
+  {
+    "symbol": "ADLABS",
+    "company": "Adlabs Entertainment Ltd",
+    "sector": "Media",
+    "industry": "Entertainment",
+    "nse": "ADLABS.NS",
+    "error": "No data returned from Yahoo Finance",
+    "validationTime": "2026-01-26T18:34:32.775Z"
+  },
+  {
+    "symbol": "ADORWELD",
+    "company": "Ador Welding Ltd",
+    "sector": "Capital Goods",
+    "industry": "Capital Goods",
+    "nse": "ADORWELD.NS",
+    "error": "No data returned from Yahoo Finance",
+    "validationTime": "2026-01-26T18:34:34.885Z"
+  },
+  {
+    "symbol": "AEGISCHEM",
+    "company": "Aegis Logistics Ltd",
+    "sector": "Oil & Gas",
+    "industry": "Oil & Gas",
+    "nse": "AEGISCHEM.NS",
+    "error": "No data returned from Yahoo Finance",
+    "validationTime": "2026-01-26T18:34:37.101Z"
+  },
+  {
+    "symbol": "AGLSL",
+    "company": "Aglowmax India Ltd",
+    "sector": "Healthcare",
+    "industry": "Pharmaceuticals",
+    "nse": "AGLSL.NS",
+    "error": "No data returned from Yahoo Finance",
+    "validationTime": "2026-01-26T18:34:37.212Z"
+  },
+  {
+    "symbol": "AGCNET",
+    "company": "AGC Networks Ltd",
+    "sector": "IT",
+    "industry": "IT Services",
+    "nse": "AGCNET.NS",
+    "error": "No data returned from Yahoo Finance",
+    "validationTime": "2026-01-26T18:34:37.230Z"
+  },
+  {
+    "symbol": "ALBK",
+    "company": "Allahabad Bank",
+    "sector": "Finance",
+    "industry": "Banking",
+    "nse": "ALBK.NS",
+    "error": "No data returned from Yahoo Finance",
+    "validationTime": "2026-01-26T18:34:46.499Z"
+  },
+  {
+    "symbol": "ALLSEC",
+    "company": "Allsec Technologies Ltd",
+    "sector": "IT",
+    "industry": "IT Services",
+    "nse": "ALLSEC.NS",
+    "error": "No data returned from Yahoo Finance",
+    "validationTime": "2026-01-26T18:34:49.074Z"
+  },
+  {
+    "symbol": "ALOKTEXT",
+    "company": "Alok Industries Ltd",
+    "sector": "Textiles",
+    "industry": "Textiles",
+    "nse": "ALOKTEXT.NS",
+    "error": "No data returned from Yahoo Finance",
+    "validationTime": "2026-01-26T18:34:51.413Z"
+  },
+  {
+    "symbol": "AMAL",
+    "company": "Amal Ltd",
+    "sector": "Finance",
+    "industry": "Financial Services",
+    "nse": "AMAL.NS",
+    "error": "No data returned from Yahoo Finance",
+    "validationTime": "2026-01-26T18:34:51.523Z"
+  },
+  {
+    "symbol": "AMARA",
+    "company": "Amara Raja Batteries Ltd",
+    "sector": "Automobile",
+    "industry": "Automobile",
+    "nse": "AMARA.NS",
+    "error": "No data returned from Yahoo Finance",
+    "validationTime": "2026-01-26T18:34:53.770Z"
+  },
+  {
+    "symbol": "AMARAJABAT",
+    "company": "Amara Raja Batteries Ltd",
+    "sector": "Automobile",
+    "industry": "Automobile",
+    "nse": "AMARAJABAT.NS",
+    "error": "No data returned from Yahoo Finance",
+    "validationTime": "2026-01-26T18:34:53.772Z"
+  },
+  {
+    "symbol": "ANDHRACEMT",
+    "company": "Andhra Cements Ltd",
+    "sector": "Construction",
+    "industry": "Construction",
+    "nse": "ANDHRACEMT.NS",
+    "error": "No data returned from Yahoo Finance",
+    "validationTime": "2026-01-26T18:34:56.143Z"
+  },
+  {
+    "symbol": "ANGIND",
+    "company": "ANG Industries Ltd",
+    "sector": "Automobile",
+    "industry": "Automobile",
+    "nse": "ANGIND.NS",
+    "error": "No data returned from Yahoo Finance",
+    "validationTime": "2026-01-26T18:34:58.366Z"
+  },
+  {
+    "symbol": "ANSALHSG",
+    "company": "Ansal Housing Ltd",
+    "sector": "Real Estate",
+    "industry": "Real Estate",
+    "nse": "ANSALHSG.NS",
+    "error": "No data returned from Yahoo Finance",
+    "validationTime": "2026-01-26T18:35:00.632Z"
+  },
+  {
+    "symbol": "APCOTEX",
+    "company": "Apcotex Industries Ltd",
+    "sector": "Chemicals",
+    "industry": "Chemicals",
+    "nse": "APCOTEX.NS",
+    "error": "No data returned from Yahoo Finance",
+    "validationTime": "2026-01-26T18:35:00.761Z"
+  },
+  {
+    "symbol": "ARIHANT",
+    "company": "Arihant Foundations & Housing Ltd",
+    "sector": "Real Estate",
+    "industry": "Real Estate",
+    "nse": "ARIHANT.NS",
+    "error": "No data returned from Yahoo Finance",
+    "validationTime": "2026-01-26T18:35:07.594Z"
+  },
+  {
+    "symbol": "ARROWTEX",
+    "company": "Arrow Textiles Ltd",
+    "sector": "Textiles",
+    "industry": "Textiles",
+    "nse": "ARROWTEX.NS",
+    "error": "No data returned from Yahoo Finance",
+    "validationTime": "2026-01-26T18:35:09.823Z"
+  },
+  {
+    "symbol": "ARVINDFASH",
+    "company": "Arvind Fashions Ltd",
+    "sector": "Consumer Discretionary",
+    "industry": "Retailing",
+    "nse": "ARVINDFASH.NS",
+    "error": "No data returned from Yahoo Finance",
+    "validationTime": "2026-01-26T18:35:13.031Z"
+  },
+  {
+    "symbol": "ASSAMCO",
+    "company": "Assam Company India Ltd",
+    "sector": "Tea & Coffee",
+    "industry": "Tea & Coffee",
+    "nse": "ASSAMCO.NS",
+    "error": "No data returned from Yahoo Finance",
+    "validationTime": "2026-01-26T18:35:18.152Z"
+  },
+  {
+    "symbol": "ATFL",
+    "company": "Agro Tech Foods Ltd",
+    "sector": "FMCG",
+    "industry": "Food Processing",
+    "nse": "ATFL.NS",
+    "error": "No data returned from Yahoo Finance",
+    "validationTime": "2026-01-26T18:35:22.547Z"
+  },
+  {
+    "symbol": "ATLANTA",
+    "company": "Atlanta Ltd",
+    "sector": "Capital Goods",
+    "industry": "Capital Goods",
+    "nse": "ATLANTA.NS",
+    "error": "No data returned from Yahoo Finance",
+    "validationTime": "2026-01-26T18:35:22.548Z"
+  },
+  {
+    "symbol": "AUTOLITIND",
+    "company": "Autolite (India) Ltd",
+    "sector": "Automobile",
+    "industry": "Automobile",
+    "nse": "AUTOLITIND.NS",
+    "error": "No data returned from Yahoo Finance",
+    "validationTime": "2026-01-26T18:35:27.059Z"
+  },
+  {
+    "symbol": "AVERY",
+    "company": "Avery India Ltd",
+    "sector": "Consumer Discretionary",
+    "industry": "Consumer Goods",
+    "nse": "AVERY.NS",
+    "error": "No data returned from Yahoo Finance",
+    "validationTime": "2026-01-26T18:35:27.163Z"
+  },
+  {
+    "symbol": "TATAMOTORS",
+    "company": "Tata Motors Ltd",
+    "sector": "Automobile",
+    "industry": "Automobile",
+    "nse": "TATAMOTORS.NS",
+    "error": "No data returned from Yahoo Finance",
+    "validationTime": "2026-01-26T18:35:38.521Z"
+  },
+  {
+    "symbol": "TATAGLOBAL",
+    "company": "Tata Global Beverages Ltd",
+    "sector": "FMCG",
+    "industry": "Tea & Coffee",
+    "nse": "TATAGLOBAL.NS",
+    "error": "No data returned from Yahoo Finance",
+    "validationTime": "2026-01-26T18:35:42.942Z"
+  },
+  {
+    "symbol": "TATAMTRDVR",
+    "company": "Tata Motors Ltd",
+    "sector": "Automobile",
+    "industry": "Automobile",
+    "nse": "TATAMTRDVR.NS",
+    "error": "No data returned from Yahoo Finance",
+    "validationTime": "2026-01-26T18:35:42.951Z"
+  },
+  {
+    "symbol": "MCDOWELL-N",
+    "company": "United Spirits Ltd",
+    "sector": "FMCG",
+    "industry": "Beverages",
+    "nse": "MCDOWELL-N.NS",
+    "error": "No data returned from Yahoo Finance",
+    "validationTime": "2026-01-26T18:35:47.601Z"
+  },
+  {
+    "symbol": "MAHINDCIE",
+    "company": "Mahindra CIE Automotive Ltd",
+    "sector": "Automobile",
+    "industry": "Automobile",
+    "nse": "MAHINDCIE.NS",
+    "error": "No data returned from Yahoo Finance",
+    "validationTime": "2026-01-26T18:35:52.044Z"
+  },
+  {
+    "symbol": "IOCL",
+    "company": "Indian Oil Corporation Ltd",
+    "sector": "Oil & Gas",
+    "industry": "Oil & Gas",
+    "nse": "IOCL.NS",
+    "error": "No data returned from Yahoo Finance",
+    "validationTime": "2026-01-26T18:35:58.804Z"
+  },
+  {
+    "symbol": "DUMMYHDLVR",
+    "company": "Dummy Hindustan Unilever Ltd.",
+    "sector": "FMCG",
+    "industry": "Fast Moving Consumer Goods",
+    "nse": "DUMMYHDLVR.NS",
+    "error": "No data returned from Yahoo Finance",
+    "validationTime": "2026-01-26T18:36:16.625Z"
+  }
+]

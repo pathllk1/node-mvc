@@ -1,0 +1,1535 @@
+[
+  {
+    "symbol": "RELIANCE",
+    "company": "Reliance Industries Ltd",
+    "sector": "Energy",
+    "industry": "Oil, Gas & Consumable Fuels",
+    "nse_symbol": "RELIANCE.NS"
+  },
+  {
+    "symbol": "TCS",
+    "company": "Tata Consultancy Services Ltd",
+    "sector": "IT",
+    "industry": "IT Consulting & Other Services",
+    "nse_symbol": "TCS.NS"
+  },
+  {
+    "symbol": "HDFCBANK",
+    "company": "HDFC Bank Ltd",
+    "sector": "Financial Services",
+    "industry": "Banks",
+    "nse_symbol": "HDFCBANK.NS"
+  },
+  {
+    "symbol": "INFY",
+    "company": "Infosys Ltd",
+    "sector": "IT",
+    "industry": "IT Consulting & Other Services",
+    "nse_symbol": "INFY.NS"
+  },
+  {
+    "symbol": "ICICIBANK",
+    "company": "ICICI Bank Ltd",
+    "sector": "Financial Services",
+    "industry": "Banks",
+    "nse_symbol": "ICICIBANK.NS"
+  },
+  {
+    "symbol": "HINDUNILVR",
+    "company": "Hindustan Unilever Ltd",
+    "sector": "FMCG",
+    "industry": "Personal Care Products",
+    "nse_symbol": "HINDUNILVR.NS"
+  },
+  {
+    "symbol": "SBIN",
+    "company": "State Bank of India",
+    "sector": "Financial Services",
+    "industry": "Banks",
+    "nse_symbol": "SBIN.NS"
+  },
+  {
+    "symbol": "BHARTIARTL",
+    "company": "Bharti Airtel Ltd",
+    "sector": "Telecom",
+    "industry": "Wireless Telecommunication Services",
+    "nse_symbol": "BHARTIARTL.NS"
+  },
+  {
+    "symbol": "KOTAKBANK",
+    "company": "Kotak Mahindra Bank Ltd",
+    "sector": "Financial Services",
+    "industry": "Banks",
+    "nse_symbol": "KOTAKBANK.NS"
+  },
+  {
+    "symbol": "LT",
+    "company": "Larsen and Toubro Ltd",
+    "sector": "Capital Goods",
+    "industry": "Construction & Engineering",
+    "nse_symbol": "LT.NS"
+  },
+  {
+    "symbol": "AXISBANK",
+    "company": "Axis Bank Ltd",
+    "sector": "Financial Services",
+    "industry": "Banks",
+    "nse_symbol": "AXISBANK.NS"
+  },
+  {
+    "symbol": "ASIANPAINT",
+    "company": "Asian Paints Ltd",
+    "sector": "Consumer Durables",
+    "industry": "Paints & Coatings",
+    "nse_symbol": "ASIANPAINT.NS"
+  },
+  {
+    "symbol": "MARUTI",
+    "company": "Maruti Suzuki India Ltd",
+    "sector": "Automobiles & Components",
+    "industry": "Automobile Manufacturers",
+    "nse_symbol": "MARUTI.NS"
+  },
+  {
+    "symbol": "SUNPHARMA",
+    "company": "Sun Pharmaceutical Industries Ltd",
+    "sector": "Pharmaceuticals",
+    "industry": "Pharmaceuticals",
+    "nse_symbol": "SUNPHARMA.NS"
+  },
+  {
+    "symbol": "TATAMOTORS",
+    "company": "Tata Motors Ltd",
+    "sector": "Automobiles & Components",
+    "industry": "Automobile Manufacturers",
+    "nse_symbol": "Tmcv.NS"
+  },
+  {
+    "symbol": "ULTRACEMCO",
+    "company": "UltraTech Cement Ltd",
+    "sector": "Construction Materials",
+    "industry": "Cement & Cement Products",
+    "nse_symbol": "ULTRACEMCO.NS"
+  },
+  {
+    "symbol": "WIPRO",
+    "company": "Wipro Ltd",
+    "sector": "IT",
+    "industry": "IT Consulting & Other Services",
+    "nse_symbol": "WIPRO.NS"
+  },
+  {
+    "symbol": "NESTLEIND",
+    "company": "Nestle India Ltd",
+    "sector": "Food & Beverages",
+    "industry": "Packaged Foods",
+    "nse_symbol": "NESTLEIND.NS"
+  },
+  {
+    "symbol": "BAJFINANCE",
+    "company": "Bajaj Finance Ltd",
+    "sector": "Financial Services",
+    "industry": "Consumer Finance",
+    "nse_symbol": "BAJFINANCE.NS"
+  },
+  {
+    "symbol": "M&M",
+    "company": "Mahindra and Mahindra Ltd",
+    "sector": "Automobiles & Components",
+    "industry": "Automobile Manufacturers",
+    "nse_symbol": "M&M.NS"
+  },
+  {
+    "symbol": "ADANIPORTS",
+    "company": "Adani Ports and Special Economic Zone Ltd",
+    "sector": "Services",
+    "industry": "Transportation Services",
+    "nse_symbol": "ADANIPORTS.NS"
+  },
+  {
+    "symbol": "BAJAJFINSV",
+    "company": "Bajaj Finserv Ltd",
+    "sector": "Financial Services",
+    "industry": "Other Financial Services",
+    "nse_symbol": "BAJAJFINSV.NS"
+  },
+  {
+    "symbol": "ONGC",
+    "company": "Oil & Natural Gas Corporation Ltd",
+    "sector": "Energy",
+    "industry": "Oil, Gas & Consumable Fuels",
+    "nse_symbol": "ONGC.NS"
+  },
+  {
+    "symbol": "POWERGRID",
+    "company": "Power Grid Corporation of India Ltd",
+    "sector": "Utilities",
+    "industry": "Electric Utilities",
+    "nse_symbol": "POWERGRID.NS"
+  },
+  {
+    "symbol": "HINDALCO",
+    "company": "Hindalco Industries Ltd",
+    "sector": "Metals & Mining",
+    "industry": "Aluminum",
+    "nse_symbol": "HINDALCO.NS"
+  },
+  {
+    "symbol": "COALINDIA",
+    "company": "Coal India Ltd",
+    "sector": "Energy",
+    "industry": "Oil, Gas & Consumable Fuels",
+    "nse_symbol": "COALINDIA.NS"
+  },
+  {
+    "symbol": "IOC",
+    "company": "Indian Oil Corporation Ltd",
+    "sector": "Energy",
+    "industry": "Oil, Gas & Consumable Fuels",
+    "nse_symbol": "IOC.NS"
+  },
+  {
+    "symbol": "GRASIM",
+    "company": "Grasim Industries Ltd",
+    "sector": "Construction Materials",
+    "industry": "Cement & Cement Products",
+    "nse_symbol": "GRASIM.NS"
+  },
+  {
+    "symbol": "VEDL",
+    "company": "Vedanta Ltd",
+    "sector": "Metals & Mining",
+    "industry": "Non-Ferrous Metals",
+    "nse_symbol": "VEDL.NS"
+  },
+  {
+    "symbol": "JSWSTEEL",
+    "company": "JSW Steel Ltd",
+    "sector": "Metals & Mining",
+    "industry": "Iron & Steel",
+    "nse_symbol": "JSWSTEEL.NS"
+  },
+  {
+    "symbol": "BPCL",
+    "company": "Bharat Petroleum Corporation Ltd",
+    "sector": "Energy",
+    "industry": "Oil, Gas & Consumable Fuels",
+    "nse_symbol": "BPCL.NS"
+  },
+  {
+    "symbol": "EICHERMOT",
+    "company": "Eicher Motors Ltd",
+    "sector": "Automobiles & Components",
+    "industry": "Automobile Manufacturers",
+    "nse_symbol": "EICHERMOT.NS"
+  },
+  {
+    "symbol": "DRREDDY",
+    "company": "Dr. Reddy's Laboratories Ltd",
+    "sector": "Pharmaceuticals",
+    "industry": "Pharmaceuticals",
+    "nse_symbol": "DRREDDY.NS"
+  },
+  {
+    "symbol": "SHREECEM",
+    "company": "Shree Cement Ltd",
+    "sector": "Construction Materials",
+    "industry": "Cement & Cement Products",
+    "nse_symbol": "SHREECEM.NS"
+  },
+  {
+    "symbol": "BRITANNIA",
+    "company": "Britannia Industries Ltd",
+    "sector": "Food & Beverages",
+    "industry": "Packaged Foods",
+    "nse_symbol": "BRITANNIA.NS"
+  },
+  {
+    "symbol": "CIPLA",
+    "company": "Cipla Ltd",
+    "sector": "Pharmaceuticals",
+    "industry": "Pharmaceuticals",
+    "nse_symbol": "CIPLA.NS"
+  },
+  {
+    "symbol": "BAJAJ-AUTO",
+    "company": "Bajaj Auto Ltd",
+    "sector": "Automobiles & Components",
+    "industry": "Automobile Manufacturers",
+    "nse_symbol": "BAJAJ-AUTO.NS"
+  },
+  {
+    "symbol": "HINDZINC",
+    "company": "Hindustan Zinc Ltd",
+    "sector": "Metals & Mining",
+    "industry": "Non-Ferrous Metals",
+    "nse_symbol": "HINDZINC.NS"
+  },
+  {
+    "symbol": "GODREJCP",
+    "company": "Godrej Consumer Products Ltd",
+    "sector": "FMCG",
+    "industry": "Personal Care Products",
+    "nse_symbol": "GODREJCP.NS"
+  },
+  {
+    "symbol": "HEROMOTOCO",
+    "company": "Hero MotoCorp Ltd",
+    "sector": "Automobiles & Components",
+    "industry": "Automobile Manufacturers",
+    "nse_symbol": "HEROMOTOCO.NS"
+  },
+  {
+    "symbol": "APOLLOHOSP",
+    "company": "Apollo Hospitals Enterprise Ltd",
+    "sector": "Healthcare",
+    "industry": "Healthcare Facilities",
+    "nse_symbol": "APOLLOHOSP.NS"
+  },
+  {
+    "symbol": "DIVISLAB",
+    "company": "Divi's Laboratories Ltd",
+    "sector": "Pharmaceuticals",
+    "industry": "Pharmaceuticals",
+    "nse_symbol": "DIVISLAB.NS"
+  },
+  {
+    "symbol": "HCLTECH",
+    "company": "HCL Technologies Ltd",
+    "sector": "IT",
+    "industry": "IT Consulting & Other Services",
+    "nse_symbol": "HCLTECH.NS"
+  },
+  {
+    "symbol": "TITAN",
+    "company": "Titan Company Ltd",
+    "sector": "Consumer Durables",
+    "industry": "Durable Household Products",
+    "nse_symbol": "TITAN.NS"
+  },
+  {
+    "symbol": "UPL",
+    "company": "UPL Ltd",
+    "sector": "Chemicals",
+    "industry": "Agrochemicals",
+    "nse_symbol": "UPL.NS"
+  },
+  {
+    "symbol": "INDUSINDBK",
+    "company": "IndusInd Bank Ltd",
+    "sector": "Financial Services",
+    "industry": "Banks",
+    "nse_symbol": "INDUSINDBK.NS"
+  },
+  {
+    "symbol": "TATASTEEL",
+    "company": "Tata Steel Ltd",
+    "sector": "Metals & Mining",
+    "industry": "Iron & Steel",
+    "nse_symbol": "TATASTEEL.NS"
+  },
+  {
+    "symbol": "NTPC",
+    "company": "NTPC Ltd",
+    "sector": "Utilities",
+    "industry": "Electric Utilities",
+    "nse_symbol": "NTPC.NS"
+  },
+  {
+    "symbol": "ADANIENT",
+    "company": "Adani Enterprises Ltd",
+    "sector": "Capital Goods",
+    "industry": "Trading Companies & Distributors",
+    "nse_symbol": "ADANIENT.NS"
+  },
+  {
+    "symbol": "MCDOWELL-N",
+    "company": "United Spirits Ltd",
+    "sector": "Food & Beverages",
+    "industry": "Breweries & Distilleries",
+    "nse_symbol": "MCDOWELL-N.NS"
+  },
+  {
+    "symbol": "PIDILITE",
+    "company": "Pidilite Industries Ltd",
+    "sector": "Chemicals",
+    "industry": "Specialty Chemicals",
+    "nse_symbol": "PIDILITE.NS"
+  },
+  {
+    "symbol": "HAVELLS",
+    "company": "Havells India Ltd",
+    "sector": "Consumer Durables",
+    "industry": "Consumer Electronics",
+    "nse_symbol": "HAVELLS.NS"
+  },
+  {
+    "symbol": "DLF",
+    "company": "DLF Ltd",
+    "sector": "Realty",
+    "industry": "Real Estate",
+    "nse_symbol": "DLF.NS"
+  },
+  {
+    "symbol": "SIEMENS",
+    "company": "Siemens Ltd",
+    "sector": "Capital Goods",
+    "industry": "Commercial Vehicles",
+    "nse_symbol": "SIEMENS.NS"
+  },
+  {
+    "symbol": "BERGEPAINT",
+    "company": "Berger Paints India Ltd",
+    "sector": "Consumer Durables",
+    "industry": "Paints & Coatings",
+    "nse_symbol": "BERGEPAINT.NS"
+  },
+  {
+    "symbol": "COLPAL",
+    "company": "Colgate-Palmolive (India) Ltd",
+    "sector": "FMCG",
+    "industry": "Personal Care Products",
+    "nse_symbol": "COLPAL.NS"
+  },
+  {
+    "symbol": "DABUR",
+    "company": "Dabur India Ltd",
+    "sector": "FMCG",
+    "industry": "Personal Care Products",
+    "nse_symbol": "DABUR.NS"
+  },
+  {
+    "symbol": "ADANIPOWER",
+    "company": "Adani Power Ltd",
+    "sector": "Utilities",
+    "industry": "Electric Utilities",
+    "nse_symbol": "ADANIPOWER.NS"
+  },
+  {
+    "symbol": "NYKAA",
+    "company": "FSN E-Commerce Ventures Ltd",
+    "sector": "Retail",
+    "industry": "Specialty Retail",
+    "nse_symbol": "NYKAA.NS"
+  },
+  {
+    "symbol": "BAJAJHLDNG",
+    "company": "Bajaj Holdings & Investment Ltd",
+    "sector": "Financial Services",
+    "industry": "Holding Companies",
+    "nse_symbol": "BAJAJHLDNG.NS"
+  },
+  {
+    "symbol": "AMBUJACEM",
+    "company": "Ambuja Cements Ltd",
+    "sector": "Construction Materials",
+    "industry": "Cement & Cement Products",
+    "nse_symbol": "AMBUJACEM.NS"
+  },
+  {
+    "symbol": "MUTHOOTFIN",
+    "company": "Muthoot Finance Ltd",
+    "sector": "Financial Services",
+    "industry": "Finance (NBFC)",
+    "nse_symbol": "MUTHOOTFIN.NS"
+  },
+  {
+    "symbol": "APOLLOTYRE",
+    "company": "Apollo Tyres Ltd",
+    "sector": "Automobiles & Components",
+    "industry": "Auto Parts & Equipment",
+    "nse_symbol": "APOLLOTYRE.NS"
+  },
+  {
+    "symbol": "ASHOKLEY",
+    "company": "Ashok Leyland Ltd",
+    "sector": "Automobiles & Components",
+    "industry": "Commercial Vehicles",
+    "nse_symbol": "ASHOKLEY.NS"
+  },
+  {
+    "symbol": "ATUL",
+    "company": "Atul Ltd",
+    "sector": "Chemicals",
+    "industry": "Commodity Chemicals",
+    "nse_symbol": "ATUL.NS"
+  },
+  {
+    "symbol": "AUBANK",
+    "company": "AU Small Finance Bank Ltd",
+    "sector": "Financial Services",
+    "industry": "Banks",
+    "nse_symbol": "AUBANK.NS"
+  },
+  {
+    "symbol": "DMART",
+    "company": "Avenue Supermarts Ltd",
+    "sector": "Retail",
+    "industry": "General Retail",
+    "nse_symbol": "DMART.NS"
+  },
+  {
+    "symbol": "BAJAJELEC",
+    "company": "Bajaj Electricals Ltd",
+    "sector": "Consumer Durables",
+    "industry": "Consumer Electronics",
+    "nse_symbol": "BAJAJELEC.NS"
+  },
+  {
+    "symbol": "BALKRISIND",
+    "company": "Balkrishna Industries Ltd",
+    "sector": "Automobiles & Components",
+    "industry": "Auto Parts & Equipment",
+    "nse_symbol": "BALKRISIND.NS"
+  },
+  {
+    "symbol": "BATAINDIA",
+    "company": "Bata India Ltd",
+    "sector": "Consumer Durables",
+    "industry": "Footwear",
+    "nse_symbol": "BATAINDIA.NS"
+  },
+  {
+    "symbol": "BEL",
+    "company": "Bharat Electronics Ltd",
+    "sector": "Capital Goods",
+    "industry": "Defense",
+    "nse_symbol": "BEL.NS"
+  },
+  {
+    "symbol": "BLUEDART",
+    "company": "Blue Dart Express Ltd",
+    "sector": "Services",
+    "industry": "Courier",
+    "nse_symbol": "BLUEDART.NS"
+  },
+  {
+    "symbol": "CHOLAFIN",
+    "company": "Cholamandalam Investment and Finance Company Ltd",
+    "sector": "Financial Services",
+    "industry": "Finance (NBFC)",
+    "nse_symbol": "CHOLAFIN.NS"
+  },
+  {
+    "symbol": "CONCOR",
+    "company": "Container Corporation of India Ltd",
+    "sector": "Services",
+    "industry": "Transportation Services",
+    "nse_symbol": "CONCOR.NS"
+  },
+  {
+    "symbol": "COROMANDEL",
+    "company": "Coromandel International Ltd",
+    "sector": "Chemicals",
+    "industry": "Fertilizers & Agrochemicals",
+    "nse_symbol": "COROMANDEL.NS"
+  },
+  {
+    "symbol": "CROMPTON",
+    "company": "Crompton Greaves Consumer Electricals Ltd",
+    "sector": "Consumer Durables",
+    "industry": "Consumer Electronics",
+    "nse_symbol": "CROMPTON.NS"
+  },
+  {
+    "symbol": "ESCORTS",
+    "company": "Escorts Kubota Ltd",
+    "sector": "Automobiles & Components",
+    "industry": "Commercial Vehicles",
+    "nse_symbol": "ESCORTS.NS"
+  },
+  {
+    "symbol": "EXIDEIND",
+    "company": "Exide Industries Ltd",
+    "sector": "Automobiles & Components",
+    "industry": "Auto Parts & Equipment",
+    "nse_symbol": "EXIDEIND.NS"
+  },
+  {
+    "symbol": "FEDERALBNK",
+    "company": "The Federal Bank Ltd",
+    "sector": "Financial Services",
+    "industry": "Banks",
+    "nse_symbol": "FEDERALBNK.NS"
+  },
+  {
+    "symbol": "GAIL",
+    "company": "GAIL (India) Ltd",
+    "sector": "Energy",
+    "industry": "Oil, Gas & Consumable Fuels",
+    "nse_symbol": "GAIL.NS"
+  },
+  {
+    "symbol": "GLENMARK",
+    "company": "Glenmark Pharmaceuticals Ltd",
+    "sector": "Pharmaceuticals",
+    "industry": "Pharmaceuticals",
+    "nse_symbol": "GLENMARK.NS"
+  },
+  {
+    "symbol": "GMRINFRA",
+    "company": "GMR Infrastructure Ltd",
+    "sector": "Infrastructure",
+    "industry": "Airports",
+    "nse_symbol": "GMRINFRA-EQ.NS"
+  },
+  {
+    "symbol": "GODREJPROP",
+    "company": "Godrej Properties Ltd",
+    "sector": "Realty",
+    "industry": "Real Estate",
+    "nse_symbol": "GODREJPROP.NS"
+  },
+  {
+    "symbol": "HINDPETRO",
+    "company": "Hindustan Petroleum Corporation Ltd",
+    "sector": "Energy",
+    "industry": "Oil, Gas & Consumable Fuels",
+    "nse_symbol": "HINDPETRO.NS"
+  },
+  {
+    "symbol": "ICICIPRULI",
+    "company": "ICICI Prudential Life Insurance Company Ltd",
+    "sector": "Financial Services",
+    "industry": "Insurance",
+    "nse_symbol": "ICICIPRULI.NS"
+  },
+  {
+    "symbol": "IGL",
+    "company": "Indraprastha Gas Ltd",
+    "sector": "Utilities",
+    "industry": "Gas Utilities",
+    "nse_symbol": "IGL.NS"
+  },
+  {
+    "symbol": "INDIGO",
+    "company": "InterGlobe Aviation Ltd",
+    "sector": "Services",
+    "industry": "Airlines",
+    "nse_symbol": "INDIGO.NS"
+  },
+  {
+    "symbol": "INDIAMART",
+    "company": "Indiamart Intermesh Ltd",
+    "sector": "Internet & Catalogue Retail",
+    "industry": "Business Support Services",
+    "nse_symbol": "INDIAMART.NS"
+  },
+  {
+    "symbol": "INFRATEL",
+    "company": "Bharti Infratel Ltd",
+    "sector": "Telecom",
+    "industry": "Telecommunications",
+    "nse_symbol": "INFRATEL-eq.NS"
+  },
+  {
+    "symbol": "INOXLEISUR",
+    "company": "Inox Leisure Ltd",
+    "sector": "Media & Entertainment",
+    "industry": "Movies & Entertainment",
+    "nse_symbol": "INOXLEISUR.NS"
+  },
+  {
+    "symbol": "IPCALAB",
+    "company": "IPCA Laboratories Ltd",
+    "sector": "Pharmaceuticals",
+    "industry": "Pharmaceuticals",
+    "nse_symbol": "IPCALAB.NS"
+  },
+  {
+    "symbol": "JINDALSTEL",
+    "company": "Jindal Steel & Power Ltd",
+    "sector": "Metals & Mining",
+    "industry": "Iron & Steel",
+    "nse_symbol": "JINDALSTEL.NS"
+  },
+  {
+    "symbol": "JUBLFOOD",
+    "company": "Jubilant Foodworks Ltd",
+    "sector": "Food & Beverages",
+    "industry": "Restaurants",
+    "nse_symbol": "JUBLFOOD.NS"
+  },
+  {
+    "symbol": "KANSAINER",
+    "company": "Kansai Nerolac Paints Ltd",
+    "sector": "Chemicals",
+    "industry": "Specialty Chemicals",
+    "nse_symbol": "KANSAINER.NS"
+  },
+  {
+    "symbol": "KOTAKMFF",
+    "company": "Kotak Mahindra Mutual Fund Trustee Ltd",
+    "sector": "Financial Services",
+    "industry": "Asset Management Companies",
+    "nse_symbol": "KOTAKMFF.NS"
+  },
+  {
+    "symbol": "LICHSGFIN",
+    "company": "LIC Housing Finance Ltd",
+    "sector": "Financial Services",
+    "industry": "Housing Finance",
+    "nse_symbol": "LICHSGFIN.NS"
+  },
+  {
+    "symbol": "LTTS",
+    "company": "L&T Technology Services Ltd",
+    "sector": "IT",
+    "industry": "IT Consulting & Other Services",
+    "nse_symbol": "LTTS.NS"
+  },
+  {
+    "symbol": "LUPIN",
+    "company": "Lupin Ltd",
+    "sector": "Pharmaceuticals",
+    "industry": "Pharmaceuticals",
+    "nse_symbol": "LUPIN.NS"
+  },
+  {
+    "symbol": "MRF",
+    "company": "MRF Ltd",
+    "sector": "Automobiles & Components",
+    "industry": "Auto Parts & Equipment",
+    "nse_symbol": "MRF.NS"
+  },
+  {
+    "symbol": "MFSL",
+    "company": "Max Financial Services Ltd",
+    "sector": "Financial Services",
+    "industry": "Other Financial Services",
+    "nse_symbol": "MFSL.NS"
+  },
+  {
+    "symbol": "MGL",
+    "company": "Mahanagar Gas Ltd",
+    "sector": "Utilities",
+    "industry": "Gas Utilities",
+    "nse_symbol": "MGL.NS"
+  },
+  {
+    "symbol": "MPHASIS",
+    "company": "MphasiS Ltd",
+    "sector": "IT",
+    "industry": "IT Consulting & Other Services",
+    "nse_symbol": "MPHASIS.NS"
+  },
+  {
+    "symbol": "NAUKRI",
+    "company": "Info Edge (India) Ltd",
+    "sector": "Internet & Catalogue Retail",
+    "industry": "Internet & Direct Marketing Retail",
+    "nse_symbol": "NAUKRI.NS"
+  },
+  {
+    "symbol": "NMDC",
+    "company": "NMDC Ltd",
+    "sector": "Metals & Mining",
+    "industry": "Iron & Steel",
+    "nse_symbol": "NMDC.NS"
+  },
+  {
+    "symbol": "OBEROIRLTY",
+    "company": "Oberoi Realty Ltd",
+    "sector": "Realty",
+    "industry": "Real Estate",
+    "nse_symbol": "OBEROIRLTY.NS"
+  },
+  {
+    "symbol": "OFSS",
+    "company": "Oracle Financial Services Software Ltd",
+    "sector": "IT",
+    "industry": "IT Consulting & Other Services",
+    "nse_symbol": "OFSS.NS"
+  },
+  {
+    "symbol": "POLYCAB",
+    "company": "Polycab India Ltd",
+    "sector": "Capital Goods",
+    "industry": "Electrical Equipment",
+    "nse_symbol": "POLYCAB.NS"
+  },
+  {
+    "symbol": "RAMCOCEM",
+    "company": "The Ramco Cements Ltd",
+    "sector": "Construction Materials",
+    "industry": "Cement & Cement Products",
+    "nse_symbol": "RAMCOCEM.NS"
+  },
+  {
+    "symbol": "RBLBANK",
+    "company": "RBL Bank Ltd",
+    "sector": "Financial Services",
+    "industry": "Banks",
+    "nse_symbol": "RBLBANK.NS"
+  },
+  {
+    "symbol": "RECLTD",
+    "company": "REC Ltd",
+    "sector": "Financial Services",
+    "industry": "Finance (NBFC)",
+    "nse_symbol": "RECLTD.NS"
+  },
+  {
+    "symbol": "SRF",
+    "company": "SRF Ltd",
+    "sector": "Chemicals",
+    "industry": "Specialty Chemicals",
+    "nse_symbol": "SRF.NS"
+  },
+  {
+    "symbol": "SRTRANSFIN",
+    "company": "Shriram Transport Finance Company Ltd",
+    "sector": "Financial Services",
+    "industry": "Finance (NBFC)",
+    "nse_symbol": "SRTRANSFIN.NS"
+  },
+  {
+    "symbol": "SUDARSCHEM",
+    "company": "Sudarshan Chemical Industries Ltd",
+    "sector": "Chemicals",
+    "industry": "Specialty Chemicals",
+    "nse_symbol": "SUDARSCHEM.NS"
+  },
+  {
+    "symbol": "TVSMOTOR",
+    "company": "TVS Motor Company Ltd",
+    "sector": "Automobiles & Components",
+    "industry": "Automobile Manufacturers",
+    "nse_symbol": "TVSMOTOR.NS"
+  },
+  {
+    "symbol": "UBL",
+    "company": "United Breweries Ltd",
+    "sector": "Food & Beverages",
+    "industry": "Breweries & Distilleries",
+    "nse_symbol": "UBL.NS"
+  },
+  {
+    "symbol": "VGUARD",
+    "company": "V-Guard Industries Ltd",
+    "sector": "Consumer Durables",
+    "industry": "Consumer Electronics",
+    "nse_symbol": "VGUARD.NS"
+  },
+  {
+    "symbol": "VOLTAS",
+    "company": "Voltas Ltd",
+    "sector": "Consumer Durables",
+    "industry": "Consumer Electronics",
+    "nse_symbol": "VOLTAS.NS"
+  },
+  {
+    "symbol": "WHIRLPOOL",
+    "company": "Whirlpool of India Ltd",
+    "sector": "Consumer Durables",
+    "industry": "Consumer Electronics",
+    "nse_symbol": "WHIRLPOOL.NS"
+  },
+  {
+    "symbol": "ZEEL",
+    "company": "Zee Entertainment Enterprises Ltd",
+    "sector": "Media & Entertainment",
+    "industry": "Broadcasting & Cable TV",
+    "nse_symbol": "ZEEL.NS"
+  },
+  {
+    "symbol": "ABB",
+    "company": "ABB India Ltd",
+    "sector": "Capital Goods",
+    "industry": "Electrical Equipment",
+    "nse_symbol": "ABB.NS"
+  },
+  {
+    "symbol": "ACC",
+    "company": "ACC Ltd",
+    "sector": "Construction Materials",
+    "industry": "Cement & Cement Products",
+    "nse_symbol": "ACC.NS"
+  },
+  {
+    "symbol": "ADANIGREEN",
+    "company": "Adani Green Energy Ltd",
+    "sector": "Utilities",
+    "industry": "Renewable Energy",
+    "nse_symbol": "ADANIGREEN.NS"
+  },
+  {
+    "symbol": "ADANITRANS",
+    "company": "Adani Transmission Ltd",
+    "sector": "Utilities",
+    "industry": "Electric Utilities",
+    "nse_symbol": "ADANITRANS.NS"
+  },
+  {
+    "symbol": "ALKEM",
+    "company": "Alkem Laboratories Ltd",
+    "sector": "Pharmaceuticals",
+    "industry": "Pharmaceuticals",
+    "nse_symbol": "ALKEM.NS"
+  },
+  {
+    "symbol": "AMARAJABAT",
+    "company": "Amara Raja Batteries Ltd",
+    "sector": "Automobiles & Components",
+    "industry": "Auto Parts & Equipment",
+    "nse_symbol": "AMARAJABAT.NS"
+  },
+  {
+    "symbol": "AUROPHARMA",
+    "company": "Aurobindo Pharma Ltd",
+    "sector": "Pharmaceuticals",
+    "industry": "Pharmaceuticals",
+    "nse_symbol": "AUROPHARMA.NS"
+  },
+  {
+    "symbol": "BANDHANBNK",
+    "company": "Bandhan Bank Ltd",
+    "sector": "Financial Services",
+    "industry": "Banks",
+    "nse_symbol": "BANDHANBNK.NS"
+  },
+  {
+    "symbol": "BANKBARODA",
+    "company": "Bank of Baroda",
+    "sector": "Financial Services",
+    "industry": "Banks",
+    "nse_symbol": "BANKBARODA.NS"
+  },
+  {
+    "symbol": "BHEL",
+    "company": "Bharat Heavy Electricals Ltd",
+    "sector": "Capital Goods",
+    "industry": "Heavy Electrical Equipment",
+    "nse_symbol": "BHEL.NS"
+  },
+  {
+    "symbol": "BIOCON",
+    "company": "Biocon Ltd",
+    "sector": "Pharmaceuticals",
+    "industry": "Biotechnology",
+    "nse_symbol": "BIOCON.NS"
+  },
+  {
+    "symbol": "BOSCHLTD",
+    "company": "Bosch Ltd",
+    "sector": "Automobiles & Components",
+    "industry": "Auto Parts & Equipment",
+    "nse_symbol": "BOSCHLTD.NS"
+  },
+  {
+    "symbol": "CANBK",
+    "company": "Canara Bank",
+    "sector": "Financial Services",
+    "industry": "Banks",
+    "nse_symbol": "CANBK.NS"
+  },
+  {
+    "symbol": "CASTROLIND",
+    "company": "Castrol India Ltd",
+    "sector": "Energy",
+    "industry": "Oil, Gas & Consumable Fuels",
+    "nse_symbol": "CASTROLIND.NS"
+  },
+  {
+    "symbol": "CEATLTD",
+    "company": "CEAT Ltd",
+    "sector": "Automobiles & Components",
+    "industry": "Auto Parts & Equipment",
+    "nse_symbol": "CEATLTD.NS"
+  },
+  {
+    "symbol": "CENTURYTEX",
+    "company": "Century Textiles & Industries Ltd",
+    "sector": "Consumer Durables",
+    "industry": "Paper & Forest Products",
+    "nse_symbol": "CENTURYTEX.NS"
+  },
+  {
+    "symbol": "CUB",
+    "company": "City Union Bank Ltd",
+    "sector": "Financial Services",
+    "industry": "Banks",
+    "nse_symbol": "CUB.NS"
+  },
+  {
+    "symbol": "CUMMINSIND",
+    "company": "Cummins India Ltd",
+    "sector": "Capital Goods",
+    "industry": "Commercial Vehicles",
+    "nse_symbol": "CUMMINSIND.NS"
+  },
+  {
+    "symbol": "DEEPAKNTR",
+    "company": "Deepak Nitrite Ltd",
+    "sector": "Chemicals",
+    "industry": "Commodity Chemicals",
+    "nse_symbol": "DEEPAKNTR.NS"
+  },
+  {
+    "symbol": "DELTACORP",
+    "company": "Delta Corp Ltd",
+    "sector": "Services",
+    "industry": "Gaming",
+    "nse_symbol": "DELTACORP.NS"
+  },
+  {
+    "symbol": "DIXON",
+    "company": "Dixon Technologies (India) Ltd",
+    "sector": "Consumer Durables",
+    "industry": "Consumer Electronics",
+    "nse_symbol": "DIXON.NS"
+  },
+  {
+    "symbol": "EIHOTEL",
+    "company": "EIH Ltd",
+    "sector": "Services",
+    "industry": "Hotels",
+    "nse_symbol": "EIHOTEL.NS"
+  },
+  {
+    "symbol": "ENDURANCE",
+    "company": "Endurance Technologies Ltd",
+    "sector": "Automobiles & Components",
+    "industry": "Auto Parts & Equipment",
+    "nse_symbol": "ENDURANCE.NS"
+  },
+  {
+    "symbol": "FORTIS",
+    "company": "Fortis Healthcare Ltd",
+    "sector": "Healthcare",
+    "industry": "Healthcare Facilities",
+    "nse_symbol": "FORTIS.NS"
+  },
+  {
+    "symbol": "FUTURELTD",
+    "company": "Future Lifestyle Fashions Ltd",
+    "sector": "Retail",
+    "industry": "Apparel Retail",
+    "nse_symbol": "FUTURELTD.NS"
+  },
+  {
+    "symbol": "GALAXYSURF",
+    "company": "Galaxy Surfactants Ltd",
+    "sector": "Chemicals",
+    "industry": "Specialty Chemicals",
+    "nse_symbol": "GALAXYSURF.NS"
+  },
+  {
+    "symbol": "GESHIP",
+    "company": "The Great Eastern Shipping Company Ltd",
+    "sector": "Services",
+    "industry": "Marine Transportation",
+    "nse_symbol": "GESHIP.NS"
+  },
+  {
+    "symbol": "GILLETTE",
+    "company": "Gillette India Ltd",
+    "sector": "FMCG",
+    "industry": "Personal Care Products",
+    "nse_symbol": "GILLETTE.NS"
+  },
+  {
+    "symbol": "GLAND",
+    "company": "Gland Pharma Ltd",
+    "sector": "Pharmaceuticals",
+    "industry": "Pharmaceuticals",
+    "nse_symbol": "GLAND.NS"
+  },
+  {
+    "symbol": "GODREJAGRO",
+    "company": "Godrej Agrovet Ltd",
+    "sector": "FMCG",
+    "industry": "Agricultural Products",
+    "nse_symbol": "GODREJAGRO.NS"
+  },
+  {
+    "symbol": "HATSUN",
+    "company": "Hatsun Agro Product Ltd",
+    "sector": "Food & Beverages",
+    "industry": "Dairy Products",
+    "nse_symbol": "HATSUN.NS"
+  },
+  {
+    "symbol": "HEG",
+    "company": "HEG Ltd",
+    "sector": "Capital Goods",
+    "industry": "Industrial Machinery",
+    "nse_symbol": "HEG.NS"
+  },
+  {
+    "symbol": "HONAUT",
+    "company": "Honeywell Automation India Ltd",
+    "sector": "Capital Goods",
+    "industry": "Industrial Machinery",
+    "nse_symbol": "HONAUT.NS"
+  },
+  {
+    "symbol": "IDBI",
+    "company": "IDBI Bank Ltd",
+    "sector": "Financial Services",
+    "industry": "Banks",
+    "nse_symbol": "IDBI.NS"
+  },
+  {
+    "symbol": "IDFCFIRSTB",
+    "company": "IDFC First Bank Ltd",
+    "sector": "Financial Services",
+    "industry": "Banks",
+    "nse_symbol": "IDFCFIRSTB.NS"
+  },
+  {
+    "symbol": "INTELLECT",
+    "company": "Intellect Design Arena Ltd",
+    "sector": "IT",
+    "industry": "IT Consulting & Other Services",
+    "nse_symbol": "INTELLECT.NS"
+  },
+  {
+    "symbol": "ISEC",
+    "company": "ICICI Securities Ltd",
+    "sector": "Financial Services",
+    "industry": "Other Financial Services",
+    "nse_symbol": "ISEC.NS"
+  },
+  {
+    "symbol": "JBCHEPHARM",
+    "company": "JB Chemicals & Pharmaceuticals Ltd",
+    "sector": "Pharmaceuticals",
+    "industry": "Pharmaceuticals",
+    "nse_symbol": "JBCHEPHARM.NS"
+  },
+  {
+    "symbol": "JKCEMENT",
+    "company": "JK Cement Ltd",
+    "sector": "Construction Materials",
+    "industry": "Cement & Cement Products",
+    "nse_symbol": "JKCEMENT.NS"
+  },
+  {
+    "symbol": "JKLAKSHMI",
+    "company": "JK Lakshmi Cement Ltd",
+    "sector": "Construction Materials",
+    "industry": "Cement & Cement Products",
+    "nse_symbol": "JKLAKSHMI.NS"
+  },
+  {
+    "symbol": "JKPAPER",
+    "company": "JK Paper Ltd",
+    "sector": "Consumer Durables",
+    "industry": "Paper & Forest Products",
+    "nse_symbol": "JKPAPER.NS"
+  },
+  {
+    "symbol": "JMFINANCIL",
+    "company": "JM Financial Ltd",
+    "sector": "Financial Services",
+    "industry": "Other Financial Services",
+    "nse_symbol": "JMFINANCIL.NS"
+  },
+  {
+    "symbol": "JSL",
+    "company": "Jindal Stainless Ltd",
+    "sector": "Metals & Mining",
+    "industry": "Iron & Steel",
+    "nse_symbol": "JSL.NS"
+  },
+  {
+    "symbol": "KALPATPOWR",
+    "company": "Kalpataru Power Transmission Ltd",
+    "sector": "Capital Goods",
+    "industry": "Heavy Electrical Equipment",
+    "nse_symbol": "KALPATPOWR.NS"
+  },
+  {
+    "symbol": "KARURVYSYA",
+    "company": "Karur Vysya Bank Ltd",
+    "sector": "Financial Services",
+    "industry": "Banks",
+    "nse_symbol": "KARURVYSYA.NS"
+  },
+  {
+    "symbol": "KEI",
+    "company": "KEI Industries Ltd",
+    "sector": "Capital Goods",
+    "industry": "Electrical Equipment",
+    "nse_symbol": "KEI.NS"
+  },
+  {
+    "symbol": "KPRMILL",
+    "company": "KPR Mill Ltd",
+    "sector": "Textiles",
+    "industry": "Textiles",
+    "nse_symbol": "KPRMILL.NS"
+  },
+  {
+    "symbol": "L&TFH",
+    "company": "L&T Finance Holdings Ltd",
+    "sector": "Financial Services",
+    "industry": "Housing Finance",
+    "nse_symbol": "L&TFH.NS"
+  },
+  {
+    "symbol": "LAURUSLABS",
+    "company": "Laurus Labs Ltd",
+    "sector": "Pharmaceuticals",
+    "industry": "Pharmaceuticals",
+    "nse_symbol": "LAURUSLABS.NS"
+  },
+  {
+    "symbol": "LINDEINDIA",
+    "company": "Linde India Ltd",
+    "sector": "Chemicals",
+    "industry": "Industrial Gases",
+    "nse_symbol": "LINDEINDIA.NS"
+  },
+  {
+    "symbol": "MAHABANK",
+    "company": "Bank of Maharashtra",
+    "sector": "Financial Services",
+    "industry": "Banks",
+    "nse_symbol": "MAHABANK.NS"
+  },
+  {
+    "symbol": "MAHINDCIE",
+    "company": "Mahindra CIE Automotive Ltd",
+    "sector": "Automobiles & Components",
+    "industry": "Auto Parts & Equipment",
+    "nse_symbol": "MAHINDCIE.NS"
+  },
+  {
+    "symbol": "MANAPPURAM",
+    "company": "Manappuram Finance Ltd",
+    "sector": "Financial Services",
+    "industry": "Finance (NBFC)",
+    "nse_symbol": "MANAPPURAM.NS"
+  },
+  {
+    "symbol": "M&MFIN",
+    "company": "Mahindra Finance Ltd",
+    "sector": "Financial Services",
+    "industry": "Finance (NBFC)",
+    "nse_symbol": "M&MFIN.NS"
+  },
+  {
+    "symbol": "MEDANTA",
+    "company": "Medanta Medicity",
+    "sector": "Healthcare",
+    "industry": "Healthcare Facilities",
+    "nse_symbol": "MEDANTA.NS"
+  },
+  {
+    "symbol": "METROPOLIS",
+    "company": "Metropolis Healthcare Ltd",
+    "sector": "Healthcare",
+    "industry": "Healthcare Services",
+    "nse_symbol": "METROPOLIS.NS"
+  },
+  {
+    "symbol": "MINDACORP",
+    "company": "Minda Corporation Ltd",
+    "sector": "Automobiles & Components",
+    "industry": "Auto Parts & Equipment",
+    "nse_symbol": "MINDACORP.NS"
+  },
+  {
+    "symbol": "MINDTREE",
+    "company": "Mindtree Ltd",
+    "sector": "IT",
+    "industry": "IT Consulting & Other Services",
+    "nse_symbol": "MINDTREE.NS"
+  },
+  {
+    "symbol": "MOTHERSON",
+    "company": "Samvardhana Motherson International Ltd",
+    "sector": "Automobiles & Components",
+    "industry": "Auto Parts & Equipment",
+    "nse_symbol": "MOTHERSON.NS"
+  },
+  {
+    "symbol": "MPHASE",
+    "company": "MphasiS Ltd",
+    "sector": "IT",
+    "industry": "IT Consulting & Other Services",
+    "nse_symbol": "MPHASE.NS"
+  },
+  {
+    "symbol": "MRF",
+    "company": "MRF Ltd",
+    "sector": "Automobiles & Components",
+    "industry": "Auto Parts & Equipment",
+    "nse_symbol": "MRF.NS"
+  },
+  {
+    "symbol": "NATIONALUM",
+    "company": "National Aluminium Company Ltd",
+    "sector": "Metals & Mining",
+    "industry": "Aluminum",
+    "nse_symbol": "NATIONALUM.NS"
+  },
+  {
+    "symbol": "NCC",
+    "company": "NCC Ltd",
+    "sector": "Construction Materials",
+    "industry": "Construction & Engineering",
+    "nse_symbol": "NCC.NS"
+  },
+  {
+    "symbol": "NESTLEIND",
+    "company": "Nestle India Ltd",
+    "sector": "Food & Beverages",
+    "industry": "Packaged Foods",
+    "nse_symbol": "NESTLEIND.NS"
+  },
+  {
+    "symbol": "NHPC",
+    "company": "NHPC Ltd",
+    "sector": "Utilities",
+    "industry": "Electric Utilities",
+    "nse_symbol": "NHPC.NS"
+  },
+  {
+    "symbol": "NIITLTD",
+    "company": "NIIT Ltd",
+    "sector": "IT",
+    "industry": "IT Consulting & Other Services",
+    "nse_symbol": "NIITLTD.NS"
+  },
+  {
+    "symbol": "OIL",
+    "company": "Oil India Ltd",
+    "sector": "Energy",
+    "industry": "Oil, Gas & Consumable Fuels",
+    "nse_symbol": "OIL.NS"
+  },
+  {
+    "symbol": "PAGEIND",
+    "company": "Page Industries Ltd",
+    "sector": "Textiles",
+    "industry": "Apparel Manufacturing",
+    "nse_symbol": "PAGEIND.NS"
+  },
+  {
+    "symbol": "PEL",
+    "company": "Piramal Enterprises Ltd",
+    "sector": "Financial Services",
+    "industry": "Other Financial Services",
+    "nse_symbol": "PEL.NS"
+  },
+  {
+    "symbol": "PFIZER",
+    "company": "Pfizer Ltd",
+    "sector": "Pharmaceuticals",
+    "industry": "Pharmaceuticals",
+    "nse_symbol": "PFIZER.NS"
+  },
+  {
+    "symbol": "PNB",
+    "company": "Punjab National Bank",
+    "sector": "Financial Services",
+    "industry": "Banks",
+    "nse_symbol": "PNB.NS"
+  },
+  {
+    "symbol": "POWERFIN",
+    "company": "Power Finance Corporation Ltd",
+    "sector": "Financial Services",
+    "industry": "Finance (NBFC)",
+    "nse_symbol": "POWERFIN.NS"
+  },
+  {
+    "symbol": "PVR",
+    "company": "PVR Ltd",
+    "sector": "Media & Entertainment",
+    "industry": "Movies & Entertainment",
+    "nse_symbol": "PVR.NS"
+  },
+  {
+    "symbol": "RATNAMANI",
+    "company": "Ratnamani Metals & Tubes Ltd",
+    "sector": "Capital Goods",
+    "industry": "Construction & Engineering",
+    "nse_symbol": "RATNAMANI.NS"
+  },
+  {
+    "symbol": "RAYMOND",
+    "company": "Raymond Ltd",
+    "sector": "Textiles",
+    "industry": "Textiles",
+    "nse_symbol": "RAYMOND.NS"
+  },
+  {
+    "symbol": "RENUKA",
+    "company": "Shree Renuka Sugars Ltd",
+    "sector": "Food & Beverages",
+    "industry": "Sugar",
+    "nse_symbol": "RENUKA.NS"
+  },
+  {
+    "symbol": "SAIL",
+    "company": "Steel Authority of India Ltd",
+    "sector": "Metals & Mining",
+    "industry": "Iron & Steel",
+    "nse_symbol": "SAIL.NS"
+  },
+  {
+    "symbol": "SANOFI",
+    "company": "Sanofi India Ltd",
+    "sector": "Pharmaceuticals",
+    "industry": "Pharmaceuticals",
+    "nse_symbol": "SANOFI.NS"
+  },
+  {
+    "symbol": "SBILIFE",
+    "company": "SBI Life Insurance Company Ltd",
+    "sector": "Financial Services",
+    "industry": "Insurance",
+    "nse_symbol": "SBILIFE.NS"
+  },
+  {
+    "symbol": "SCHAEFFLER",
+    "company": "Schaeffler India Ltd",
+    "sector": "Automobiles & Components",
+    "industry": "Auto Parts & Equipment",
+    "nse_symbol": "SCHAEFFLER.NS"
+  },
+  {
+    "symbol": "SHARDACROP",
+    "company": "Sharda Cropchem Ltd",
+    "sector": "Chemicals",
+    "industry": "Agrochemicals",
+    "nse_symbol": "SHARDACROP.NS"
+  },
+  {
+    "symbol": "SHRIRAMFIN",
+    "company": "Shriram Finance Ltd",
+    "sector": "Financial Services",
+    "industry": "Finance (NBFC)",
+    "nse_symbol": "SHRIRAMFIN.NS"
+  },
+  {
+    "symbol": "SIS",
+    "company": "SIS Ltd",
+    "sector": "Services",
+    "industry": "Security Services",
+    "nse_symbol": "SIS.NS"
+  },
+  {
+    "symbol": "SOLARINDS",
+    "company": "Solar Industries India Ltd",
+    "sector": "Chemicals",
+    "industry": "Specialty Chemicals",
+    "nse_symbol": "SOLARINDS.NS"
+  },
+  {
+    "symbol": "STAR",
+    "company": "Strides Pharma Science Ltd",
+    "sector": "Pharmaceuticals",
+    "industry": "Pharmaceuticals",
+    "nse_symbol": "STAR.NS"
+  },
+  {
+    "symbol": "SUNDRMFAST",
+    "company": "Sundram Fasteners Ltd",
+    "sector": "Automobiles & Components",
+    "industry": "Auto Parts & Equipment",
+    "nse_symbol": "SUNDRMFAST.NS"
+  },
+  {
+    "symbol": "SYNGENE",
+    "company": "Syngene International Ltd",
+    "sector": "Pharmaceuticals",
+    "industry": "Biotechnology",
+    "nse_symbol": "SYNGENE.NS"
+  },
+  {
+    "symbol": "TATACOMM",
+    "company": "Tata Communications Ltd",
+    "sector": "Telecom",
+    "industry": "Telecommunications",
+    "nse_symbol": "TATACOMM.NS"
+  },
+  {
+    "symbol": "TATACONSUM",
+    "company": "Tata Consumer Products Ltd",
+    "sector": "FMCG",
+    "industry": "Packaged Foods",
+    "nse_symbol": "TATACONSUM.NS"
+  },
+  {
+    "symbol": "TATAMTRDVR",
+    "company": "Tata Motors Ltd - DVR",
+    "sector": "Automobiles & Components",
+    "industry": "Automobile Manufacturers",
+    "nse_symbol": "TATAMTRDVR.NS"
+  },
+  {
+    "symbol": "TATAPOWER",
+    "company": "Tata Power Company Ltd",
+    "sector": "Utilities",
+    "industry": "Electric Utilities",
+    "nse_symbol": "TATAPOWER.NS"
+  },
+  {
+    "symbol": "TECHM",
+    "company": "Tech Mahindra Ltd",
+    "sector": "IT",
+    "industry": "IT Consulting & Other Services",
+    "nse_symbol": "TECHM.NS"
+  },
+  {
+    "symbol": "TITAGARH",
+    "company": "Titagarh Rail Systems Ltd",
+    "sector": "Capital Goods",
+    "industry": "Commercial Vehicles",
+    "nse_symbol": "TITAGARH.NS"
+  },
+  {
+    "symbol": "TORNTPOWER",
+    "company": "Torrent Power Ltd",
+    "sector": "Utilities",
+    "industry": "Electric Utilities",
+    "nse_symbol": "TORNTPOWER.NS"
+  },
+  {
+    "symbol": "TRENT",
+    "company": "Trent Ltd",
+    "sector": "Retail",
+    "industry": "Department Stores",
+    "nse_symbol": "TRENT.NS"
+  },
+  {
+    "symbol": "TRIDENT",
+    "company": "Trident Ltd",
+    "sector": "Textiles",
+    "industry": "Textiles",
+    "nse_symbol": "TRIDENT.NS"
+  },
+  {
+    "symbol": "UNIONBANK",
+    "company": "Union Bank of India",
+    "sector": "Financial Services",
+    "industry": "Banks",
+    "nse_symbol": "UNIONBANK.NS"
+  },
+  {
+    "symbol": "VIPIND",
+    "company": "VIP Industries Ltd",
+    "sector": "Consumer Durables",
+    "industry": "Durable Household Products",
+    "nse_symbol": "VIPIND.NS"
+  },
+  {
+    "symbol": "WELSPUNIND",
+    "company": "Welspun India Ltd",
+    "sector": "Textiles",
+    "industry": "Textiles",
+    "nse_symbol": "WELSPUNIND.NS"
+  },
+  {
+    "symbol": "YESBANK",
+    "company": "Yes Bank Ltd",
+    "sector": "Financial Services",
+    "industry": "Banks",
+    "nse_symbol": "YESBANK.NS"
+  }
+]

@@ -6,36 +6,35 @@ const cspMiddleware = (req, res, next) => {
   const cspPolicy = {
     directives: {
       // Restrict sources for various content types
-      defaultSrc: ["'self'"],
-      scriptSrc: [
-        "'self'",
-        "https://fonts.googleapis.com", // Allow Google Fonts CSS
-        "https://fonts.gstatic.com",    // Allow Google Fonts resources
+      'default-src': ["'self'"],
+      'script-src': [
+        "'self'"
       ],
-      styleSrc: [
+      'style-src': [
         "'self'",
-        "https://fonts.googleapis.com", // Allow Google Fonts
+        "https://fonts.googleapis.com" // Allow Google Fonts
       ],
-      fontSrc: [
+      'font-src': [
         "'self'",
         "https://fonts.gstatic.com", // Allow Google Fonts
-        "https://fonts.googleapis.com", // Allow Google Fonts CSS
+        "https://fonts.googleapis.com" // Allow Google Fonts CSS
       ],
-      imgSrc: [
+      'img-src': [
         "'self'",
+        "data:" // Allow data URIs for images
       ],
-      connectSrc: [
+      'connect-src': [
         "'self'", // Allow connections to same origin (for WebSocket)
         "ws://localhost:*", // Allow WebSocket connections for local development
         "wss://localhost:*", // Allow secure WebSocket connections
         "ws://127.0.0.1:*", // Allow WebSocket connections
-        "wss://127.0.0.1:*", // Allow secure WebSocket connections
+        "wss://127.0.0.1:*" // Allow secure WebSocket connections
       ],
 
-      frameAncestors: ["'none'"], // Prevent embedding in iframes
-      objectSrc: ["'none'"], // Disallow plugins like Flash
-      baseUri: ["'self'"],
-      formAction: ["'self'"], // Restrict form submissions to same origin
+      'frame-ancestors': ["'none'"], // Prevent embedding in iframes
+      'object-src': ["'none'"], // Disallow plugins like Flash
+      'base-uri': ["'self'"],
+      'form-action': ["'self'"], // Restrict form submissions to same origin
     },
     reportOnly: false, // Enforce the policy instead of just reporting
   };

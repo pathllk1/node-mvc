@@ -105,14 +105,27 @@ exports.technicalAnalysis = async (req, res) => {
     }
     
     // Get latest 30 days of OHLCV data for technical analysis
-    const db = require('../utils/database').db;
-    const stockData = db.prepare(
-      `SELECT close, high, low, open, volume, date 
-       FROM historical_ohlcv 
-       WHERE symbol = ? 
-       ORDER BY date DESC 
-       LIMIT 250`
-    ).all(symbol);
+    const { db } = require('../utils/database');
+    
+    const getStockData = () => {
+      return new Promise((resolve, reject) => {
+        const sql = `SELECT close, high, low, open, volume, date 
+                   FROM historical_ohlcv 
+                   WHERE symbol = ? 
+                   ORDER BY date DESC 
+                   LIMIT 250`;
+        
+        db.all(sql, [symbol], (err, rows) => {
+          if (err) {
+            reject(err);
+          } else {
+            resolve(rows);
+          }
+        });
+      });
+    };
+    
+    const stockData = await getStockData();
     
     if (stockData.length < 14) {
       return res.status(400).json({ 
@@ -142,35 +155,69 @@ exports.technicalAnalysis = async (req, res) => {
     // Helper functions for technical analysis calculations
     const calculateSMA = (data, period) => {
       if (data.length < period) return null;
+      
+      // Take the last 'period' data points
       const slice = data.slice(-period);
+      
+      // Calculate sum and average
       const sum = slice.reduce((acc, val) => acc + val, 0);
       return sum / period;
     };
     
     const calculateEMA = (data, period) => {
       if (data.length < period) return null;
-      const k = 2 / (period + 1);
-      let ema = data[0];
-      for (let i = 1; i < data.length; i++) {
-        ema = data[i] * k + ema * (1 - k);
+      
+      // Calculate initial SMA for first EMA value
+      let sum = 0;
+      for (let i = 0; i < period; i++) {
+        sum += data[i];
       }
+      let ema = sum / period;
+      
+      // Calculate multiplier
+      const multiplier = 2 / (period + 1);
+      
+      // Calculate EMA for remaining values
+      for (let i = period; i < data.length; i++) {
+        ema = (data[i] * multiplier) + (ema * (1 - multiplier));
+      }
+      
       return ema;
     };
     
     const calculateRSI = (data, period = 14) => {
       if (data.length <= period) return null;
       
-      const gains = [];
-      const losses = [];
-      
+      // Calculate price changes
+      const changes = [];
       for (let i = 1; i < data.length; i++) {
-        const change = data[i] - data[i - 1];
-        gains.push(change > 0 ? change : 0);
-        losses.push(change < 0 ? Math.abs(change) : 0);
+        changes.push(data[i] - data[i - 1]);
       }
       
-      const avgGain = gains.slice(-period).reduce((a, b) => a + b, 0) / period;
-      const avgLoss = losses.slice(-period).reduce((a, b) => a + b, 0) / period;
+      // Calculate initial average gain and loss
+      let avgGain = 0;
+      let avgLoss = 0;
+      
+      // Sum first period gains and losses
+      for (let i = 0; i < period; i++) {
+        if (changes[i] > 0) {
+          avgGain += changes[i];
+        } else {
+          avgLoss += Math.abs(changes[i]);
+        }
+      }
+      
+      avgGain = avgGain / period;
+      avgLoss = avgLoss / period;
+      
+      // Calculate RSI using Wilder's smoothing method
+      for (let i = period; i < changes.length; i++) {
+        const gain = changes[i] > 0 ? changes[i] : 0;
+        const loss = changes[i] < 0 ? Math.abs(changes[i]) : 0;
+        
+        avgGain = ((avgGain * (period - 1)) + gain) / period;
+        avgLoss = ((avgLoss * (period - 1)) + loss) / period;
+      }
       
       if (avgLoss === 0) return 100;
       const rs = avgGain / avgLoss;
@@ -180,53 +227,32 @@ exports.technicalAnalysis = async (req, res) => {
     const calculateMACD = (data) => {
       if (data.length < 26) return { macd: null, signal: null, histogram: null };
       
-      // Calculate EMAs using a proper method that tracks historical values
-      const ema = (prices, period) => {
-        if (prices.length < period) return null;
-        
-        // Calculate SMA for initial value
-        let sma = 0;
-        for (let i = 0; i < period; i++) {
-          sma += prices[i];
-        }
-        sma /= period;
-        
-        // Calculate multiplier
-        const multiplier = 2 / (period + 1);
-        
-        // Calculate EMA
-        let emaValue = sma;
-        for (let i = period; i < prices.length; i++) {
-          emaValue = (prices[i] - emaValue) * multiplier + emaValue;
-        }
-        
-        return emaValue;
-      };
-      
-      // Calculate EMA12 and EMA26 for the full data set
-      const ema12 = ema(data, 12);
-      const ema26 = ema(data, 26);
+      // Calculate EMA12 and EMA26
+      const ema12 = calculateEMA(data, 12);
+      const ema26 = calculateEMA(data, 26);
       
       if (ema12 === null || ema26 === null) return { macd: null, signal: null, histogram: null };
       
       const macdLine = ema12 - ema26;
       
-      // To calculate the signal line (9-period EMA of MACD line), we need to generate the MACD history
-      // This is a simplified approach that approximates the signal line
+      // Calculate MACD history to compute signal line
       const macdHistory = [];
       
-      // Generate MACD values for each point in the data (using a sliding window approach)
-      for (let i = 25; i < data.length; i++) {
+      // Generate MACD values for the last 34 points (26 + 9 - 1)
+      const startIndex = Math.max(0, data.length - 34);
+      for (let i = startIndex; i < data.length; i++) {
         const slice = data.slice(0, i + 1);
-        const tempEma12 = ema(slice, 12);
-        const tempEma26 = ema(slice, 26);
-        if (tempEma12 !== null && tempEma26 !== null) {
-          macdHistory.push(tempEma12 - tempEma26);
+        if (slice.length >= 26) {
+          const tempEma12 = calculateEMA(slice, 12);
+          const tempEma26 = calculateEMA(slice, 26);
+          if (tempEma12 !== null && tempEma26 !== null) {
+            macdHistory.push(tempEma12 - tempEma26);
+          }
         }
       }
       
       // Calculate signal line as 9-period EMA of MACD values
-      const signalLine = macdHistory.length >= 9 ? ema(macdHistory.slice(-9), 9) : null;
+      const signalLine = macdHistory.length >= 9 ? calculateEMA(macdHistory, 9) : null;
       
       return {
         macd: macdLine,
@@ -234,78 +260,74 @@ exports.technicalAnalysis = async (req, res) => {
         histogram: signalLine !== null ? macdLine - signalLine : null
       };
     };
-      if (ema12 === null || ema26 === null) return { macd: null, signal: null, histogram: null };
-      
-      const macdLine = ema12 - ema26;
-      
-      // Simplified signal line calculation
-      const recentData = data.slice(-9);
-      const ema12Recent = calculateEMA(recentData, 12);
-      const ema26Recent = calculateEMA(recentData, 26);
-      const signalLine = ema12Recent - ema26Recent;
-      
-      return {
-        macd: macdLine,
-        signal: signalLine,
-        histogram: macdLine - signalLine
-      };
-    };
     
     const calculateBollingerBands = (data, period = 20, stdDev = 2) => {
       if (data.length < period) return { upper: null, middle: null, lower: null };
       
+      // Calculate SMA for the middle band
       const slice = data.slice(-period);
       const sma = calculateSMA(slice, period);
       
       if (sma === null) return { upper: null, middle: null, lower: null };
       
+      // Calculate standard deviation
       const variance = slice.reduce((sum, price) => sum + Math.pow(price - sma, 2), 0) / period;
       const std = Math.sqrt(variance);
       
+      // Calculate Bollinger Bands
       return {
-        upper: sma + (std * stdDev),
-        middle: sma,
-        lower: sma - (std * stdDev)
+        upper: sma + (std * stdDev),  // Upper band = SMA + (stdDev * standard deviation)
+        middle: sma,                  // Middle band = SMA
+        lower: sma - (std * stdDev)   // Lower band = SMA - (stdDev * standard deviation)
       };
     };
     
-    const calculateStochastic = (highs, lows, closes, kPeriod = 5, dPeriod = 3) => {
+    const calculateStochastic = (highs, lows, closes, kPeriod = 14, dPeriod = 3) => {
       if (closes.length < kPeriod) return { k: null, d: null };
       
-      const recentHighs = highs.slice(-kPeriod);
-      const recentLows = lows.slice(-kPeriod);
-      const currentClose = closes[closes.length - 1];
+      // Standard Stochastic settings
+      const kValues = [];
       
-      const highestHigh = Math.max(...recentHighs);
-      const lowestLow = Math.min(...recentLows);
+      // Calculate %K values for the last dPeriod points
+      for (let i = kPeriod - 1; i < closes.length; i++) {
+        const recentHighs = highs.slice(i - kPeriod + 1, i + 1);
+        const recentLows = lows.slice(i - kPeriod + 1, i + 1);
+        const currentClose = closes[i];
+        
+        const highestHigh = Math.max(...recentHighs);
+        const lowestLow = Math.min(...recentLows);
+        
+        if (highestHigh === lowestLow) {
+          kValues.push(50);
+        } else {
+          const k = ((currentClose - lowestLow) / (highestHigh - lowestLow)) * 100;
+          kValues.push(k);
+        }
+      }
       
-      if (highestHigh === lowestLow) return { k: 50, d: 50 };
+      // Calculate %D as SMA of %K values
+      if (kValues.length < dPeriod) return { k: kValues[kValues.length - 1], d: null };
       
-      const k = ((currentClose - lowestLow) / (highestHigh - lowestLow)) * 100;
+      const dValues = [];
+      for (let i = dPeriod - 1; i < kValues.length; i++) {
+        const slice = kValues.slice(i - dPeriod + 1, i + 1);
+        const d = slice.reduce((sum, val) => sum + val, 0) / dPeriod;
+        dValues.push(d);
+      }
       
-      // Simple moving average of K for D
-      const kValues = closes.length >= kPeriod + dPeriod - 1 ? 
-        closes.slice(-(kPeriod + dPeriod - 1)).map((_, idx, arr) => {
-          if (idx < kPeriod - 1) return null;
-          const slice = arr.slice(idx - kPeriod + 1, idx + 1);
-          const highsSlice = highs.slice(idx - kPeriod + 1, idx + 1);
-          const lowsSlice = lows.slice(idx - kPeriod + 1, idx + 1);
-          const current = slice[slice.length - 1];
-          const hh = Math.max(...highsSlice);
-          const ll = Math.min(...lowsSlice);
-          return hh === ll ? 50 : ((current - ll) / (hh - ll)) * 100;
-        }).filter(val => val !== null).slice(-dPeriod) : [k];
-      
-      const d = kValues.length > 0 ? kValues.reduce((a, b) => a + b, 0) / kValues.length : k;
-      
-      return { k, d };
+      return { 
+        k: kValues[kValues.length - 1], 
+        d: dValues[dValues.length - 1] 
+      };
     };
     
     const calculateATR = (highs, lows, closes, period = 14) => {
-      if (highs.length < period || lows.length < period || closes.length < period) return null;
+      if (highs.length < period + 1 || lows.length < period + 1 || closes.length < period + 1) return null;
       
-      // Calculate True Range values for the period
+      // Calculate True Range values
       const trueRanges = [];
+      
+      // Calculate TR for each period
       for (let i = 1; i < highs.length; i++) {
         const high = highs[i];
         const low = lows[i];
@@ -319,17 +341,14 @@ exports.technicalAnalysis = async (req, res) => {
         trueRanges.push(tr);
       }
       
-      // Calculate ATR using smoothed moving average
-      // First, calculate the initial ATR using a simple average of the first period
-      if (trueRanges.length < period) return null;
-      
-      let sum = 0;
+      // Calculate initial ATR using simple average of first period TR values
+      let atr = 0;
       for (let i = 0; i < period; i++) {
-        sum += trueRanges[i];
+        atr += trueRanges[i];
       }
-      let atr = sum / period;
+      atr = atr / period;
       
-      // Update ATR with remaining values using the smoothed formula
+      // Apply Wilder's smoothing method for remaining values
       for (let i = period; i < trueRanges.length; i++) {
         atr = ((atr * (period - 1)) + trueRanges[i]) / period;
       }
@@ -337,10 +356,10 @@ exports.technicalAnalysis = async (req, res) => {
       return atr;
     };
     
-    const calculateCCI = (highs, lows, closes, period = 14) => {
+    const calculateCCI = (highs, lows, closes, period = 20) => {
       if (highs.length < period || lows.length < period || closes.length < period) return null;
       
-      // Calculate typical prices for the last period
+      // Calculate typical prices
       const typicalPrices = [];
       for (let i = highs.length - period; i < highs.length; i++) {
         typicalPrices.push((highs[i] + lows[i] + closes[i]) / 3);
@@ -355,7 +374,8 @@ exports.technicalAnalysis = async (req, res) => {
       // Calculate current typical price
       const currentTp = (highs[highs.length - 1] + lows[lows.length - 1] + closes[closes.length - 1]) / 3;
       
-      // Calculate CCI
+      // Calculate CCI (standard constant is 0.015)
+      if (meanDev === 0) return 0;
       return (currentTp - smaTp) / (0.015 * meanDev);
     };
     
@@ -470,6 +490,7 @@ exports.technicalAnalysis = async (req, res) => {
     const calculateWilliamR = (highs, lows, closes, period = 14) => {
       if (highs.length < period || lows.length < period || closes.length < period) return null;
       
+      // Get recent highs and lows
       const recentHighs = highs.slice(-period);
       const recentLows = lows.slice(-period);
       const currentClose = closes[closes.length - 1];
@@ -477,8 +498,10 @@ exports.technicalAnalysis = async (req, res) => {
       const highestHigh = Math.max(...recentHighs);
       const lowestLow = Math.min(...recentLows);
       
+      // Handle division by zero
       if (highestHigh === lowestLow) return -50;
       
+      // Williams %R formula: (Highest High - Current Close) / (Highest High - Lowest Low) * -100
       return ((highestHigh - currentClose) / (highestHigh - lowestLow)) * -100;
     };
     
@@ -490,38 +513,98 @@ exports.technicalAnalysis = async (req, res) => {
     
     // Calculate ADX (Average Directional Index)
     const calculateADX = (highs, lows, closes, period = 14) => {
-      if (highs.length < period + 1) return null;
+      if (highs.length < period + 1 || lows.length < period + 1 || closes.length < period + 1) return null;
       
-      // Simplified ADX calculation based on price movements
-      let upMove = 0;
-      let downMove = 0;
-      let trSum = 0;
+      // Calculate Directional Movement values
+      const plusDMs = [];
+      const minusDMs = [];
+      const trs = [];
       
-      for (let i = 1; i < period + 1; i++) {
-        const high = highs[highs.length - i];
-        const low = lows[lows.length - i];
-        const prevHigh = highs[highs.length - i - 1];
-        const prevLow = lows[lows.length - i - 1];
+      // Calculate DM and TR for each period
+      for (let i = 1; i < highs.length; i++) {
+        const high = highs[i];
+        const low = lows[i];
+        const prevHigh = highs[i - 1];
+        const prevLow = lows[i - 1];
+        const prevClose = closes[i - 1];
         
-        const upMove_i = high - prevHigh;
-        const downMove_i = prevLow - low;
+        // Calculate Directional Movement
+        const upMove = high - prevHigh;
+        const downMove = prevLow - low;
         
-        if (upMove_i > downMove_i && upMove_i > 0) {
-          upMove += upMove_i;
+        let plusDM = 0;
+        let minusDM = 0;
+        
+        if (upMove > downMove && upMove > 0) {
+          plusDM = upMove;
         }
-        if (downMove_i > upMove_i && downMove_i > 0) {
-          downMove += downMove_i;
+        if (downMove > upMove && downMove > 0) {
+          minusDM = downMove;
+        }
+        
+        plusDMs.push(plusDM);
+        minusDMs.push(minusDM);
+        
+        // Calculate True Range
+        const h_l = high - low;
+        const h_pc = Math.abs(high - prevClose);
+        const l_pc = Math.abs(low - prevClose);
+        const tr = Math.max(h_l, h_pc, l_pc);
+        trs.push(tr);
+      }
+      
+      // Calculate initial averages
+      let plusDI_sum = 0;
+      let minusDI_sum = 0;
+      let tr_sum = 0;
+      
+      for (let i = 0; i < period; i++) {
+        plusDI_sum += plusDMs[i];
+        minusDI_sum += minusDMs[i];
+        tr_sum += trs[i];
+      }
+      
+      let plusDI_avg = plusDI_sum / period;
+      let minusDI_avg = minusDI_sum / period;
+      let tr_avg = tr_sum / period;
+      
+      // Apply Wilder's smoothing and calculate DI values
+      const plusDIs = [];
+      const minusDIs = [];
+      
+      // Add initial values
+      plusDIs.push((plusDI_avg / tr_avg) * 100);
+      minusDIs.push((minusDI_avg / tr_avg) * 100);
+      
+      // Smooth remaining values
+      for (let i = period; i < plusDMs.length; i++) {
+        plusDI_avg = ((plusDI_avg * (period - 1)) + plusDMs[i]) / period;
+        minusDI_avg = ((minusDI_avg * (period - 1)) + minusDMs[i]) / period;
+        tr_avg = ((tr_avg * (period - 1)) + trs[i]) / period;
+        
+        plusDIs.push((plusDI_avg / tr_avg) * 100);
+        minusDIs.push((minusDI_avg / tr_avg) * 100);
+      }
+      
+      // Calculate DX values
+      const dxs = [];
+      for (let i = 0; i < plusDIs.length; i++) {
+        const di_diff = Math.abs(plusDIs[i] - minusDIs[i]);
+        const di_sum = plusDIs[i] + minusDIs[i];
+        if (di_sum !== 0) {
+          dxs.push((di_diff / di_sum) * 100);
+        } else {
+          dxs.push(0);
         }
       }
       
-      const plusDM = upMove / period;
-      const minusDM = downMove / period;
+      // Calculate ADX as SMA of DX values
+      if (dxs.length < period) return null;
       
-      if (plusDM + minusDM === 0) return null;
+      const recentDXs = dxs.slice(-period);
+      const adx = recentDXs.reduce((sum, dx) => sum + dx, 0) / period;
       
-      const dx = Math.abs((plusDM - minusDM) / (plusDM + minusDM)) * 100;
-      
-      return dx; // This is DX, not ADX, but it's a reasonable approximation
+      return adx;
     };
     
     try {
@@ -537,6 +620,9 @@ exports.technicalAnalysis = async (req, res) => {
       const currentClose = closes[closes.length - 1];
       const prevClose = closes[closes.length - 1 - period];
       
+      if (prevClose === 0) return 0;
+      
+      // ROC formula: ((Current Price - Previous Price) / Previous Price) * 100
       return ((currentClose - prevClose) / prevClose) * 100;
     };
     
@@ -548,33 +634,39 @@ exports.technicalAnalysis = async (req, res) => {
     
     // Calculate Money Flow Index (MFI)
     const calculateMFI = (highs, lows, closes, volumes, period = 14) => {
-      if (highs.length < period || lows.length < period || closes.length < period || volumes.length < period) return null;
+      if (highs.length < period + 1 || lows.length < period + 1 || closes.length < period + 1 || volumes.length < period + 1) return null;
       
-      // Calculate typical prices
-      const typicalPrices = [];
+      // Calculate typical prices and raw money flow
+      const moneyFlows = [];
+      
       for (let i = 0; i < period; i++) {
         const idx = closes.length - period + i;
         const typicalPrice = (highs[idx] + lows[idx] + closes[idx]) / 3;
-        typicalPrices.push(typicalPrice);
+        const rawMoneyFlow = typicalPrice * volumes[idx];
+        moneyFlows.push({
+          typicalPrice: typicalPrice,
+          rawMoneyFlow: rawMoneyFlow
+        });
       }
       
-      // Calculate money flows
+      // Calculate positive and negative money flow
       let positiveMF = 0;
       let negativeMF = 0;
       
-      for (let i = 1; i < typicalPrices.length; i++) {
-        const rawMF = typicalPrices[i] * volumes[volumes.length - period + i];
-        
-        if (typicalPrices[i] > typicalPrices[i - 1]) {
-          positiveMF += rawMF;
-        } else if (typicalPrices[i] < typicalPrices[i - 1]) {
-          negativeMF += rawMF;
+      for (let i = 1; i < moneyFlows.length; i++) {
+        if (moneyFlows[i].typicalPrice > moneyFlows[i - 1].typicalPrice) {
+          positiveMF += moneyFlows[i].rawMoneyFlow;
+        } else if (moneyFlows[i].typicalPrice < moneyFlows[i - 1].typicalPrice) {
+          negativeMF += moneyFlows[i].rawMoneyFlow;
         }
+        // If equal, neither positive nor negative MF
       }
       
-      if (negativeMF === 0) return 100;
+      // Handle edge cases
+      if (negativeMF === 0) return positiveMF > 0 ? 100 : 50;
       if (positiveMF === 0) return 0;
       
+      // Calculate MFI
       const moneyFlowRatio = positiveMF / negativeMF;
       const mfi = 100 - (100 / (1 + moneyFlowRatio));
       
@@ -591,7 +683,8 @@ exports.technicalAnalysis = async (req, res) => {
     const calculateOBV = (closes, volumes) => {
       if (closes.length < 2 || volumes.length < 2) return null;
       
-      let obv = 0;
+      let obv = volumes[0]; // Start with first volume
+      
       for (let i = 1; i < closes.length; i++) {
         if (closes[i] > closes[i - 1]) {
           obv += volumes[i];
@@ -623,13 +716,13 @@ exports.technicalAnalysis = async (req, res) => {
       const low = Math.min(...recentLows);
       const diff = high - low;
       
-      // Calculate fibonacci levels
+      // Calculate fibonacci retracement levels (standard ratios)
       return {
-        level236: high - diff * 0.236,
-        level382: high - diff * 0.382,
-        level500: high - diff * 0.500,
-        level618: high - diff * 0.618,
-        level786: high - diff * 0.786,
+        level236: high - diff * 0.236,  // 23.6% retracement
+        level382: high - diff * 0.382,  // 38.2% retracement
+        level500: high - diff * 0.500,  // 50.0% retracement
+        level618: high - diff * 0.618,  // 61.8% retracement
+        level786: high - diff * 0.786,  // 78.6% retracement
         high: high,
         low: low
       };
@@ -650,17 +743,18 @@ exports.technicalAnalysis = async (req, res) => {
       const prevLow = lows[lows.length - 2];
       const prevClose = closes[closes.length - 2];
       
-      // Calculate pivot point and support/resistance levels
+      // Calculate pivot point (standard formula)
       const pivotPoint = (prevHigh + prevLow + prevClose) / 3;
       
+      // Calculate standard support and resistance levels
       return {
         pivotPoint: pivotPoint,
-        resistance1: (2 * pivotPoint) - prevLow,
-        resistance2: pivotPoint + (prevHigh - prevLow),
-        resistance3: prevHigh + 2 * (pivotPoint - prevLow),
-        support1: (2 * pivotPoint) - prevHigh,
-        support2: pivotPoint - (prevHigh - prevLow),
-        support3: prevLow - 2 * (prevHigh - pivotPoint)
+        resistance1: (2 * pivotPoint) - prevLow,        // R1 = (2 * PP) - Low
+        resistance2: pivotPoint + (prevHigh - prevLow), // R2 = PP + (High - Low)
+        resistance3: prevHigh + 2 * (pivotPoint - prevLow), // R3 = High + 2*(PP - Low)
+        support1: (2 * pivotPoint) - prevHigh,         // S1 = (2 * PP) - High
+        support2: pivotPoint - (prevHigh - prevLow),   // S2 = PP - (High - Low)
+        support3: prevLow - 2 * (prevHigh - pivotPoint) // S3 = Low - 2*(High - PP)
       };
     };
     
@@ -671,13 +765,25 @@ exports.technicalAnalysis = async (req, res) => {
     }
     
     // Get the most recent current price from stocks_history table
-    const currentStockData = db.prepare(
-      `SELECT price 
-       FROM stocks_history 
-       WHERE symbol = ? 
-       ORDER BY last_updated DESC 
-       LIMIT 1`
-    ).get(symbol);
+    const getCurrentStockData = () => {
+      return new Promise((resolve, reject) => {
+        const sql = `SELECT price 
+                   FROM stocks_history 
+                   WHERE symbol = ? 
+                   ORDER BY last_updated DESC 
+                   LIMIT 1`;
+        
+        db.get(sql, [symbol], (err, row) => {
+          if (err) {
+            reject(err);
+          } else {
+            resolve(row);
+          }
+        });
+      });
+    };
+    
+    const currentStockData = await getCurrentStockData();
     
     // Calculate latest price for comparison
     // Use current price from stocks_history if available, otherwise fall back to latest close from historical data
@@ -1102,6 +1208,9 @@ const calculateTechnicalScore = (indicators, currentPrice) => {
     score = Math.round((weightedScore / totalWeight));
     // Ensure score stays within 0-100 range
     score = Math.max(0, Math.min(100, score));
+  } else {
+    // If no indicators are available, return neutral score
+    score = 50;
   }
   
   return score;

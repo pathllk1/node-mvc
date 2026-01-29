@@ -24,14 +24,18 @@ class DailyUpdateFetcher {
     }
   }
 
-  async getLatestDateForSymbol(symbol) {
-    try {
-      const result = db.prepare('SELECT MAX(date) as latest_date FROM historical_ohlcv WHERE symbol = ?').get(symbol);
-      return result.latest_date;
-    } catch (error) {
-      console.error(`Error getting latest date for ${symbol}:`, error.message);
-      return null;
-    }
+  getLatestDateForSymbol(symbol) {
+    return new Promise((resolve, reject) => {
+      const sql = 'SELECT MAX(date) as latest_date FROM historical_ohlcv WHERE symbol = ?';
+      db.get(sql, [symbol], (err, row) => {
+        if (err) {
+          console.error(`Error getting latest date for ${symbol}:`, err.message);
+          resolve(null);
+        } else {
+          resolve(row ? row.latest_date : null);
+        }
+      });
+    });
   }
 
   async getAllLatestDates() {
@@ -93,60 +97,63 @@ class DailyUpdateFetcher {
     }
   }
 
-  async saveIncrementalData(incrementalRecords) {
-    if (!incrementalRecords || incrementalRecords.length === 0) {
-      return 0;
-    }
+  saveIncrementalData(incrementalRecords) {
+    return new Promise((resolve, reject) => {
+      if (!incrementalRecords || incrementalRecords.length === 0) {
+        resolve(0);
+        return;
+      }
 
-    try {
+      // Process records one by one without explicit transaction management
+      // SQLite will handle atomicity for individual inserts
+      
       // Prepare SQL statement for inserting historical data
-      const stmt = db.prepare(`
+      const insertSQL = `
         INSERT OR IGNORE INTO historical_ohlcv 
         (symbol, date, open, high, low, close, adj_close, volume)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-      `);
-
+      `;
+      
       let insertCount = 0;
       
-      // Process records in batches to improve performance
-      const batchSize = 1000;
-      for (let i = 0; i < incrementalRecords.length; i += batchSize) {
-        const batch = incrementalRecords.slice(i, i + batchSize);
-        
-        // Begin transaction for this batch
-        db.exec('BEGIN TRANSACTION');
-        
-        try {
-          for (const record of batch) {
-            stmt.run(
-              record.symbol,
-              record.date,
-              record.open,
-              record.high,
-              record.low,
-              record.close,
-              record.adj_close,
-              record.volume
-            );
+      // Process records one by one
+      let processedCount = 0;
+      
+      if (incrementalRecords.length === 0) {
+        console.log('No records to save');
+        resolve(0);
+        return;
+      }
+      
+      for (const record of incrementalRecords) {
+        db.run(insertSQL, [
+          record.symbol,
+          record.date,
+          record.open,
+          record.high,
+          record.low,
+          record.close,
+          record.adj_close,
+          record.volume
+        ], (err) => {
+          processedCount++;
+          
+          if (err) {
+            console.error('Error inserting record:', err.message);
+            reject(err);
+            return;
+          } else {
             insertCount++;
           }
           
-          // Commit transaction for this batch
-          db.exec('COMMIT');
-        } catch (batchError) {
-          // Rollback on error
-          db.exec('ROLLBACK');
-          console.error('Error in batch transaction:', batchError.message);
-          throw batchError;
-        }
+          // Check if all records have been processed
+          if (processedCount === incrementalRecords.length) {
+            console.log(`Saved ${insertCount} incremental records to database`);
+            resolve(insertCount);
+          }
+        });
       }
-      
-      console.log(`Saved ${insertCount} incremental records to database`);
-      return insertCount;
-    } catch (error) {
-      console.error('Error saving incremental data:', error.message);
-      throw error;
-    }
+    });
   }
 
   async processIncrementalUpdates() {

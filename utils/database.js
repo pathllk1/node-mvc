@@ -1,4 +1,4 @@
-const Database = require('better-sqlite3');
+const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 const fs = require('fs');
 
@@ -10,16 +10,30 @@ if (!fs.existsSync(dbDir)) {
 
 // Initialize database with foreign_keys=ON and journal_mode=WAL for better performance
 const dbPath = path.join(dbDir, 'stock_data.db');
-const db = new Database(dbPath);
-
-// Enable foreign keys and WAL mode
-db.pragma('foreign_keys = ON');
-db.pragma('journal_mode = WAL');
+const db = new sqlite3.Database(dbPath, (err) => {
+  if (err) {
+    console.error('Error opening database:', err.message);
+  } else {
+    console.log('Connected to the SQLite database.');
+    // Enable foreign keys and WAL mode
+    db.run('PRAGMA foreign_keys = ON;', (err) => {
+      if (err) {
+        console.error('Error enabling foreign keys:', err.message);
+      }
+    });
+    
+    db.run('PRAGMA journal_mode = WAL;', (err) => {
+      if (err) {
+        console.error('Error setting journal mode to WAL:', err.message);
+      }
+    });
+  }
+});
 
 // Create the stocks_history table with strict typing
-function initializeDatabase() {
+function initializeDatabase(callback) {
   // Create stocks_history table with proper data types
-  db.exec(`
+  const createTableSQL = `
     CREATE TABLE IF NOT EXISTS stocks_history (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       symbol TEXT NOT NULL,
@@ -38,22 +52,37 @@ function initializeDatabase() {
       close REAL,
       last_updated TEXT NOT NULL,
       created_at TEXT DEFAULT CURRENT_TIMESTAMP
-    ) STRICT;
+    );
     
     -- Create index for faster queries by symbol and timestamp
     CREATE INDEX IF NOT EXISTS idx_stocks_symbol_updated ON stocks_history (symbol, last_updated);
     
     -- Create index for faster queries by timestamp
     CREATE INDEX IF NOT EXISTS idx_stocks_updated ON stocks_history (last_updated);
-  `);
+  `;
   
-  console.log('Database initialized successfully');
+  db.serialize(() => {
+    db.exec(createTableSQL, (err) => {
+      if (err) {
+        console.error('Error creating tables:', err.message);
+        if (callback) callback(err);
+      } else {
+        console.log('Database initialized successfully');
+        if (callback) callback(null);
+      }
+    });
+  });
 }
 
-// Initialize the database immediately when this module is loaded
-initializeDatabase();
-
+// Export db immediately, but note that it might not be fully initialized yet
 module.exports = {
   db,
   initializeDatabase
 };
+
+// Initialize the database asynchronously when this module is loaded
+initializeDatabase((err) => {
+  if (err) {
+    console.error('Failed to initialize database:', err);
+  }
+});

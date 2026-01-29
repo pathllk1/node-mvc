@@ -22,30 +22,42 @@ class HistoricalDataFetcher {
     }
   }
 
-  async createHistoricalTable() {
-    // Create the historical_ohlcv table with proper data types
-    await db.exec(`
-      CREATE TABLE IF NOT EXISTS historical_ohlcv (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        symbol TEXT NOT NULL,
-        date TEXT NOT NULL,
-        open REAL,
-        high REAL,
-        low REAL,
-        close REAL,
-        adj_close REAL,
-        volume INTEGER,
-        created_at TEXT DEFAULT CURRENT_TIMESTAMP,
-        UNIQUE(symbol, date)  -- Prevent duplicate entries for same symbol and date
-      ) STRICT;
+  createHistoricalTable() {
+    return new Promise((resolve, reject) => {
+      // Create the historical_ohlcv table with proper data types
+      const createTableSQL = `
+        CREATE TABLE IF NOT EXISTS historical_ohlcv (
+          id INTEGER PRIMARY KEY AUTOINCREMENT,
+          symbol TEXT NOT NULL,
+          date TEXT NOT NULL,
+          open REAL,
+          high REAL,
+          low REAL,
+          close REAL,
+          adj_close REAL,
+          volume INTEGER,
+          created_at TEXT DEFAULT CURRENT_TIMESTAMP,
+          UNIQUE(symbol, date)  -- Prevent duplicate entries for same symbol and date
+        );
+        
+        -- Create indexes for faster queries
+        CREATE INDEX IF NOT EXISTS idx_historical_symbol ON historical_ohlcv (symbol);
+        CREATE INDEX IF NOT EXISTS idx_historical_date ON historical_ohlcv (date);
+        CREATE INDEX IF NOT EXISTS idx_historical_symbol_date ON historical_ohlcv (symbol, date);
+      `;
       
-      -- Create indexes for faster queries
-      CREATE INDEX IF NOT EXISTS idx_historical_symbol ON historical_ohlcv (symbol);
-      CREATE INDEX IF NOT EXISTS idx_historical_date ON historical_ohlcv (date);
-      CREATE INDEX IF NOT EXISTS idx_historical_symbol_date ON historical_ohlcv (symbol, date);
-    `);
-    
-    console.log('Historical OHLCV table created/verified successfully');
+      db.serialize(() => {
+        db.exec(createTableSQL, (err) => {
+          if (err) {
+            console.error('Error creating historical table:', err.message);
+            reject(err);
+          } else {
+            console.log('Historical OHLCV table created/verified successfully');
+            resolve();
+          }
+        });
+      });
+    });
   }
 
   async fetchHistoricalDataForSymbol(symbol, startDate = null, endDate = null) {
@@ -92,60 +104,63 @@ class HistoricalDataFetcher {
     }
   }
 
-  async saveHistoricalData(historicalRecords) {
-    if (!historicalRecords || historicalRecords.length === 0) {
-      return 0;
-    }
+  saveHistoricalData(historicalRecords) {
+    return new Promise((resolve, reject) => {
+      if (!historicalRecords || historicalRecords.length === 0) {
+        resolve(0);
+        return;
+      }
 
-    try {
+      // Process records one by one without explicit transaction management
+      // SQLite will handle atomicity for individual inserts
+      
       // Prepare SQL statement for inserting historical data
-      const stmt = db.prepare(`
+      const insertSQL = `
         INSERT OR IGNORE INTO historical_ohlcv 
         (symbol, date, open, high, low, close, adj_close, volume)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-      `);
-
+      `;
+      
       let insertCount = 0;
       
-      // Process records in batches to improve performance
-      const batchSize = 1000;
-      for (let i = 0; i < historicalRecords.length; i += batchSize) {
-        const batch = historicalRecords.slice(i, i + batchSize);
-        
-        // Begin transaction for this batch
-        db.exec('BEGIN TRANSACTION');
-        
-        try {
-          for (const record of batch) {
-            stmt.run(
-              record.symbol,
-              record.date,
-              record.open,
-              record.high,
-              record.low,
-              record.close,
-              record.adj_close,
-              record.volume
-            );
+      // Process records one by one
+      let processedCount = 0;
+      
+      if (historicalRecords.length === 0) {
+        console.log('No records to save');
+        resolve(0);
+        return;
+      }
+      
+      for (const record of historicalRecords) {
+        db.run(insertSQL, [
+          record.symbol,
+          record.date,
+          record.open,
+          record.high,
+          record.low,
+          record.close,
+          record.adj_close,
+          record.volume
+        ], (err) => {
+          processedCount++;
+          
+          if (err) {
+            console.error('Error inserting record:', err.message);
+            reject(err);
+            return;
+          } else {
             insertCount++;
           }
           
-          // Commit transaction for this batch
-          db.exec('COMMIT');
-        } catch (batchError) {
-          // Rollback on error
-          db.exec('ROLLBACK');
-          console.error('Error in batch transaction:', batchError.message);
-          throw batchError;
-        }
+          // Check if all records have been processed
+          if (processedCount === historicalRecords.length) {
+            console.log(`Saved ${insertCount} historical records to database`);
+            resolve(insertCount);
+          }
+        });
       }
-      
-      console.log(`Saved ${insertCount} historical records to database`);
-      return insertCount;
-    } catch (error) {
-      console.error('Error saving historical data:', error.message);
-      throw error;
-    }
+    });
   }
 
   async processAllStocks(startDate = null, endDate = null) {
@@ -222,28 +237,36 @@ class HistoricalDataFetcher {
     }
   }
 
-  async getStocksWithoutHistoricalData(limit = 100) {
-    try {
-      // Find stocks that don't have historical data in the database
-      const stocksData = await fs.readFile(this.stocksFilePath, 'utf8');
-      const stocks = JSON.parse(stocksData);
-      
-      // Get symbols that already have historical data
-      const existingSymbolsStmt = db.prepare(`
-        SELECT DISTINCT symbol FROM historical_ohlcv
-      `);
-      const existingSymbols = new Set(existingSymbolsStmt.all().map(row => row.symbol));
-      
-      // Filter stocks that don't have historical data
-      const missingStocks = stocks.filter(stock => !existingSymbols.has(stock.nse)).slice(0, limit);
-      
-      console.log(`Found ${missingStocks.length} stocks without historical data out of ${stocks.length} total`);
-      
-      return missingStocks;
-    } catch (error) {
-      console.error('Error finding stocks without historical data:', error.message);
-      return [];
-    }
+  getStocksWithoutHistoricalData(limit = 100) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        // Find stocks that don't have historical data in the database
+        const stocksData = await fs.readFile(this.stocksFilePath, 'utf8');
+        const stocks = JSON.parse(stocksData);
+        
+        // Get symbols that already have historical data
+        const sql = 'SELECT DISTINCT symbol FROM historical_ohlcv';
+        db.all(sql, [], (err, rows) => {
+          if (err) {
+            console.error('Error getting existing symbols:', err.message);
+            resolve([]);
+            return;
+          }
+          
+          const existingSymbols = new Set(rows.map(row => row.symbol));
+          
+          // Filter stocks that don't have historical data
+          const missingStocks = stocks.filter(stock => !existingSymbols.has(stock.nse)).slice(0, limit);
+          
+          console.log(`Found ${missingStocks.length} stocks without historical data out of ${stocks.length} total`);
+          
+          resolve(missingStocks);
+        });
+      } catch (error) {
+        console.error('Error finding stocks without historical data:', error.message);
+        resolve([]);
+      }
+    });
   }
 
   async processMissingStocks(startDate = null, endDate = null, limit = 100) {

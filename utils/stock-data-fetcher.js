@@ -121,41 +121,56 @@ class StockDataFetcher {
   }
   
   async storeStockDataInDatabase(stocks) {
-    try {
-      // Prepare the SQL statement for inserting stock data
-      const stmt = db.prepare(`
-        INSERT INTO stocks_history 
-        (symbol, price, currency, change, change_percent, volume, market_cap, pe_ratio, 
-         fifty_two_week_high, fifty_two_week_low, open, high, low, close, last_updated)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-      `);
-      
-      // Insert each stock record
-      for (const stock of stocks) {
-        stmt.run(
-          stock.symbol,
-          stock.price || null,
-          stock.currency || null,
-          stock.change || null,
-          stock.changePercent || null,
-          stock.volume != null ? Math.round(stock.volume) : null,
-          stock.marketCap || null,
-          stock.peRatio || null,
-          stock.fiftyTwoWeekHigh || null,
-          stock.fiftyTwoWeekLow || null,
-          stock.open || null,
-          stock.high || null,
-          stock.low || null,
-          stock.close || null,
-          stock.lastUpdated
-        );
+    return new Promise((resolve, reject) => {
+      try {
+        // Prepare the SQL statement for inserting stock data
+        const insertStmt = `INSERT INTO stocks_history 
+          (symbol, price, currency, change, change_percent, volume, market_cap, pe_ratio, 
+           fifty_two_week_high, fifty_two_week_low, open, high, low, close, last_updated)
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+        
+        // Insert each stock record individually
+        let count = 0;
+        if (stocks.length === 0) {
+          console.log('No stocks to store');
+          resolve();
+          return;
+        }
+        
+        for (const stock of stocks) {
+          db.run(insertStmt, [
+            stock.symbol,
+            stock.price || null,
+            stock.currency || null,
+            stock.change || null,
+            stock.changePercent || null,
+            stock.volume != null ? Math.round(stock.volume) : null,
+            stock.marketCap || null,
+            stock.peRatio || null,
+            stock.fiftyTwoWeekHigh || null,
+            stock.fiftyTwoWeekLow || null,
+            stock.open || null,
+            stock.high || null,
+            stock.low || null,
+            stock.close || null,
+            stock.lastUpdated
+          ], (err) => {
+            if (err) {
+              console.error('Error inserting stock record:', err.message);
+            }
+            
+            count++;
+            if (count === stocks.length) {
+              console.log(`Stored ${stocks.length} stock records in database`);
+              resolve();
+            }
+          });
+        }
+      } catch (error) {
+        console.error('Error storing stock data in database:', error);
+        reject(error);
       }
-      
-      console.log(`Stored ${stocks.length} stock records in database`);
-      
-    } catch (error) {
-      console.error('Error storing stock data in database:', error);
-    }
+    });
   }
   
   // Helper function to check if market is open in Asia/Kolkata timezone

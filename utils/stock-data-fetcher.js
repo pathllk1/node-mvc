@@ -1,4 +1,5 @@
 const YahooFinance = require('yahoo-finance2');
+const logger = require('./logger');
 const yahooFinance = new YahooFinance.default();
 const fs = require('fs').promises;
 const path = require('path');
@@ -17,9 +18,9 @@ class StockDataFetcher {
       // Load the stock list
       const stockData = await fs.readFile(this.stocksFilePath, 'utf8');
       this.stocks = JSON.parse(stockData);
-      console.log(`Loaded ${this.stocks.length} stocks for monitoring`);
+      logger.info(`Loaded ${this.stocks.length} stocks for monitoring`);
     } catch (error) {
-      console.error('Error initializing stock data fetcher:', error.message);
+      logger.error('Error initializing stock data fetcher:', { error: error.message, stack: error.stack });
       throw error;
     }
   }
@@ -48,7 +49,7 @@ class StockDataFetcher {
       
       // Check if quote exists and has the required properties
       if (!quote || typeof quote !== 'object') {
-        console.warn(`Invalid response for ${symbol} (tried ${correctedSymbol}):`, quote);
+        logger.warn(`Invalid response for ${symbol} (tried ${correctedSymbol}):`, { quote });
         return null;
       }
       
@@ -70,13 +71,13 @@ class StockDataFetcher {
         lastUpdated: new Date().toISOString()
       };
     } catch (error) {
-      console.warn(`Error fetching data for ${symbol}:`, error.message);
+      logger.warn(`Error fetching data for ${symbol}:`, { error: error.message, stack: error.stack });
       return null;
     }
   }
 
   async fetchAllStocksData() {
-    console.log(`Starting to fetch data for ${this.stocks.length} stocks...`);
+    logger.info(`Starting to fetch data for ${this.stocks.length} stocks...`);
     const results = [];
     
     // Process stocks in batches to avoid rate limiting
@@ -96,7 +97,7 @@ class StockDataFetcher {
         }
       });
       
-      console.log(`Processed batch ${Math.floor(i / batchSize) + 1}/${Math.ceil(this.stocks.length / batchSize)}`);
+      logger.info(`Processed batch ${Math.floor(i / batchSize) + 1}/${Math.ceil(this.stocks.length / batchSize)}`);
       
       // Wait a bit between batches to avoid rate limiting
       if (i + batchSize < this.stocks.length) {
@@ -106,12 +107,12 @@ class StockDataFetcher {
     
     // Save the results to file
     await fs.writeFile(this.dataFilePath, JSON.stringify(results, null, 2));
-    console.log(`Successfully fetched and saved data for ${results.length} stocks at ${new Date().toISOString()}`);
+    logger.info(`Successfully fetched and saved data for ${results.length} stocks`, { count: results.length, timestamp: new Date().toISOString() });
     
     // Emit the updated data to all connected WebSocket clients
     if (this.io) {
       this.io.emit('stock-data-update', results);
-      console.log(`Emitted stock data update to ${this.io.engine.clientsCount} connected clients`);
+      logger.info(`Emitted stock data update to ${this.io.engine.clientsCount} connected clients`, { clientCount: this.io.engine.clientsCount });
     }
     
     // Store data in database
@@ -132,7 +133,7 @@ class StockDataFetcher {
         // Insert each stock record individually
         let count = 0;
         if (stocks.length === 0) {
-          console.log('No stocks to store');
+          logger.info('No stocks to store');
           resolve();
           return;
         }
@@ -156,18 +157,18 @@ class StockDataFetcher {
             stock.lastUpdated
           ], (err) => {
             if (err) {
-              console.error('Error inserting stock record:', err.message);
+              logger.error('Error inserting stock record:', { error: err.message, stack: err.stack });
             }
             
             count++;
             if (count === stocks.length) {
-              console.log(`Stored ${stocks.length} stock records in database`);
+              logger.info(`Stored ${stocks.length} stock records in database`);
               resolve();
             }
           });
         }
       } catch (error) {
-        console.error('Error storing stock data in database:', error);
+        logger.error('Error storing stock data in database:', { error: error.message, stack: error.stack });
         reject(error);
       }
     });
@@ -265,27 +266,27 @@ class StockDataFetcher {
   
   async startFetching() {
     if (this.isRunning) {
-      console.log('Stock data fetcher is already running');
+      logger.info('Stock data fetcher is already running');
       return;
     }
 
     this.isRunning = true;
-    console.log('Starting periodic stock data fetching with market hours...');
+    logger.info('Starting periodic stock data fetching with market hours...');
     
     // Fetch data immediately if market is open
     if (this.isMarketOpen()) {
-      console.log('Market is currently open, fetching data...');
+      logger.info('Market is currently open, fetching data...');
       await this.fetchAllStocksData();
     } else {
-      console.log('Market is currently closed, waiting for next opening...');
+      logger.info('Market is currently closed, waiting for next opening...');
       const nextOpening = this.getNextMarketOpeningTime();
-      console.log(`Next market opening: ${nextOpening.toISOString()}`);
+      logger.info(`Next market opening: ${nextOpening.toISOString()}`);
     }
     
     // Start the recursive scheduling
     this.scheduleNextFetch();
     
-    console.log('Periodic stock data fetching scheduled with market hours consideration');
+    logger.info('Periodic stock data fetching scheduled with market hours consideration');
   }
   
   // Recursive function to schedule the next fetch based on market hours
@@ -298,7 +299,7 @@ class StockDataFetcher {
     if (this.isMarketOpen()) {
       // Market is open, fetch every 5 minutes
       nextCheckDelay = 5 * 60 * 1000; // 5 minutes
-      console.log(`Market is open. Next fetch in 5 minutes at ${new Date(now.getTime() + nextCheckDelay).toISOString()}`);
+      logger.info(`Market is open. Next fetch in 5 minutes at ${new Date(now.getTime() + nextCheckDelay).toISOString()}`);
     } else {
       // Market is closed, check when market opens next
       const nextOpening = this.getNextMarketOpeningTime();
@@ -310,23 +311,23 @@ class StockDataFetcher {
         nextCheckDelay = 60 * 1000;
       }
       
-      console.log(`Market is closed. Next fetch at market opening: ${nextOpening.toISOString()} (in ${(nextCheckDelay / 1000 / 60).toFixed(2)} minutes)`);
+      logger.info(`Market is closed. Next fetch at market opening: ${nextOpening.toISOString()} (in ${(nextCheckDelay / 1000 / 60).toFixed(2)} minutes)`);
     }
     
     // Schedule the next fetch
     setTimeout(async () => {
       try {
         if (this.isMarketOpen()) {
-          console.log('Market is open, fetching stock data...');
+          logger.info('Market is open, fetching stock data...');
           await this.fetchAllStocksData();
         } else {
-          console.log('Market is closed, skipping fetch...');
+          logger.info('Market is closed, skipping fetch...');
         }
         
         // Schedule the next check
         this.scheduleNextFetch();
       } catch (error) {
-        console.error('Error during scheduled fetch:', error);
+        logger.error('Error during scheduled fetch:', { error: error.message, stack: error.stack });
         // Even if there's an error, continue with the schedule
         this.scheduleNextFetch();
       }
@@ -335,7 +336,7 @@ class StockDataFetcher {
   
   stopFetching() {
     this.isRunning = false;
-    console.log('Stock data fetching stopped');
+    logger.info('Stock data fetching stopped');
   }
 }
 

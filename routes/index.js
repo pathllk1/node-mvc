@@ -9,4 +9,9 @@ router.get('/', (req, res) => {
 // Include stocks routes
 router.use('/stocks', require('./stocks'));
 
+// Route for the log console
+router.get('/console', (req, res) => {
+  res.render('console', { title: 'Server Console' });
+});
+
 module.exports = router;

@@ -1,4 +1,5 @@
 const sqlite3 = require('sqlite3').verbose();
+const logger = require('./logger');
 const path = require('path');
 const fs = require('fs');
 
@@ -12,19 +13,19 @@ if (!fs.existsSync(dbDir)) {
 const dbPath = path.join(dbDir, 'stock_data.db');
 const db = new sqlite3.Database(dbPath, (err) => {
   if (err) {
-    console.error('Error opening database:', err.message);
+    logger.error('Error opening database:', { error: err.message, stack: err.stack });
   } else {
-    console.log('Connected to the SQLite database.');
+    logger.info('Connected to the SQLite database.');
     // Enable foreign keys and WAL mode
     db.run('PRAGMA foreign_keys = ON;', (err) => {
       if (err) {
-        console.error('Error enabling foreign keys:', err.message);
+        logger.error('Error enabling foreign keys:', { error: err.message, stack: err.stack });
       }
     });
     
     db.run('PRAGMA journal_mode = WAL;', (err) => {
       if (err) {
-        console.error('Error setting journal mode to WAL:', err.message);
+        logger.error('Error setting journal mode to WAL:', { error: err.message, stack: err.stack });
       }
     });
   }
@@ -64,10 +65,10 @@ function initializeDatabase(callback) {
   db.serialize(() => {
     db.exec(createTableSQL, (err) => {
       if (err) {
-        console.error('Error creating tables:', err.message);
+        logger.error('Error creating tables:', { error: err.message, stack: err.stack });
         if (callback) callback(err);
       } else {
-        console.log('Database initialized successfully');
+        logger.info('Database initialized successfully');
         if (callback) callback(null);
       }
     });
@@ -83,6 +84,6 @@ module.exports = {
 // Initialize the database asynchronously when this module is loaded
 initializeDatabase((err) => {
   if (err) {
-    console.error('Failed to initialize database:', err);
+    logger.error('Failed to initialize database:', { error: err.message, stack: err.stack });
   }
 });

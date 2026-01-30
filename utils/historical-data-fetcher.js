@@ -1,4 +1,5 @@
 const YahooFinance = require('yahoo-finance2');
+const logger = require('./logger');
 const yahooFinance = new YahooFinance.default();
 const fs = require('fs').promises;
 const path = require('path');
@@ -14,10 +15,10 @@ class HistoricalDataFetcher {
     try {
       // Create the historical_ohlcv table
       await this.createHistoricalTable();
-      console.log('Historical data fetcher initialized successfully');
+      logger.info('Historical data fetcher initialized successfully');
       this.isInitialized = true;
     } catch (error) {
-      console.error('Error initializing historical data fetcher:', error.message);
+      logger.error('Error initializing historical data fetcher:', { error: error.message, stack: error.stack });
       throw error;
     }
   }
@@ -49,10 +50,10 @@ class HistoricalDataFetcher {
       db.serialize(() => {
         db.exec(createTableSQL, (err) => {
           if (err) {
-            console.error('Error creating historical table:', err.message);
+            logger.error('Error creating historical table:', { error: err.message, stack: err.stack });
             reject(err);
           } else {
-            console.log('Historical OHLCV table created/verified successfully');
+            logger.info('Historical OHLCV table created/verified successfully');
             resolve();
           }
         });
@@ -67,7 +68,7 @@ class HistoricalDataFetcher {
         startDate = '2000-01-01'; // Using 2000 as a more realistic start date
       }
       
-      console.log(`Fetching historical data for ${symbol} from ${startDate} to ${endDate || 'today'}...`);
+      logger.info(`Fetching historical data for ${symbol} from ${startDate} to ${endDate || 'today'}...`);
       
       // Use the chart method directly as historical() is deprecated
       const options = {
@@ -95,11 +96,11 @@ class HistoricalDataFetcher {
         volume: quote.volume
       }));
       
-      console.log(`Received ${historicalData.length} records for ${symbol}`);
+      logger.info(`Received ${historicalData.length} records for ${symbol}`);
       
       return historicalData;
     } catch (error) {
-      console.error(`Error fetching historical data for ${symbol}:`, error.message);
+      logger.error(`Error fetching historical data for ${symbol}:`, { error: error.message, stack: error.stack });
       return []; // Return empty array on error to continue processing other stocks
     }
   }
@@ -127,7 +128,7 @@ class HistoricalDataFetcher {
       let processedCount = 0;
       
       if (historicalRecords.length === 0) {
-        console.log('No records to save');
+        logger.info('No records to save');
         resolve(0);
         return;
       }
@@ -146,7 +147,7 @@ class HistoricalDataFetcher {
           processedCount++;
           
           if (err) {
-            console.error('Error inserting record:', err.message);
+            logger.error('Error inserting record:', { error: err.message, stack: err.stack });
             reject(err);
             return;
           } else {
@@ -155,7 +156,7 @@ class HistoricalDataFetcher {
           
           // Check if all records have been processed
           if (processedCount === historicalRecords.length) {
-            console.log(`Saved ${insertCount} historical records to database`);
+            logger.info(`Saved ${insertCount} historical records to database`);
             resolve(insertCount);
           }
         });
@@ -173,7 +174,7 @@ class HistoricalDataFetcher {
       const stockData = await fs.readFile(this.stocksFilePath, 'utf8');
       const stocks = JSON.parse(stockData);
       
-      console.log(`Processing historical data for ${stocks.length} stocks...`);
+      logger.info(`Processing historical data for ${stocks.length} stocks...`);
       
       let totalRecordsProcessed = 0;
       let totalStocksProcessed = 0;
@@ -184,13 +185,13 @@ class HistoricalDataFetcher {
       for (let i = 0; i < stocks.length; i += batchSize) {
         const batch = stocks.slice(i, i + batchSize);
         
-        console.log(`Processing batch ${Math.floor(i / batchSize) + 1}/${Math.ceil(stocks.length / batchSize)}`);
+        logger.info(`Processing batch ${Math.floor(i / batchSize) + 1}/${Math.ceil(stocks.length / batchSize)}`);
         
         // Process batch concurrently
         const batchPromises = batch.map(async (stock) => {
           try {
             const symbol = stock.nse; // Use the NSE symbol from the json
-            console.log(`Processing ${symbol} (${stock.company})`);
+            logger.info(`Processing ${symbol} (${stock.company})`);
             
             // Fetch historical data for this symbol (with automatic max date range)
             const historicalData = await this.fetchHistoricalDataForSymbol(symbol, startDate, endDate);
@@ -199,14 +200,14 @@ class HistoricalDataFetcher {
               // Save the historical data to database
               await this.saveHistoricalData(historicalData);
               
-              console.log(`Successfully processed ${historicalData.length} records for ${symbol}`);
+              logger.info(`Successfully processed ${historicalData.length} records for ${symbol}`);
               return historicalData.length;
             } else {
-              console.log(`No historical data found for ${symbol}`);
+              logger.info(`No historical data found for ${symbol}`);
               return 0;
             }
           } catch (error) {
-            console.error(`Error processing ${stock.nse}:`, error.message);
+            logger.error(`Error processing ${stock.nse}:`, { error: error.message, stack: error.stack });
             return 0; // Continue with other stocks
           }
         });
@@ -216,23 +217,23 @@ class HistoricalDataFetcher {
         totalRecordsProcessed += batchResults.reduce((sum, count) => sum + count, 0);
         totalStocksProcessed += batch.filter(() => true).length; // Count attempted stocks
         
-        console.log(`Completed batch, processed ${batchResults.reduce((sum, count) => sum + count, 0)} total records`);
+        logger.info(`Completed batch, processed ${batchResults.reduce((sum, count) => sum + count, 0)} total records`);
         
         // Add delay between batches to respect rate limits
         if (i + batchSize < stocks.length) {
-          console.log('Waiting 2 seconds before next batch to respect API rate limits...');
+          logger.info('Waiting 2 seconds before next batch to respect API rate limits...');
           await new Promise(resolve => setTimeout(resolve, 2000));
         }
       }
       
-      console.log(`\n=== Processing Complete ===`);
-      console.log(`Total stocks processed: ${totalStocksProcessed}`);
-      console.log(`Total records saved: ${totalRecordsProcessed}`);
-      console.log(`Average records per stock: ${(totalRecordsProcessed / totalStocksProcessed).toFixed(2)}`);
+      logger.info('\n=== Processing Complete ===');
+      logger.info(`Total stocks processed: ${totalStocksProcessed}`);
+      logger.info(`Total records saved: ${totalRecordsProcessed}`);
+      logger.info(`Average records per stock: ${(totalRecordsProcessed / totalStocksProcessed).toFixed(2)}`);
       
       return { totalStocksProcessed, totalRecordsProcessed };
     } catch (error) {
-      console.error('Error processing all stocks:', error.message);
+      logger.error('Error processing all stocks:', { error: error.message, stack: error.stack });
       throw error;
     }
   }
@@ -248,7 +249,7 @@ class HistoricalDataFetcher {
         const sql = 'SELECT DISTINCT symbol FROM historical_ohlcv';
         db.all(sql, [], (err, rows) => {
           if (err) {
-            console.error('Error getting existing symbols:', err.message);
+            logger.error('Error getting existing symbols:', { error: err.message, stack: err.stack });
             resolve([]);
             return;
           }
@@ -258,12 +259,12 @@ class HistoricalDataFetcher {
           // Filter stocks that don't have historical data
           const missingStocks = stocks.filter(stock => !existingSymbols.has(stock.nse)).slice(0, limit);
           
-          console.log(`Found ${missingStocks.length} stocks without historical data out of ${stocks.length} total`);
+          logger.info(`Found ${missingStocks.length} stocks without historical data out of ${stocks.length} total`);
           
           resolve(missingStocks);
         });
       } catch (error) {
-        console.error('Error finding stocks without historical data:', error.message);
+        logger.error('Error finding stocks without historical data:', { error: error.message, stack: error.stack });
         resolve([]);
       }
     });
@@ -274,11 +275,11 @@ class HistoricalDataFetcher {
       const missingStocks = await this.getStocksWithoutHistoricalData(limit);
       
       if (missingStocks.length === 0) {
-        console.log('All stocks already have historical data');
+        logger.info('All stocks already have historical data');
         return { totalStocksProcessed: 0, totalRecordsProcessed: 0 };
       }
       
-      console.log(`Processing historical data for ${missingStocks.length} missing stocks...`);
+      logger.info(`Processing historical data for ${missingStocks.length} missing stocks...`);
       
       let totalRecordsProcessed = 0;
       let totalStocksProcessed = 0;
@@ -289,25 +290,25 @@ class HistoricalDataFetcher {
       for (let i = 0; i < missingStocks.length; i += batchSize) {
         const batch = missingStocks.slice(i, i + batchSize);
         
-        console.log(`Processing missing stocks batch ${Math.floor(i / batchSize) + 1}/${Math.ceil(missingStocks.length / batchSize)}`);
+        logger.info(`Processing missing stocks batch ${Math.floor(i / batchSize) + 1}/${Math.ceil(missingStocks.length / batchSize)}`);
         
         const batchPromises = batch.map(async (stock) => {
           try {
             const symbol = stock.nse;
-            console.log(`Processing missing stock: ${symbol} (${stock.company})`);
+            logger.info(`Processing missing stock: ${symbol} (${stock.company})`);
             
             const historicalData = await this.fetchHistoricalDataForSymbol(symbol, startDate, endDate);
             
             if (historicalData.length > 0) {
               await this.saveHistoricalData(historicalData);
-              console.log(`Saved ${historicalData.length} records for ${symbol}`);
+              logger.info(`Saved ${historicalData.length} records for ${symbol}`);
               return historicalData.length;
             } else {
-              console.log(`No historical data found for ${symbol}`);
+              logger.info(`No historical data found for ${symbol}`);
               return 0;
             }
           } catch (error) {
-            console.error(`Error processing missing stock ${stock.nse}:`, error.message);
+            logger.error(`Error processing missing stock ${stock.nse}:`, { error: error.message, stack: error.stack });
             return 0;
           }
         });
@@ -317,18 +318,18 @@ class HistoricalDataFetcher {
         totalStocksProcessed += batch.length;
         
         if (i + batchSize < missingStocks.length) {
-          console.log('Waiting 2 seconds before next batch...');
+          logger.info('Waiting 2 seconds before next batch...');
           await new Promise(resolve => setTimeout(resolve, 2000));
         }
       }
       
-      console.log(`\n=== Missing Stocks Processing Complete ===`);
-      console.log(`Total missing stocks processed: ${totalStocksProcessed}`);
-      console.log(`Total records saved: ${totalRecordsProcessed}`);
+      logger.info('\n=== Missing Stocks Processing Complete ===');
+      logger.info(`Total missing stocks processed: ${totalStocksProcessed}`);
+      logger.info(`Total records saved: ${totalRecordsProcessed}`);
       
       return { totalStocksProcessed, totalRecordsProcessed };
     } catch (error) {
-      console.error('Error processing missing stocks:', error.message);
+      logger.error('Error processing missing stocks:', { error: error.message, stack: error.stack });
       throw error;
     }
   }
@@ -347,10 +348,10 @@ if (require.main === module) {
   // Use the provided start date or null to fetch maximum available history
   const startDate = startDateArg || null;
   
-  console.log(`Starting historical data fetcher...`);
-  console.log(`Mode: ${mode}`);
-  console.log(`Start date: ${startDate || 'automatic (maximum available)'}`);
-  console.log(`End date: ${endDate || 'today'}`);
+  logger.info(`Starting historical data fetcher...`);
+  logger.info(`Mode: ${mode}`);
+  logger.info(`Start date: ${startDate || 'automatic (maximum available)'}`);
+  logger.info(`End date: ${endDate || 'today'}`);
   
   // Process stocks based on mode
   const processPromise = mode === 'missing' 
@@ -359,12 +360,12 @@ if (require.main === module) {
   
   processPromise
     .then(result => {
-      console.log('\nHistorical data fetching completed successfully!');
-      console.log(`Processed ${result.totalStocksProcessed} stocks`);
-      console.log(`Saved ${result.totalRecordsProcessed} records`);
+      logger.info('\nHistorical data fetching completed successfully!');
+      logger.info(`Processed ${result.totalStocksProcessed} stocks`);
+      logger.info(`Saved ${result.totalRecordsProcessed} records`);
     })
     .catch(error => {
-      console.error('Historical data fetching failed:', error);
+      logger.error('Historical data fetching failed:', { error: error.message, stack: error.stack });
       process.exit(1);
     });
 }

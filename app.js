@@ -7,6 +7,7 @@ const methodOverride = require('./middleware/methodOverride');
 const securityMiddleware = require('./middleware/security');
 const StockDataFetcher = require('./utils/stock-data-fetcher');
 const DailyUpdateFetcher = require('./utils/daily-update-fetcher');
+const logger = require('./utils/logger');
 const path = require('path');
 const app = express();
 
@@ -18,6 +19,9 @@ const io = new Server(httpServer, {
     methods: ["GET", "POST"]
   }
 });
+
+// Initialize logger with Socket.IO
+logger.setSocketIO(io);
 
 // Set up view engine
 app.set('view engine', 'ejs');
@@ -37,10 +41,12 @@ app.use('/users', require('./routes/users'));
 
 // Error handling
 app.use((req, res, next) => {
+  logger.warn('Page not found', { url: req.url, method: req.method });
   res.status(404).render('error/404', { title: 'Page Not Found' });
 });
 
 app.use((err, req, res, next) => {
+  logger.error('Server error', { url: req.url, method: req.method, error: err.message });
   res.status(err.status || 500);
   res.render('error/error', { title: 'Server Error', error: err });
 });
@@ -50,34 +56,35 @@ module.exports.handler = serverless(app);
 
 // For local development
 if (require.main === module) {
-  const PORT = process.env.PORT || 3000;
+  const PORT = parseInt(process.env.PORT) || 3000;
   httpServer.listen(PORT, async () => {
-    console.log(`Server is running on port ${PORT}`);
+    logger.info(`Server is running on port ${PORT}`);
     
     // Initialize and start the stock data fetcher after the app is fully initialized
     try {
         const stockFetcher = new StockDataFetcher(io);
         await stockFetcher.initialize();
         await stockFetcher.startFetching();
+        logger.info('Stock data fetcher initialized and started');
     } catch (error) {
-        console.error('Failed to start stock data fetcher:', error);
+        logger.error('Failed to start stock data fetcher:', error);
     }
     
     // Initialize and start the daily update scheduler
     try {
-        console.log('Initializing daily update scheduler...');
+        logger.info('Initializing daily update scheduler...');
         const dailyUpdater = new DailyUpdateFetcher();
         await dailyUpdater.initialize();
         dailyUpdater.startDailyScheduler();
-        console.log('✓ Daily update scheduler started and will run at 4 AM IST every day');
+        logger.info('✓ Daily update scheduler started and will run at 4 AM IST every day');
     } catch (error) {
-        console.error('Failed to start daily update scheduler:', error);
+        logger.error('Failed to start daily update scheduler:', error);
     }
   });
   
   // Socket.IO connection handling
   io.on('connection', (socket) => {
-    console.log('Client connected:', socket.id);
+    logger.info('Client connected:', { socketId: socket.id });
     
     // Send initial data when client connects
     socket.on('request-initial-data', async () => {
@@ -86,12 +93,12 @@ if (require.main === module) {
         const stockData = JSON.parse(data);
         socket.emit('stock-data-update', stockData);
       } catch (err) {
-        console.error('Error sending initial data:', err);
+        logger.error('Error sending initial data:', err);
       }
     });
     
     socket.on('disconnect', () => {
-      console.log('Client disconnected:', socket.id);
+      logger.info('Client disconnected:', { socketId: socket.id });
     });
   });
 }

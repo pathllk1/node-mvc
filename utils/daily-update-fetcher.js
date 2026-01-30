@@ -1,4 +1,5 @@
 const YahooFinance = require('yahoo-finance2');
+const logger = require('./logger');
 const yahooFinance = new YahooFinance.default();
 const fs = require('fs').promises;
 const path = require('path');
@@ -15,11 +16,11 @@ class DailyUpdateFetcher {
 
   async initialize() {
     try {
-      console.log('Initializing daily update fetcher...');
+      logger.info('Initializing daily update fetcher...');
       this.isInitialized = true;
-      console.log('Daily update fetcher initialized successfully');
+      logger.info('Daily update fetcher initialized successfully');
     } catch (error) {
-      console.error('Error initializing daily update fetcher:', error.message);
+      logger.error('Error initializing daily update fetcher:', { error: error.message, stack: error.stack });
       throw error;
     }
   }
@@ -29,7 +30,7 @@ class DailyUpdateFetcher {
       const sql = 'SELECT MAX(date) as latest_date FROM historical_ohlcv WHERE symbol = ?';
       db.get(sql, [symbol], (err, row) => {
         if (err) {
-          console.error(`Error getting latest date for ${symbol}:`, err.message);
+          logger.error(`Error getting latest date for ${symbol}:`, { error: err.message, stack: err.stack });
           resolve(null);
         } else {
           resolve(row ? row.latest_date : null);
@@ -52,14 +53,14 @@ class DailyUpdateFetcher {
       
       return latestDates;
     } catch (error) {
-      console.error('Error getting all latest dates:', error.message);
+      logger.error('Error getting all latest dates:', { error: error.message, stack: error.stack });
       return {};
     }
   }
 
   async fetchIncrementalDataForSymbol(symbol, startDate, endDate = null) {
     try {
-      console.log(`Fetching incremental data for ${symbol} from ${startDate} to ${endDate || 'today'}...`);
+      logger.info(`Fetching incremental data for ${symbol} from ${startDate} to ${endDate || 'today'}...`);
       
       // Use the chart method directly as historical() is deprecated
       const options = {
@@ -88,11 +89,11 @@ class DailyUpdateFetcher {
         volume: quote.volume
       }));
       
-      console.log(`Received ${incrementalData.length} incremental records for ${symbol}`);
+      logger.info(`Received ${incrementalData.length} incremental records for ${symbol}`);
       
       return incrementalData;
     } catch (error) {
-      console.error(`Error fetching incremental data for ${symbol}:`, error.message);
+      logger.error(`Error fetching incremental data for ${symbol}:`, { error: error.message, stack: error.stack });
       return []; // Return empty array on error to continue processing other stocks
     }
   }
@@ -120,7 +121,7 @@ class DailyUpdateFetcher {
       let processedCount = 0;
       
       if (incrementalRecords.length === 0) {
-        console.log('No records to save');
+        logger.info('No records to save');
         resolve(0);
         return;
       }
@@ -139,7 +140,7 @@ class DailyUpdateFetcher {
           processedCount++;
           
           if (err) {
-            console.error('Error inserting record:', err.message);
+            logger.error('Error inserting record:', { error: err.message, stack: err.stack });
             reject(err);
             return;
           } else {
@@ -148,7 +149,7 @@ class DailyUpdateFetcher {
           
           // Check if all records have been processed
           if (processedCount === incrementalRecords.length) {
-            console.log(`Saved ${insertCount} incremental records to database`);
+            logger.info(`Saved ${insertCount} incremental records to database`);
             resolve(insertCount);
           }
         });
@@ -158,7 +159,7 @@ class DailyUpdateFetcher {
 
   async processIncrementalUpdates() {
     if (this.isRunning) {
-      console.log('Daily update fetcher is already running, skipping this execution');
+      logger.info('Daily update fetcher is already running, skipping this execution');
       return;
     }
 
@@ -168,15 +169,15 @@ class DailyUpdateFetcher {
       if (!this.isInitialized) {
         await this.initialize();
       }
-
-      console.log('\\n=== Starting Daily Incremental Update ===');
-      console.log('Current time in IST:', new Date().toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
+    
+      logger.info('\n=== Starting Daily Incremental Update ===');
+      logger.info('Current time in IST:', { istTime: new Date().toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }) });
       
       // Load stock list
       const stocksData = await fs.readFile(this.stocksFilePath, 'utf8');
       const stocks = JSON.parse(stocksData);
       
-      console.log(`Processing incremental updates for ${stocks.length} stocks...`);
+      logger.info(`Processing incremental updates for ${stocks.length} stocks...`);
       
       let totalRecordsProcessed = 0;
       let totalStocksProcessed = 0;
@@ -188,20 +189,20 @@ class DailyUpdateFetcher {
       for (let i = 0; i < stocks.length; i += batchSize) {
         const batch = stocks.slice(i, i + batchSize);
         
-        console.log(`Processing batch ${Math.floor(i / batchSize) + 1}/${Math.ceil(stocks.length / batchSize)}`);
+        logger.info(`Processing batch ${Math.floor(i / batchSize) + 1}/${Math.ceil(stocks.length / batchSize)}`);
         
         // Process batch concurrently
         const batchPromises = batch.map(async (stock) => {
           try {
             const symbol = stock.nse; // Use the NSE symbol from the json
-            console.log(`\nProcessing incremental update for ${symbol} (${stock.company})`);
+            logger.info(`\nProcessing incremental update for ${symbol} (${stock.company})`);
                       
             // Get the latest date for this symbol
             const latestDate = await this.getLatestDateForSymbol(symbol);
-            console.log(`Latest date in database for ${symbol}: ${latestDate || 'No data'}`);
+            logger.info(`Latest date in database for ${symbol}: ${latestDate || 'No data'}`);
                       
             if (!latestDate) {
-              console.log(`No existing data for ${symbol}, skipping incremental update`);
+              logger.info(`No existing data for ${symbol}, skipping incremental update`);
               return { symbol, records: 0, hasNewData: false };
             }
                       
@@ -215,7 +216,7 @@ class DailyUpdateFetcher {
             const startDateStr = startDate.toISOString().split('T')[0];
             const todayStr = new Date().toISOString().split('T')[0];
                       
-            console.log(`Fetching data from ${startDateStr} to ${todayStr} for ${symbol}`);
+            logger.info(`Fetching data from ${startDateStr} to ${todayStr} for ${symbol}`);
                       
             // Fetch incremental data for this symbol
             const incrementalData = await this.fetchIncrementalDataForSymbol(symbol, startDateStr, todayStr);
@@ -224,14 +225,14 @@ class DailyUpdateFetcher {
               // Save the incremental data to database
               const savedCount = await this.saveIncrementalData(incrementalData);
                         
-              console.log(`Successfully processed ${savedCount} incremental records for ${symbol}`);
+              logger.info(`Successfully processed ${savedCount} incremental records for ${symbol}`);
               return { symbol, records: savedCount, hasNewData: true };
             } else {
-              console.log(`No new data found for ${symbol}`);
+              logger.info(`No new data found for ${symbol}`);
               return { symbol, records: 0, hasNewData: false };
             }
           } catch (error) {
-            console.error(`Error processing incremental update for ${stock.nse}:`, error.message);
+            logger.error(`Error processing incremental update for ${stock.nse}:`, { error: error.message, stack: error.stack });
             return { symbol: stock.nse, records: 0, hasNewData: false, error: error.message }; // Continue with other stocks
           }
         });
@@ -245,29 +246,29 @@ class DailyUpdateFetcher {
         totalStocksProcessed += batchResults.length;
         stocksWithNewData += batchStocksWithData;
         
-        console.log(`Completed batch: ${batchRecords} records, ${batchStocksWithData} stocks with new data`);
+        logger.info(`Completed batch: ${batchRecords} records, ${batchStocksWithData} stocks with new data`);
         
         // Add delay between batches to respect rate limits
         if (i + batchSize < stocks.length) {
-          console.log('Waiting 2 seconds before next batch to respect API rate limits...');
+          logger.info('Waiting 2 seconds before next batch to respect API rate limits...');
           await new Promise(resolve => setTimeout(resolve, 2000));
         }
       }
       
-      console.log('\\n=== Daily Incremental Update Complete ===');
-      console.log(`Total stocks processed: ${totalStocksProcessed}`);
-      console.log(`Stocks with new data: ${stocksWithNewData}`);
-      console.log(`Total new records saved: ${totalRecordsProcessed}`);
+      logger.info('\n=== Daily Incremental Update Complete ===');
+      logger.info(`Total stocks processed: ${totalStocksProcessed}`);
+      logger.info(`Stocks with new data: ${stocksWithNewData}`);
+      logger.info(`Total new records saved: ${totalRecordsProcessed}`);
       
       if (totalRecordsProcessed > 0) {
-        console.log('✅ Successfully updated database with new data');
+        logger.info('✅ Successfully updated database with new data');
       } else {
-        console.log('ℹ️ No new data found for any stocks');
+        logger.info('ℹ️ No new data found for any stocks');
       }
       
       return { totalStocksProcessed, stocksWithNewData, totalRecordsProcessed };
     } catch (error) {
-      console.error('Error processing incremental updates:', error.message);
+      logger.error('Error processing incremental updates:', { error: error.message, stack: error.stack });
       throw error;
     } finally {
       this.isRunning = false;
@@ -277,16 +278,16 @@ class DailyUpdateFetcher {
   // Schedule the daily update to run at 4 AM IST
   startDailyScheduler() {
     if (!this.isInitialized) {
-      console.error('Daily update fetcher not initialized');
+      logger.error('Daily update fetcher not initialized');
       return;
     }
 
     if (this.schedulerStarted) {
-      console.log('Daily update scheduler already started, skipping...');
+      logger.info('Daily update scheduler already started, skipping...');
       return;
     }
 
-    console.log('Starting daily update scheduler...');
+    logger.info('Starting daily update scheduler...');
     this.schedulerStarted = true;
     
     // Schedule to run at 4 AM IST every day
@@ -296,26 +297,26 @@ class DailyUpdateFetcher {
     
     // For node-cron, we'll use the system time but log the IST time
     cron.schedule('0 0 4 * * *', async () => {
-      console.log('\\n=== Daily Update Scheduled Task Triggered ===');
-      console.log('System time:', new Date().toString());
-      console.log('IST time:', new Date().toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
+      logger.info('\n=== Daily Update Scheduled Task Triggered ===');
+      logger.info('System time:', { systemTime: new Date().toString() });
+      logger.info('IST time:', { istTime: new Date().toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }) });
       
       try {
         await this.processIncrementalUpdates();
       } catch (error) {
-        console.error('Error in scheduled daily update:', error.message);
+        logger.error('Error in scheduled daily update:', { error: error.message, stack: error.stack });
       }
     }, {
       timezone: "Asia/Kolkata" // This ensures the cron runs at 4 AM IST
     });
     
-    console.log('Daily update scheduler started - will run at 4 AM IST every day');
-    console.log('Current time in IST:', new Date().toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
+    logger.info('Daily update scheduler started - will run at 4 AM IST every day');
+    logger.info('Current time in IST:', { istTime: new Date().toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }) });
   }
 
   // Manual trigger for testing
   async runManualUpdate() {
-    console.log('=== Manual Daily Update Triggered ===');
+    logger.info('=== Manual Daily Update Triggered ===');
     return await this.processIncrementalUpdates();
   }
 }
@@ -328,30 +329,30 @@ if (require.main === module) {
   const args = process.argv.slice(2);
   const mode = args.find(arg => arg.startsWith('--mode='))?.split('=')[1] || 'schedule'; // 'schedule' or 'manual'
   
-  console.log(`Starting daily update fetcher in ${mode} mode...`);
+  logger.info(`Starting daily update fetcher in ${mode} mode...`);
   
   dailyFetcher.initialize()
     .then(async () => {
       if (mode === 'manual') {
         // Run manual update once
         await dailyFetcher.runManualUpdate();
-        console.log('Manual update completed');
+        logger.info('Manual update completed');
         process.exit(0);
       } else {
         // Start the scheduler
         dailyFetcher.startDailyScheduler();
-        console.log('Daily update fetcher is now running and will update at 4 AM IST daily');
-        console.log('Press Ctrl+C to stop');
+        logger.info('Daily update fetcher is now running and will update at 4 AM IST daily');
+        logger.info('Press Ctrl+C to stop');
         
         // Keep the process running
         process.on('SIGINT', () => {
-          console.log('\\nShutting down daily update fetcher...');
+          logger.info('\nShutting down daily update fetcher...');
           process.exit(0);
         });
       }
     })
     .catch(error => {
-      console.error('Failed to start daily update fetcher:', error);
+      logger.error('Failed to start daily update fetcher:', { error: error.message, stack: error.stack });
       process.exit(1);
     });
 }

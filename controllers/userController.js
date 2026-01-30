@@ -1,4 +1,5 @@
 const User = require('../models/User');
+const logger = require('../utils/logger');
 
 // Get all users
 exports.getAllUsers = (req, res) => {
@@ -21,6 +22,7 @@ exports.createUser = (req, res) => {
     const { name, email } = req.body;
     const userData = { name, email };
     User.create(userData);
+    logger.info('User created successfully', { name, email });
     res.redirect('/users');
 };
 
@@ -30,6 +32,7 @@ exports.getUserById = (req, res) => {
     const user = User.getById(userId);
     
     if (!user) {
+        logger.warn('Attempt to access non-existent user', { userId });
         return res.status(404).render('error/404', { title: 'User Not Found' });
     }
     
@@ -45,6 +48,7 @@ exports.showEditForm = (req, res) => {
     const user = User.getById(userId);
     
     if (!user) {
+        logger.warn('Attempt to edit non-existent user', { userId });
         return res.status(404).render('error/404', { title: 'User Not Found' });
     }
     
@@ -64,9 +68,11 @@ exports.updateUser = (req, res) => {
     const updatedUser = User.update(userId, userData);
     
     if (!updatedUser) {
+        logger.warn('Attempt to update non-existent user', { userId });
         return res.status(404).render('error/404', { title: 'User Not Found' });
     }
     
+    logger.info('User updated successfully', { userId, name, email });
     res.redirect(`/users/${userId}`);
 };
 
@@ -77,8 +83,10 @@ exports.deleteUser = (req, res) => {
     const deletedUser = User.delete(userId);
     
     if (!deletedUser) {
+        logger.warn('Attempt to delete non-existent user', { userId });
         return res.status(404).render('error/404', { title: 'User Not Found' });
     }
     
+    logger.info('User deleted successfully', { userId });
     res.redirect('/users');
 };

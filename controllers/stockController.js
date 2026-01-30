@@ -1,4 +1,5 @@
 const YahooFinance = require('yahoo-finance2');
+const logger = require('../utils/logger');
 const yahooFinance = new YahooFinance.default();
 
 // Get fundamental data for a specific stock
@@ -87,7 +88,11 @@ exports.getFundamentalData = async (req, res) => {
     res.json(formattedData);
     
   } catch (error) {
-    console.error(`Error fetching fundamental data for ${req.params.symbol}:`, error.message);
+    logger.error(`Error fetching fundamental data for ${req.params.symbol}:`, { 
+      error: error.message,
+      stack: error.stack,
+      symbol: req.params.symbol
+    });
     res.status(500).json({ 
       error: 'Failed to fetch fundamental data',
       message: error.message 
@@ -522,7 +527,10 @@ exports.technicalAnalysis = async (req, res) => {
       }
 
     } catch (e) {
-      console.error('Calculation Error:', e);
+      logger.error('Calculation Error in technical analysis:', { 
+        error: e.message,
+        stack: e.stack
+      });
     }
     
     // Get current price (live or latest close)
@@ -559,7 +567,11 @@ exports.technicalAnalysis = async (req, res) => {
     res.json(analysis);
     
   } catch (error) {
-    console.error(`Error calculating technical analysis for ${req.params.symbol}:`, error.message);
+    logger.error(`Error calculating technical analysis for ${req.params.symbol}:`, { 
+      error: error.message,
+      stack: error.stack,
+      symbol: req.params.symbol
+    });
     res.status(500).json({ 
       error: 'Failed to calculate technical analysis',
       message: error.message 
@@ -945,7 +957,11 @@ exports.getChartData = async (req, res) => {
     res.json(formattedData);
     
   } catch (error) {
-    console.error(`Error fetching chart data for ${req.params.symbol}:`, error.message);
+    logger.error(`Error fetching chart data for ${req.params.symbol}:`, { 
+      error: error.message,
+      stack: error.stack,
+      symbol: req.params.symbol
+    });
     res.status(500).json({ 
       error: 'Failed to fetch chart data',
       message: error.message 
@@ -989,7 +1005,11 @@ exports.getQuoteData = async (req, res) => {
     res.json(quoteData);
     
   } catch (error) {
-    console.error(`Error fetching quote data for ${req.params.symbol}:`, error.message);
+    logger.error(`Error fetching quote data for ${req.params.symbol}:`, { 
+      error: error.message,
+      stack: error.stack,
+      symbol: req.params.symbol
+    });
     res.status(500).json({ 
       error: 'Failed to fetch quote data',
       message: error.message 

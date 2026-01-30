@@ -29,6 +29,7 @@ class NavbarComponent {
                 <a href="/" class="text-white hover:bg-black hover:bg-opacity-10 px-3 py-2 rounded-md text-sm font-medium transition">Home</a>
                 <a href="/users" class="text-white hover:bg-black hover:bg-opacity-10 px-3 py-2 rounded-md text-sm font-medium transition">Users</a>
                 <a href="/stocks/dashboard" class="text-white hover:bg-black hover:bg-opacity-10 px-3 py-2 rounded-md text-sm font-medium transition">Stocks</a>
+                <a href="/console" class="text-white hover:bg-black hover:bg-opacity-10 px-3 py-2 rounded-md text-sm font-medium transition">Console</a>
               </div>
             </div>
             
@@ -51,6 +52,7 @@ class NavbarComponent {
             <a href="/" class="text-white block px-3 py-2 rounded-md text-base font-medium hover:bg-black hover:bg-opacity-10">Home</a>
             <a href="/users" class="text-white block px-3 py-2 rounded-md text-base font-medium hover:bg-black hover:bg-opacity-10">Users</a>
             <a href="/stocks/dashboard" class="text-white block px-3 py-2 rounded-md text-base font-medium hover:bg-black hover:bg-opacity-10">Stocks</a>
+            <a href="/console" class="text-white block px-3 py-2 rounded-md text-base font-medium hover:bg-black hover:bg-opacity-10">Console</a>
           </div>
         </div>
       </div>

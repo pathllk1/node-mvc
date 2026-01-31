@@ -348,12 +348,49 @@
     initializeConsoleHandlers();
   }
 
+  // Cleanup function for console page - proper WebSocket cleanup
+  function cleanupConsole() {
+    console.log('Cleaning up console page...');
+    
+    // Close socket connection properly
+    if (socket) {
+      socket.off('connect');
+      socket.off('disconnect');
+      socket.off('server-log');
+      socket.close();
+      socket = null;
+    }
+    
+    // Remove button event listeners
+    const { clearConsoleBtn, toggleAutoScrollBtn, filterInfoBtn, filterWarnBtn, filterErrorBtn, filterDebugBtn } = getDOMElements();
+    if (clearConsoleBtn) clearConsoleBtn.removeEventListener('click', clearConsole);
+    if (toggleAutoScrollBtn) toggleAutoScrollBtn.removeEventListener('click', toggleAutoScroll);
+    if (filterInfoBtn) filterInfoBtn.removeEventListener('click', () => toggleFilter('info'));
+    if (filterWarnBtn) filterWarnBtn.removeEventListener('click', () => toggleFilter('warn'));
+    if (filterErrorBtn) filterErrorBtn.removeEventListener('click', () => toggleFilter('error'));
+    if (filterDebugBtn) filterDebugBtn.removeEventListener('click', () => toggleFilter('debug'));
+    
+    console.log('Console cleanup complete');
+  }
+
   // Handle page load - check readyState to support both initial load and SPA navigation
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initializeConsole);
   } else {
     // DOM is already ready (happens on SPA navigation after script reload)
     setTimeout(initializeConsole, 50);
+  }
+
+  // Register cleanup function with SPA router
+  if (window.spaRouter) {
+    window.spaRouter.registerCleanup('/console', cleanupConsole);
+  } else {
+    // If router not ready, wait for it
+    window.addEventListener('spa:router-ready', () => {
+      if (window.spaRouter) {
+        window.spaRouter.registerCleanup('/console', cleanupConsole);
+      }
+    });
   }
 
   // Listen for SPA navigation events

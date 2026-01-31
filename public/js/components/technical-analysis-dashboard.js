@@ -919,6 +919,13 @@ let technicalAnalysisDashboard;
 
 function initializeTechnicalAnalysisDashboard() {
   try {
+    // CRITICAL: Check if we're on the correct page FIRST
+    const isTechDashboardPath = window.location.pathname === '/technical-analysis/dashboard';
+    if (!isTechDashboardPath) {
+      console.log('Not on technical analysis dashboard path, skipping initialization');
+      return;
+    }
+    
     // Increased delay to ensure HTML content is fully rendered
     setTimeout(() => {
       // Debug: Check current path and page content
@@ -939,15 +946,6 @@ function initializeTechnicalAnalysisDashboard() {
       
       if (missingElements.length > 0) {
         console.warn('Required elements missing, retrying initialization:', missingElements);
-        
-        // Check if we're actually on the technical analysis dashboard
-        const isTechDashboardPage = window.location.pathname.includes('/technical-analysis/dashboard') || 
-                                   document.title.includes('Technical Analysis');
-        
-        if (!isTechDashboardPage) {
-          console.warn('Not on technical analysis dashboard page, skipping initialization');
-          return;
-        }
         
         // Add maximum retry limit to prevent infinite loops
         if (!window.techDashboardRetryCount) {
@@ -989,13 +987,52 @@ if (document.readyState === 'loading') {
   setTimeout(initializeTechnicalAnalysisDashboard, 50);
 }
 
+// Cleanup function for technical analysis dashboard
+function cleanupTechnicalAnalysisDashboard() {
+  console.log('Cleaning up technical analysis dashboard...');
+  
+  if (window.technicalAnalysisDashboard) {
+    // Clear search timeout
+    if (window.technicalAnalysisDashboard.searchTimeout) {
+      clearTimeout(window.technicalAnalysisDashboard.searchTimeout);
+      window.technicalAnalysisDashboard.searchTimeout = null;
+    }
+    
+    // Destroy chart if exists
+    if (window.technicalAnalysisDashboard.scoreDistributionChart) {
+      window.technicalAnalysisDashboard.scoreDistributionChart.destroy();
+      window.technicalAnalysisDashboard.scoreDistributionChart = null;
+    }
+    
+    // Clear instance
+    window.technicalAnalysisDashboard = null;
+  }
+  
+  console.log('Technical analysis dashboard cleanup complete');
+}
+
+// Register cleanup with router
+if (window.spaRouter) {
+  window.spaRouter.registerCleanup('/technical-analysis/dashboard', cleanupTechnicalAnalysisDashboard);
+}
+
 // Listen for SPA navigation events
 window.addEventListener('spa:navigated', (event) => {
-  console.log('SPA navigation detected on technical analysis dashboard');
-  console.log('Navigated to:', window.location.pathname);
+  console.log('SPA navigation detected');
+  console.log('Current path:', window.location.pathname);
   
-  const isTechDashboard = window.location.pathname === '/technical-analysis/dashboard' || 
-                          document.getElementById('total-stocks');
+  // Path-based check is PRIMARY - must include the exact path
+  const isTechDashboardPath = window.location.pathname === '/technical-analysis/dashboard';
+  
+  // Only if path matches, do additional element checks
+  const isTechDashboard = isTechDashboardPath && (
+    document.getElementById('records-table-body') || 
+    document.getElementById('avg-score') ||
+    document.getElementById('refresh-btn')
+  );
+  
+  console.log('Is TA Dashboard path:', isTechDashboardPath);
+  console.log('Is TA Dashboard (with elements):', isTechDashboard);
   
   if (isTechDashboard) {
     console.log('On technical analysis dashboard, reinitializing...');
@@ -1006,11 +1043,11 @@ window.addEventListener('spa:navigated', (event) => {
       initializeTechnicalAnalysisDashboard();
     }, 250);
   } else {
-    console.log('Not on technical analysis dashboard');
+    console.log('Not on technical analysis dashboard - skipping initialization');
     // Clean up any existing dashboard instance
     if (window.technicalAnalysisDashboard) {
       console.log('Cleaning up technical analysis dashboard instance');
-      window.technicalAnalysisDashboard = null;
+      cleanupTechnicalAnalysisDashboard();
     }
   }
 });

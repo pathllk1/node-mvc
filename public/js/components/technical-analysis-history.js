@@ -338,10 +338,20 @@ if (document.readyState === 'loading') {
 
 // Listen for SPA navigation events
 window.addEventListener('spa:navigated', (event) => {
-  console.log('SPA navigation detected on technical analysis history');
+  console.log('SPA navigation detected');
+  console.log('Current path:', window.location.pathname);
   
-  const isTechHistory = window.location.pathname === '/technical-analysis/history' || 
-                        document.getElementById('stock-symbol');
+  // Path-based check is PRIMARY - must include the exact path
+  const isTechHistoryPath = window.location.pathname === '/technical-analysis/history';
+  
+  // Only if path matches, do additional element checks
+  const isTechHistory = isTechHistoryPath && (
+    document.getElementById('stock-symbol') ||
+    document.getElementById('score-trend-chart')
+  );
+  
+  console.log('Is TA History path:', isTechHistoryPath);
+  console.log('Is TA History (with elements):', isTechHistory);
   
   if (isTechHistory) {
     console.log('On technical analysis history page, reinitializing...');
@@ -349,7 +359,31 @@ window.addEventListener('spa:navigated', (event) => {
       initializeTechnicalAnalysisHistory();
     }, 150);
   } else {
-    console.log('Not on technical analysis history page');
+    console.log('Not on technical analysis history page - skipping initialization');
+    cleanupTechnicalAnalysisHistory();
   }
 });
+
+// Cleanup function for technical analysis history
+function cleanupTechnicalAnalysisHistory() {
+  console.log('Cleaning up technical analysis history...');
+  
+  if (window.technicalAnalysisHistory) {
+    // Destroy chart if exists
+    if (window.technicalAnalysisHistory.trendChart) {
+      window.technicalAnalysisHistory.trendChart.destroy();
+      window.technicalAnalysisHistory.trendChart = null;
+    }
+    
+    // Clear instance
+    window.technicalAnalysisHistory = null;
+  }
+  
+  console.log('Technical analysis history cleanup complete');
+}
+
+// Register cleanup with router
+if (window.spaRouter) {
+  window.spaRouter.registerCleanup('/technical-analysis/history', cleanupTechnicalAnalysisHistory);
+}
 })();

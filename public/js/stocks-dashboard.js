@@ -1,4 +1,7 @@
 // WebSocket connection manager - handles connection lifecycle for SPA navigation
+// Wrapped in IIFE to avoid conflicts with script reloading
+(function() {
+
 class StockDashboardWebSocket {
   constructor() {
     this.socket = null;
@@ -169,11 +172,22 @@ function cleanupStockDashboard() {
   // Remove event listeners
   removeEventListeners();
   
-  // We don't disconnect the socket here - let it stay connected
-  // It will auto-reconnect if needed when we return to the page
+  // Properly disconnect socket
+  if (wsManager) {
+    wsManager.disconnect();
+    wsManager.isInitialized = false; // Allow reinitialize on next page load
+  }
+  
+  // Clear variables
+  previousStockData = {};
+  currentStocks = [];
+  searchTerm = '';
+  sortColumn = null;
+  sortDirection = 'asc';
   
   console.log('Stock dashboard cleanup complete');
 }
+
 
 // Remove all event listeners
 function removeEventListeners() {
@@ -1373,3 +1387,10 @@ if (document.readyState === 'loading') {
     initializeStockDashboard();
   }
 }
+
+// Register cleanup function with SPA router
+if (window.spaRouter) {
+  window.spaRouter.registerCleanup('/stocks/dashboard', cleanupStockDashboard);
+}
+
+})(); // End of IIFE

@@ -244,9 +244,32 @@
   }
 }
 
+// Cleanup function for technical analysis settings
+function cleanupTechnicalAnalysisSettings() {
+  console.log('Cleaning up technical analysis settings...');
+  
+  if (window.technicalAnalysisSettings) {
+    window.technicalAnalysisSettings = null;
+  }
+  
+  console.log('Technical analysis settings cleanup complete');
+}
+
+// Register cleanup with router
+if (window.spaRouter) {
+  window.spaRouter.registerCleanup('/technical-analysis/settings', cleanupTechnicalAnalysisSettings);
+}
+
 // Initialize when DOM is loaded
 function initializeTechnicalAnalysisSettings() {
   try {
+    // CRITICAL: Check if we're on the correct page FIRST
+    const isTechSettingsPath = window.location.pathname === '/technical-analysis/settings';
+    if (!isTechSettingsPath) {
+      console.log('Not on technical analysis settings path, skipping initialization');
+      return;
+    }
+    
     new window.TechnicalAnalysisSettings();
     console.log('Technical Analysis Settings initialized successfully');
   } catch (error) {
@@ -264,10 +287,20 @@ if (document.readyState === 'loading') {
 
 // Listen for SPA navigation events
 window.addEventListener('spa:navigated', (event) => {
-  console.log('SPA navigation detected on technical analysis settings');
+  console.log('SPA navigation detected');
+  console.log('Current path:', window.location.pathname);
   
-  const isTechSettings = window.location.pathname === '/technical-analysis/settings' || 
-                         document.getElementById('settings-form');
+  // Path-based check is PRIMARY - must include the exact path
+  const isTechSettingsPath = window.location.pathname === '/technical-analysis/settings';
+  
+  // Only if path matches, do additional element checks
+  const isTechSettings = isTechSettingsPath && (
+    document.getElementById('settings-form') ||
+    document.getElementById('min-score-threshold')
+  );
+  
+  console.log('Is TA Settings path:', isTechSettingsPath);
+  console.log('Is TA Settings (with elements):', isTechSettings);
   
   if (isTechSettings) {
     console.log('On technical analysis settings page, reinitializing...');
@@ -275,7 +308,8 @@ window.addEventListener('spa:navigated', (event) => {
       initializeTechnicalAnalysisSettings();
     }, 150);
   } else {
-    console.log('Not on technical analysis settings page');
+    console.log('Not on technical analysis settings page - skipping initialization');
+    cleanupTechnicalAnalysisSettings();
   }
 });
 })();

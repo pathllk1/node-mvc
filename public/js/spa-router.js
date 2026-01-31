@@ -5,6 +5,9 @@ class SPARouter {
     this.currentPath = window.location.pathname;
     this.pendingScripts = new Set(); // Track scripts currently loading
     this.scriptLoadPromises = new Map(); // Cache script load promises
+    this.pageCleanups = {}; // Maps paths to cleanup functions
+    this.currentPageCleanup = null; // Current page's cleanup function
+    this.pageSetups = {}; // Maps paths to setup functions
     this.init();
   }
 
@@ -90,11 +93,17 @@ class SPARouter {
     if (this.currentPath === path) return;
     
     try {
+      // Cleanup current page before navigation
+      await this.cleanupCurrentPage();
+      
       // Update the current path
       this.currentPath = path;
       
       // Load the new page content
       await this.loadPage(path);
+      
+      // Setup new page after navigation
+      await this.setupNewPage();
       
       // Update browser history if needed
       if (shouldPushState) {
@@ -426,6 +435,53 @@ class SPARouter {
           loadingEl.parentNode.removeChild(loadingEl);
         }
       }, 300);
+    }
+  }
+
+  // Register cleanup function for a page
+  registerCleanup(path, cleanupFn) {
+    if (typeof cleanupFn === 'function') {
+      this.pageCleanups[path] = cleanupFn;
+      console.log(`Cleanup registered for ${path}`);
+    }
+  }
+
+  // Register setup function for a page
+  registerSetup(path, setupFn) {
+    if (typeof setupFn === 'function') {
+      this.pageSetups[path] = setupFn;
+      console.log(`Setup registered for ${path}`);
+    }
+  }
+
+  // Cleanup current page before navigation
+  async cleanupCurrentPage() {
+    if (this.currentPageCleanup) {
+      try {
+        console.log(`Cleaning up page: ${this.currentPath}`);
+        await Promise.resolve(this.currentPageCleanup());
+        this.currentPageCleanup = null;
+      } catch (error) {
+        console.error('Error during page cleanup:', error);
+      }
+    }
+  }
+
+  // Setup new page after navigation
+  async setupNewPage() {
+    const pathCleanup = this.pageCleanups[this.currentPath];
+    if (pathCleanup) {
+      this.currentPageCleanup = pathCleanup;
+    }
+
+    const pathSetup = this.pageSetups[this.currentPath];
+    if (pathSetup) {
+      try {
+        console.log(`Setting up page: ${this.currentPath}`);
+        await Promise.resolve(pathSetup());
+      } catch (error) {
+        console.error('Error during page setup:', error);
+      }
     }
   }
 }

@@ -346,6 +346,37 @@
     console.log('Console page initialized via DOM check');
     initializeSocket();
     initializeConsoleHandlers();
+    
+    // Load recent logs from server
+    loadRecentLogs();
+  }
+  
+  // Load recent logs from server API
+  async function loadRecentLogs() {
+    try {
+      const response = await fetch('/api/console/logs?count=50');
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      
+      const data = await response.json();
+      if (data.success && data.logs) {
+        const consoleOutput = document.getElementById('consoleOutput');
+        if (consoleOutput) {
+          // Clear existing placeholder content
+          consoleOutput.innerHTML = '';
+          
+          // Add historical logs
+          data.logs.forEach(log => {
+            addLogLine(log.message, log.level, log.timestamp);
+          });
+          
+          console.log(`Loaded ${data.logs.length} historical logs`);
+        }
+      }
+    } catch (error) {
+      console.error('Failed to load historical logs:', error);
+    }
   }
 
   // Cleanup function for console page - proper WebSocket cleanup

@@ -153,7 +153,8 @@
 
     // Keyboard events
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && !document.getElementById('stock-detail-modal').classList.contains('hidden')) {
+      const modalEl = document.getElementById('stock-detail-modal');
+      if (e.key === 'Escape' && modalEl && !modalEl.classList.contains('hidden')) {
         this.closeModal();
       }
     });
@@ -199,15 +200,40 @@
         const totalStocks = data.summary?.total_stocks || 0;
         const avgScore = data.summary?.avg_score || 0;
         
-        document.getElementById('total-stocks').textContent = totalStocks.toString();
-        document.getElementById('avg-score').textContent = avgScore ? avgScore.toFixed(1) : '0';
-        document.getElementById('last-updated').textContent = new Date().toLocaleTimeString();
+        // Add defensive checks for all DOM elements
+        const totalStocksEl = document.getElementById('total-stocks');
+        const avgScoreEl = document.getElementById('avg-score');
+        const lastUpdatedEl = document.getElementById('last-updated');
+        const strongSignalsEl = document.getElementById('strong-signals');
+        
+        if (totalStocksEl) {
+          totalStocksEl.textContent = totalStocks.toString();
+        } else {
+          console.warn('Element with id "total-stocks" not found');
+        }
+        
+        if (avgScoreEl) {
+          avgScoreEl.textContent = avgScore ? avgScore.toFixed(1) : '0';
+        } else {
+          console.warn('Element with id "avg-score" not found');
+        }
+        
+        if (lastUpdatedEl) {
+          lastUpdatedEl.textContent = new Date().toLocaleTimeString();
+        } else {
+          console.warn('Element with id "last-updated" not found');
+        }
         
         // Count strong signals (score >= 70)
         const strongSignals = data.distribution?.filter(d => 
           d.category.includes('Strong') || d.category.includes('70')
         ).reduce((sum, d) => sum + d.count, 0) || 0;
-        document.getElementById('strong-signals').textContent = strongSignals.toString();
+        
+        if (strongSignalsEl) {
+          strongSignalsEl.textContent = strongSignals.toString();
+        } else {
+          console.warn('Element with id "strong-signals" not found');
+        }
       }
     } catch (error) {
       console.error('Error loading summary:', error);
@@ -893,11 +919,63 @@ let technicalAnalysisDashboard;
 
 function initializeTechnicalAnalysisDashboard() {
   try {
-    // Small delay to ensure all layout calculations are complete
+    // Increased delay to ensure HTML content is fully rendered
     setTimeout(() => {
+      // Debug: Check current path and page content
+      console.log('Current path:', window.location.pathname);
+      console.log('Document title:', document.title);
+      console.log('Main content exists:', !!document.querySelector('main'));
+      
+      // Additional check to ensure required elements exist
+      const requiredElements = [
+        'total-stocks',
+        'avg-score',
+        'last-updated',
+        'strong-signals',
+        'records-table-body'
+      ];
+      
+      const missingElements = requiredElements.filter(id => !document.getElementById(id));
+      
+      if (missingElements.length > 0) {
+        console.warn('Required elements missing, retrying initialization:', missingElements);
+        
+        // Check if we're actually on the technical analysis dashboard
+        const isTechDashboardPage = window.location.pathname.includes('/technical-analysis/dashboard') || 
+                                   document.title.includes('Technical Analysis');
+        
+        if (!isTechDashboardPage) {
+          console.warn('Not on technical analysis dashboard page, skipping initialization');
+          return;
+        }
+        
+        // Add maximum retry limit to prevent infinite loops
+        if (!window.techDashboardRetryCount) {
+          window.techDashboardRetryCount = 0;
+        }
+        
+        window.techDashboardRetryCount++;
+        
+        if (window.techDashboardRetryCount > 5) {
+          console.error('Maximum retry attempts reached, giving up on technical analysis dashboard initialization');
+          console.log('Current URL:', window.location.href);
+          console.log('Document title:', document.title);
+          console.log('Available elements with IDs:', Array.from(document.querySelectorAll('[id]')).map(el => el.id));
+          console.log('Main content HTML snippet:', document.querySelector('main')?.innerHTML?.substring(0, 200) + '...');
+          return;
+        }
+        
+        // Retry after a longer delay
+        setTimeout(() => initializeTechnicalAnalysisDashboard(), 300);
+        return;
+      }
+      
+      // Reset retry counter on successful initialization
+      window.techDashboardRetryCount = 0;
+      
       technicalAnalysisDashboard = new window.TechnicalAnalysisDashboard();
       console.log('Technical Analysis Dashboard initialized successfully');
-    }, 100);
+    }, 150);
   } catch (error) {
     console.error('Failed to initialize Technical Analysis Dashboard:', error);
   }
@@ -914,17 +992,26 @@ if (document.readyState === 'loading') {
 // Listen for SPA navigation events
 window.addEventListener('spa:navigated', (event) => {
   console.log('SPA navigation detected on technical analysis dashboard');
+  console.log('Navigated to:', window.location.pathname);
   
   const isTechDashboard = window.location.pathname === '/technical-analysis/dashboard' || 
                           document.getElementById('total-stocks');
   
   if (isTechDashboard) {
     console.log('On technical analysis dashboard, reinitializing...');
+    // Reset retry counter for new navigation
+    window.techDashboardRetryCount = 0;
+    // Increased delay for SPA navigation to ensure DOM is ready
     setTimeout(() => {
       initializeTechnicalAnalysisDashboard();
-    }, 150);
+    }, 250);
   } else {
     console.log('Not on technical analysis dashboard');
+    // Clean up any existing dashboard instance
+    if (window.technicalAnalysisDashboard) {
+      console.log('Cleaning up technical analysis dashboard instance');
+      window.technicalAnalysisDashboard = null;
+    }
   }
 });
 

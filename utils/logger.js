@@ -17,10 +17,17 @@ class Logger {
   // Log a message with level
   log(level, message, metadata = {}) {
     const timestamp = new Date();
+    
+    // Format message with metadata if present
+    let formattedMessage = message;
+    if (metadata && Object.keys(metadata).length > 0) {
+      formattedMessage = `${message} ${JSON.stringify(metadata)}`;
+    }
+    
     const logEntry = {
       timestamp,
       level: level.toUpperCase(),
-      message,
+      message: formattedMessage,
       metadata
     };
 
@@ -38,7 +45,7 @@ class Logger {
         this.io.emit('server-log', {
           timestamp: timestamp,
           level: level.toUpperCase(),
-          message: `[${timestamp.toLocaleString()}] ${message}`
+          message: `[${timestamp.toLocaleString()}] [${level.toUpperCase()}] ${formattedMessage}`
         });
       } catch (error) {
         console.error('Error emitting log to WebSocket:', error);
@@ -46,23 +53,23 @@ class Logger {
     }
 
     // Output to console
-    const formattedMessage = `[${timestamp.toLocaleString()}] [${level.toUpperCase()}] ${message}`;
+    const consoleMessage = `[${timestamp.toLocaleString()}] [${level.toUpperCase()}] ${formattedMessage}`;
     switch (level.toLowerCase()) {
       case 'error':
-        console.error(formattedMessage);
+        console.error(consoleMessage);
         break;
       case 'warn':
       case 'warning':
-        console.warn(formattedMessage);
+        console.warn(consoleMessage);
         break;
       case 'info':
-        console.info(formattedMessage);
+        console.info(consoleMessage);
         break;
       case 'debug':
-        console.debug(formattedMessage);
+        console.debug(consoleMessage);
         break;
       default:
-        console.log(formattedMessage);
+        console.log(consoleMessage);
     }
   }
 

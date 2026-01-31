@@ -38,11 +38,4 @@ body {
     background-color: #32cd32 !important; /* Lime green */
 }
 
-/* Modal styles - CSP Compliant */
-#stock-detail-modal {
-    display: none;
-}
-
-#stock-detail-modal:not(.hidden) {
-    display: flex;
-}
+/* Modal styles handled by Tailwind CSS classes - no custom CSS needed */

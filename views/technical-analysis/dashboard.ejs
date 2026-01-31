@@ -199,14 +199,10 @@
   </div>
 </div>
 
-<!-- Modal for Stock Details - FIXED: Better styling, animations, and mobile responsive -->
-<div id="stock-detail-modal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-gray-600 bg-opacity-50 transition-all duration-200">
-  <div class="flex items-center justify-center min-h-screen px-4 py-6 sm:py-20">
-    <!-- Background overlay -->
-    <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
-    
+<!-- Modal for Stock Details - FIXED: Proper structure without duplicate overlays -->
+<div id="stock-detail-modal" class="fixed inset-0 z-50 hidden bg-gray-500 bg-opacity-75 flex items-center justify-center p-4">
     <!-- Modal content -->
-    <div class="relative bg-white rounded-xl text-left overflow-hidden shadow-2xl transform transition-all w-full sm:max-w-2xl">
+    <div class="relative bg-white rounded-xl text-left overflow-hidden shadow-2xl w-full sm:max-w-2xl">
       <!-- Header -->
       <div class="flex items-center justify-between px-6 py-5 border-b border-gray-200 bg-gradient-to-r from-blue-50 to-indigo-50">
         <h3 class="text-2xl font-bold text-gray-900" id="modal-stock-symbol">Stock Details</h3>
@@ -218,7 +214,7 @@
       </div>
       
       <!-- Body -->
-      <div class="px-6 py-6 max-h-[70vh] overflow-y-auto">
+      <div class="px-6 py-6 max-h-[calc(90vh-140px)] overflow-y-auto">
         <div id="modal-content">
           <!-- Will be populated by JavaScript -->
           <div class="flex justify-center">
@@ -229,7 +225,6 @@
         </div>
       </div>
     </div>
-  </div>
 </div>
 
 <script src="/cdns/chart.js"></script>

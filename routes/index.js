@@ -9,6 +9,9 @@ router.get('/', (req, res) => {
 // Include stocks routes
 router.use('/stocks', require('./stocks'));
 
+// Include technical analysis routes
+router.use('/technical-analysis', require('./technical-analysis'));
+
 // Route for the log console
 router.get('/console', (req, res) => {
   res.render('console', { title: 'Server Console' });

@@ -1,0 +1,161 @@
+<% layout('layouts/main') -%>
+
+<div class="min-h-screen bg-gray-50">
+  <!-- Header -->
+  <div class="bg-white shadow">
+    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center">
+        <div>
+          <h1 class="text-3xl font-bold text-gray-900">Stock Technical Analysis</h1>
+          <p class="mt-2 text-gray-600">Historical technical indicators and performance analysis</p>
+        </div>
+        <div class="flex space-x-4">
+          <button id="back-btn" class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md shadow-sm text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+            <svg class="-ml-1 mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+            </svg>
+            Back to Dashboard
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+    <!-- Stock Info Header -->
+    <div class="bg-white shadow rounded-lg mb-8">
+      <div class="px-4 py-5 sm:p-6">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+          <div>
+            <h2 class="text-2xl font-bold text-gray-900" id="stock-symbol">Loading...</h2>
+            <p class="mt-1 text-gray-600" id="stock-company">Loading company information...</p>
+          </div>
+          <div class="mt-4 md:mt-0">
+            <div class="flex items-center">
+              <span class="text-sm font-medium text-gray-500 mr-2">Current Score:</span>
+              <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium" id="current-score">
+                <span class="h-2 w-2 rounded-full bg-gray-400 mr-2"></span>
+                Loading...
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Charts Section -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+      <!-- Technical Score Trend -->
+      <div class="bg-white shadow rounded-lg p-6">
+        <div class="flex justify-between items-center mb-4">
+          <h3 class="text-lg font-medium text-gray-900">Technical Score Trend</h3>
+          <div class="flex space-x-2">
+            <select id="trend-period" class="px-3 py-1 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+              <option value="7">7 Days</option>
+              <option value="30" selected>30 Days</option>
+              <option value="90">90 Days</option>
+            </select>
+          </div>
+        </div>
+        <canvas id="score-trend-chart" height="300"></canvas>
+      </div>
+
+      <!-- Key Indicators -->
+      <div class="bg-white shadow rounded-lg p-6">
+        <h3 class="text-lg font-medium text-gray-900 mb-4">Key Technical Indicators</h3>
+        <div class="space-y-4" id="key-indicators">
+          <!-- Will be populated by JavaScript -->
+          <div class="animate-pulse">
+            <div class="h-4 bg-gray-200 rounded w-3/4 mb-2"></div>
+            <div class="h-4 bg-gray-200 rounded w-1/2"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Detailed Indicators Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+      <!-- Moving Averages -->
+      <div class="bg-white shadow rounded-lg p-6">
+        <h3 class="text-lg font-medium text-gray-900 mb-4">Moving Averages</h3>
+        <div class="space-y-3" id="moving-averages">
+          <!-- Will be populated by JavaScript -->
+        </div>
+      </div>
+
+      <!-- Momentum Indicators -->
+      <div class="bg-white shadow rounded-lg p-6">
+        <h3 class="text-lg font-medium text-gray-900 mb-4">Momentum Indicators</h3>
+        <div class="space-y-3" id="momentum-indicators">
+          <!-- Will be populated by JavaScript -->
+        </div>
+      </div>
+
+      <!-- Volatility Indicators -->
+      <div class="bg-white shadow rounded-lg p-6">
+        <h3 class="text-lg font-medium text-gray-900 mb-4">Volatility Indicators</h3>
+        <div class="space-y-3" id="volatility-indicators">
+          <!-- Will be populated by JavaScript -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Historical Data Table -->
+    <div class="bg-white shadow rounded-lg">
+      <div class="px-4 py-5 sm:px-6 border-b border-gray-200">
+        <div class="flex justify-between items-center">
+          <h3 class="text-lg font-medium text-gray-900">Historical Technical Analysis</h3>
+          <div class="flex space-x-2">
+            <button id="export-btn" class="inline-flex items-center px-3 py-2 border border-gray-300 text-sm font-medium rounded-md shadow-sm text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+              <svg class="-ml-1 mr-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+              Export Data
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="min-w-full divide-y divide-gray-200">
+          <thead class="bg-gray-50">
+            <tr>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Technical Score</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">RSI</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">MACD</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">SMA 20</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">SMA 50</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Volume</th>
+            </tr>
+          </thead>
+          <tbody class="bg-white divide-y divide-gray-200" id="history-table-body">
+            <!-- Will be populated by JavaScript -->
+            <tr>
+              <td colspan="7" class="px-6 py-4 text-center text-gray-500">
+                <div class="animate-pulse">Loading historical data...</div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="px-4 py-3 bg-gray-50 border-t border-gray-200 sm:px-6">
+        <div class="flex items-center justify-between">
+          <div class="text-sm text-gray-700">
+            Showing <span id="history-showing-start">0</span> to <span id="history-showing-end">0</span> of <span id="history-total-records">0</span> records
+          </div>
+          <div class="flex space-x-2">
+            <button id="history-prev-page" class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed">
+              Previous
+            </button>
+            <button id="history-next-page" class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed">
+              Next
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/components/technical-analysis-history.js"></script>

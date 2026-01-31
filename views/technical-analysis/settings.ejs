@@ -1,0 +1,249 @@
+<% layout('layouts/main') -%>
+
+<div class="min-h-screen bg-gray-50">
+  <!-- Header -->
+  <div class="bg-white shadow">
+    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center">
+        <div>
+          <h1 class="text-3xl font-bold text-gray-900">Technical Analysis Settings</h1>
+          <p class="mt-2 text-gray-600">Configure automation and analysis parameters</p>
+        </div>
+        <div class="flex space-x-4">
+          <button id="save-settings" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+            <svg class="-ml-1 mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+            </svg>
+            Save Settings
+          </button>
+          <button id="back-btn" class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md shadow-sm text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+            <svg class="-ml-1 mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+            </svg>
+            Back to Dashboard
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <!-- System Status -->
+      <div class="lg:col-span-1">
+        <div class="bg-white shadow rounded-lg p-6 mb-8">
+          <h3 class="text-lg font-medium text-gray-900 mb-4">System Status</h3>
+          <div class="space-y-4" id="system-status">
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600">Automation Status</span>
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800" id="automation-status">
+                Running
+              </span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600">Market Status</span>
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800" id="market-status">
+                Checking...
+              </span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600">Next Run</span>
+              <span class="text-sm font-medium text-gray-900" id="next-run">--:--</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600">Stocks Processed</span>
+              <span class="text-sm font-medium text-gray-900" id="stocks-processed">581/581</span>
+            </div>
+          </div>
+          
+          <div class="mt-6 pt-6 border-t border-gray-200">
+            <h4 class="text-md font-medium text-gray-900 mb-3">Actions</h4>
+            <div class="space-y-3">
+              <button id="force-run" class="w-full inline-flex justify-center items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                <svg class="-ml-1 mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+                </svg>
+                Force Run Now
+              </button>
+              <button id="toggle-automation" class="w-full inline-flex justify-center items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md shadow-sm text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                <svg class="-ml-1 mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
+                </svg>
+                Stop Automation
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Database Stats -->
+        <div class="bg-white shadow rounded-lg p-6">
+          <h3 class="text-lg font-medium text-gray-900 mb-4">Database Statistics</h3>
+          <div class="space-y-4" id="db-stats">
+            <div class="flex justify-between">
+              <span class="text-sm text-gray-600">Total Records</span>
+              <span class="text-sm font-medium text-gray-900" id="total-records">0</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-sm text-gray-600">Records Today</span>
+              <span class="text-sm font-medium text-gray-900" id="records-today">0</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-sm text-gray-600">Database Size</span>
+              <span class="text-sm font-medium text-gray-900" id="db-size">0 MB</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-sm text-gray-600">Last Cleanup</span>
+              <span class="text-sm font-medium text-gray-900" id="last-cleanup">Never</span>
+            </div>
+          </div>
+          
+          <div class="mt-6 pt-6 border-t border-gray-200">
+            <button id="cleanup-db" class="w-full inline-flex justify-center items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md shadow-sm text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+              <svg class="-ml-1 mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
+              </svg>
+              Clean Database
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Configuration Settings -->
+      <div class="lg:col-span-2">
+        <div class="bg-white shadow rounded-lg p-6 mb-8">
+          <h3 class="text-lg font-medium text-gray-900 mb-6">Automation Settings</h3>
+          
+          <form id="settings-form" class="space-y-6">
+            <!-- Schedule Settings -->
+            <div>
+              <h4 class="text-md font-medium text-gray-900 mb-4">Schedule Configuration</h4>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2">Run Frequency</label>
+                  <select name="frequency" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                    <option value="30">Every 30 minutes</option>
+                    <option value="60">Every hour</option>
+                    <option value="120">Every 2 hours</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2">Market Hours</label>
+                  <select name="market_hours" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                    <option value="9-16">9:00 AM - 4:00 PM</option>
+                    <option value="9-17">9:00 AM - 5:00 PM</option>
+                    <option value="9-15">9:00 AM - 3:00 PM</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Stock Selection -->
+            <div>
+              <h4 class="text-md font-medium text-gray-900 mb-4">Stock Selection</h4>
+              <div class="space-y-4">
+                <div class="flex items-center">
+                  <input id="all-stocks" name="stock_selection" type="radio" value="all" checked class="h-4 w-4 text-blue-600 border-gray-300 focus:ring-blue-500">
+                  <label for="all-stocks" class="ml-3 block text-sm text-gray-700">Process all 581 stocks</label>
+                </div>
+                <div class="flex items-center">
+                  <input id="custom-stocks" name="stock_selection" type="radio" value="custom" class="h-4 w-4 text-blue-600 border-gray-300 focus:ring-blue-500">
+                  <label for="custom-stocks" class="ml-3 block text-sm text-gray-700">Custom stock list</label>
+                </div>
+                <div id="custom-stocks-input" class="ml-7 hidden">
+                  <textarea name="custom_stock_list" rows="4" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="Enter stock symbols, one per line"></textarea>
+                  <p class="mt-2 text-sm text-gray-500">Example: RELIANCE, TCS, INFY</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Technical Analysis Settings -->
+            <div>
+              <h4 class="text-md font-medium text-gray-900 mb-4">Analysis Configuration</h4>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2">Historical Data Period</label>
+                  <select name="historical_period" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                    <option value="30">30 days</option>
+                    <option value="60">60 days</option>
+                    <option value="90" selected>90 days</option>
+                    <option value="180">180 days</option>
+                    <option value="365">365 days</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2">Score Calculation Method</label>
+                  <select name="score_method" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                    <option value="weighted" selected>Weighted Average</option>
+                    <option value="simple">Simple Average</option>
+                    <option value="custom">Custom Formula</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Notification Settings -->
+            <div>
+              <h4 class="text-md font-medium text-gray-900 mb-4">Notifications</h4>
+              <div class="space-y-4">
+                <div class="flex items-center">
+                  <input id="email-notifications" name="email_notifications" type="checkbox" class="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                  <label for="email-notifications" class="ml-3 block text-sm text-gray-700">Email notifications for errors</label>
+                </div>
+                <div class="flex items-center">
+                  <input id="high-score-alerts" name="high_score_alerts" type="checkbox" class="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                  <label for="high-score-alerts" class="ml-3 block text-sm text-gray-700">Alert for stocks with score > 80</label>
+                </div>
+                <div class="flex items-center">
+                  <input id="low-score-alerts" name="low_score_alerts" type="checkbox" class="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                  <label for="low-score-alerts" class="ml-3 block text-sm text-gray-700">Alert for stocks with score < 30</label>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <!-- Performance Monitoring -->
+        <div class="bg-white shadow rounded-lg p-6">
+          <h3 class="text-lg font-medium text-gray-900 mb-6">Performance Monitoring</h3>
+          
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+            <div class="text-center">
+              <div class="text-3xl font-bold text-blue-600" id="avg-processing-time">0s</div>
+              <div class="text-sm text-gray-600 mt-1">Avg Processing Time</div>
+            </div>
+            <div class="text-center">
+              <div class="text-3xl font-bold text-green-600" id="success-rate">0%</div>
+              <div class="text-sm text-gray-600 mt-1">Success Rate</div>
+            </div>
+            <div class="text-center">
+              <div class="text-3xl font-bold text-yellow-600" id="error-count">0</div>
+              <div class="text-sm text-gray-600 mt-1">Errors (24h)</div>
+            </div>
+          </div>
+
+          <div class="border-t border-gray-200 pt-6">
+            <h4 class="text-md font-medium text-gray-900 mb-4">Recent Activity</h4>
+            <div class="flow-root">
+              <ul class="divide-y divide-gray-200" id="recent-activity">
+                <li class="py-4">
+                  <div class="flex space-x-3">
+                    <div class="flex-1 space-y-1">
+                      <div class="flex items-center justify-between">
+                        <h3 class="text-sm font-medium text-gray-900">System started</h3>
+                        <p class="text-sm text-gray-500">Just now</p>
+                      </div>
+                      <p class="text-sm text-gray-500">Technical analysis automation initialized</p>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/components/technical-analysis-settings.js"></script>

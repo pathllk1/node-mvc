@@ -7,6 +7,7 @@ const methodOverride = require('./middleware/methodOverride');
 const securityMiddleware = require('./middleware/security');
 const StockDataFetcher = require('./utils/stock-data-fetcher');
 const DailyUpdateFetcher = require('./utils/daily-update-fetcher');
+const TechnicalAnalysisAutomation = require('./utils/technical-analysis-automation');
 const logger = require('./utils/logger');
 const path = require('path');
 const app = express();
@@ -38,6 +39,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Routes
 app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));
+app.use('/stocks', require('./routes/stocks'));
+app.use('/technical-analysis', require('./routes/technical-analysis'));
 
 // Error handling
 app.use((req, res, next) => {
@@ -79,6 +82,18 @@ if (require.main === module) {
         logger.info('✓ Daily update scheduler started and will run at 4 AM IST every day');
     } catch (error) {
         logger.error('Failed to start daily update scheduler:', error);
+    }
+    
+    // Initialize and start the technical analysis automation scheduler
+    try {
+        logger.info('Initializing technical analysis automation scheduler...');
+        const taAutomation = new TechnicalAnalysisAutomation();
+        await taAutomation.initialize();
+        taAutomation.startScheduler();
+        logger.info('✓ Technical analysis automation scheduler started');
+        logger.info('Schedule: Every 30 minutes, 9AM-4PM IST, Monday-Friday');
+    } catch (error) {
+        logger.error('Failed to start technical analysis automation scheduler:', error);
     }
   });
   

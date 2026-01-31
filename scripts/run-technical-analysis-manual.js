@@ -10,7 +10,7 @@ const path = require('path');
 const { execSync } = require('child_process');
 
 // Configuration
-const PROJECT_ROOT = '/media/mint/DA7442677442470B/PROJECT/node/node_mvc';
+const PROJECT_ROOT = path.resolve(__dirname, '..');
 const AUTOMATION_SCRIPT = path.join(PROJECT_ROOT, 'utils', 'technical-analysis-automation.js');
 
 console.log('🚀 Technical Analysis Manual Runner');
@@ -83,47 +83,12 @@ function runDirectScript() {
     // Change to project directory
     process.chdir(PROJECT_ROOT);
     
-    // Execute the automation script directly
+    // Execute the direct automation script
     const startTime = Date.now();
     
-    const result = execSync(`node -e "
-      const TechnicalAnalysisAutomation = require('./utils/technical-analysis-automation');
-      const automation = new TechnicalAnalysisAutomation();
-      
-      async function runManual() {
-        try {
-          console.log('Initializing automation...');
-          await automation.initialize();
-          
-          const marketStatus = automation.isMarketOpen() ? 'OPEN' : 'CLOSED';
-          console.log(\`Market status: \${marketStatus}\`);
-          console.log('⚠️  Manual run: Processing all stocks regardless of market hours...');
-          
-          // Override market hours check for manual run
-          const originalIsMarketOpen = automation.isMarketOpen;
-          automation.isMarketOpen = () => true;
-          
-          console.log('Starting manual technical analysis processing...');
-          const startTime = Date.now();
-          
-          await automation.processAllStocks();
-          
-          // Restore original function
-          automation.isMarketOpen = originalIsMarketOpen;
-          
-          const endTime = Date.now();
-          const duration = ((endTime - startTime) / 1000).toFixed(2);
-          
-          console.log('✅ Manual run completed successfully!');
-          console.log(\`⏱️  Processing time: \${duration} seconds\`);
-        } catch (error) {
-          console.error('❌ Error in manual run:', error.message);
-          process.exit(1);
-        }
-      }
-      
-      runManual();
-    "`, {
+    const directScriptPath = path.join(__dirname, 'run-technical-analysis-direct.js');
+    
+    const result = execSync(`node "${directScriptPath}"`, {
       timeout: 600000, // 10 minute timeout
       stdio: 'inherit'
     });

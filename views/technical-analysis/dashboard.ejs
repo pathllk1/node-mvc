@@ -115,18 +115,20 @@
     <!-- Charts Section -->
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
       <!-- Score Distribution Chart -->
-      <div class="bg-white shadow rounded-lg p-6 h-80 flex flex-col">
-        <h3 class="text-lg font-medium text-gray-900 mb-4">Score Distribution</h3>
-        <canvas id="score-distribution-chart" class="w-full h-full"></canvas>
+      <div class="bg-white shadow rounded-lg p-6 flex flex-col h-auto min-h-[400px]">
+        <h3 class="text-lg font-bold text-gray-900 mb-4">Score Distribution</h3>
+        <div class="flex-1 relative min-h-[300px]">
+          <canvas id="score-distribution-chart" class="w-full"></canvas>
+        </div>
       </div>
 
       <!-- Top Performing Stocks -->
-      <div class="bg-white shadow rounded-lg p-6">
+      <div class="bg-white shadow rounded-lg p-6 flex flex-col">
         <div class="flex justify-between items-center mb-4">
-          <h3 class="text-lg font-medium text-gray-900">Top Performing Stocks</h3>
-          <a href="/technical-analysis/top" class="text-blue-600 hover:text-blue-800 text-sm font-medium">View All</a>
+          <h3 class="text-lg font-bold text-gray-900">Top Performing Stocks</h3>
+          <a href="/technical-analysis/top" class="text-blue-600 hover:text-blue-800 text-sm font-semibold transition-colors">View All →</a>
         </div>
-        <div class="space-y-4" id="top-stocks-list">
+        <div class="space-y-3 flex-1" id="top-stocks-list">
           <!-- Will be populated by JavaScript -->
           <div class="animate-pulse">
             <div class="h-4 bg-gray-200 rounded w-3/4 mb-2"></div>
@@ -137,13 +139,14 @@
     </div>
 
     <!-- Latest Records Table -->
-    <div class="bg-white shadow rounded-lg">
+    <div class="bg-white shadow rounded-lg overflow-hidden">
       <div class="px-4 py-5 sm:px-6 border-b border-gray-200">
-        <div class="flex justify-between items-center">
-          <h3 class="text-lg font-medium text-gray-900">Latest Technical Analysis Records</h3>
-          <div class="flex space-x-2">
-            <input type="text" id="search-input" placeholder="Search stocks..." class="px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
-            <select id="score-filter" class="px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+          <h3 class="text-lg font-bold text-gray-900">Latest Technical Analysis Records</h3>
+          <div class="w-full sm:w-auto flex flex-col sm:flex-row gap-2">
+            <input type="text" id="search-input" placeholder="Search stocks..." 
+                   class="flex-1 px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm">
+            <select id="score-filter" class="px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm bg-white">
               <option value="">All Scores</option>
               <option value="70">70+ (Strong)</option>
               <option value="50">50-69 (Moderate)</option>
@@ -154,38 +157,40 @@
       </div>
       <div class="overflow-x-auto">
         <table class="min-w-full divide-y divide-gray-200">
-          <thead class="bg-gray-50">
+          <thead class="bg-gray-50 border-b border-gray-200">
             <tr>
-              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Symbol</th>
-              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Company</th>
-              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Technical Score</th>
-              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">RSI</th>
-              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">MACD</th>
-              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Last Updated</th>
-              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">Symbol</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">Company</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">Score</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">RSI</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">MACD</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">Updated</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">Actions</th>
             </tr>
           </thead>
           <tbody class="bg-white divide-y divide-gray-200" id="records-table-body">
             <!-- Will be populated by JavaScript -->
             <tr>
-              <td colspan="7" class="px-6 py-4 text-center text-gray-500">
-                <div class="animate-pulse">Loading data...</div>
+              <td colspan="7" class="px-6 py-8 text-center text-gray-500">
+                <div class="animate-pulse flex justify-center items-center">
+                  <span>Loading data...</span>
+                </div>
               </td>
             </tr>
           </tbody>
         </table>
       </div>
-      <div class="px-4 py-3 bg-gray-50 border-t border-gray-200 sm:px-6">
-        <div class="flex items-center justify-between">
+      <div class="px-4 py-4 bg-gray-50 border-t border-gray-200 sm:px-6">
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
           <div class="text-sm text-gray-700">
-            Showing <span id="showing-start">0</span> to <span id="showing-end">0</span> of <span id="total-records">0</span> results
+            Showing <span id="showing-start" class="font-semibold">0</span> to <span id="showing-end" class="font-semibold">0</span> of <span id="total-records" class="font-semibold">0</span> results
           </div>
-          <div class="flex space-x-2">
-            <button id="prev-page" class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed">
-              Previous
+          <div class="flex gap-2">
+            <button id="prev-page" class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-lg text-gray-700 bg-white hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-white transition-colors">
+              ← Previous
             </button>
-            <button id="next-page" class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed">
-              Next
+            <button id="next-page" class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-lg text-gray-700 bg-white hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-white transition-colors">
+              Next →
             </button>
           </div>
         </div>
@@ -194,25 +199,31 @@
   </div>
 </div>
 
-<!-- Modal for Stock Details -->
-<div id="stock-detail-modal" class="fixed inset-0 z-50 hidden overflow-y-auto">
-  <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+<!-- Modal for Stock Details - FIXED: Better styling, animations, and mobile responsive -->
+<div id="stock-detail-modal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-gray-600 bg-opacity-50 transition-all duration-200">
+  <div class="flex items-center justify-center min-h-screen px-4 py-6 sm:py-20">
+    <!-- Background overlay -->
     <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
-    <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-    <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-4xl sm:w-full">
-      <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-        <div class="sm:flex sm:items-start">
-          <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left flex-1">
-            <div class="flex justify-between items-center mb-4">
-              <h3 class="text-2xl leading-6 font-bold text-gray-900" id="modal-stock-symbol">Stock Details</h3>
-              <button id="close-modal" class="text-gray-400 hover:text-gray-500">
-                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-            </div>
-            <div id="modal-content">
-              <!-- Will be populated by JavaScript -->
+    
+    <!-- Modal content -->
+    <div class="relative bg-white rounded-xl text-left overflow-hidden shadow-2xl transform transition-all w-full sm:max-w-2xl">
+      <!-- Header -->
+      <div class="flex items-center justify-between px-6 py-5 border-b border-gray-200 bg-gradient-to-r from-blue-50 to-indigo-50">
+        <h3 class="text-2xl font-bold text-gray-900" id="modal-stock-symbol">Stock Details</h3>
+        <button id="close-modal" class="inline-flex items-center justify-center p-2 text-gray-400 hover:text-gray-500 hover:bg-gray-100 rounded-lg transition-colors" aria-label="Close modal">
+          <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      
+      <!-- Body -->
+      <div class="px-6 py-6 max-h-[70vh] overflow-y-auto">
+        <div id="modal-content">
+          <!-- Will be populated by JavaScript -->
+          <div class="flex justify-center">
+            <div class="animate-spin">
+              <div class="h-8 w-8 border-4 border-blue-600 border-t-transparent rounded-full"></div>
             </div>
           </div>
         </div>

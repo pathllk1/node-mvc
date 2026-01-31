@@ -38,7 +38,11 @@ body {
     background-color: #32cd32 !important; /* Lime green */
 }
 
-/* Modal styles */
-#stock-modal:not(.hidden) {
+/* Modal styles - CSP Compliant */
+#stock-detail-modal {
+    display: none;
+}
+
+#stock-detail-modal:not(.hidden) {
     display: flex;
 }

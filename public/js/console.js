@@ -1,71 +1,153 @@
 // Client-side JavaScript for the server console
-document.addEventListener('DOMContentLoaded', function() {
-  // Initialize socket connection
-  const socket = io();
-  
-  // DOM elements
-  const consoleOutput = document.getElementById('consoleOutput');
-  const clearConsoleBtn = document.getElementById('clearConsoleBtn');
-  const toggleAutoScrollBtn = document.getElementById('toggleAutoScrollBtn');
-  const connectionIndicator = document.getElementById('connectionIndicator');
-  const connectionStatus = document.getElementById('connectionStatus');
-  const socketId = document.getElementById('socketId');
-  const totalLogsCount = document.getElementById('totalLogsCount');
-  const errorLogsCount = document.getElementById('errorLogsCount');
-  const infoLogsCount = document.getElementById('infoLogsCount');
-  const warnLogsCount = document.getElementById('warnLogsCount');
-  const socketIdDisplay = document.getElementById('socketIdDisplay');
-  
-  // Filter buttons
-  const filterInfoBtn = document.getElementById('filterInfoBtn');
-  const filterWarnBtn = document.getElementById('filterWarnBtn');
-  const filterErrorBtn = document.getElementById('filterErrorBtn');
-  const filterDebugBtn = document.getElementById('filterDebugBtn');
-  
-  // State variables
-  let autoScroll = true;
+// Wrapped in IIFE to avoid variable conflicts on script reload
+
+(function() {
+  // Socket connection - initialized lazily when DOM is ready
+  let socket = null;
+
+  // Console state variables
   let logsCount = 0;
   let errorCount = 0;
   let infoCount = 0;
   let warnCount = 0;
   let debugCount = 0;
-  
-  // Log filters
+  let autoScroll = true;
   let showInfo = true;
   let showWarn = true;
   let showError = true;
   let showDebug = true;
+
+  function initializeSocket() {
+    if (socket) return; // Already initialized
+    console.log('Initializing socket connection...');
+    socket = io({ reconnection: true, reconnectionDelay: 1000, reconnectionDelayMax: 5000 });
+  }
+
+  // DOM elements - use a function to get fresh references
+  function getDOMElements() {
+    return {
+      consoleOutput: document.getElementById('consoleOutput'),
+      clearConsoleBtn: document.getElementById('clearConsoleBtn'),
+      toggleAutoScrollBtn: document.getElementById('toggleAutoScrollBtn'),
+      connectionIndicator: document.getElementById('connectionIndicator'),
+      connectionStatus: document.getElementById('connectionStatus'),
+      socketId: document.getElementById('socketId'),
+      totalLogsCount: document.getElementById('totalLogsCount'),
+      errorLogsCount: document.getElementById('errorLogsCount'),
+      infoLogsCount: document.getElementById('infoLogsCount'),
+      warnLogsCount: document.getElementById('warnLogsCount'),
+      socketIdDisplay: document.getElementById('socketIdDisplay'),
+      filterInfoBtn: document.getElementById('filterInfoBtn'),
+      filterWarnBtn: document.getElementById('filterWarnBtn'),
+      filterErrorBtn: document.getElementById('filterErrorBtn'),
+      filterDebugBtn: document.getElementById('filterDebugBtn')
+    };
+  }
+
+  // Function to initialize console handlers
+  function initializeConsoleHandlers() {
+    const elements = getDOMElements();
   
-  // Socket connection events
-  socket.on('connect', () => {
-    connectionIndicator.className = 'w-3 h-3 bg-green-500 rounded-full mr-2';
-    connectionStatus.textContent = 'Connected';
-    connectionStatus.className = 'text-green-400';
-    socketId.textContent = socket.id;
-    socketIdDisplay.textContent = socket.id;
-  });
+    // Only setup listeners if elements exist
+    if (!elements.clearConsoleBtn) {
+      console.log('Console page elements not found, skipping initialization');
+      return;
+    }
   
-  socket.on('disconnect', () => {
-    connectionIndicator.className = 'w-3 h-3 bg-red-500 rounded-full mr-2';
-    connectionStatus.textContent = 'Disconnected';
-    connectionStatus.className = 'text-red-400';
-    socketId.textContent = '-';
-    socketIdDisplay.textContent = '-';
-  });
+    console.log('Initializing console handlers...');
   
-  // Listen for log messages from server
-  socket.on('server-log', (data) => {
-    addLogLine(data.message, data.level, data.timestamp);
-  });
+    // Socket connection events
+    socket.off('connect'); // Remove old listeners
+    socket.off('disconnect');
+    socket.off('server-log');
   
+    socket.on('connect', () => {
+      console.log('Socket connected:', socket.id);
+      const { connectionIndicator, connectionStatus, socketId, socketIdDisplay } = getDOMElements();
+      if (connectionIndicator) connectionIndicator.className = 'w-3 h-3 bg-green-500 rounded-full mr-2';
+      if (connectionStatus) {
+        connectionStatus.textContent = 'Connected';
+        connectionStatus.className = 'text-green-400';
+      }
+      if (socketId) socketId.textContent = socket.id;
+      if (socketIdDisplay) socketIdDisplay.textContent = socket.id;
+    });
+  
+    socket.on('disconnect', () => {
+      console.log('Socket disconnected');
+      const { connectionIndicator, connectionStatus, socketId, socketIdDisplay } = getDOMElements();
+      if (connectionIndicator) connectionIndicator.className = 'w-3 h-3 bg-red-500 rounded-full mr-2';
+      if (connectionStatus) {
+        connectionStatus.textContent = 'Disconnected';
+        connectionStatus.className = 'text-red-400';
+      }
+      if (socketId) socketId.textContent = '-';
+      if (socketIdDisplay) socketIdDisplay.textContent = '-';
+    });
+  
+    // Listen for log messages from server
+    socket.on('server-log', (data) => {
+      addLogLine(data.message, data.level, data.timestamp);
+    });
+  
+    // Setup button event listeners
+    const { clearConsoleBtn, toggleAutoScrollBtn, filterInfoBtn, filterWarnBtn, filterErrorBtn, filterDebugBtn } = getDOMElements();
+  
+    // Remove old event listeners by cloning elements
+    if (clearConsoleBtn) {
+      const newClearBtn = clearConsoleBtn.cloneNode(true);
+      clearConsoleBtn.parentNode.replaceChild(newClearBtn, clearConsoleBtn);
+      getDOMElements().clearConsoleBtn.addEventListener('click', clearConsole);
+    }
+  
+    if (toggleAutoScrollBtn) {
+      const newToggleBtn = toggleAutoScrollBtn.cloneNode(true);
+      toggleAutoScrollBtn.parentNode.replaceChild(newToggleBtn, toggleAutoScrollBtn);
+      getDOMElements().toggleAutoScrollBtn.addEventListener('click', toggleAutoScroll);
+    }
+  
+    if (filterInfoBtn) {
+      const newFilterBtn = filterInfoBtn.cloneNode(true);
+      filterInfoBtn.parentNode.replaceChild(newFilterBtn, filterInfoBtn);
+      getDOMElements().filterInfoBtn.addEventListener('click', () => toggleFilter('info'));
+    }
+  
+    if (filterWarnBtn) {
+      const newFilterBtn = filterWarnBtn.cloneNode(true);
+      filterWarnBtn.parentNode.replaceChild(newFilterBtn, filterWarnBtn);
+      getDOMElements().filterWarnBtn.addEventListener('click', () => toggleFilter('warn'));
+    }
+  
+    if (filterErrorBtn) {
+      const newFilterBtn = filterErrorBtn.cloneNode(true);
+      filterErrorBtn.parentNode.replaceChild(newFilterBtn, filterErrorBtn);
+      getDOMElements().filterErrorBtn.addEventListener('click', () => toggleFilter('error'));
+    }
+  
+    if (filterDebugBtn) {
+      const newFilterBtn = filterDebugBtn.cloneNode(true);
+      filterDebugBtn.parentNode.replaceChild(newFilterBtn, filterDebugBtn);
+      getDOMElements().filterDebugBtn.addEventListener('click', () => toggleFilter('debug'));
+    }
+  
+    // Ensure socket is connected
+    if (socket && !socket.connected) {
+      console.log('Socket not connected, attempting to connect...');
+      socket.connect();
+    }
+  }
+
   // Add a log line to the console
   function addLogLine(message, level = 'info', timestamp = new Date()) {
+    const { consoleOutput, totalLogsCount, errorLogsCount, infoLogsCount, warnLogsCount } = getDOMElements();
+    if (!consoleOutput) return;
+  
     const logLine = document.createElement('div');
     logLine.className = 'console-line py-1';
-    
+  
     // Format timestamp
     const timeStr = new Date(timestamp).toLocaleTimeString();
-    
+  
     // Add appropriate styling based on log level
     switch(level.toLowerCase()) {
       case 'error':
@@ -89,17 +171,17 @@ document.addEventListener('DOMContentLoaded', function() {
         logLine.classList.add('text-green-600');
         break;
     }
-    
+  
     logLine.textContent = `[${timeStr}] [${level.toUpperCase()}] ${message}`;
-    
+  
     // Check if this log level should be shown based on filters
     let shouldShow = true;
     switch(level.toLowerCase()) {
       case 'error':
-      case 'warning':
         shouldShow = showError;
         break;
       case 'warn':
+      case 'warning':
         shouldShow = showWarn;
         break;
       case 'info':
@@ -109,115 +191,130 @@ document.addEventListener('DOMContentLoaded', function() {
         shouldShow = showDebug;
         break;
     }
-    
+  
     logLine.style.display = shouldShow ? 'block' : 'none';
-    
+  
     consoleOutput.appendChild(logLine);
-    
+  
     // Update statistics
     logsCount++;
-    totalLogsCount.textContent = logsCount;
-    errorLogsCount.textContent = errorCount;
-    infoLogsCount.textContent = infoCount;
-    warnLogsCount.textContent = warnCount;
-    
+    if (totalLogsCount) totalLogsCount.textContent = logsCount;
+    if (errorLogsCount) errorLogsCount.textContent = errorCount;
+    if (infoLogsCount) infoLogsCount.textContent = infoCount;
+    if (warnLogsCount) warnLogsCount.textContent = warnCount;
+  
     // Auto-scroll to bottom if enabled
     if (autoScroll) {
       consoleOutput.scrollTop = consoleOutput.scrollHeight;
     }
   }
+
+  function clearConsole() {
+    const { consoleOutput, totalLogsCount, errorLogsCount, infoLogsCount, warnLogsCount } = getDOMElements();
+    if (!consoleOutput) return;
   
-  // Clear console button event
-  clearConsoleBtn.addEventListener('click', () => {
     consoleOutput.innerHTML = '';
     logsCount = 0;
     errorCount = 0;
     infoCount = 0;
     warnCount = 0;
     debugCount = 0;
-    
-    totalLogsCount.textContent = '0';
-    errorLogsCount.textContent = '0';
-    infoLogsCount.textContent = '0';
-    warnLogsCount.textContent = '0';
-    
+  
+    if (totalLogsCount) totalLogsCount.textContent = '0';
+    if (errorLogsCount) errorLogsCount.textContent = '0';
+    if (infoLogsCount) infoLogsCount.textContent = '0';
+    if (warnLogsCount) warnLogsCount.textContent = '0';
+  
     // Add initial message
     const initialMsg = document.createElement('div');
     initialMsg.className = 'console-line text-gray-500';
     initialMsg.textContent = '[INFO] Console cleared...';
     consoleOutput.appendChild(initialMsg);
-  });
+  }
+
+  function toggleAutoScroll() {
+    const { toggleAutoScrollBtn, consoleOutput } = getDOMElements();
+    if (!toggleAutoScrollBtn) return;
   
-  // Toggle auto-scroll button event
-  toggleAutoScrollBtn.addEventListener('click', () => {
     autoScroll = !autoScroll;
     const autoScrollSpan = toggleAutoScrollBtn.querySelector('span');
     if (autoScrollSpan) {
       autoScrollSpan.textContent = autoScroll ? 'ON' : 'OFF';
     }
-    
+  
     toggleAutoScrollBtn.className = autoScroll 
       ? 'px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-md transition text-sm'
       : 'px-4 py-2 bg-gray-400 hover:bg-gray-500 text-white rounded-md transition text-sm';
-    
+  
     // Scroll to bottom if enabling auto-scroll
-    if (autoScroll) {
+    if (autoScroll && consoleOutput) {
       consoleOutput.scrollTop = consoleOutput.scrollHeight;
     }
-  });
+  }
+
+  function toggleFilter(filterType) {
+    const { filterInfoBtn, filterWarnBtn, filterErrorBtn, filterDebugBtn } = getDOMElements();
   
-  // Filter buttons functionality
-  filterInfoBtn.addEventListener('click', () => {
-    showInfo = !showInfo;
-    filterInfoBtn.className = showInfo 
-      ? 'px-3 py-2 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-md transition text-sm font-medium'
-      : 'px-3 py-2 bg-gray-300 text-gray-500 rounded-md transition text-sm font-medium';
+    switch(filterType) {
+      case 'info':
+        showInfo = !showInfo;
+        if (filterInfoBtn) {
+          filterInfoBtn.className = showInfo 
+            ? 'px-3 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-md transition text-sm font-medium'
+            : 'px-3 py-2 bg-gray-300 text-gray-500 rounded-md transition text-sm font-medium';
+        }
+        break;
+      case 'warn':
+        showWarn = !showWarn;
+        if (filterWarnBtn) {
+          filterWarnBtn.className = showWarn 
+            ? 'px-3 py-2 bg-yellow-500 hover:bg-yellow-600 text-white rounded-md transition text-sm font-medium'
+            : 'px-3 py-2 bg-gray-300 text-gray-500 rounded-md transition text-sm font-medium';
+        }
+        break;
+      case 'error':
+        showError = !showError;
+        if (filterErrorBtn) {
+          filterErrorBtn.className = showError 
+            ? 'px-3 py-2 bg-red-500 hover:bg-red-600 text-white rounded-md transition text-sm font-medium'
+            : 'px-3 py-2 bg-gray-300 text-gray-500 rounded-md transition text-sm font-medium';
+        }
+        break;
+      case 'debug':
+        showDebug = !showDebug;
+        if (filterDebugBtn) {
+          filterDebugBtn.className = showDebug 
+            ? 'px-3 py-2 bg-gray-500 hover:bg-gray-600 text-white rounded-md transition text-sm font-medium'
+            : 'px-3 py-2 bg-gray-300 text-gray-500 rounded-md transition text-sm font-medium';
+        }
+        break;
+    }
+  
     updateLogVisibility();
-  });
-  
-  filterWarnBtn.addEventListener('click', () => {
-    showWarn = !showWarn;
-    filterWarnBtn.className = showWarn 
-      ? 'px-3 py-2 bg-gray-200 hover:bg-gray-300 text-yellow-600 rounded-md transition text-sm font-medium'
-      : 'px-3 py-2 bg-gray-300 text-gray-500 rounded-md transition text-sm font-medium';
-    updateLogVisibility();
-  });
-  
-  filterErrorBtn.addEventListener('click', () => {
-    showError = !showError;
-    filterErrorBtn.className = showError 
-      ? 'px-3 py-2 bg-gray-200 hover:bg-gray-300 text-red-600 rounded-md transition text-sm font-medium'
-      : 'px-3 py-2 bg-gray-300 text-gray-500 rounded-md transition text-sm font-medium';
-    updateLogVisibility();
-  });
-  
-  filterDebugBtn.addEventListener('click', () => {
-    showDebug = !showDebug;
-    filterDebugBtn.className = showDebug 
-      ? 'px-3 py-2 bg-gray-200 hover:bg-gray-300 text-blue-600 rounded-md transition text-sm font-medium'
-      : 'px-3 py-2 bg-gray-300 text-gray-500 rounded-md transition text-sm font-medium';
-    updateLogVisibility();
-  });
-  
+  }
+
   // Update visibility of all log lines based on current filters
   function updateLogVisibility() {
+    const { consoleOutput } = getDOMElements();
+    if (!consoleOutput) return;
+  
     const logLines = consoleOutput.querySelectorAll('.console-line');
-    
+  
     logLines.forEach(line => {
       // Extract the level from the text (between the square brackets)
       const text = line.textContent;
-      const levelMatch = text.match(/\[(.*?)\]/);
-      
+      const levelMatch = text.match(/\[.*?\]\s+\[(.*?)\]/);
+    
       if (levelMatch && levelMatch[1]) {
-        const level = levelMatch[1].toLowerCase();
-        
+        const level = levelMatch[1].toUpperCase();
+      
         let shouldShow = true;
         switch(level) {
           case 'ERROR':
-          case 'WARNING':
             shouldShow = showError;
             break;
           case 'WARN':
+          case 'WARNING':
             shouldShow = showWarn;
             break;
           case 'INFO':
@@ -227,14 +324,52 @@ document.addEventListener('DOMContentLoaded', function() {
             shouldShow = showDebug;
             break;
         }
-        
+      
         line.style.display = shouldShow ? 'block' : 'none';
       }
     });
-    
+  
     // Scroll to bottom if auto-scroll is enabled
-    if (autoScroll) {
+    if (autoScroll && consoleOutput) {
       consoleOutput.scrollTop = consoleOutput.scrollHeight;
     }
   }
-});
+
+  // Initialize console when DOM is ready or on page load
+  function initializeConsole() {
+    const consoleOutput = document.getElementById('consoleOutput');
+    if (!consoleOutput) {
+      console.log('Console page elements not found, skipping initialization');
+      return;
+    }
+  
+    console.log('Console page initialized via DOM check');
+    initializeSocket();
+    initializeConsoleHandlers();
+  }
+
+  // Handle page load - check readyState to support both initial load and SPA navigation
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeConsole);
+  } else {
+    // DOM is already ready (happens on SPA navigation after script reload)
+    setTimeout(initializeConsole, 50);
+  }
+
+  // Listen for SPA navigation events
+  window.addEventListener('spa:navigated', (event) => {
+    console.log('SPA navigation detected on console page');
+  
+    const isConsolePage = window.location.pathname === '/console' || 
+                          document.getElementById('consoleOutput');
+  
+    if (isConsolePage) {
+      console.log('On console page, reinitializing...');
+      setTimeout(() => {
+        initializeConsole();
+      }, 100);
+    } else {
+      console.log('Not on console page');
+    }
+  });
+})();

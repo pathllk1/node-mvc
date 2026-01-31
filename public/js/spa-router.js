@@ -3,6 +3,8 @@ class SPARouter {
   constructor() {
     this.isInitialized = false;
     this.currentPath = window.location.pathname;
+    this.pendingScripts = new Set(); // Track scripts currently loading
+    this.scriptLoadPromises = new Map(); // Cache script load promises
     this.init();
   }
 
@@ -157,8 +159,8 @@ class SPARouter {
       // Update any layout elements that might have changed
       this.updateLayoutElements(doc);
       
-      // Execute scripts from the new page content
-      this.executeScriptsFromDocument(doc);
+      // Execute scripts from the new page content with proper dependency management
+      await this.executeScriptsFromDocument(doc);
       
       // Dispatch a custom event for other components to react to the page change
       window.dispatchEvent(new CustomEvent('spa:navigated', { detail: { url } }));
@@ -191,30 +193,154 @@ class SPARouter {
     }
   }
   
-  executeScriptsFromDocument(doc) {
+  /**
+   * Load an external script and return a promise that resolves when it's loaded
+   */
+  loadExternalScript(src) {
+    // Check if we already have a promise for this script
+    if (this.scriptLoadPromises.has(src)) {
+      return this.scriptLoadPromises.get(src);
+    }
+    
+    // Check if script already exists in DOM
+    const existingScript = document.querySelector(`script[src="${src}"]`);
+    if (existingScript) {
+      // If it exists and has loaded, resolve immediately
+      if (existingScript.hasAttribute('data-loaded')) {
+        return Promise.resolve();
+      }
+      // If it's currently loading, wait for it
+      if (this.pendingScripts.has(src)) {
+        return this.scriptLoadPromises.get(src);
+      }
+    }
+    
+    // Create a promise for loading this script
+    const promise = new Promise((resolve, reject) => {
+      const script = document.createElement('script');
+      script.src = src;
+      script.async = false; // Ensure scripts execute in order
+      
+      script.onload = () => {
+        script.setAttribute('data-loaded', 'true');
+        this.pendingScripts.delete(src);
+        console.log('Script loaded successfully:', src);
+        resolve();
+      };
+      
+      script.onerror = () => {
+        this.pendingScripts.delete(src);
+        this.scriptLoadPromises.delete(src);
+        console.error('Script failed to load:', src);
+        reject(new Error(`Failed to load script: ${src}`));
+      };
+      
+      this.pendingScripts.add(src);
+      document.head.appendChild(script);
+    });
+    
+    this.scriptLoadPromises.set(src, promise);
+    return promise;
+  }
+  
+  /**
+   * Execute scripts from the document with proper dependency management
+   */
+  async executeScriptsFromDocument(doc) {
     // Initialize the set of executed scripts if it doesn't exist
     if (!window.executedScripts) {
       window.executedScripts = new Set();
     }
     
     // Find all script tags in the new document
-    const scripts = doc.querySelectorAll('script');
+    const scripts = Array.from(doc.querySelectorAll('script'));
     
-    scripts.forEach(script => {
-      // Create a unique identifier for this script
-      let scriptId;
-      if (script.src) {
-        // For external scripts, use the src URL
-        scriptId = script.src;
+    // Separate scripts into external and inline
+    const externalScripts = scripts.filter(s => s.src);
+    const inlineScripts = scripts.filter(s => !s.src);
+    
+    // Group scripts by reload strategy
+    const alwaysReloadScripts = [];
+    const normalExternalScripts = [];
+    
+    for (const script of externalScripts) {
+      const shouldAlwaysReload = script.hasAttribute('data-reload-on-spa');
+      if (shouldAlwaysReload) {
+        alwaysReloadScripts.push(script);
       } else {
-        // For inline scripts, use a hash of the content
-        scriptId = 'inline_' + (script.textContent || '').substring(0, 100);
+        normalExternalScripts.push(script);
+      }
+    }
+    
+    console.log('Script execution plan:', {
+      total: scripts.length,
+      external: externalScripts.length,
+      inline: inlineScripts.length,
+      alwaysReload: alwaysReloadScripts.length,
+      normal: normalExternalScripts.length
+    });
+    
+    // Step 1: Load normal external scripts IN ORDER (respecting dependencies)
+    for (const script of normalExternalScripts) {
+      const src = script.src;
+      const scriptId = src;
+      
+      // Check if this script has already been loaded
+      if (window.executedScripts.has(scriptId)) {
+        console.log('Skipping already loaded script:', scriptId);
+        continue;
       }
       
+      try {
+        console.log('Loading external script:', src);
+        await this.loadExternalScript(src);
+        window.executedScripts.add(scriptId);
+      } catch (error) {
+        console.error('Failed to load script:', src, error);
+      }
+    }
+    
+    // Step 2: Handle always-reload scripts (like WebSocket-dependent scripts)
+    // Remove old instances first, then load fresh
+    for (const script of alwaysReloadScripts) {
+      const src = script.src;
+      const scriptId = src;
+      
+      console.log('Reloading script marked with data-reload-on-spa:', src);
+      
+      // Remove from executed set to allow re-execution
+      window.executedScripts.delete(scriptId);
+      
+      // Remove existing script from DOM
+      const existingScript = document.querySelector(`script[src="${src}"]`);
+      if (existingScript) {
+        existingScript.remove();
+      }
+      
+      // Clear from cache
+      this.scriptLoadPromises.delete(src);
+      this.pendingScripts.delete(src);
+      
+      try {
+        await this.loadExternalScript(src);
+        window.executedScripts.add(scriptId);
+      } catch (error) {
+        console.error('Failed to reload script:', src, error);
+      }
+    }
+    
+    // Step 3: Execute inline scripts
+    for (const script of inlineScripts) {
+      // Create a unique identifier for this script
+      const scriptContent = script.textContent || '';
+      const scriptId = 'inline_' + this.hashCode(scriptContent);
+      
+      const shouldAlwaysReload = script.hasAttribute('data-reload-on-spa');
+      
       // Check if this script has already been executed
-      if (window.executedScripts.has(scriptId)) {
-        console.log('Skipping already executed script:', scriptId);
-        return; // Skip already executed scripts
+      if (window.executedScripts.has(scriptId) && !shouldAlwaysReload) {
+        console.log('Skipping already executed inline script');
+        continue;
       }
       
       // Mark this script as executed
@@ -228,24 +354,31 @@ class SPARouter {
         newScript.setAttribute(attr.name, attr.value);
       }
       
-      // Copy script content if it's an inline script
-      if (script.textContent) {
-        newScript.textContent = script.textContent;
-      }
+      // Copy script content
+      newScript.textContent = scriptContent;
       
-      // For external scripts, append to head
-      if (script.src) {
-        document.head.appendChild(newScript);
-        // Don't remove external scripts as they might be needed
-      } else {
-        // For inline scripts, execute and remove
-        document.head.appendChild(newScript);
-        document.head.removeChild(newScript);
-      }
-    });
+      // Execute and remove
+      document.head.appendChild(newScript);
+      document.head.removeChild(newScript);
+    }
     
     // Dispatch a custom event after scripts are executed
     window.dispatchEvent(new CustomEvent('spa:scripts-executed'));
+    
+    console.log('All scripts executed successfully');
+  }
+  
+  /**
+   * Simple hash function for inline script content
+   */
+  hashCode(str) {
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) {
+      const char = str.charCodeAt(i);
+      hash = ((hash << 5) - hash) + char;
+      hash = hash & hash; // Convert to 32-bit integer
+    }
+    return hash.toString();
   }
 
   handlePopState(event) {

@@ -69,7 +69,11 @@ exports.getFundamentalData = async (req, res) => {
         targetHighPrice: fundamentalData.financialData?.targetHighPrice,
         targetLowPrice: fundamentalData.financialData?.targetLowPrice,
         targetMeanPrice: fundamentalData.financialData?.targetMeanPrice,
-        targetMedianPrice: fundamentalData.financialData?.targetMedianPrice
+        targetMedianPrice: fundamentalData.financialData?.targetMedianPrice,
+        dividendYield: fundamentalData.summaryDetail?.dividendYield,
+        currentRatio: fundamentalData.financialData?.currentRatio,
+        quickRatio: fundamentalData.financialData?.quickRatio,
+        payoutRatio: fundamentalData.financialData?.payoutRatio
       },
       analyst: {
         recommendation: fundamentalData.financialData?.recommendationKey,

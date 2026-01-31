@@ -1,33 +1,34 @@
-class TechnicalAnalysisSettings {
-  constructor() {
-    this.initialize();
-  }
-
-  async initialize() {
-    this.bindEvents();
-    await this.loadSystemStatus();
-    await this.loadDatabaseStats();
-    await this.loadPerformanceData();
-    
-    // Refresh status every 30 seconds
-    setInterval(() => this.loadSystemStatus(), 30000);
-  }
-
-  bindEvents() {
-    const backBtn = document.getElementById('back-btn');
-    const saveSettings = document.getElementById('save-settings');
-    const forceRun = document.getElementById('force-run');
-    const toggleAutomation = document.getElementById('toggle-automation');
-    const cleanupDb = document.getElementById('cleanup-db');
-    const customStockInputs = document.querySelectorAll('input[name="stock_selection"]');
-
-    if (backBtn) {
-      backBtn.addEventListener('click', () => {
-        window.location.href = '/technical-analysis/dashboard';
-      });
+(function() {
+  window.TechnicalAnalysisSettings = class TechnicalAnalysisSettings {
+    constructor() {
+      this.initialize();
     }
 
-    if (saveSettings) {
+    async initialize() {
+      this.bindEvents();
+      await this.loadSystemStatus();
+      await this.loadDatabaseStats();
+      await this.loadPerformanceData();
+      
+      // Refresh status every 30 seconds
+      setInterval(() => this.loadSystemStatus(), 30000);
+    }
+
+    bindEvents() {
+      const backBtn = document.getElementById('back-btn');
+      const saveSettings = document.getElementById('save-settings');
+      const forceRun = document.getElementById('force-run');
+      const toggleAutomation = document.getElementById('toggle-automation');
+      const cleanupDb = document.getElementById('cleanup-db');
+      const customStockInputs = document.querySelectorAll('input[name="stock_selection"]');
+
+      if (backBtn) {
+        backBtn.addEventListener('click', () => {
+          window.location.href = '/technical-analysis/dashboard';
+        });
+      }
+
+      if (saveSettings) {
       saveSettings.addEventListener('click', () => this.saveSettings());
     }
 
@@ -244,6 +245,37 @@ class TechnicalAnalysisSettings {
 }
 
 // Initialize when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-  new TechnicalAnalysisSettings();
+function initializeTechnicalAnalysisSettings() {
+  try {
+    new window.TechnicalAnalysisSettings();
+    console.log('Technical Analysis Settings initialized successfully');
+  } catch (error) {
+    console.error('Failed to initialize Technical Analysis Settings:', error);
+  }
+}
+
+// Handle page load - check readyState to support both initial load and SPA navigation
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initializeTechnicalAnalysisSettings);
+} else {
+  // DOM is already ready (happens on SPA navigation after script reload)
+  setTimeout(initializeTechnicalAnalysisSettings, 50);
+}
+
+// Listen for SPA navigation events
+window.addEventListener('spa:navigated', (event) => {
+  console.log('SPA navigation detected on technical analysis settings');
+  
+  const isTechSettings = window.location.pathname === '/technical-analysis/settings' || 
+                         document.getElementById('settings-form');
+  
+  if (isTechSettings) {
+    console.log('On technical analysis settings page, reinitializing...');
+    setTimeout(() => {
+      initializeTechnicalAnalysisSettings();
+    }, 150);
+  } else {
+    console.log('Not on technical analysis settings page');
+  }
 });
+})();

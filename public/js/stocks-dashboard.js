@@ -1,5 +1,119 @@
-// Connect to WebSocket server
-const socket = io();
+// WebSocket connection manager - handles connection lifecycle for SPA navigation
+class StockDashboardWebSocket {
+  constructor() {
+    this.socket = null;
+    this.isInitialized = false;
+    this.reconnectAttempts = 0;
+    this.maxReconnectAttempts = 5;
+  }
+
+  initialize() {
+    if (this.isInitialized) {
+      console.log('WebSocket already initialized, reconnecting if needed...');
+      if (this.socket && !this.socket.connected) {
+        this.socket.connect();
+      }
+      return this.socket;
+    }
+
+    console.log('Initializing WebSocket connection...');
+    
+    // Create socket connection with auto-reconnection
+    this.socket = io({ 
+      reconnection: true, 
+      reconnectionDelay: 1000, 
+      reconnectionDelayMax: 5000,
+      reconnectionAttempts: this.maxReconnectAttempts
+    });
+
+    // Set up event listeners
+    this.setupEventListeners();
+    
+    this.isInitialized = true;
+    console.log('WebSocket initialized successfully');
+    
+    return this.socket;
+  }
+
+  setupEventListeners() {
+    if (!this.socket) return;
+
+    // Connection event
+    this.socket.on('connect', () => {
+      console.log('Connected to WebSocket server');
+      this.reconnectAttempts = 0;
+      this.updateConnectionCount();
+      // Request initial data when connected
+      this.socket.emit('request-initial-data');
+    });
+
+    // Disconnection event
+    this.socket.on('disconnect', (reason) => {
+      console.log('Disconnected from server:', reason);
+      this.updateConnectionCount();
+      
+      if (reason === 'io server disconnect') {
+        // Server disconnected us, reconnect manually
+        this.socket.connect();
+      }
+    });
+
+    // Reconnection attempts
+    this.socket.on('reconnect_attempt', (attemptNumber) => {
+      console.log('Reconnection attempt:', attemptNumber);
+      this.reconnectAttempts = attemptNumber;
+    });
+
+    // Reconnection failed
+    this.socket.on('reconnect_failed', () => {
+      console.error('Failed to reconnect after maximum attempts');
+    });
+
+    // Stock data updates
+    this.socket.on('stock-data-update', (data) => {
+      this.handleStockDataUpdate(data);
+    });
+  }
+
+  handleStockDataUpdate(data) {
+    updateStockTable(data);
+    updateStats(data.length);
+  }
+
+  updateConnectionCount() {
+    const connectedClientsEl = document.getElementById('connected-clients');
+    if (connectedClientsEl) {
+      connectedClientsEl.textContent = `Clients: ${this.socket && this.socket.connected ? '1' : '0'}`;
+    }
+  }
+
+  disconnect() {
+    if (this.socket) {
+      console.log('Disconnecting WebSocket...');
+      this.socket.disconnect();
+    }
+  }
+
+  reconnect() {
+    if (this.socket) {
+      console.log('Reconnecting WebSocket...');
+      if (!this.socket.connected) {
+        this.socket.connect();
+      }
+    }
+  }
+
+  getSocket() {
+    return this.socket;
+  }
+
+  isConnected() {
+    return this.socket && this.socket.connected;
+  }
+}
+
+// Create a singleton instance
+const wsManager = new StockDashboardWebSocket();
 
 // Store previous stock data for change detection
 let previousStockData = {};
@@ -10,25 +124,93 @@ let sortColumn = null;
 let sortDirection = 'asc';
 let searchTerm = '';
 
+// Event listeners cleanup tracker
+const eventListeners = {
+  searchInput: null,
+  closeModalBtn: null,
+  stockModal: null,
+  tableHeaders: []
+};
+
 // Function to initialize the stock dashboard
 function initializeStockDashboard() {
-  // Ensure search is set up
-  setupSearchFunctionality();
+  console.log('Initializing stock dashboard...');
+  
+  // Initialize WebSocket connection
+  const socket = wsManager.initialize();
+  
+  // Ensure socket is connected
+  if (!wsManager.isConnected()) {
+    console.log('Socket not connected, attempting to connect...');
+    wsManager.reconnect();
+  }
 
-  // Request initial data when the page loads
-  socket.emit('request-initial-data');
+  // Set up search functionality
+  setupSearchFunctionality();
+  
+  // Set up table sorting
+  setupTableSorting();
+  
+  // Set up modal handlers
+  setupModalHandlers();
+  
+  // Request initial data
+  if (wsManager.isConnected()) {
+    socket.emit('request-initial-data');
+  }
+  
+  console.log('Stock dashboard initialized successfully');
 }
 
-// Initialize on window load
-window.addEventListener('load', initializeStockDashboard);
+// Clean up function for when leaving the page
+function cleanupStockDashboard() {
+  console.log('Cleaning up stock dashboard...');
+  
+  // Remove event listeners
+  removeEventListeners();
+  
+  // We don't disconnect the socket here - let it stay connected
+  // It will auto-reconnect if needed when we return to the page
+  
+  console.log('Stock dashboard cleanup complete');
+}
 
-// Listen for SPA navigation events to re-initialize when the page is loaded via SPA
-window.addEventListener('spa:navigated', (event) => {
-  if (window.location.pathname === '/stocks/dashboard' || document.getElementById('stock-table-body')) {
-    // Small delay to ensure DOM is updated
-    setTimeout(initializeStockDashboard, 100);
+// Remove all event listeners
+function removeEventListeners() {
+  // Remove search input listener
+  if (eventListeners.searchInput) {
+    const searchInput = document.getElementById('search-input');
+    if (searchInput && eventListeners.searchInput) {
+      searchInput.removeEventListener('input', eventListeners.searchInput);
+      eventListeners.searchInput = null;
+    }
   }
-});
+  
+  // Remove modal listeners
+  if (eventListeners.closeModalBtn) {
+    const closeBtn = document.getElementById('close-modal');
+    if (closeBtn) {
+      closeBtn.removeEventListener('click', eventListeners.closeModalBtn);
+      eventListeners.closeModalBtn = null;
+    }
+  }
+  
+  if (eventListeners.stockModal) {
+    const modal = document.getElementById('stock-modal');
+    if (modal) {
+      modal.removeEventListener('click', eventListeners.stockModal);
+      eventListeners.stockModal = null;
+    }
+  }
+  
+  // Remove table header listeners
+  eventListeners.tableHeaders.forEach(({ element, listener }) => {
+    if (element) {
+      element.removeEventListener('click', listener);
+    }
+  });
+  eventListeners.tableHeaders = [];
+}
 
 // Function to get current DOM elements (instead of caching references)
 function getDOMElements() {
@@ -44,33 +226,7 @@ function getDOMElements() {
   };
 }
 
-// Listen for stock data updates
-socket.on('stock-data-update', (data) => {
-  updateStockTable(data);
-  updateStats(data.length);
-});
-
-// Listen for connection count updates
-socket.on('connect', () => {
-  // Request initial data when connected
-  socket.emit('request-initial-data');
-});
-
-socket.on('disconnect', () => {
-  console.log('Disconnected from server');
-});
-
 // Update stats display
-socket.on('connect', updateConnectionCount);
-socket.on('disconnect', updateConnectionCount);
-
-function updateConnectionCount() {
-  const { connectedClientsEl } = getDOMElements();
-  if (connectedClientsEl) {
-    connectedClientsEl.textContent = `Clients: ${socket.connected ? '1' : '0'}`;
-  }
-}
-
 function updateStats(count) {
   const { totalStocksEl, lastUpdateEl } = getDOMElements();
   if (totalStocksEl) {
@@ -191,16 +347,16 @@ function updateStockTable(stocks) {
       <td class="py-2 px-3 text-sm text-right text-gray-600">${marketCap}</td>
       <td class="py-2 px-3 text-center text-gray-600">
         <button class="view-stock-btn text-blue-600 hover:text-blue-800" data-stock='${JSON.stringify(stock).replace(/'/g, '&quot;')}'>
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-            <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />
+          <svg class="h-5 w-5 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
           </svg>
         </button>
       </td>
       <td class="py-2 px-3 text-center text-gray-600">
-        <button class="tech-analysis-btn text-purple-600 hover:text-purple-800" data-symbol="${stock.symbol}">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M12 7a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0V8.414l-4.293 4.293a1 1 0 01-1.414 0L8 10.414l-4.293 4.293a1 1 0 01-1.414-1.414l5-5a1 1 0 011.414 0L11 10.586 14.586 7H12z" clip-rule="evenodd" />
+        <button class="ta-btn text-purple-600 hover:text-purple-800" data-symbol="${stock.symbol}">
+          <svg class="h-5 w-5 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
           </svg>
         </button>
       </td>
@@ -209,26 +365,63 @@ function updateStockTable(stocks) {
     stockTableBody.appendChild(row);
   });
 
-  // Add event listeners to the view buttons
-  document.querySelectorAll('.view-stock-btn').forEach(button => {
-    button.addEventListener('click', function() {
-      const stockData = JSON.parse(this.getAttribute('data-stock'));
-      showStockModal(stockData);
-    });
+  // Update no results message if needed
+  if (filteredStocks.length === 0) {
+    stockTableBody.innerHTML = `
+      <tr>
+        <td colspan="12" class="py-4 px-3 text-center text-gray-500">
+          ${searchTerm ? `No stocks found matching "${searchTerm}"` : 'No stock data available'}
+        </td>
+      </tr>
+    `;
+  }
+}
+
+// Format large numbers (volume, market cap) with suffix
+function formatLargeNumber(num, currency = null) {
+  if (num == null) return '--';
+
+  const absNum = Math.abs(num);
+  let suffix = '';
+  let divisor = 1;
+
+  if (absNum >= 1e12) {
+    suffix = 'T';
+    divisor = 1e12;
+  } else if (absNum >= 1e9) {
+    suffix = 'B';
+    divisor = 1e9;
+  } else if (absNum >= 1e6) {
+    suffix = 'M';
+    divisor = 1e6;
+  } else if (absNum >= 1e3) {
+    suffix = 'K';
+    divisor = 1e3;
+  }
+
+  const formattedNum = (num / divisor).toLocaleString(undefined, {
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 2
   });
-  
-  // Add event listeners to the technical analysis buttons
-  document.querySelectorAll('.tech-analysis-btn').forEach(button => {
-    button.addEventListener('click', function() {
-      const symbol = this.getAttribute('data-symbol');
-      showTechnicalAnalysisModal(symbol);
-    });
+
+  const currencySymbol = currency && currency !== 'USD' ? ` ${currency}` : '';
+  return `${formattedNum}${suffix}${currencySymbol}`;
+}
+
+// Function to filter stocks based on search term
+function filterStocks(stocks, term) {
+  if (!term) return stocks;
+
+  const lowerTerm = term.toLowerCase();
+  return stocks.filter(stock => {
+    return stock.symbol && stock.symbol.toLowerCase().includes(lowerTerm);
   });
 }
 
-// Function to show the stock detail modal
+// Function to show stock details in modal
 async function showStockModal(stock) {
-  const { stockModal, modalStockTitle, stockDetailContent, closeModalBtn } = getDOMElements();
+  console.log('showStockModal called with stock:', stock);
+  const { stockModal, modalStockTitle, stockDetailContent } = getDOMElements();
 
   if (!stockModal || !modalStockTitle || !stockDetailContent) {
     console.error('Modal elements not found');
@@ -248,17 +441,24 @@ async function showStockModal(stock) {
 
   // Show the modal
   stockModal.classList.remove('hidden');
+  stockModal.classList.add('flex');
   document.body.style.overflow = 'hidden'; // Prevent background scrolling
 
   // Add smooth transition effect
   setTimeout(() => {
-    stockModal.querySelector('.transform').classList.remove('scale-95');
+    const modalContent = stockModal.querySelector('.transform');
+    if (modalContent) {
+      modalContent.classList.remove('scale-95');
+    }
   }, 10);
 
   try {
     // Fetch fundamental data from the API
+    console.log('Fetching fundamental data for symbol:', stock.symbol);
     const response = await fetch(`/stocks/api/fundamental/${stock.symbol}`);
+    console.log('Fundamental data response status:', response.status);
     const fundamentalData = await response.json();
+    console.log('Fundamental data received:', fundamentalData);
 
     if (!response.ok) {
       throw new Error(fundamentalData.error || 'Failed to fetch fundamental data');
@@ -269,6 +469,15 @@ async function showStockModal(stock) {
 
     // Create the modal content with fundamental data
     stockDetailContent.innerHTML = createFundamentalDataContent(fundamentalData, stock);
+
+    // Set up modal handlers after content is rendered
+    setupModalHandlers();
+
+    // Initialize chart for the stock
+    initializeChartForStock(fundamentalData.symbol);
+
+    // Set up chart period button handlers
+    setupChartPeriodHandlers(fundamentalData.symbol);
 
   } catch (error) {
     console.error('Error fetching fundamental data:', error);
@@ -282,7 +491,7 @@ async function showStockModal(stock) {
           <h3 class="text-lg font-medium text-red-800">Error Loading Data</h3>
         </div>
         <p class="mt-2 text-red-700">${error.message}</p>
-        <button data-action="show-basic-modal" data-stock='${JSON.stringify(stock)}' class="mt-4 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors">
+        <button onclick="showBasicStockModal(${JSON.stringify(stock).replace(/"/g, '&quot;')})" class="mt-4 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors">
           Show Basic Data
         </button>
       </div>
@@ -290,30 +499,7 @@ async function showStockModal(stock) {
   }
 }
 
-
-// Function to filter stocks based on search term
-function filterStocks(stocks, searchTerm) {
-  console.log('filterStocks called with:', stocks.length, 'stocks and search term:', searchTerm);
-  const term = searchTerm.toLowerCase();
-  const results = stocks.filter(stock => {
-    const matches = (
-      stock.symbol.toLowerCase().includes(term) ||
-      (stock.price && stock.price.toString().includes(term)) ||
-      (stock.change && stock.change.toString().includes(term)) ||
-      (stock.changePercent && stock.changePercent.toString().includes(term)) ||
-      (stock.open && stock.open.toString().includes(term)) ||
-      (stock.high && stock.high.toString().includes(term)) ||
-      (stock.low && stock.low.toString().includes(term)) ||
-      (stock.close && stock.close.toString().includes(term)) ||
-      (stock.volume && stock.volume.toString().includes(term)) ||
-      (stock.marketCap && stock.marketCap.toString().includes(term))
-    );
-    return matches;
-  });
-  console.log('filterStocks returning:', results.length, 'results');
-  return results;
-}
-
+// Function to create fundamental data content
 function createFundamentalDataContent(fundamentalData, stock) {
   const currencySymbol = fundamentalData.companyInfo.currency === 'INR' ? '₹' : '$';
 
@@ -338,108 +524,83 @@ function createFundamentalDataContent(fundamentalData, stock) {
     return value.toFixed(2);
   };
 
-  // Format the original stock data for display (same as before)
+  // Format the original stock data for display
   const formattedPrice = stock.price ? stock.price.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : '--';
   const formattedChange = stock.change ? stock.change.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : '--';
   const formattedChangePercent = stock.changePercent ? stock.changePercent.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : '--';
-  const formattedOpen = stock.open ? stock.open.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : '--';
-  const formattedHigh = stock.high ? stock.high.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : '--';
-  const formattedLow = stock.low ? stock.low.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : '--';
-  const formattedClose = stock.close ? stock.close.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : '--';
   const formattedVolume = stock.volume ? formatLargeNumber(stock.volume, null) : '--';
   const formattedMarketCap = stock.marketCap ? formatLargeNumber(stock.marketCap, stock.currency) : '--';
+  const formatted52WeekLow = stock.fiftyTwoWeekLow ? stock.fiftyTwoWeekLow.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : '--';
+  const formatted52WeekHigh = stock.fiftyTwoWeekHigh ? stock.fiftyTwoWeekHigh.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : '--';
 
-  // Determine color classes based on change
   const changeColorClass = stock.change > 0 ? 'text-green-600' : stock.change < 0 ? 'text-red-600' : 'text-gray-600';
   const changeBgClass = stock.change > 0 ? 'bg-green-50' : stock.change < 0 ? 'bg-red-50' : 'bg-gray-50';
   const changeSign = stock.change > 0 ? '+' : '';
 
   return `
     <div class="space-y-6">
-      <!-- Original Overview Section (same as before) -->
-      <div class="${changeBgClass} rounded-xl p-5 border-l-4 ${stock.change > 0 ? 'border-green-500' : 'border-red-500'}">
+      <!-- Price Overview Section -->
+      <div class="${changeBgClass} rounded-xl p-6 border-l-4 ${stock.change > 0 ? 'border-green-500' : 'border-red-500'}">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
           <div class="text-center">
             <p class="text-sm text-gray-500">Price</p>
-            <p class="text-xl font-bold text-gray-900">${currencySymbol}${formattedPrice}</p>
+            <p class="text-2xl font-bold text-gray-900">${currencySymbol}${formattedPrice}</p>
           </div>
           <div class="text-center">
             <p class="text-sm text-gray-500">Change</p>
-            <p class="text-xl font-bold ${changeColorClass}">${changeSign}${formattedChange}</p>
+            <p class="text-2xl font-bold ${changeColorClass}">${changeSign}${formattedChange}</p>
           </div>
           <div class="text-center">
             <p class="text-sm text-gray-500">Change %</p>
-            <p class="text-xl font-bold ${changeColorClass}">${changeSign}${formattedChangePercent}%</p>
+            <p class="text-2xl font-bold ${changeColorClass}">${changeSign}${formattedChangePercent}%</p>
           </div>
           <div class="text-center">
             <p class="text-sm text-gray-500">Volume</p>
-            <p class="text-xl font-bold text-gray-900">${formattedVolume}</p>
+            <p class="text-2xl font-bold text-gray-900">${formattedVolume}</p>
           </div>
         </div>
       </div>
-      
-      <!-- Original Detailed Information Grid (same as before) -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-5 border border-blue-100">
-          <h3 class="font-bold text-lg text-gray-800 mb-4 flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
-            </svg>
-            Trading Data
-          </h3>
-          <div class="space-y-3">
-            <div class="flex justify-between py-2 border-b border-blue-100 last:border-0">
-              <span class="text-gray-600">Open:</span>
-              <span class="font-medium text-gray-900">${currencySymbol}${formattedOpen}</span>
-            </div>
-            <div class="flex justify-between py-2 border-b border-blue-100 last:border-0">
-              <span class="text-gray-600">High:</span>
-              <span class="font-medium text-gray-900">${currencySymbol}${formattedHigh}</span>
-            </div>
-            <div class="flex justify-between py-2 border-b border-blue-100 last:border-0">
-              <span class="text-gray-600">Low:</span>
-              <span class="font-medium text-gray-900">${currencySymbol}${formattedLow}</span>
-            </div>
-            <div class="flex justify-between py-2 border-b border-blue-100 last:border-0">
-              <span class="text-gray-600">Close:</span>
-              <span class="font-medium text-gray-900">${currencySymbol}${formattedClose}</span>
-            </div>
-            <div class="flex justify-between py-2 border-b border-blue-100 last:border-0">
-              <span class="text-gray-600">52-Week Range:</span>
-              <span class="font-medium text-gray-900">${fundamentalData.financials.fiftyTwoWeekLow ? `${currencySymbol}${fundamentalData.financials.fiftyTwoWeekLow.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} - ${currencySymbol}${fundamentalData.financials.fiftyTwoWeekHigh.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}` : '--'}</span>
-            </div>
-          </div>
-        </div>
-        
-        <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-5 border border-purple-100">
-          <h3 class="font-bold text-lg text-gray-800 mb-4 flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-purple-500" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
-            </svg>
-            Additional Info
-          </h3>
-          <div class="space-y-3">
-            <div class="flex justify-between py-2 border-b border-purple-100 last:border-0">
-              <span class="text-gray-600">Market Cap:</span>
-              <span class="font-medium text-gray-900">${formattedMarketCap}</span>
-            </div>
-            <div class="flex justify-between py-2 border-b border-purple-100 last:border-0">
-              <span class="text-gray-600">Currency:</span>
-              <span class="font-medium text-gray-900">${stock.currency || 'USD'}</span>
-            </div>
-            <div class="flex justify-between py-2 border-b border-purple-100 last:border-0">
-              <span class="text-gray-600">Exchange:</span>
-              <span class="font-medium text-gray-900">${stock.exchange || '--'}</span>
-            </div>
-            <div class="flex justify-between py-2 border-b border-purple-100 last:border-0">
-              <span class="text-gray-600">Symbol:</span>
-              <span class="font-medium text-gray-900">${stock.symbol}</span>
-            </div>
+
+      <!-- Trading Data Section -->
+      <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-100">
+        <h3 class="font-bold text-lg text-gray-800 mb-4 flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+          </svg>
+          Trading Data
+        </h3>
+        <div class="space-y-3">
+          <div class="flex justify-between py-2 border-b border-blue-100 last:border-0">
+            <span class="text-gray-600">52-Week Range:</span>
+            <span class="font-medium text-gray-900">${currencySymbol}${formatted52WeekLow} - ${currencySymbol}${formatted52WeekHigh}</span>
           </div>
         </div>
       </div>
-      
-      <!-- NEW: Chart Section -->
+
+      <!-- Basic Information Section -->
+      <div class="bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl p-6 border border-gray-200">
+        <h3 class="font-bold text-lg text-gray-800 mb-4">Basic Information</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <p class="text-sm text-gray-600">Market Cap</p>
+            <p class="font-medium text-gray-900">${formattedMarketCap}</p>
+          </div>
+          <div>
+            <p class="text-sm text-gray-600">Currency</p>
+            <p class="font-medium text-gray-900">${stock.currency || 'USD'}</p>
+          </div>
+          <div>
+            <p class="text-sm text-gray-600">Exchange</p>
+            <p class="font-medium text-gray-900">${stock.exchange || '--'}</p>
+          </div>
+          <div>
+            <p class="text-sm text-gray-600">Symbol</p>
+            <p class="font-medium text-gray-900">${stock.symbol}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chart Section -->
       <div class="bg-gradient-to-r from-emerald-50 to-teal-50 rounded-xl p-6 border border-emerald-100">
         <h3 class="font-bold text-xl text-gray-800 mb-4 flex items-center">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -447,7 +608,7 @@ function createFundamentalDataContent(fundamentalData, stock) {
           </svg>
           Price Chart
         </h3>
-        
+
         <!-- Time Period Selector -->
         <div class="flex flex-wrap gap-2 mb-4">
           <label class="inline-flex items-center px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-sm font-medium cursor-pointer hover:bg-emerald-200 transition-colors">
@@ -471,14 +632,14 @@ function createFundamentalDataContent(fundamentalData, stock) {
             <span>MAX</span>
           </label>
         </div>
-        
+
         <!-- Chart Container -->
-        <div class="bg-white rounded-lg p-4 border border-emerald-200">
-          <canvas id="stock-chart-${fundamentalData.symbol.replace('.', '_')}" height="300"></canvas>
+        <div class="bg-white rounded-lg p-4 border border-emerald-200 relative h-96">
+          <canvas id="stock-chart-${fundamentalData.symbol.replace('.', '_')}"></canvas>
         </div>
       </div>
-      
-      <!-- NEW: Company Overview (fundamental data) -->
+
+      <!-- Company Overview Section -->
       <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-100">
         <h3 class="font-bold text-xl text-gray-800 mb-4 flex items-center">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -511,13 +672,13 @@ function createFundamentalDataContent(fundamentalData, stock) {
           </div>
         ` : ''}
       </div>
-      
-      <!-- NEW: Financial Ratios (fundamental data) -->
+
+      <!-- Financial Ratios Section -->
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-6 border border-purple-100">
           <h3 class="font-bold text-lg text-gray-800 mb-4 flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-purple-500" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
             </svg>
             Valuation Ratios
           </h3>
@@ -527,283 +688,145 @@ function createFundamentalDataContent(fundamentalData, stock) {
               <span class="font-medium text-gray-900">${formatRatio(fundamentalData.financials.peRatio)}</span>
             </div>
             <div class="flex justify-between py-2 border-b border-purple-100 last:border-0">
-              <span class="text-gray-600">Forward P/E:</span>
-              <span class="font-medium text-gray-900">${formatRatio(fundamentalData.financials.forwardPE)}</span>
-            </div>
-            <div class="flex justify-between py-2 border-b border-purple-100 last:border-0">
               <span class="text-gray-600">EPS:</span>
               <span class="font-medium text-gray-900">${formatCurrency(fundamentalData.financials.eps)}</span>
             </div>
             <div class="flex justify-between py-2 border-b border-purple-100 last:border-0">
-              <span class="text-gray-600">Revenue:</span>
-              <span class="font-medium text-gray-900">${formatCurrency(fundamentalData.financials.revenue)}</span>
+              <span class="text-gray-600">Dividend Yield:</span>
+              <span class="font-medium text-gray-900">${formatPercent(fundamentalData.financials.dividendYield)}</span>
             </div>
           </div>
         </div>
-        
-        <div class="bg-gradient-to-br from-yellow-50 to-orange-50 rounded-xl p-6 border border-yellow-100">
+
+        <div class="bg-gradient-to-br from-orange-50 to-amber-50 rounded-xl p-6 border border-orange-100">
           <h3 class="font-bold text-lg text-gray-800 mb-4 flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-orange-500" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 002-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
             </svg>
-            Profitability
+            Financial Health
           </h3>
           <div class="space-y-3">
-            <div class="flex justify-between py-2 border-b border-yellow-100 last:border-0">
-              <span class="text-gray-600">Gross Margin:</span>
-              <span class="font-medium text-gray-900">${formatPercent(fundamentalData.financials.grossMargins)}</span>
+            <div class="flex justify-between py-2 border-b border-orange-100 last:border-0">
+              <span class="text-gray-600">Debt to Equity:</span>
+              <span class="font-medium text-gray-900">${formatRatio(fundamentalData.financials.debtToEquity)}</span>
             </div>
-            <div class="flex justify-between py-2 border-b border-yellow-100 last:border-0">
-              <span class="text-gray-600">Operating Margin:</span>
-              <span class="font-medium text-gray-900">${formatPercent(fundamentalData.financials.operatingMargins)}</span>
+            <div class="flex justify-between py-2 border-b border-orange-100 last:border-0">
+              <span class="text-gray-600">Current Ratio:</span>
+              <span class="font-medium text-gray-900">${formatRatio(fundamentalData.financials.currentRatio)}</span>
             </div>
-            <div class="flex justify-between py-2 border-b border-yellow-100 last:border-0">
-              <span class="text-gray-600">Profit Margin:</span>
-              <span class="font-medium text-gray-900">${formatPercent(fundamentalData.financials.profitMargins)}</span>
-            </div>
-            <div class="flex justify-between py-2 border-b border-yellow-100 last:border-0">
-              <span class="text-gray-600">Return on Equity:</span>
+            <div class="flex justify-between py-2 border-b border-orange-100 last:border-0">
+              <span class="text-gray-600">ROE:</span>
               <span class="font-medium text-gray-900">${formatPercent(fundamentalData.financials.returnOnEquity)}</span>
             </div>
           </div>
         </div>
       </div>
-      
-      <!-- NEW: Additional Fundamental Information -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div class="bg-gradient-to-br from-cyan-50 to-blue-50 rounded-xl p-6 border border-cyan-100">
-          <h3 class="font-bold text-lg text-gray-800 mb-4 flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-cyan-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-            </svg>
-            Growth Metrics
-          </h3>
-          <div class="space-y-3">
-            <div class="flex justify-between py-2 border-b border-cyan-100 last:border-0">
-              <span class="text-gray-600">Revenue Growth:</span>
-              <span class="font-medium text-gray-900">${formatPercent(fundamentalData.financials.revenueGrowth)}</span>
-            </div>
-            <div class="flex justify-between py-2 border-b border-cyan-100 last:border-0">
-              <span class="text-gray-600">Earnings Growth:</span>
-              <span class="font-medium text-gray-900">${formatPercent(fundamentalData.financials.earningsGrowth)}</span>
-            </div>
-            <div class="flex justify-between py-2 border-b border-cyan-100 last:border-0">
-              <span class="text-gray-600">Target Price:</span>
-              <span class="font-medium text-gray-900">${formatCurrency(fundamentalData.financials.targetMeanPrice)}</span>
-            </div>
-            <div class="flex justify-between py-2 border-b border-cyan-100 last:border-0">
-              <span class="text-gray-600">Price Range:</span>
-              <span class="font-medium text-gray-900">${formatCurrency(fundamentalData.financials.targetLowPrice)} - ${formatCurrency(fundamentalData.financials.targetHighPrice)}</span>
-            </div>
-          </div>
-        </div>
-        
-        <div class="bg-gradient-to-br from-gray-50 to-slate-50 rounded-xl p-6 border border-gray-200">
-          <h3 class="font-bold text-lg text-gray-800 mb-4 flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-            </svg>
-            Key Statistics
-          </h3>
-          <div class="space-y-3">
-            <div class="flex justify-between py-2 border-b border-gray-200 last:border-0">
-              <span class="text-gray-600">Volume:</span>
-              <span class="font-medium text-gray-900">${formatLargeNumber(fundamentalData.financials.volume, null)}</span>
-            </div>
-            <div class="flex justify-between py-2 border-b border-gray-200 last:border-0">
-              <span class="text-gray-600">Avg Volume:</span>
-              <span class="font-medium text-gray-900">${formatLargeNumber(fundamentalData.financials.averageVolume, null)}</span>
-            </div>
-            <div class="flex justify-between py-2 border-b border-gray-200 last:border-0">
-              <span class="text-gray-600">Debt to Equity:</span>
-              <span class="font-medium text-gray-900">${formatRatio(fundamentalData.financials.debtToEquity)}</span>
-            </div>
-            <div class="flex justify-between py-2 border-b border-gray-200 last:border-0">
-              <span class="text-gray-600">Exchange:</span>
-              <span class="font-medium text-gray-900">${fundamentalData.companyInfo.exchange}</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- NEW: Analyst Recommendations -->
-      ${fundamentalData.analyst.recommendation ? `
-        <div class="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl p-6 border border-indigo-100">
-          <h3 class="font-bold text-lg text-gray-800 mb-4 flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-            </svg>
-            Analyst Recommendation
-          </h3>
-          <div class="flex items-center justify-between">
-            <div>
-              <p class="text-2xl font-bold text-gray-900 capitalize">${fundamentalData.analyst.recommendation}</p>
-              <p class="text-gray-600">${fundamentalData.analyst.numberOfAnalysts} analysts</p>
-            </div>
-            <div class="text-right">
-              <p class="text-sm text-gray-600">Last updated</p>
-              <p class="text-sm font-medium text-gray-900">${new Date().toLocaleDateString()}</p>
-            </div>
-          </div>
-        </div>
-      ` : ''}
-      
-      <!-- Original Market Status (same as before) -->
-      <div class="bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl p-4 border border-gray-200">
-        <div class="flex items-center justify-between">
-          <div>
-            <h3 class="font-medium text-gray-800">Market Status</h3>
-            <p class="text-sm text-gray-600">Updated in real-time</p>
-          </div>
-          <div class="text-right">
-            <p class="text-sm text-gray-600">Last updated</p>
-            <p class="text-sm font-medium text-gray-900">${new Date().toLocaleTimeString()}</p>
-          </div>
-        </div>
-      </div>
     </div>
   `;
 }
 
-// Fallback function to show basic stock data if fundamental data fails
+// Show basic stock modal (fallback if API fails)
 function showBasicStockModal(stock) {
-  const { modalStockTitle, stockDetailContent } = getDOMElements();
+  const { stockModal, modalStockTitle, stockDetailContent } = getDOMElements();
+
+  if (!stockModal || !modalStockTitle || !stockDetailContent) return;
 
   modalStockTitle.textContent = `${stock.symbol} - Stock Details`;
 
-  const currencySymbol = stock.currency === 'INR' ? '₹' : '$';
-  const formattedPrice = stock.price ? stock.price.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : '--';
-  const formattedChange = stock.change ? stock.change.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : '--';
-  const formattedChangePercent = stock.changePercent ? stock.changePercent.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : '--';
-  const formattedVolume = stock.volume ? formatLargeNumber(stock.volume, null) : '--';
-  const formattedMarketCap = stock.marketCap ? formatLargeNumber(stock.marketCap, stock.currency) : '--';
-  const formatted52WeekLow = stock.fiftyTwoWeekLow ? stock.fiftyTwoWeekLow.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : '--';
-  const formatted52WeekHigh = stock.fiftyTwoWeekHigh ? stock.fiftyTwoWeekHigh.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : '--';
-
-  const changeColorClass = stock.change > 0 ? 'text-green-600' : stock.change < 0 ? 'text-red-600' : 'text-gray-600';
-  const changeBgClass = stock.change > 0 ? 'bg-green-50' : stock.change < 0 ? 'bg-red-50' : 'bg-gray-50';
-  const changeSign = stock.change > 0 ? '+' : '';
+  const marketCap = stock.marketCap ? formatLargeNumber(stock.marketCap, stock.currency) : 'N/A';
+  const volume = stock.volume ? formatLargeNumber(stock.volume, null) : 'N/A';
 
   stockDetailContent.innerHTML = `
-    <div class="space-y-6">
-      <div class="${changeBgClass} rounded-xl p-6 border-l-4 ${stock.change > 0 ? 'border-green-500' : 'border-red-500'}">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-          <div class="text-center">
-            <p class="text-sm text-gray-500">Price</p>
-            <p class="text-2xl font-bold text-gray-900">${currencySymbol}${formattedPrice}</p>
-          </div>
-          <div class="text-center">
-            <p class="text-sm text-gray-500">Change</p>
-            <p class="text-2xl font-bold ${changeColorClass}">${changeSign}${formattedChange}</p>
-          </div>
-          <div class="text-center">
-            <p class="text-sm text-gray-500">Change %</p>
-            <p class="text-2xl font-bold ${changeColorClass}">${changeSign}${formattedChangePercent}%</p>
-          </div>
-          <div class="text-center">
-            <p class="text-sm text-gray-500">Volume</p>
-            <p class="text-2xl font-bold text-gray-900">${formattedVolume}</p>
-          </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="bg-gray-50 p-4 rounded-lg">
+        <h3 class="text-lg font-semibold text-gray-800 mb-2">Basic Information</h3>
+        <div class="space-y-2 text-sm">
+          <div class="flex justify-between"><span class="text-gray-600">Symbol:</span><span class="text-gray-900 font-semibold">${stock.symbol || 'N/A'}</span></div>
+          <div class="flex justify-between"><span class="text-gray-600">Market Cap:</span><span class="text-gray-900">${marketCap}</span></div>
         </div>
       </div>
-      
-      <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-100">
-        <h3 class="font-bold text-lg text-gray-800 mb-4 flex items-center">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
-          </svg>
-          Trading Data
-        </h3>
-        <div class="space-y-3">
-          <div class="flex justify-between py-2 border-b border-blue-100 last:border-0">
-            <span class="text-gray-600">52-Week Range:</span>
-            <span class="font-medium text-gray-900">${currencySymbol}${formatted52WeekLow} - ${currencySymbol}${formatted52WeekHigh}</span>
-          </div>
+
+      <div class="bg-gray-50 p-4 rounded-lg">
+        <h3 class="text-lg font-semibold text-gray-800 mb-2">Price Information</h3>
+        <div class="space-y-2 text-sm">
+          <div class="flex justify-between"><span class="text-gray-600">Current Price:</span><span class="text-gray-900 font-bold">${stock.price ? stock.price.toFixed(2) : 'N/A'}</span></div>
+          <div class="flex justify-between"><span class="text-gray-600">Change:</span><span class="${stock.change >= 0 ? 'text-green-600' : 'text-red-600'} font-semibold">${stock.change >= 0 ? '+' : ''}${stock.change ? stock.change.toFixed(2) : 'N/A'} (${stock.changePercent >= 0 ? '+' : ''}${stock.changePercent ? stock.changePercent.toFixed(2) : 'N/A'}%)</span></div>
         </div>
       </div>
-      
-      <div class="bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl p-6 border border-gray-200">
-        <h3 class="font-bold text-lg text-gray-800 mb-4">Basic Information</h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <p class="text-sm text-gray-600">Market Cap</p>
-            <p class="font-medium text-gray-900">${formattedMarketCap}</p>
-          </div>
-          <div>
-            <p class="text-sm text-gray-600">Currency</p>
-            <p class="font-medium text-gray-900">${stock.currency || 'USD'}</p>
-          </div>
-          <div>
-            <p class="text-sm text-gray-600">Exchange</p>
-            <p class="font-medium text-gray-900">${stock.exchange || '--'}</p>
-          </div>
-          <div>
-            <p class="text-sm text-gray-600">Symbol</p>
-            <p class="font-medium text-gray-900">${stock.symbol}</p>
-          </div>
+
+      <div class="bg-gray-50 p-4 rounded-lg">
+        <h3 class="text-lg font-semibold text-gray-800 mb-2">Today's Range</h3>
+        <div class="space-y-2 text-sm">
+          <div class="flex justify-between"><span class="text-gray-600">Open:</span><span class="text-gray-900">${stock.open ? stock.open.toFixed(2) : 'N/A'}</span></div>
+          <div class="flex justify-between"><span class="text-gray-600">High:</span><span class="text-gray-900">${stock.high ? stock.high.toFixed(2) : 'N/A'}</span></div>
+          <div class="flex justify-between"><span class="text-gray-600">Low:</span><span class="text-gray-900">${stock.low ? stock.low.toFixed(2) : 'N/A'}</span></div>
+        </div>
+      </div>
+
+      <div class="bg-gray-50 p-4 rounded-lg">
+        <h3 class="text-lg font-semibold text-gray-800 mb-2">Volume</h3>
+        <div class="space-y-2 text-sm">
+          <div class="flex justify-between"><span class="text-gray-600">Volume:</span><span class="text-gray-900">${volume}</span></div>
         </div>
       </div>
     </div>
   `;
+
+  stockModal.classList.remove('hidden');
+  stockModal.classList.add('flex');
 }
 
-// Function to close the modal
+// Function to close stock modal
 function closeStockModal() {
   const { stockModal } = getDOMElements();
-
   if (stockModal) {
     stockModal.classList.add('hidden');
+    stockModal.classList.remove('flex');
     document.body.style.overflow = ''; // Restore scrolling
   }
 }
 
-// Chart management variables
-window.stockCharts = {};
-
 // Function to load stock chart
 async function loadStockChart(symbol, period = '1mo') {
   try {
+    console.log('loadStockChart called with symbol:', symbol, 'period:', period);
+    const response = await fetch(`/stocks/api/chart/${symbol}?period=${period}`);
+    if (!response.ok) throw new Error('Failed to fetch chart data');
+
+    const data = await response.json();
+    console.log('Chart data received:', data);
+
     const canvasId = `stock-chart-${symbol.replace('.', '_')}`;
+    console.log('Looking for canvas with ID:', canvasId);
     const canvas = document.getElementById(canvasId);
-    
     if (!canvas) {
-      console.error('Chart canvas not found:', canvasId);
+      console.error('Canvas element not found for symbol:', symbol, 'ID:', canvasId);
       return;
     }
-    
-    // Fetch chart data from the API
-    const response = await fetch(`/stocks/api/chart/${symbol}?period=${period}`);
-    const chartData = await response.json();
-    
-    if (!response.ok) {
-      throw new Error(chartData.error || 'Failed to fetch chart data');
-    }
-    
-    // Destroy existing chart if it exists
-    const chartId = symbol.replace('.', '_');
-    if (window.stockCharts[chartId]) {
-      window.stockCharts[chartId].destroy();
-    }
-    
-    // Create the chart data - use simple array for x-axis to avoid time adapter issues
-    const chartLabels = chartData.labels;
-    const chartValues = chartData.datasets[0].data;
-    
-    // Create the chart
+
+    console.log('Canvas found, creating chart');
     const ctx = canvas.getContext('2d');
-    window.stockCharts[chartId] = new Chart(ctx, {
+
+    // Destroy existing chart if any
+    if (window.stockChartInstance) {
+      window.stockChartInstance.destroy();
+    }
+
+    // Create new chart
+    window.stockChartInstance = new Chart(ctx, {
       type: 'line',
       data: {
-        labels: chartLabels, // Use the dates as labels
+        labels: data.labels || [],
         datasets: [{
-          label: `${symbol} Price`,
-          data: chartValues,
-          borderColor: '#3b82f6',
+          label: 'Price',
+          data: data.datasets[0]?.data || [],
+          borderColor: 'rgb(59, 130, 246)',
           backgroundColor: 'rgba(59, 130, 246, 0.1)',
           borderWidth: 2,
-          pointRadius: 0,
           fill: true,
-          tension: 0.4
+          tension: 0.4,
+          pointRadius: 0,
+          pointHoverRadius: 5
         }]
       },
       options: {
@@ -814,23 +837,31 @@ async function loadStockChart(symbol, period = '1mo') {
             display: false
           },
           tooltip: {
-            callbacks: {
-              title: function(context) {
-                // Show the label (date) in the tooltip
-                return chartLabels[context[0].dataIndex];
-              }
-            }
+            mode: 'index',
+            intersect: false,
+            backgroundColor: 'rgba(0, 0, 0, 0.8)',
+            titleColor: '#fff',
+            bodyColor: '#fff',
+            borderColor: 'rgb(59, 130, 246)',
+            borderWidth: 1
           }
         },
         scales: {
           x: {
+            display: true,
             grid: {
               display: false
             }
           },
           y: {
+            display: true,
             grid: {
               color: 'rgba(0, 0, 0, 0.05)'
+            },
+            ticks: {
+              callback: function (value) {
+                return '$' + value.toFixed(2);
+              }
             }
           }
         },
@@ -841,85 +872,83 @@ async function loadStockChart(symbol, period = '1mo') {
         }
       }
     });
-    
+    console.log('Chart created successfully for symbol:', symbol);
   } catch (error) {
-    console.error('Error loading stock chart:', error);
+    console.error('Error loading chart for symbol:', symbol, 'Error:', error.message, error);
+    const canvasId = `stock-chart-${symbol.replace('.', '_')}`;
+    const canvas = document.getElementById(canvasId);
+    if (canvas) {
+      canvas.style.display = 'none';
+      const errorMsg = document.createElement('div');
+      errorMsg.className = 'text-red-500 p-4';
+      errorMsg.textContent = 'Failed to load chart: ' + error.message;
+      canvas.parentElement.appendChild(errorMsg);
+    }
   }
 }
 
-// Helper function to format large numbers
-function formatLargeNumber(num, currency = 'USD') {
-  if (num === null || num === undefined) return '--';
-
-  // For volume (null currency) or when currency is not specified, don't add any prefix
-  let prefix = '';
-  if (currency === 'USD') {
-    prefix = '$';
-  } else if (currency === 'INR') {
-    prefix = '₹';
-  }
-
-  if (num >= 1e12) {
-    return `${prefix}${(num / 1e12).toFixed(2)}T`;
-  } else if (num >= 1e9) {
-    return `${prefix}${(num / 1e9).toFixed(2)}B`;
-  } else if (num >= 1e6) {
-    return `${prefix}${(num / 1e6).toFixed(2)}M`;
-  } else if (num >= 1e3) {
-    return `${prefix}${(num / 1e3).toFixed(2)}K`;
-  }
-  return `${prefix}${num.toString()}`;
+// Set up event delegation for view stock buttons (only once, not on reload)
+if (!window.stockViewBtnListenerInitialized) {
+  console.log('Initializing view stock button global listener...');
+  document.addEventListener('click', (event) => {
+    const button = event.target.closest('.view-stock-btn');
+    if (button) {
+      console.log('View button clicked');
+      const stock = JSON.parse(button.dataset.stock);
+      showStockModal(stock);
+    }
+  });
+  window.stockViewBtnListenerInitialized = true;
 }
 
-
-// Add event listeners for chart period selection and table sorting
-document.addEventListener('click', function (e) {
-  if (e.target.closest('.chart-period-radio')) {
-    const radio = e.target.closest('.chart-period-radio');
-    const symbol = radio.dataset.symbol;
-    const period = radio.value;
-      
-    // Update UI to show selected period
-    document.querySelectorAll(`.chart-period-radio[data-symbol="${symbol}"]`).forEach(radio => {
-      radio.parentElement.classList.remove('bg-emerald-500', 'text-white');
-      radio.parentElement.classList.add('bg-emerald-100', 'text-emerald-800');
-    });
-      
-    radio.parentElement.classList.remove('bg-emerald-100', 'text-emerald-800');
-    radio.parentElement.classList.add('bg-emerald-500', 'text-white');
-    
-    // Load chart with new period
-    loadStockChart(symbol, period);
-  } else if (e.target.closest('th[data-sort]')) {
-    // Handle table column sorting
-    const sortColumn = e.target.closest('th[data-sort]').dataset.sort;
-    sortTable(sortColumn);
-  } else if (e.target.closest('button[data-action="show-basic-modal"]')) {
-    // Handle show basic modal button
-    const button = e.target.closest('button[data-action="show-basic-modal"]');
-    const stock = JSON.parse(button.dataset.stock);
-    showBasicStockModal(stock);
-  }
-});
+// Set up event delegation for technical analysis buttons (only once, not on reload)
+if (!window.taBtnListenerInitialized) {
+  console.log('Initializing technical analysis button global listener...');
+  document.addEventListener('click', (event) => {
+    const button = event.target.closest('.ta-btn');
+    if (button) {
+      console.log('Technical analysis button clicked');
+      const symbol = button.dataset.symbol;
+      // Call the TA modal function if it exists
+      if (typeof showTechnicalAnalysisModal === 'function') {
+        showTechnicalAnalysisModal(symbol);
+      } else {
+        console.warn('showTechnicalAnalysisModal function not found');
+      }
+    }
+  });
+  window.taBtnListenerInitialized = true;
+}
 
 // Initialize chart when modal is shown
 function initializeChartForStock(symbol) {
+  console.log('initializeChartForStock called with symbol:', symbol);
   // Small delay to ensure modal is fully rendered
   setTimeout(() => {
     const defaultPeriod = '1mo';
+    console.log('Calling loadStockChart with symbol:', symbol, 'period:', defaultPeriod);
     loadStockChart(symbol, defaultPeriod);
   }, 300);
 }
 
-// Modify showStockModal to initialize chart
-const originalShowStockModal = showStockModal;
-showStockModal = async function (stock) {
-  await originalShowStockModal(stock);
-  // Initialize chart after modal content is loaded
-  setTimeout(() => {
-    initializeChartForStock(stock.symbol);
-  }, 500);
-};
+// Set up chart period button handlers
+function setupChartPeriodHandlers(symbol) {
+  console.log('setupChartPeriodHandlers called for symbol:', symbol);
+  const chartPeriodRadios = document.querySelectorAll('.chart-period-radio');
+  console.log('Found', chartPeriodRadios.length, 'chart period radios');
+  
+  chartPeriodRadios.forEach((radio, index) => {
+    console.log(`Setting up radio ${index}: value=${radio.value}, symbol=${radio.dataset.symbol}`);
+    radio.addEventListener('change', (e) => {
+      if (e.target.checked) {
+        console.log('Chart period changed to:', e.target.value, 'for symbol:', symbol);
+        loadStockChart(symbol, e.target.value);
+      }
+    });
+  });
+  
+  console.log('Chart period handlers set up for symbol:', symbol);
+}
 
 // Function to sort stocks
 function sortStocks(stocks, column, direction) {
@@ -978,138 +1007,146 @@ function updateSortIndicators() {
   }
 }
 
+// Function to setup table sorting
+function setupTableSorting() {
+  // Remove existing listeners
+  eventListeners.tableHeaders.forEach(({ element, listener }) => {
+    if (element) {
+      element.removeEventListener('click', listener);
+    }
+  });
+  eventListeners.tableHeaders = [];
+
+  // Add new listeners
+  document.querySelectorAll('[data-sort]').forEach(header => {
+    const column = header.dataset.sort;
+    const listener = () => sortTable(column);
+    header.addEventListener('click', listener);
+    eventListeners.tableHeaders.push({ element: header, listener });
+  });
+}
+
 // Function to handle search input
 function setupSearchFunctionality() {
-  console.log('setupSearchFunctionality called');
+  console.log('Setting up search functionality...');
 
-  // Try multiple times to find the search input
-  let attempts = 0;
-  const maxAttempts = 10;
-
-  function trySetup() {
-    attempts++;
-    const searchInput = document.getElementById('search-input');
-    console.log(`Attempt ${attempts}: Search input element:`, searchInput);
-
-    if (searchInput) {
-      console.log('Search input found, setting up event listener');
-
-      // Remove existing event listeners by cloning the element
-      const newSearchInput = searchInput.cloneNode(true);
-      searchInput.parentNode.replaceChild(newSearchInput, searchInput);
-
-      // Add new event listener
-      newSearchInput.addEventListener('input', (e) => {
-        console.log('Search input event triggered, value:', e.target.value);
-        searchTerm = e.target.value.trim();
-        console.log('Search term set to:', searchTerm);
-        if (currentStocks.length > 0) {
-          console.log('Updating stock table with filtered data');
-          updateStockTable(currentStocks);
-        } else {
-          console.log('No current stocks to filter');
-        }
-      });
-
-      // Mark as initialized to prevent duplicate event listeners
-      newSearchInput.dataset.initialized = 'true';
-
-      // Debug logging
-      console.log('Search functionality initialized successfully');
-
-      // Update the reference if needed
-      return newSearchInput;
-    } else if (attempts < maxAttempts) {
-      console.log(`Search input not found, retrying in 100ms (attempt ${attempts}/${maxAttempts})`);
-      setTimeout(trySetup, 100);
-    } else {
-      console.error('Search input element not found after', maxAttempts, 'attempts');
-    }
-    return null;
+  const searchInput = document.getElementById('search-input');
+  if (!searchInput) {
+    console.error('Search input element not found');
+    return;
   }
 
-  return trySetup();
+  console.log('Search input found, setting up event listener');
+
+  // Remove existing listener if any
+  if (eventListeners.searchInput) {
+    searchInput.removeEventListener('input', eventListeners.searchInput);
+  }
+
+  // Create new listener
+  eventListeners.searchInput = (e) => {
+    console.log('Search input event triggered, value:', e.target.value);
+    searchTerm = e.target.value.trim();
+    console.log('Search term set to:', searchTerm);
+    if (currentStocks.length > 0) {
+      console.log('Updating stock table with filtered data');
+      updateStockTable(currentStocks);
+    } else {
+      console.log('No current stocks to filter');
+    }
+  };
+
+  // Add new listener
+  searchInput.addEventListener('input', eventListeners.searchInput);
+
+  console.log('Search functionality initialized successfully');
 }
 
-// Initialize search functionality when DOM is ready
+// Function to setup modal handlers
+function setupModalHandlers() {
+  console.log('Setting up modal handlers...');
+  
+  // Remove existing listeners
+  if (eventListeners.closeModalBtn) {
+    const closeBtn = document.getElementById('close-modal');
+    if (closeBtn) {
+      closeBtn.removeEventListener('click', eventListeners.closeModalBtn);
+      console.log('Removed old close button listener');
+    }
+  }
+
+  if (eventListeners.stockModal) {
+    const modal = document.getElementById('stock-modal');
+    if (modal) {
+      modal.removeEventListener('click', eventListeners.stockModal);
+      console.log('Removed old modal click listener');
+    }
+  }
+
+  // Create new listeners with small delay to ensure DOM is ready
+  setTimeout(() => {
+    const closeBtn = document.getElementById('close-modal');
+    if (closeBtn) {
+      eventListeners.closeModalBtn = () => {
+        console.log('Close button clicked');
+        closeStockModal();
+      };
+      closeBtn.addEventListener('click', eventListeners.closeModalBtn);
+      console.log('Added new close button listener');
+    } else {
+      console.warn('Close button not found in DOM');
+    }
+
+    const modal = document.getElementById('stock-modal');
+    if (modal) {
+      eventListeners.stockModal = (e) => {
+        if (e.target === modal) {
+          console.log('Modal backdrop clicked');
+          closeStockModal();
+        }
+      };
+      modal.addEventListener('click', eventListeners.stockModal);
+      console.log('Added new modal click listener');
+    } else {
+      console.warn('Modal element not found in DOM');
+    }
+  }, 0);
+}
+
+// Listen for SPA navigation events
+window.addEventListener('spa:navigated', (event) => {
+  console.log('SPA navigation detected');
+  
+  // Check if we're on the stocks dashboard page
+  const isStocksDashboard = window.location.pathname === '/stocks/dashboard' || 
+                            document.getElementById('stock-table-body');
+  
+  if (isStocksDashboard) {
+    console.log('On stocks dashboard page, initializing...');
+    
+    // Small delay to ensure DOM is fully updated
+    setTimeout(() => {
+      initializeStockDashboard();
+    }, 150);
+  } else {
+    console.log('Not on stocks dashboard page, cleaning up...');
+    cleanupStockDashboard();
+  }
+});
+
+// Initialize on page load
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', () => {
-    setupSearchFunctionality();
+    const isStocksDashboard = window.location.pathname === '/stocks/dashboard' || 
+                              document.getElementById('stock-table-body');
+    if (isStocksDashboard) {
+      initializeStockDashboard();
+    }
   });
 } else {
-  setupSearchFunctionality();
+  const isStocksDashboard = window.location.pathname === '/stocks/dashboard' || 
+                            document.getElementById('stock-table-body');
+  if (isStocksDashboard) {
+    initializeStockDashboard();
+  }
 }
-
-// Also initialize search when SPA navigation occurs
-window.addEventListener('spa:navigated', (event) => {
-  console.log('SPA navigated event received');
-  if (window.location.pathname === '/stocks/dashboard' || document.getElementById('search-input')) {
-    console.log('On stocks dashboard or search input exists, initializing search');
-    // Ensure DOM is fully updated before initializing
-    setTimeout(() => {
-      setupSearchFunctionality();
-      // Re-initialize the dashboard if we're on the stocks page
-      if (window.location.pathname === '/stocks/dashboard') {
-        console.log('Re-initializing stock dashboard');
-        initializeStockDashboard();
-      }
-    }, 200); // Increased timeout to ensure DOM is fully ready
-  }
-});
-
-// Also listen for when SPA scripts are executed
-window.addEventListener('spa:scripts-executed', () => {
-  console.log('SPA scripts executed event received');
-  if (window.location.pathname === '/stocks/dashboard' || document.getElementById('search-input')) {
-    console.log('Setting up search after SPA scripts executed');
-    setTimeout(() => setupSearchFunctionality(), 50);
-  }
-});
-
-// Event listener for modal close button
-window.addEventListener('DOMContentLoaded', () => {
-  const { closeModalBtn } = getDOMElements();
-  if (closeModalBtn) {
-    closeModalBtn.addEventListener('click', closeStockModal);
-  }
-
-  // Close modal when clicking on the backdrop
-  const stockModal = document.getElementById('stock-modal');
-  if (stockModal) {
-    stockModal.addEventListener('click', function (e) {
-      if (e.target === stockModal) {
-        closeStockModal();
-      }
-    });
-  }
-});
-
-// Also set up event listeners when SPA navigates to this page
-window.addEventListener('spa:navigated', (event) => {
-  if (window.location.pathname === '/stocks/dashboard') {
-    setTimeout(() => {
-      const { closeModalBtn } = getDOMElements();
-      if (closeModalBtn) {
-        closeModalBtn.removeEventListener('click', closeStockModal); // Remove any existing listener
-        closeModalBtn.addEventListener('click', closeStockModal);
-      }
-
-      // Set up backdrop click handler
-      const stockModal = document.getElementById('stock-modal');
-      if (stockModal) {
-        stockModal.removeEventListener('click', function (e) {
-          if (e.target === stockModal) {
-            closeStockModal();
-          }
-        }); // Remove existing listener
-        stockModal.addEventListener('click', function (e) {
-          if (e.target === stockModal) {
-            closeStockModal();
-          }
-        });
-      }
-    }, 100);
-  }
-});
-
-

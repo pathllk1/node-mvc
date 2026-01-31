@@ -1,33 +1,34 @@
-class TechnicalAnalysisHistory {
-  constructor() {
-    this.symbol = this.getSymbolFromUrl();
-    this.trendChart = null;
-    this.initialize();
-  }
-
-  getSymbolFromUrl() {
-    const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get('symbol') || 'RELIANCE';
-  }
-
-  async initialize() {
-    // Set the symbol in the header
-    const symbolElement = document.getElementById('stock-symbol');
-    if (symbolElement) {
-      symbolElement.textContent = this.symbol;
+(function() {
+  window.TechnicalAnalysisHistory = class TechnicalAnalysisHistory {
+    constructor() {
+      this.symbol = this.getSymbolFromUrl();
+      this.trendChart = null;
+      this.initialize();
     }
 
-    await this.loadStockData();
-    this.bindEvents();
-  }
+    getSymbolFromUrl() {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get('symbol') || 'RELIANCE';
+    }
 
-  bindEvents() {
-    const backBtn = document.getElementById('back-btn');
-    const exportBtn = document.getElementById('export-btn');
-    const trendPeriod = document.getElementById('trend-period');
+    async initialize() {
+      // Set the symbol in the header
+      const symbolElement = document.getElementById('stock-symbol');
+      if (symbolElement) {
+        symbolElement.textContent = this.symbol;
+      }
 
-    if (backBtn) {
-      backBtn.addEventListener('click', () => {
+      await this.loadStockData();
+      this.bindEvents();
+    }
+
+    bindEvents() {
+      const backBtn = document.getElementById('back-btn');
+      const exportBtn = document.getElementById('export-btn');
+      const trendPeriod = document.getElementById('trend-period');
+
+      if (backBtn) {
+        backBtn.addEventListener('click', () => {
         window.location.href = '/technical-analysis/dashboard';
       });
     }
@@ -318,6 +319,37 @@ class TechnicalAnalysisHistory {
 }
 
 // Initialize when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-  new TechnicalAnalysisHistory();
+function initializeTechnicalAnalysisHistory() {
+  try {
+    new window.TechnicalAnalysisHistory();
+    console.log('Technical Analysis History initialized successfully');
+  } catch (error) {
+    console.error('Failed to initialize Technical Analysis History:', error);
+  }
+}
+
+// Handle page load - check readyState to support both initial load and SPA navigation
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initializeTechnicalAnalysisHistory);
+} else {
+  // DOM is already ready (happens on SPA navigation after script reload)
+  setTimeout(initializeTechnicalAnalysisHistory, 50);
+}
+
+// Listen for SPA navigation events
+window.addEventListener('spa:navigated', (event) => {
+  console.log('SPA navigation detected on technical analysis history');
+  
+  const isTechHistory = window.location.pathname === '/technical-analysis/history' || 
+                        document.getElementById('stock-symbol');
+  
+  if (isTechHistory) {
+    console.log('On technical analysis history page, reinitializing...');
+    setTimeout(() => {
+      initializeTechnicalAnalysisHistory();
+    }, 150);
+  } else {
+    console.log('Not on technical analysis history page');
+  }
 });
+})();

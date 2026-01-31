@@ -409,10 +409,13 @@ function closeTechnicalAnalysisModal() {
 }
 
 // Set up event listeners for technical analysis modal
-window.addEventListener('DOMContentLoaded', () => {
+if (!window.taTechnicalAnalysisListenerInitialized) {
+  console.log('Initializing technical analysis modal event listeners...');
+  
   // Use event delegation for close button since modal is dynamically added
   document.addEventListener('click', function (e) {
     if (e.target.closest('#close-ta-modal')) {
+      console.log('Technical analysis modal close button clicked');
       closeTechnicalAnalysisModal();
     }
   });
@@ -420,27 +423,18 @@ window.addEventListener('DOMContentLoaded', () => {
   // Close modal when clicking on the backdrop
   document.addEventListener('click', function (e) {
     if (e.target.id === 'ta-modal') {
+      console.log('Technical analysis modal backdrop clicked');
       closeTechnicalAnalysisModal();
     }
   });
-});
 
-// Also set up event listeners when SPA navigates
+  window.taTechnicalAnalysisListenerInitialized = true;
+}
+
+// Also ensure listeners are set up when SPA navigates (but don't duplicate them)
 window.addEventListener('spa:navigated', (event) => {
   if (window.location.pathname === '/stocks/dashboard') {
-    setTimeout(() => {
-      document.addEventListener('click', function (e) {
-        if (e.target.closest('#close-ta-modal')) {
-          closeTechnicalAnalysisModal();
-        }
-      });
-
-      document.addEventListener('click', function (e) {
-        if (e.target.id === 'ta-modal') {
-          closeTechnicalAnalysisModal();
-        }
-      });
-    }, 100);
+    console.log('SPA navigated to stocks dashboard, technical analysis modal listeners ready');
   }
 });
 

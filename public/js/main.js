@@ -1,5 +1,24 @@
 // Client-side JavaScript for the Node.js MVC application
 
+// Initialize the executed scripts set with layout scripts to prevent reloading them on SPA navigation
+(function() {
+    if (!window.executedScripts) {
+        window.executedScripts = new Set();
+    }
+    
+    // Add all currently loaded scripts to the executed set
+    // This prevents the SPA router from trying to reload layout scripts
+    const currentScripts = document.querySelectorAll('script[src]');
+    currentScripts.forEach(script => {
+        if (script.src) {
+            window.executedScripts.add(script.src);
+            console.log('Pre-loaded script:', script.src);
+        }
+    });
+    
+    console.log('Initialized executedScripts set with', window.executedScripts.size, 'scripts');
+})();
+
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Node.js MVC Application loaded');
     

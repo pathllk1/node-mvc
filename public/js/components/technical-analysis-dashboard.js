@@ -1,52 +1,54 @@
 /**
  * TechnicalAnalysisDashboard - Main dashboard component for technical analysis
  * Manages data loading, rendering, filtering, pagination, modals, and charts
+ * Wrapped in IIFE to avoid conflicts on script reload
  */
-class TechnicalAnalysisDashboard {
-  // Configuration constants
-  static CONFIG = {
-    PAGE_SIZE: 20,
-    CHART_ANIMATION_DURATION: 750,
-    SEARCH_DEBOUNCE_MS: 300,
-    API_TIMEOUT_MS: 10000,
-    TOP_STOCKS_LIMIT: 5,
-    HISTORY_LIMIT: 50,
-    SCORE_STRONG: 70,
-    SCORE_MODERATE: 50
-  };
+(function() {
+  window.TechnicalAnalysisDashboard = class TechnicalAnalysisDashboard {
+    // Configuration constants
+    static CONFIG = {
+      PAGE_SIZE: 20,
+      CHART_ANIMATION_DURATION: 750,
+      SEARCH_DEBOUNCE_MS: 300,
+      API_TIMEOUT_MS: 10000,
+      TOP_STOCKS_LIMIT: 5,
+      HISTORY_LIMIT: 50,
+      SCORE_STRONG: 70,
+      SCORE_MODERATE: 50
+    };
 
-  // Color palette
-  static COLORS = {
-    STRONG: '#10B981',    // Green
-    MODERATE: '#F59E0B',  // Amber
-    WEAK: '#EF4444',      // Red
-    INFO: '#3B82F6',      // Blue
-    SUCCESS: '#059669',   // Dark Green
-    WARNING: '#D97706',   // Dark Amber
-    DANGER: '#DC2626'     // Dark Red
-  };
+    // Color palette
+    static COLORS = {
+      STRONG: '#10B981',    // Green
+      MODERATE: '#F59E0B',  // Amber
+      WEAK: '#EF4444',      // Red
+      INFO: '#3B82F6',      // Blue
+      SUCCESS: '#059669',   // Dark Green
+      WARNING: '#D97706',   // Dark Amber
+      DANGER: '#DC2626'     // Dark Red
+    };
 
-  constructor() {
-    this.currentPage = 1;
-    this.pageSize = TechnicalAnalysisDashboard.CONFIG.PAGE_SIZE;
-    this.totalRecords = 0;
-    this.allRecords = [];
-    this.filteredRecords = [];
-    this.scoreDistributionChart = null;
-    this.isInitialized = false;
-    this.searchTimeout = null;
-    this.companyNameCache = {};
-    
-    this.initialize();
-  }
+    constructor() {
+      this.currentPage = 1;
+      this.pageSize = window.TechnicalAnalysisDashboard.CONFIG.PAGE_SIZE;
+      this.totalRecords = 0;
+      this.allRecords = [];
+      this.filteredRecords = [];
+      this.scoreDistributionChart = null;
+      this.isInitialized = false;
+      this.searchTimeout = null;
+      this.companyNameCache = {};
+      
+      this.initialize();
+    }
 
-  async initialize() {
-    if (this.isInitialized) return;
-    
-    this.bindEvents();
-    await this.loadData();
-    this.isInitialized = true;
-  }
+    async initialize() {
+      if (this.isInitialized) return;
+      
+      this.bindEvents();
+      await this.loadData();
+      this.isInitialized = true;
+    }
 
   bindEvents() {
     // Refresh button
@@ -889,15 +891,40 @@ class TechnicalAnalysisDashboard {
  */
 let technicalAnalysisDashboard;
 
-document.addEventListener('DOMContentLoaded', () => {
+function initializeTechnicalAnalysisDashboard() {
   try {
     // Small delay to ensure all layout calculations are complete
     setTimeout(() => {
-      technicalAnalysisDashboard = new TechnicalAnalysisDashboard();
+      technicalAnalysisDashboard = new window.TechnicalAnalysisDashboard();
       console.log('Technical Analysis Dashboard initialized successfully');
     }, 100);
   } catch (error) {
     console.error('Failed to initialize Technical Analysis Dashboard:', error);
+  }
+}
+
+// Handle page load - check readyState to support both initial load and SPA navigation
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initializeTechnicalAnalysisDashboard);
+} else {
+  // DOM is already ready (happens on SPA navigation after script reload)
+  setTimeout(initializeTechnicalAnalysisDashboard, 50);
+}
+
+// Listen for SPA navigation events
+window.addEventListener('spa:navigated', (event) => {
+  console.log('SPA navigation detected on technical analysis dashboard');
+  
+  const isTechDashboard = window.location.pathname === '/technical-analysis/dashboard' || 
+                          document.getElementById('total-stocks');
+  
+  if (isTechDashboard) {
+    console.log('On technical analysis dashboard, reinitializing...');
+    setTimeout(() => {
+      initializeTechnicalAnalysisDashboard();
+    }, 150);
+  } else {
+    console.log('Not on technical analysis dashboard');
   }
 });
 
@@ -909,3 +936,4 @@ document.addEventListener('visibilitychange', () => {
     // technicalAnalysisDashboard.refreshData();
   }
 });
+})();

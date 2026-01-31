@@ -76,7 +76,16 @@
   </div>
 </div>
 
+<!-- CRITICAL: Script load order matters! -->
+<!-- Socket.io must load BEFORE stocks-dashboard.js -->
 <script src="/socket.io/socket.io.js"></script>
 <script src="/cdns/chart.js"></script>
-<script src="/js/stocks-dashboard.js"></script>
+
+<!-- 
+  IMPORTANT: data-reload-on-spa attribute tells the SPA router to:
+  1. Remove and reload this script on every SPA navigation to this page
+  2. This ensures WebSocket connections are properly re-initialized
+  3. Without this, WebSocket connections fail on SPA navigation
+-->
+<script src="/js/stocks-dashboard.js" data-reload-on-spa></script>
 <script src="/js/components/technical-analysis-modal.js"></script>

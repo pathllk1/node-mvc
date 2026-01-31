@@ -467,6 +467,18 @@ async function showStockModal(stock) {
     // Update the modal title
     modalStockTitle.textContent = `${fundamentalData.symbol} - ${fundamentalData.companyInfo.name || 'Stock Details'}`;
 
+    // Debug log to see what data we're receiving
+    console.log('Fundamental Data received:', {
+      currentRatio: fundamentalData.financials.currentRatio,
+      returnOnEquity: fundamentalData.financials.returnOnEquity,
+      debtToEquity: fundamentalData.financials.debtToEquity,
+      open: fundamentalData.financials.open,
+      dayHigh: fundamentalData.financials.dayHigh,
+      dayLow: fundamentalData.financials.dayLow,
+      currentPrice: fundamentalData.financials.currentPrice,
+      volume: fundamentalData.financials.volume
+    });
+
     // Create the modal content with fundamental data
     stockDetailContent.innerHTML = createFundamentalDataContent(fundamentalData, stock);
 
@@ -507,6 +519,15 @@ function createFundamentalDataContent(fundamentalData, stock) {
   const formatCurrency = (value) => {
     if (value === null || value === undefined) return '--';
     return `${currencySymbol}${formatLargeNumber(value, null)}`;
+  };
+
+  // Calculate performance metrics
+  const calculatePerformance = (currentPrice, referencePrice) => {
+    if (!currentPrice || !referencePrice) return '--';
+    const change = ((currentPrice - referencePrice) / referencePrice) * 100;
+    const sign = change >= 0 ? '+' : '';
+    const colorClass = change >= 0 ? 'text-green-600' : 'text-red-600';
+    return `<span class="${colorClass} font-medium">${sign}${change.toFixed(2)}%</span>`;
   };
 
   const formatPercent = (value) => {
@@ -565,14 +586,46 @@ function createFundamentalDataContent(fundamentalData, stock) {
       <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-100">
         <h3 class="font-bold text-lg text-gray-800 mb-4 flex items-center">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+            <path fill-rule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 002-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
           </svg>
           Trading Data
         </h3>
-        <div class="space-y-3">
-          <div class="flex justify-between py-2 border-b border-blue-100 last:border-0">
-            <span class="text-gray-600">52-Week Range:</span>
-            <span class="font-medium text-gray-900">${currencySymbol}${formatted52WeekLow} - ${currencySymbol}${formatted52WeekHigh}</span>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="space-y-3">
+            <div class="flex justify-between py-2 border-b border-blue-100">
+              <span class="text-gray-600">Open:</span>
+              <span class="font-medium text-gray-900">${formatCurrency(fundamentalData.financials.open)}</span>
+            </div>
+            <div class="flex justify-between py-2 border-b border-blue-100">
+              <span class="text-gray-600">High:</span>
+              <span class="font-medium text-gray-900">${formatCurrency(fundamentalData.financials.dayHigh)}</span>
+            </div>
+            <div class="flex justify-between py-2 border-b border-blue-100">
+              <span class="text-gray-600">Low:</span>
+              <span class="font-medium text-gray-900">${formatCurrency(fundamentalData.financials.dayLow)}</span>
+            </div>
+            <div class="flex justify-between py-2 border-b border-blue-100">
+              <span class="text-gray-600">Close:</span>
+              <span class="font-medium text-gray-900">${formatCurrency(fundamentalData.financials.currentPrice)}</span>
+            </div>
+          </div>
+          <div class="space-y-3">
+            <div class="flex justify-between py-2 border-b border-blue-100">
+              <span class="text-gray-600">Volume:</span>
+              <span class="font-medium text-gray-900">${formatNumber(fundamentalData.financials.volume)}</span>
+            </div>
+            <div class="flex justify-between py-2 border-b border-blue-100">
+              <span class="text-gray-600">Avg Volume:</span>
+              <span class="font-medium text-gray-900">${formatNumber(fundamentalData.financials.averageVolume)}</span>
+            </div>
+            <div class="flex justify-between py-2 border-b border-blue-100">
+              <span class="text-gray-600">Market Cap:</span>
+              <span class="font-medium text-gray-900">${formatCurrency(fundamentalData.financials.marketCap)}</span>
+            </div>
+            <div class="flex justify-between py-2 border-b border-blue-100">
+              <span class="text-gray-600">52-Week Range:</span>
+              <span class="font-medium text-gray-900">${currencySymbol}${formatNumber(fundamentalData.financials.fiftyTwoWeekLow)} - ${currencySymbol}${formatNumber(fundamentalData.financials.fiftyTwoWeekHigh)}</span>
+            </div>
           </div>
         </div>
       </div>
@@ -673,6 +726,172 @@ function createFundamentalDataContent(fundamentalData, stock) {
         ` : ''}
       </div>
 
+      <!-- Earnings Section -->
+      ${fundamentalData.earnings && (fundamentalData.earnings.history.length > 0 || fundamentalData.earnings.estimates) ? `
+      <div class="bg-gradient-to-br from-purple-50 to-indigo-50 rounded-xl p-6 border border-purple-100">
+        <h3 class="font-bold text-lg text-gray-800 mb-4 flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-purple-500" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z" />
+          </svg>
+          Earnings Performance
+        </h3>
+        <div class="space-y-4">
+          ${fundamentalData.earnings.history.length > 0 ? `
+          <div>
+            <h4 class="text-sm font-semibold text-gray-700 mb-2">Recent Earnings</h4>
+            <div class="overflow-x-auto">
+              <table class="min-w-full text-sm">
+                <thead>
+                  <tr class="border-b border-purple-200">
+                    <th class="text-left py-2 px-2 text-gray-600">Period</th>
+                    <th class="text-right py-2 px-2 text-gray-600">Actual EPS</th>
+                    <th class="text-right py-2 px-2 text-gray-600">Estimate</th>
+                    <th class="text-right py-2 px-2 text-gray-600">Surprise</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${fundamentalData.earnings.history.slice(0, 4).map(earning => {
+                    const surprise = earning.estimate ? ((earning.actual - earning.estimate) / earning.estimate * 100) : 0;
+                    const surpriseClass = surprise > 0 ? 'text-green-600' : surprise < 0 ? 'text-red-600' : 'text-gray-600';
+                    return `
+                      <tr class="border-b border-purple-100 hover:bg-purple-50">
+                        <td class="py-2 px-2 font-medium">${earning.date}</td>
+                        <td class="py-2 px-2 text-right">${formatCurrency(earning.actual)}</td>
+                        <td class="py-2 px-2 text-right text-gray-600">${formatCurrency(earning.estimate)}</td>
+                        <td class="py-2 px-2 text-right font-medium ${surpriseClass}">${surprise > 0 ? '+'+surprise.toFixed(1) : surprise.toFixed(1)}%</td>
+                      </tr>
+                    `;
+                  }).join('')}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          ` : ''}
+          
+          ${fundamentalData.earnings.estimates ? `
+          <div class="pt-2 border-t border-purple-200">
+            <h4 class="text-sm font-semibold text-gray-700 mb-2">Current Quarter Estimate</h4>
+            <div class="grid grid-cols-2 gap-4">
+              <div class="bg-white p-3 rounded-lg">
+                <p class="text-xs text-gray-600">Estimated EPS</p>
+                <p class="text-lg font-bold text-purple-600">${formatCurrency(fundamentalData.earnings.estimates)}</p>
+              </div>
+              <div class="bg-white p-3 rounded-lg">
+                <p class="text-xs text-gray-600">Expected Growth</p>
+                <p class="text-lg font-bold text-purple-600">${fundamentalData.financials.earningsGrowth ? (fundamentalData.financials.earningsGrowth * 100).toFixed(1) + '%' : 'N/A'}</p>
+              </div>
+            </div>
+          </div>
+          ` : ''}
+        </div>
+      </div>
+      ` : ''}
+
+      <!-- Performance Metrics Section -->
+      <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-6 border border-green-100">
+        <h3 class="font-bold text-lg text-gray-800 mb-4 flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-green-500" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M12 7a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0V8.414l-4.293 4.293a1 1 0 01-1.414 0L8 10.414l-4.293 4.293a1 1 0 01-1.414-1.414l5-5a1 1 0 011.414 0L11 10.586 14.586 7H12z" clip-rule="evenodd" />
+          </svg>
+          Performance Metrics
+        </h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div class="bg-white p-4 rounded-lg text-center">
+            <p class="text-xs text-gray-600 mb-1">Today</p>
+            <p class="text-xl font-bold">${calculatePerformance(fundamentalData.financials.currentPrice, fundamentalData.financials.previousClose)}</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg text-center">
+            <p class="text-xs text-gray-600 mb-1">52-Week High</p>
+            <p class="text-xl font-bold">${calculatePerformance(fundamentalData.financials.currentPrice, fundamentalData.financials.fiftyTwoWeekHigh)}</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg text-center">
+            <p class="text-xs text-gray-600 mb-1">52-Week Low</p>
+            <p class="text-xl font-bold">${calculatePerformance(fundamentalData.financials.currentPrice, fundamentalData.financials.fiftyTwoWeekLow)}</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg text-center">
+            <p class="text-xs text-gray-600 mb-1">Beta (Volatility)</p>
+            <p class="text-xl font-bold text-gray-800">${fundamentalData.summaryDetail?.beta ? fundamentalData.summaryDetail.beta.toFixed(2) : 'N/A'}</p>
+          </div>
+        </div>
+        
+        <div class="mt-4 pt-4 border-t border-green-200">
+          <h4 class="text-sm font-semibold text-gray-700 mb-2">Market Position</h4>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <div class="bg-white p-3 rounded-lg">
+              <p class="text-xs text-gray-600">Market Cap</p>
+              <p class="text-lg font-bold text-green-600">${formatCurrency(fundamentalData.financials.marketCap)}</p>
+              <p class="text-xs text-gray-500">${fundamentalData.financials.marketCap ? (fundamentalData.financials.marketCap >= 1000000000000 ? 'Mega Cap' : fundamentalData.financials.marketCap >= 10000000000 ? 'Large Cap' : fundamentalData.financials.marketCap >= 2000000000 ? 'Mid Cap' : 'Small Cap') : 'N/A'}</p>
+            </div>
+            <div class="bg-white p-3 rounded-lg">
+              <p class="text-xs text-gray-600">Volume Ratio</p>
+              <p class="text-lg font-bold text-green-600">${fundamentalData.financials.volume && fundamentalData.financials.averageVolume ? (fundamentalData.financials.volume / fundamentalData.financials.averageVolume).toFixed(2) : 'N/A'}</p>
+              <p class="text-xs text-gray-500">Current vs Avg</p>
+            </div>
+            <div class="bg-white p-3 rounded-lg">
+              <p class="text-xs text-gray-600">Price/Sales</p>
+              <p class="text-lg font-bold text-green-600">${fundamentalData.summaryDetail?.priceToSalesTrailing12Months ? fundamentalData.summaryDetail.priceToSalesTrailing12Months.toFixed(2) : 'N/A'}</p>
+              <p class="text-xs text-gray-500">P/S Ratio</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Analyst Data Section -->
+      ${(fundamentalData.analyst.recommendation || fundamentalData.analyst.numberOfAnalysts || fundamentalData.financials.targetMeanPrice) ? `
+      <div class="bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl p-6 border border-amber-100">
+        <h3 class="font-bold text-lg text-gray-800 mb-4 flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-amber-500" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          Analyst Insights
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          ${fundamentalData.analyst.recommendation ? `
+          <div class="bg-white p-4 rounded-lg text-center">
+            <p class="text-xs text-gray-600 mb-1">Recommendation</p>
+            <p class="text-lg font-bold capitalize ${fundamentalData.analyst.recommendation === 'buy' ? 'text-green-600' : fundamentalData.analyst.recommendation === 'sell' ? 'text-red-600' : 'text-amber-600'}">${fundamentalData.analyst.recommendation}</p>
+          </div>
+          ` : ''}
+          
+          ${fundamentalData.analyst.numberOfAnalysts ? `
+          <div class="bg-white p-4 rounded-lg text-center">
+            <p class="text-xs text-gray-600 mb-1">Analysts</p>
+            <p class="text-lg font-bold text-amber-600">${fundamentalData.analyst.numberOfAnalysts}</p>
+          </div>
+          ` : ''}
+          
+          ${fundamentalData.financials.targetMeanPrice ? `
+          <div class="bg-white p-4 rounded-lg text-center">
+            <p class="text-xs text-gray-600 mb-1">Target Price</p>
+            <p class="text-lg font-bold text-amber-600">${currencySymbol}${fundamentalData.financials.targetMeanPrice.toFixed(2)}</p>
+          </div>
+          ` : ''}
+        </div>
+        
+        ${fundamentalData.financials.targetHighPrice && fundamentalData.financials.targetLowPrice ? `
+        <div class="mt-4 pt-4 border-t border-amber-200">
+          <h4 class="text-sm font-semibold text-gray-700 mb-2">Price Target Range</h4>
+          <div class="bg-white p-3 rounded-lg">
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600">Low Target:</span>
+              <span class="font-medium text-red-600">${currencySymbol}${fundamentalData.financials.targetLowPrice.toFixed(2)}</span>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full h-2 my-2">
+              <div class="bg-gradient-to-r from-red-500 via-amber-500 to-green-500 h-2 rounded-full w-full"></div>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600">High Target:</span>
+              <span class="font-medium text-green-600">${currencySymbol}${fundamentalData.financials.targetHighPrice.toFixed(2)}</span>
+            </div>
+            <div class="mt-2 text-center">
+              <span class="text-xs text-gray-500">Current Price: ${currencySymbol}${fundamentalData.financials.currentPrice.toFixed(2)}</span>
+            </div>
+          </div>
+        </div>
+        ` : ''}
+      </div>
+      ` : ''}
+
       <!-- Financial Ratios Section -->
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-6 border border-purple-100">
@@ -708,15 +927,19 @@ function createFundamentalDataContent(fundamentalData, stock) {
           <div class="space-y-3">
             <div class="flex justify-between py-2 border-b border-orange-100 last:border-0">
               <span class="text-gray-600">Debt to Equity:</span>
-              <span class="font-medium text-gray-900">${formatRatio(fundamentalData.financials.debtToEquity)}</span>
+              <span class="font-medium text-gray-900">${fundamentalData.financials.debtToEquity !== undefined ? formatRatio(fundamentalData.financials.debtToEquity) : 'N/A'}</span>
             </div>
             <div class="flex justify-between py-2 border-b border-orange-100 last:border-0">
               <span class="text-gray-600">Current Ratio:</span>
-              <span class="font-medium text-gray-900">${formatRatio(fundamentalData.financials.currentRatio)}</span>
+              <span class="font-medium text-gray-900">${fundamentalData.financials.currentRatio !== undefined ? formatRatio(fundamentalData.financials.currentRatio) : 'N/A'}</span>
             </div>
             <div class="flex justify-between py-2 border-b border-orange-100 last:border-0">
               <span class="text-gray-600">ROE:</span>
-              <span class="font-medium text-gray-900">${formatPercent(fundamentalData.financials.returnOnEquity)}</span>
+              <span class="font-medium text-gray-900">${fundamentalData.financials.returnOnEquity !== undefined ? formatPercent(fundamentalData.financials.returnOnEquity) : 'N/A'}</span>
+            </div>
+            <!-- Debug info - remove in production -->
+            <div class="text-xs text-gray-500 pt-2 border-t border-gray-200">
+              Some financial ratios may not be available for all stocks
             </div>
           </div>
         </div>

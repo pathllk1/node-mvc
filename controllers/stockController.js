@@ -73,8 +73,11 @@ exports.getFundamentalData = async (req, res) => {
         dividendYield: fundamentalData.summaryDetail?.dividendYield,
         currentRatio: fundamentalData.financialData?.currentRatio,
         quickRatio: fundamentalData.financialData?.quickRatio,
-        payoutRatio: fundamentalData.financialData?.payoutRatio
+        payoutRatio: fundamentalData.financialData?.payoutRatio,
+        // Note: Many financial ratios may be undefined as they're not provided by Yahoo Finance API
+        // This is normal behavior for many stocks
       },
+      summaryDetail: fundamentalData.summaryDetail || {},
       analyst: {
         recommendation: fundamentalData.financialData?.recommendationKey,
         numberOfAnalysts: fundamentalData.financialData?.numberOfAnalystOpinions,

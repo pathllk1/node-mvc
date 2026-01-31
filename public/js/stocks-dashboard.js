@@ -282,7 +282,7 @@ async function showStockModal(stock) {
           <h3 class="text-lg font-medium text-red-800">Error Loading Data</h3>
         </div>
         <p class="mt-2 text-red-700">${error.message}</p>
-        <button onclick="showBasicStockModal(${JSON.stringify(stock).replace(/"/g, '&quot;')})" class="mt-4 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors">
+        <button data-action="show-basic-modal" data-stock='${JSON.stringify(stock)}' class="mt-4 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors">
           Show Basic Data
         </button>
       </div>
@@ -872,24 +872,33 @@ function formatLargeNumber(num, currency = 'USD') {
 }
 
 
-// Add event listeners for chart period selection
+// Add event listeners for chart period selection and table sorting
 document.addEventListener('click', function (e) {
   if (e.target.closest('.chart-period-radio')) {
     const radio = e.target.closest('.chart-period-radio');
     const symbol = radio.dataset.symbol;
     const period = radio.value;
-
+      
     // Update UI to show selected period
     document.querySelectorAll(`.chart-period-radio[data-symbol="${symbol}"]`).forEach(radio => {
       radio.parentElement.classList.remove('bg-emerald-500', 'text-white');
       radio.parentElement.classList.add('bg-emerald-100', 'text-emerald-800');
     });
-
+      
     radio.parentElement.classList.remove('bg-emerald-100', 'text-emerald-800');
     radio.parentElement.classList.add('bg-emerald-500', 'text-white');
-
+    
     // Load chart with new period
     loadStockChart(symbol, period);
+  } else if (e.target.closest('th[data-sort]')) {
+    // Handle table column sorting
+    const sortColumn = e.target.closest('th[data-sort]').dataset.sort;
+    sortTable(sortColumn);
+  } else if (e.target.closest('button[data-action="show-basic-modal"]')) {
+    // Handle show basic modal button
+    const button = e.target.closest('button[data-action="show-basic-modal"]');
+    const stock = JSON.parse(button.dataset.stock);
+    showBasicStockModal(stock);
   }
 });
 

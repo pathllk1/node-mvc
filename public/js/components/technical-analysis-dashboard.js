@@ -34,6 +34,28 @@ class TechnicalAnalysisDashboard {
       });
     }
 
+    // Table button event delegation
+    const tableBody = document.querySelector('#records-table tbody');
+    if (tableBody) {
+      tableBody.addEventListener('click', (e) => {
+        const button = e.target.closest('button');
+        if (button && button.dataset.symbol) {
+          const symbol = button.dataset.symbol;
+          const action = button.dataset.action;
+          
+          if (action === 'view') {
+            this.showStockDetail(symbol);
+          } else if (action === 'history') {
+            this.viewHistory(symbol);
+          } else if (action === 'view-detail') {
+            this.showStockDetail(symbol);
+          } else if (action === 'view-history') {
+            this.viewHistory(symbol);
+          }
+        }
+      });
+    }
+
     // Search input
     const searchInput = document.getElementById('search-input');
     if (searchInput) {
@@ -159,12 +181,25 @@ class TechnicalAnalysisDashboard {
     // Destroy existing chart if it exists
     if (this.scoreDistributionChart) {
       this.scoreDistributionChart.destroy();
+      this.scoreDistributionChart = null; // Explicitly clear reference
     }
 
     const categories = distribution.map(d => d.category);
     const counts = distribution.map(d => d.count);
 
-    this.scoreDistributionChart = new Chart(ctx, {
+    // Ensure canvas respects container size
+    ctx.style.width = '100%';
+    ctx.style.height = '100%';
+    
+    // Debug: Log canvas dimensions
+    console.log('Canvas dimensions:', ctx.offsetWidth, 'x', ctx.offsetHeight);
+    console.log('Container dimensions:', ctx.parentElement.offsetHeight);
+    console.log('Chart.js options:', { responsive: false, maintainAspectRatio: true, aspectRatio: 1 });
+    
+    // Get 2D context for Chart.js
+    const chartCtx = ctx.getContext('2d');
+    
+    this.scoreDistributionChart = new Chart(chartCtx, {
       type: 'doughnut',
       data: {
         labels: categories,
@@ -179,8 +214,17 @@ class TechnicalAnalysisDashboard {
         }]
       },
       options: {
-        responsive: true,
-        maintainAspectRatio: false,
+        responsive: false, // Try disabling responsive behavior
+        maintainAspectRatio: true, // Enable aspect ratio maintenance
+        aspectRatio: 1, // For doughnut chart, aspect ratio of 1 makes sense
+        scales: {
+          x: {
+            type: 'category'
+          },
+          y: {
+            beginAtZero: false
+          }
+        },
         plugins: {
           legend: {
             position: 'bottom',
@@ -217,7 +261,7 @@ class TechnicalAnalysisDashboard {
           }">
             ${stock.technical_score}
           </span>
-          <button onclick="technicalAnalysisDashboard.showStockDetail('${stock.symbol}')" 
+          <button data-symbol="${stock.symbol}" data-action="view-detail" 
                   class="ml-2 text-blue-600 hover:text-blue-800">
             <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
               <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
@@ -274,11 +318,11 @@ class TechnicalAnalysisDashboard {
           ${new Date(record.calculation_timestamp).toLocaleTimeString()}
         </td>
         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-          <button onclick="technicalAnalysisDashboard.showStockDetail('${record.symbol}')" 
+          <button data-symbol="${record.symbol}" data-action="view" 
                   class="text-blue-600 hover:text-blue-900 mr-3">
             View
           </button>
-          <button onclick="technicalAnalysisDashboard.viewHistory('${record.symbol}')" 
+          <button data-symbol="${record.symbol}" data-action="history" 
                   class="text-green-600 hover:text-green-900">
             History
           </button>
@@ -426,7 +470,7 @@ class TechnicalAnalysisDashboard {
         </div>
       </div>
       <div class="mt-6 pt-6 border-t border-gray-200">
-        <button onclick="technicalAnalysisDashboard.viewHistory('${symbol}')" 
+        <button data-symbol="${symbol}" data-action="view-history" 
                 class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
           View Full History
         </button>
@@ -509,5 +553,8 @@ class TechnicalAnalysisDashboard {
 // Initialize the dashboard when the page loads
 let technicalAnalysisDashboard;
 document.addEventListener('DOMContentLoaded', () => {
-  technicalAnalysisDashboard = new TechnicalAnalysisDashboard();
+  // Small delay to ensure all layout calculations are complete
+  setTimeout(() => {
+    technicalAnalysisDashboard = new TechnicalAnalysisDashboard();
+  }, 100);
 });

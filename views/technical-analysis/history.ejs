@@ -47,7 +47,7 @@
     <!-- Charts Section -->
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
       <!-- Technical Score Trend -->
-      <div class="bg-white shadow rounded-lg p-6">
+      <div class="bg-white shadow rounded-lg p-6 h-80 flex flex-col">
         <div class="flex justify-between items-center mb-4">
           <h3 class="text-lg font-medium text-gray-900">Technical Score Trend</h3>
           <div class="flex space-x-2">
@@ -58,7 +58,7 @@
             </select>
           </div>
         </div>
-        <canvas id="score-trend-chart" height="300"></canvas>
+        <canvas id="score-trend-chart" class="w-full h-full"></canvas>
       </div>
 
       <!-- Key Indicators -->
@@ -158,4 +158,5 @@
   </div>
 </div>
 
+<script src="/cdns/chart.js"></script>
 <script src="/js/components/technical-analysis-history.js"></script>

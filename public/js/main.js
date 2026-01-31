@@ -3,13 +3,14 @@
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Node.js MVC Application loaded');
     
-    // Handle method override for forms
+    // Handle method override for forms with confirmation
     const forms = document.querySelectorAll('form[method="POST"]');
     forms.forEach(form => {
         const methodInput = form.querySelector('input[name="_method"]');
-        if (methodInput) {
+        const confirmMessage = form.dataset.confirm;
+        if (methodInput && confirmMessage) {
             form.addEventListener('submit', function(e) {
-                if (!confirm('Are you sure you want to proceed?')) {
+                if (!confirm(confirmMessage)) {
                     e.preventDefault();
                 }
             });

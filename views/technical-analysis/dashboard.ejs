@@ -115,9 +115,9 @@
     <!-- Charts Section -->
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
       <!-- Score Distribution Chart -->
-      <div class="bg-white shadow rounded-lg p-6">
+      <div class="bg-white shadow rounded-lg p-6 h-80 flex flex-col">
         <h3 class="text-lg font-medium text-gray-900 mb-4">Score Distribution</h3>
-        <canvas id="score-distribution-chart" height="300"></canvas>
+        <canvas id="score-distribution-chart" class="w-full h-full"></canvas>
       </div>
 
       <!-- Top Performing Stocks -->
@@ -221,4 +221,5 @@
   </div>
 </div>
 
+<script src="/cdns/chart.js"></script>
 <script src="/js/components/technical-analysis-dashboard.js"></script>

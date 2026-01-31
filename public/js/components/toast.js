@@ -8,6 +8,7 @@ class ToastComponent {
 
   init() {
     this.createToastContainer();
+    this.bindEvents();
   }
 
   createToastContainer() {
@@ -16,6 +17,16 @@ class ToastComponent {
     this.container.id = 'toast-container';
     this.container.className = 'fixed top-20 right-4 z-50 space-y-2';
     document.body.appendChild(this.container);
+  }
+
+  bindEvents() {
+    // Event delegation for toast close buttons
+    this.container.addEventListener('click', (e) => {
+      const button = e.target.closest('button');
+      if (button && button.dataset.action === 'close-toast') {
+        button.parentElement.remove();
+      }
+    });
   }
 
   show(message, type = 'info', duration = 5000) {
@@ -42,7 +53,7 @@ class ToastComponent {
         </svg>
       </div>
       <div class="pr-2 text-sm font-normal">${message}</div>
-      <button onclick="this.parentElement.remove()" class="ml-auto -mx-1.5 -my-1.5 text-gray-400 hover:text-gray-900 rounded-lg p-1.5 inline-flex items-center justify-center h-8 w-8">
+      <button data-action="close-toast" class="ml-auto -mx-1.5 -my-1.5 text-gray-400 hover:text-gray-900 rounded-lg p-1.5 inline-flex items-center justify-center h-8 w-8">
         <span class="sr-only">Close</span>
         <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>

@@ -4,6 +4,7 @@ const technicalAnalysisController = require('../controllers/technical-analysis')
 
 // View routes
 router.get('/dashboard', technicalAnalysisController.renderDashboard);
+router.get('/top', technicalAnalysisController.renderDashboard);
 router.get('/history', technicalAnalysisController.renderHistory);
 router.get('/history/:symbol', technicalAnalysisController.renderHistory);
 router.get('/settings', technicalAnalysisController.renderSettings);

@@ -1,6 +1,7 @@
 class TechnicalAnalysisHistory {
   constructor() {
     this.symbol = this.getSymbolFromUrl();
+    this.trendChart = null;
     this.initialize();
   }
 
@@ -90,9 +91,69 @@ class TechnicalAnalysisHistory {
   loadCharts(data) {
     // Score trend chart implementation
     const ctx = document.getElementById('score-trend-chart');
-    if (ctx) {
-      // Chart implementation would go here using the existing chart.js from cdns
-      // This would be implemented similar to the dashboard charts
+    if (ctx && window.Chart) {
+      // Prepare chart data from the input data array
+      const labels = data.map(d => new Date(d.analysis_date).toLocaleDateString('en-IN'));
+      const scores = data.map(d => d.technical_score);
+      
+      // Destroy existing chart if present
+      if (this.trendChart) {
+        this.trendChart.destroy();
+      }
+      
+      // Create new line chart
+      this.trendChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Technical Score Trend',
+            data: scores,
+            borderColor: '#3B82F6',
+            backgroundColor: 'rgba(59, 130, 246, 0.1)',
+            borderWidth: 2,
+            fill: true,
+            tension: 0.3,
+            pointRadius: 4,
+            pointBackgroundColor: '#3B82F6',
+            pointBorderColor: '#fff',
+            pointBorderWidth: 2,
+            pointHoverRadius: 6
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          plugins: {
+            legend: {
+              display: true,
+              position: 'top',
+              labels: {
+                usePointStyle: true,
+                padding: 15
+              }
+            }
+          },
+          scales: {
+            y: {
+              min: 0,
+              max: 100,
+              beginAtZero: true,
+              ticks: {
+                stepSize: 10
+              },
+              grid: {
+                color: 'rgba(0, 0, 0, 0.05)'
+              }
+            },
+            x: {
+              grid: {
+                color: 'rgba(0, 0, 0, 0.05)'
+              }
+            }
+          }
+        }
+      });
     }
   }
 
@@ -123,6 +184,35 @@ class TechnicalAnalysisHistory {
 
   loadIndicators(latestRecord) {
     if (!latestRecord) return;
+    
+    // Key indicators (most important metrics at a glance)
+    const keyIndicatorsContainer = document.getElementById('key-indicators');
+    if (keyIndicatorsContainer) {
+      keyIndicatorsContainer.innerHTML = `
+        <div class="grid grid-cols-2 gap-4">
+          <div class="bg-blue-50 rounded-lg p-3">
+            <div class="text-xs text-gray-600 font-medium">RSI (Momentum)</div>
+            <div class="text-lg font-bold text-blue-700">${latestRecord.rsi ? latestRecord.rsi.toFixed(2) : '--'}</div>
+            <div class="text-xs text-gray-500 mt-1">${latestRecord.rsi ? (latestRecord.rsi > 70 ? 'Overbought' : latestRecord.rsi < 30 ? 'Oversold' : 'Neutral') : '--'}</div>
+          </div>
+          <div class="bg-green-50 rounded-lg p-3">
+            <div class="text-xs text-gray-600 font-medium">MACD (Trend)</div>
+            <div class="text-lg font-bold text-green-700">${latestRecord.macd ? latestRecord.macd.toFixed(4) : '--'}</div>
+            <div class="text-xs text-gray-500 mt-1">${latestRecord.macd ? (latestRecord.macd > 0 ? 'Bullish' : 'Bearish') : '--'}</div>
+          </div>
+          <div class="bg-purple-50 rounded-lg p-3">
+            <div class="text-xs text-gray-600 font-medium">ATR (Volatility)</div>
+            <div class="text-lg font-bold text-purple-700">${latestRecord.atr ? latestRecord.atr.toFixed(2) : '--'}</div>
+            <div class="text-xs text-gray-500 mt-1">Volatility Measure</div>
+          </div>
+          <div class="bg-orange-50 rounded-lg p-3">
+            <div class="text-xs text-gray-600 font-medium">ROC (Rate of Change)</div>
+            <div class="text-lg font-bold text-orange-700">${latestRecord.roc ? latestRecord.roc.toFixed(2) : '--'}</div>
+            <div class="text-xs text-gray-500 mt-1">${latestRecord.roc ? (latestRecord.roc > 0 ? 'Uptrend' : 'Downtrend') : '--'}</div>
+          </div>
+        </div>
+      `;
+    }
     
     // Moving averages
     const maContainer = document.getElementById('moving-averages');
@@ -210,7 +300,15 @@ class TechnicalAnalysisHistory {
 
   updateTrendChart(data) {
     // Chart update implementation
-    console.log('Updating trend chart with', data.length, 'data points');
+    if (this.trendChart && data && data.length > 0) {
+      const labels = data.map(d => new Date(d.analysis_date).toLocaleDateString('en-IN'));
+      const scores = data.map(d => d.technical_score);
+      
+      // Update chart data
+      this.trendChart.data.labels = labels;
+      this.trendChart.data.datasets[0].data = scores;
+      this.trendChart.update();
+    }
   }
 
   exportData() {

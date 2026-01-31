@@ -82,6 +82,30 @@ class TechnicalAnalysisDashboard {
       });
     }
 
+    // Modal content event delegation for modal-specific buttons
+    const modalContent = document.getElementById('modal-content');
+    if (modalContent) {
+      modalContent.addEventListener('click', (e) => {
+        const button = e.target.closest('button');
+        if (button) {
+          const action = button.dataset.action;
+          const symbol = button.dataset.symbol;
+          
+          if (action === 'view-history' && symbol) {
+            this.viewHistory(symbol);
+          }
+        }
+      });
+    }
+
+    // Modal close button handler
+    const closeButton = document.getElementById('modal-close-button');
+    if (closeButton) {
+      closeButton.addEventListener('click', () => {
+        this.closeModal();
+      });
+    }
+
     // Search input with debouncing
     const searchInput = document.getElementById('search-input');
     if (searchInput) {
@@ -688,8 +712,7 @@ class TechnicalAnalysisDashboard {
             </svg>
             View Full History
           </button>
-          <button class="inline-flex items-center px-4 py-3 border border-gray-300 text-sm font-semibold rounded-lg text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors" 
-                  onclick="technicalAnalysisDashboard.closeModal()">
+          <button id="modal-close-button" class="inline-flex items-center px-4 py-3 border border-gray-300 text-sm font-semibold rounded-lg text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors">
             Close
           </button>
         </div>
